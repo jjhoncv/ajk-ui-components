@@ -1,7 +1,7 @@
 import type { StorybookConfig } from "@storybook/react-vite";
 
 const config: StorybookConfig = {
-  stories: ["../../../packages/**/*.stories.@(js|jsx|ts|tsx)"],
+  stories: ["../../../packages/**/src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
@@ -11,11 +11,22 @@ const config: StorybookConfig = {
     name: "@storybook/react-vite",
     options: {},
   },
-  core: {
-    builder: "@storybook/builder-vite",
-  },
   docs: {
-    autodocs: true,
+    autodocs: "tag",
+  },
+  viteFinal: async (config) => {
+    if (config.build && !config.build.rollupOptions) {
+      config.build.rollupOptions = {};
+    }
+    if (config.build && config.build.rollupOptions) {
+      config.build.rollupOptions.external = [
+        ...(Array.isArray(config.build.rollupOptions.external)
+          ? config.build.rollupOptions.external
+          : []),
+        "@storybook/test",
+      ];
+    }
+    return config;
   },
 };
 
