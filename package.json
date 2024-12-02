@@ -7,7 +7,8 @@
     "storybook": "turbo run storybook",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "turbo run build && changeset publish"
+    "release": "turbo run build && changeset publish",
+    "gen:changelog": "pnpm changeset && pnpm version-packages"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.10",
