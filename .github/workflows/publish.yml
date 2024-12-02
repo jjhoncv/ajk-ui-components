@@ -27,9 +27,18 @@ jobs:
           node-version: 18
           registry-url: "https://registry.npmjs.org"
           cache: "pnpm"
+          scope: "@ajk-ui"
 
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm build
+      - name: Configure npm
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+          echo "@ajk-ui:registry=https://registry.npmjs.org" >> ~/.npmrc
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build packages
+        run: pnpm build
 
       - name: Create Release Pull Request or Publish
         id: changesets
@@ -39,3 +48,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

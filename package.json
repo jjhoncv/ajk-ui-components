@@ -7,7 +7,7 @@
     "storybook": "turbo run storybook",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "turbo run build && changeset publish",
+    "release": "turbo run build && changeset publish --access public",
     "gen:changelog": "pnpm changeset && pnpm version-packages"
   },
   "devDependencies": {
