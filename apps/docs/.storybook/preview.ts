@@ -1,4 +1,4 @@
-import { Preview } from "@storybook/react";
+import type { Preview } from "@storybook/react";
 import "../styles/tailwind.css";
 
 const preview: Preview = {
@@ -7,9 +7,10 @@ const preview: Preview = {
     controls: {
       matchers: {
         color: /(background|color)$/i,
-        date: /Date$/,
+        date: /Date$/i,
       },
     },
+    layout: "fullscreen",
   },
 };
 

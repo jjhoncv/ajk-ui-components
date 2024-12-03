@@ -1,3 +1,48 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Estilos personalizados para los temas */
+:root {
+  --primary-color: theme("colors.blue.500");
+  --secondary-color: theme("colors.gray.500");
+  --background-color: theme("colors.white");
+  --text-color: theme("colors.gray.900");
+}
+
+.dark {
+  --primary-color: theme("colors.blue.400");
+  --secondary-color: theme("colors.gray.400");
+  --background-color: theme("colors.gray.900");
+  --text-color: theme("colors.gray.100");
+}
+
+/* Estilos base para componentes */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-md font-medium transition-colors;
+  }
+
+  .btn-primary {
+    @apply bg-primary-500 text-white hover:bg-primary-600;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-200 text-gray-800 hover:bg-gray-300;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary-500 text-primary-500 hover:bg-primary-50;
+  }
+}
+
+/* Utilidades personalizadas */
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+}

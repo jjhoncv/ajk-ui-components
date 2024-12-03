@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
-    "storybook": "turbo run storybook",
+    "storybook": "turbo run storybook --",
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "turbo run build && changeset publish --access public",

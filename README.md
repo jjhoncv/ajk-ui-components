@@ -1,10 +1,12 @@
 # AJK UI Components
 
-Una biblioteca de componentes UI modernos construida con React y Tailwind CSS.
+Una biblioteca modular de componentes UI para crear sitios web temáticos con React y Tailwind CSS.
 
 ## 🌟 Características
 
 - 🎨 Componentes UI modernos y personalizables
+- 🏗️ Layouts predefinidos por industria
+- 🎯 Temas específicos por tipo de negocio
 - 📦 Construido con React y Tailwind CSS
 - 📚 Documentación completa con Storybook
 - 🔄 Sistema de versionado automático con Changesets
@@ -23,37 +25,100 @@ Una biblioteca de componentes UI modernos construida con React y Tailwind CSS.
 ## 📦 Instalación
 
 ```bash
-# Instalar el componente Button
-npm install @ajk-ui/button
+# Instalar componentes individuales
+npm install @ajk-ui/button @ajk-ui/nav @ajk-ui/header @ajk-ui/card @ajk-ui/section @ajk-ui/footer
 
 # o con yarn
-yarn add @ajk-ui/button
+yarn add @ajk-ui/button @ajk-ui/nav @ajk-ui/header @ajk-ui/card @ajk-ui/section @ajk-ui/footer
 
 # o con pnpm
-pnpm add @ajk-ui/button
+pnpm add @ajk-ui/button @ajk-ui/nav @ajk-ui/header @ajk-ui/card @ajk-ui/section @ajk-ui/footer
 ```
 
 ## 🚀 Uso
 
 ```jsx
-import { Button } from "@ajk-ui/button";
+import { ThemeProvider } from "@ajk-ui/theme-utils";
+import { Nav } from "@ajk-ui/nav";
+import { Header } from "@ajk-ui/header";
+import { Section } from "@ajk-ui/section";
+import { Card } from "@ajk-ui/card";
+import { Footer } from "@ajk-ui/footer";
 
 function App() {
-  return <Button variant="primary">Click me!</Button>;
+  return (
+    <ThemeProvider theme={themes.restaurant.modern}>
+      <Nav
+        items={[
+          { label: "Home", href: "#" },
+          { label: "Menu", href: "#" },
+          { label: "About", href: "#" },
+          { label: "Contact", href: "#" },
+        ]}
+      />
+      <Header
+        title="Welcome to Our Restaurant"
+        subtitle="Experience the finest dining"
+        backgroundImage="/hero.jpg"
+      />
+      <Section title="Our Specialties" layout="grid" gridCols={3}>
+        <Card
+          title="Special Dish"
+          description="A delicious specialty"
+          image="/dish.jpg"
+        />
+        {/* More cards */}
+      </Section>
+      <Footer
+        columns={[
+          {
+            title: "Contact",
+            links: [
+              { label: "Location", href: "#" },
+              { label: "Hours", href: "#" },
+            ],
+          },
+        ]}
+      />
+    </ThemeProvider>
+  );
 }
 ```
 
 ## 🏗️ Estructura del Proyecto
 
 ```
-ajk-ui-components/
+ajk-ui/
 ├── apps/
 │   └── docs/          # Aplicación Storybook
 ├── packages/
-│   └── button/        # Componente Button
-├── .changeset/        # Configuración de Changesets
+│   ├── core/          # Utilidades core
+│   ├── theme-utils/   # Utilidades de tema
+│   ├── button/        # Componente Button
+│   ├── nav/           # Componente Nav
+│   ├── header/        # Componente Header
+│   ├── card/          # Componente Card
+│   ├── section/       # Componente Section
+│   └── footer/        # Componente Footer
 └── package.json
 ```
+
+## 🎨 Temas Disponibles
+
+### Restaurant
+
+- Modern: Diseño contemporáneo y minimalista
+- Classic: Estilo tradicional y elegante
+
+### Barbershop
+
+- Vintage: Estética clásica de barbería
+- Modern: Look contemporáneo y urbano
+
+### Business
+
+- Corporate: Diseño profesional y formal
+- Startup: Estilo moderno y dinámico
 
 ## 🔧 Desarrollo
 

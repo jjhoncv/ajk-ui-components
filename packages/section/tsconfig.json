@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": ["./src/*"],
+      "@ajk-ui/card": ["../card/src"],
+      "@ajk-ui/core": ["../core/src"],
+      "@ajk-ui/theme-utils": ["../theme-utils/src"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}
