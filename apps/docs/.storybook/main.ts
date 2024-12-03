@@ -3,7 +3,10 @@ import { mergeConfig } from "vite";
 import path from "path";
 
 const config: StorybookConfig = {
-  stories: ["../../../packages/**/*.stories.@(js|jsx|ts|tsx)"],
+  stories: [
+    "../../../packages/**/*.stories.@(js|jsx|ts|tsx)",
+    "!../../../packages/**/node_modules/**/*.stories.@(js|jsx|ts|tsx)", // Excluir historias de node_modules
+  ],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
@@ -16,8 +19,8 @@ const config: StorybookConfig = {
   docs: {
     autodocs: "tag",
   },
-  async viteFinal(config) {
-    return mergeConfig(config, {
+  async viteFinal(config, { configType }) {
+    const baseConfig = {
       resolve: {
         alias: {
           "@ajk-ui/core": path.resolve(__dirname, "../../../packages/core/src"),
@@ -44,6 +47,33 @@ const config: StorybookConfig = {
             "../../../packages/footer/src"
           ),
         },
+      },
+    };
+
+    if (configType === "PRODUCTION" || process.env.NODE_ENV === "production") {
+      return mergeConfig(config, {
+        ...baseConfig,
+        build: {
+          rollupOptions: {
+            external: [
+              "@storybook/test",
+              "@storybook/testing-library",
+              "@storybook/jest",
+              /\.css$/, // Excluir archivos CSS durante la construcción
+            ],
+          },
+        },
+      });
+    }
+
+    return mergeConfig(config, {
+      ...baseConfig,
+      optimizeDeps: {
+        include: [
+          "@storybook/test",
+          "@storybook/testing-library",
+          "@storybook/jest",
+        ],
       },
     });
   },
