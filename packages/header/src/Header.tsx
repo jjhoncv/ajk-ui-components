@@ -17,6 +17,7 @@ export interface HeaderProps extends BaseProps {
   cta?: {
     label: string;
     href: string;
+    align?: "left" | "center" | "right";
     variant?: "primary" | "secondary" | "outline";
   };
 }
@@ -53,6 +54,13 @@ export function Header({
     content: "relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8",
     title: "font-bold",
     subtitle: "mt-4",
+    cta: {
+      align: {
+        center: "flex justify-center w-full",
+        left: "flex justify-start w-full",
+        right: "flex justify-end w-full",
+      },
+    },
   };
 
   const variantStyles = {
@@ -144,22 +152,24 @@ export function Header({
         )}
 
         {cta && (
-          <a
-            href={cta.href}
-            className={cn(
-              "mt-8 inline-flex items-center rounded-md px-6 py-3 text-base font-medium shadow-sm",
-              {
-                "bg-primary-500 text-white hover:bg-primary-600":
-                  cta.variant === "primary",
-                "bg-white text-gray-900 hover:bg-gray-50":
-                  cta.variant === "secondary",
-                "border-2 border-white text-white hover:bg-white/10":
-                  cta.variant === "outline",
-              }
-            )}
-          >
-            {cta.label}
-          </a>
+          <div className={baseStyles.cta.align[cta.align || "center"]}>
+            <a
+              href={cta.href}
+              className={cn(
+                "mt-8 inline-flex items-center rounded-md px-6 py-3 text-base font-medium shadow-sm",
+                {
+                  "bg-primary-500 text-white hover:bg-primary-600":
+                    cta.variant === "primary",
+                  "bg-white text-gray-900 hover:bg-gray-50":
+                    cta.variant === "secondary",
+                  "border-2 border-white text-white hover:bg-white/10":
+                    cta.variant === "outline",
+                }
+              )}
+            >
+              {cta.label}
+            </a>
+          </div>
         )}
 
         {children}

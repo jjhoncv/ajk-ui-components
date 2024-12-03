@@ -50,7 +50,7 @@ export function Card({
   const { theme } = useTheme();
 
   const baseStyles = {
-    card: "overflow-hidden rounded-lg bg-white",
+    card: "overflow-hidden rounded-lg bg-white relative",
     image: "w-full object-cover",
     content: "p-6",
     title: "font-semibold",

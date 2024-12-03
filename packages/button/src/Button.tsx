@@ -1,3 +1,4 @@
+import { useTheme } from "@ajk-ui/theme-utils";
 import { cn } from "./utils";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -12,24 +13,57 @@ export function Button({
   children,
   ...props
 }: ButtonProps) {
+  const { theme } = useTheme();
+
+  const getVariantStyles = () => {
+    switch (variant) {
+      case "primary":
+        return {
+          backgroundColor: theme.colors.primary,
+          color: theme.colors.text,
+          border: "none",
+        };
+      case "secondary":
+        return {
+          backgroundColor: theme.colors.secondary,
+          color: theme.colors.text,
+          border: "none",
+        };
+      case "outline":
+        return {
+          backgroundColor: "transparent",
+          color: theme.colors.primary,
+          border: `2px solid ${theme.colors.primary}`,
+        };
+      default:
+        return {};
+    }
+  };
+
+  const getSizeStyles = () => {
+    switch (size) {
+      case "sm":
+        return "px-3 py-1.5 text-sm";
+      case "md":
+        return "px-4 py-2";
+      case "lg":
+        return "px-6 py-3 text-lg";
+      default:
+        return "";
+    }
+  };
+
   return (
     <button
       className={cn(
         "rounded-md font-medium transition-colors",
-        {
-          "bg-blue-500 text-white hover:bg-blue-600": variant === "primary",
-          "bg-gray-200 text-gray-800 hover:bg-gray-300":
-            variant === "secondary",
-          "border-2 border-blue-500 text-blue-500 hover:bg-blue-50":
-            variant === "outline",
-        },
-        {
-          "px-3 py-1.5 text-sm": size === "sm",
-          "px-4 py-2": size === "md",
-          "px-6 py-3 text-lg": size === "lg",
-        },
+        getSizeStyles(),
         className
       )}
+      style={{
+        ...getVariantStyles(),
+        fontFamily: theme.typography.fontFamily,
+      }}
       {...props}
     >
       {children}

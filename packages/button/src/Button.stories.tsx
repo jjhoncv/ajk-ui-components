@@ -1,5 +1,18 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "./Button";
+import { ThemeProvider, createTheme } from "@ajk-ui/theme-utils";
+
+const sampleTheme = createTheme({
+  colors: {
+    primary: "#D4AF37", // Gold
+    secondary: "#1E2832", // Dark slate
+    background: "#FFFFFF",
+    text: "#1A1A1A",
+  },
+  typography: {
+    fontFamily: "system-ui, sans-serif",
+  },
+});
 
 const meta = {
   title: "Components/Button",
@@ -18,6 +31,13 @@ const meta = {
       options: ["sm", "md", "lg"],
     },
   },
+  decorators: [
+    (Story) => (
+      <ThemeProvider initialTheme={sampleTheme}>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
 } satisfies Meta<typeof Button>;
 
 export default meta;

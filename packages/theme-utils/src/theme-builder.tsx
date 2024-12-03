@@ -149,7 +149,7 @@ export const themes = {
         primary: "#2C3E50",
         secondary: "#BDC3C7",
         background: "#ECF0F1",
-        text: "#2C3E50",
+        text: "#314a63",
       },
       typography: {
         fontFamily: "Oswald, sans-serif",

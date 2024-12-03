@@ -1,49 +1,94 @@
 # @ajk-ui/button
 
-Un componente Button moderno y personalizable construido con React y Tailwind CSS.
+Button component for ajk-ui components library.
 
-## 📦 Instalación
+## Installation
 
 ```bash
-# npm
 npm install @ajk-ui/button
-
-# yarn
+# or
 yarn add @ajk-ui/button
-
-# pnpm
+# or
 pnpm add @ajk-ui/button
 ```
 
-## 🚀 Uso
+## Usage
 
-```jsx
+```tsx
 import { Button } from "@ajk-ui/button";
 
-function App() {
+function MyComponent() {
   return (
-    <Button variant="primary" size="md">
-      Click me!
-    </Button>
+    <>
+      {/* Basic usage */}
+      <Button>Click me</Button>
+
+      {/* Variants */}
+      <Button variant="primary">Primary</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="outline">Outline</Button>
+
+      {/* Sizes */}
+      <Button size="sm">Small</Button>
+      <Button size="md">Medium</Button>
+      <Button size="lg">Large</Button>
+
+      {/* With icon */}
+      <Button>
+        <Icon /> Button with Icon
+      </Button>
+    </>
   );
 }
 ```
 
-## 🎨 Props
+## Props
 
-| Prop      | Tipo    | Valores por defecto | Descripción                                          |
-| --------- | ------- | ------------------- | ---------------------------------------------------- |
-| variant   | string  | 'primary'           | Estilo del botón ('primary', 'secondary', 'outline') |
-| size      | string  | 'md'                | Tamaño del botón ('sm', 'md', 'lg')                  |
-| disabled  | boolean | false               | Estado deshabilitado del botón                       |
-| className | string  | ''                  | Clases CSS adicionales                               |
+| Prop      | Type                                  | Default   | Description            |
+| --------- | ------------------------------------- | --------- | ---------------------- |
+| variant   | 'primary' \| 'secondary' \| 'outline' | 'primary' | Button style variant   |
+| size      | 'sm' \| 'md' \| 'lg'                  | 'md'      | Button size            |
+| disabled  | boolean                               | false     | Disable button         |
+| className | string                                | -         | Additional CSS classes |
+| children  | ReactNode                             | -         | Button content         |
 
-## 🔗 Links
+## Theme Customization
 
-- [Documentación](https://jjhoncv.github.io/ajk-ui-components)
-- [Changelog](https://github.com/jjhoncv/ajk-ui-components/blob/main/CHANGELOG.md)
-- [GitHub](https://github.com/jjhoncv/ajk-ui-components)
+The button component uses the theme context for styling. You can customize its appearance through the theme:
 
-## 📄 Licencia
+```tsx
+const theme = createTheme({
+  colors: {
+    primary: "#FF6B6B",
+    secondary: "#4ECDC4",
+  },
+});
 
-MIT
+<ThemeProvider theme={theme}>
+  <Button>Themed Button</Button>
+</ThemeProvider>;
+```
+
+## Examples
+
+### Loading State
+
+```tsx
+<Button disabled>
+  <LoadingSpinner /> Loading...
+</Button>
+```
+
+### With Icon
+
+```tsx
+<Button>
+  <Icon /> Save Changes
+</Button>
+```
+
+### Full Width
+
+```tsx
+<Button className="w-full">Full Width Button</Button>
+```

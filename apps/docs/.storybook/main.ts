@@ -5,6 +5,7 @@ import path from "path";
 const config: StorybookConfig = {
   stories: [
     "../../../packages/**/*.stories.@(js|jsx|ts|tsx)",
+    "../stories/**/*.stories.@(js|jsx|ts|tsx)",
     "!../../../packages/**/node_modules/**/*.stories.@(js|jsx|ts|tsx)", // Excluir historias de node_modules
   ],
   addons: [
@@ -19,6 +20,7 @@ const config: StorybookConfig = {
   docs: {
     autodocs: "tag",
   },
+  staticDirs: ["../public"],
   async viteFinal(config, { configType }) {
     const baseConfig = {
       resolve: {

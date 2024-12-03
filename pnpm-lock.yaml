@@ -124,6 +124,9 @@ importers:
 
   packages/button:
     dependencies:
+      '@ajk-ui/theme-utils':
+        specifier: workspace:*
+        version: link:../theme-utils
       react:
         specifier: ^18.0.0
         version: 18.3.1
