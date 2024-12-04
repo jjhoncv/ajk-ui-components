@@ -1,6 +1,10 @@
-# @ajk-ui/button
+# @ajk-ui/theme-utils
 
-## 1.1.0
+## 1.0.0
+
+### Major Changes
+
+- c4aac75: update version
 
 ### Minor Changes
 
@@ -21,13 +25,5 @@
   - Storybook documentation
 
 - Updated dependencies [cb1650e]
-- Updated dependencies [c4aac75]
 - Updated dependencies [361a95a]
-  - @ajk-ui/theme-utils@1.0.0
-
-## 1.0.1
-
-### Patch Changes
-
-- 1a9706a: first version basic button
-- continue basic component
+  - @ajk-ui/core@0.1.0

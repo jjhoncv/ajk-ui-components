@@ -1,6 +1,6 @@
-# @ajk-ui/button
+# @ajk-ui/footer
 
-## 1.1.0
+## 0.1.0
 
 ### Minor Changes
 
@@ -23,11 +23,5 @@
 - Updated dependencies [cb1650e]
 - Updated dependencies [c4aac75]
 - Updated dependencies [361a95a]
+  - @ajk-ui/core@0.1.0
   - @ajk-ui/theme-utils@1.0.0
-
-## 1.0.1
-
-### Patch Changes
-
-- 1a9706a: first version basic button
-- continue basic component
