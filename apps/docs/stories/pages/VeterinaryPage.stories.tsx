@@ -7,6 +7,13 @@ import { Card } from "@ajk-ui/card";
 import { Footer } from "@ajk-ui/footer";
 import { Button } from "@ajk-ui/button";
 
+// Helper para manejar las rutas de imágenes
+const getImagePath = (path: string) => {
+  const basePath =
+    process.env.NODE_ENV === "production" ? "/ajk-ui-components" : "";
+  return `${basePath}${path}`;
+};
+
 // Tema moderno para veterinaria
 const vetTheme = createTheme({
   colors: {
@@ -81,7 +88,7 @@ const VeterinaryPage = () => {
         <Header
           title="Cuidado Veterinario de Excelencia"
           subtitle="Tecnología avanzada y atención personalizada para tu mascota"
-          backgroundImage="/images/veterinary/hero.jpg"
+          backgroundImage={getImagePath("/images/veterinary/hero.jpg")}
           variant="hero"
           height="lg"
           navItems={navItems}
@@ -107,7 +114,7 @@ const VeterinaryPage = () => {
             title="Medicina Preventiva"
             subtitle="Plan Wellness"
             description="Programas personalizados de prevención y vacunación para mantener a tu mascota saludable."
-            image="/images/veterinary/service1.jpg"
+            image={getImagePath("/images/veterinary/service1.jpg")}
           >
             <Button variant="secondary">Ver Planes</Button>
           </Card>
@@ -116,7 +123,7 @@ const VeterinaryPage = () => {
             title="Cirugía Avanzada"
             subtitle="Tecnología de Punta"
             description="Procedimientos quirúrgicos mínimamente invasivos con recuperación rápida."
-            image="/images/veterinary/service2.jpg"
+            image={getImagePath("/images/veterinary/service2.jpg")}
           >
             <Button variant="secondary">Consultar</Button>
           </Card>
@@ -125,7 +132,7 @@ const VeterinaryPage = () => {
             title="Diagnóstico Digital"
             subtitle="Resultados Inmediatos"
             description="Radiografía digital y ultrasonido para diagnósticos precisos y rápidos."
-            image="/images/veterinary/service3.jpg"
+            image={getImagePath("/images/veterinary/service3.jpg")}
           >
             <Button variant="secondary">Más Info</Button>
           </Card>
@@ -134,7 +141,7 @@ const VeterinaryPage = () => {
             title="Hospitalización"
             subtitle="24/7"
             description="Unidad de cuidados intensivos con monitoreo constante y personal especializado."
-            image="/images/veterinary/service4.jpg"
+            image={getImagePath("/images/veterinary/service4.jpg")}
           >
             <Button variant="secondary">Emergencias</Button>
           </Card>
@@ -144,7 +151,7 @@ const VeterinaryPage = () => {
         <Section
           variant="highlight"
           layout="split"
-          backgroundImage="/images/veterinary/about.jpg"
+          backgroundImage={getImagePath("/images/veterinary/about.jpg")}
           overlay
           title="Medicina Veterinaria del Futuro"
           subtitle="Innovación y Compasión"
@@ -178,7 +185,7 @@ const VeterinaryPage = () => {
             author={{
               name: "Carolina Méndez",
               title: "Dueña de Luna",
-              avatar: "/images/veterinary/avatar1.jpg",
+              avatar: {getImagePath("/images/veterinary/avatar1.jpg")}
             }}
           />
           <Card
@@ -188,7 +195,7 @@ const VeterinaryPage = () => {
             author={{
               name: "Roberto Silva",
               title: "Dueño de Max",
-              avatar: "/images/veterinary/avatar2.jpg",
+              avatar: {getImagePath("/images/veterinary/avatar2.jpg")}
             }}
           />
         </Section>

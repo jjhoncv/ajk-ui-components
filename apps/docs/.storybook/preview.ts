@@ -1,6 +1,12 @@
 import type { Preview } from "@storybook/react";
-import { themes } from "@ajk-ui/theme-utils";
 import "../styles/tailwind.css";
+
+// Helper para manejar las rutas de imágenes en Storybook
+window.getImagePath = (path: string) => {
+  const basePath =
+    process.env.NODE_ENV === "production" ? "/ajk-ui-components" : "";
+  return `${basePath}${path}`;
+};
 
 const preview: Preview = {
   parameters: {
@@ -25,20 +31,12 @@ const preview: Preview = {
       },
     },
   },
-  globalTypes: {
-    theme: {
-      name: "Theme",
-      description: "Global theme for components",
-      defaultValue: "restaurant-modern",
-      toolbar: {
-        icon: "paintbrush",
-        items: [
-          { value: "restaurant-modern", title: "Restaurant Modern" },
-          { value: "restaurant-classic", title: "Restaurant Classic" },
-          { value: "barbershop-vintage", title: "Barbershop Vintage" },
-          { value: "barbershop-modern", title: "Barbershop Modern" },
-        ],
-      },
+  globals: {
+    // Función global para manejar rutas de imágenes
+    getImagePath: (path: string) => {
+      const basePath =
+        process.env.NODE_ENV === "production" ? "/ajk-ui-components" : "";
+      return `${basePath}${path}`;
     },
   },
 };

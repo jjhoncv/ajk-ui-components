@@ -7,6 +7,13 @@ import { Card } from "@ajk-ui/card";
 import { Footer } from "@ajk-ui/footer";
 import { Button } from "@ajk-ui/button";
 
+// Helper para manejar las rutas de imágenes
+const getImagePath = (path: string) => {
+  const basePath =
+    process.env.NODE_ENV === "production" ? "/ajk-ui-components" : "";
+  return `${basePath}${path}`;
+};
+
 // Tema personalizado para e-commerce de tecnología
 const techTheme = createTheme({
   colors: {
@@ -79,7 +86,7 @@ const TechStorePage = () => {
         <Header
           title="TechStore"
           subtitle="Tu destino tecnológico"
-          backgroundImage="/images/ecommerce/hero.jpg"
+          backgroundImage={getImagePath("/images/ecommerce/hero.jpg")}
           variant="hero"
           height="lg"
           navItems={navItems}
@@ -105,7 +112,7 @@ const TechStorePage = () => {
             title="MacBook Pro M2"
             subtitle="$1,999.99"
             description="Potencia y rendimiento excepcional"
-            image="/images/ecommerce/macbook.jpg"
+            image={getImagePath("/images/ecommerce/macbook.jpg")}
             badge="Nuevo"
           >
             <div className="flex mt-2">
@@ -117,7 +124,7 @@ const TechStorePage = () => {
             title="iPhone 15 Pro"
             subtitle="$999.99"
             description="La última innovación en smartphones"
-            image="/images/ecommerce/iphone.jpg"
+            image={getImagePath("/images/ecommerce/iphone.jpg")}
             badge="Destacado"
           >
             <div className="flex mt-2">
@@ -129,7 +136,7 @@ const TechStorePage = () => {
             title="AirPods Pro"
             subtitle="$249.99"
             description="Audio inmersivo de alta calidad"
-            image="/images/ecommerce/airpods1.jpg"
+            image={getImagePath("/images/ecommerce/airpods1.jpg")}
           >
             <div className="flex mt-2">
               <Button variant="secondary">Comprar Ahora</Button>
@@ -140,7 +147,7 @@ const TechStorePage = () => {
             title="AirPods Max"
             subtitle="$549.99"
             description="Experiencia auditiva premium"
-            image="/images/ecommerce/airpods2.jpg"
+            image={getImagePath("/images/ecommerce/airpods2.jpg")}
           >
             <div className="flex mt-2">
               <Button variant="secondary">Comprar Ahora</Button>
@@ -152,7 +159,7 @@ const TechStorePage = () => {
         <Section
           variant="highlight"
           layout="split"
-          backgroundImage="/images/ecommerce/special-offers.jpg"
+          backgroundImage={getImagePath("/images/ecommerce/special-offers.jpg")}
           overlay
           title="Ofertas Especiales"
           subtitle="¡No te pierdas nuestros descuentos!"
@@ -183,7 +190,7 @@ const TechStorePage = () => {
             author={{
               name: "Ana García",
               title: "Cliente Verificado",
-              avatar: "/images/ecommerce/avatar1.jpg",
+              avatar: {getImagePath("/images/ecommerce/avatar1.jpg")}
             }}
           />
           <Card
@@ -193,7 +200,7 @@ const TechStorePage = () => {
             author={{
               name: "Carlos Ruiz",
               title: "Cliente Frecuente",
-              avatar: "/images/ecommerce/avatar2.jpg",
+              avatar: {getImagePath("/images/ecommerce/avatar2.jpg")}
             }}
           />
         </Section>

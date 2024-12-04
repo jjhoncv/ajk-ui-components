@@ -7,6 +7,13 @@ import { Card } from "@ajk-ui/card";
 import { Footer } from "@ajk-ui/footer";
 import { Button } from "@ajk-ui/button";
 
+// Helper para manejar las rutas de imágenes
+const getImagePath = (path: string) => {
+  const basePath =
+    process.env.NODE_ENV === "production" ? "/ajk-ui-components" : "";
+  return `${basePath}${path}`;
+};
+
 const BoutiqueLogo = () => (
   <div className="flex items-center">
     <svg
@@ -80,7 +87,7 @@ const BoutiquePage = () => {
         <Header
           title="Timeless Elegance"
           subtitle="Discover our new collection"
-          backgroundImage="/images/boutique/hero.jpg"
+          backgroundImage={getImagePath("/images/boutique/hero.jpg")}
           variant="hero"
           height="lg"
           navItems={navItems}
@@ -107,7 +114,7 @@ const BoutiquePage = () => {
             title="Silk Evening Dress"
             subtitle="$599"
             description="Elegant silk dress with delicate embroidery"
-            image="/images/boutique/dress.jpg"
+            image={getImagePath("/images/boutique/dress.jpg")}
             badge="New"
           />
           <Card
@@ -115,7 +122,7 @@ const BoutiquePage = () => {
             title="Tailored Blazer"
             subtitle="$399"
             description="Classic wool blend blazer with gold buttons"
-            image="/images/boutique/blazer.jpg"
+            image={getImagePath("/images/boutique/blazer.jpg")}
             badge="Bestseller"
           />
           <Card
@@ -123,7 +130,7 @@ const BoutiquePage = () => {
             title="Leather Handbag"
             subtitle="$299"
             description="Handcrafted Italian leather bag"
-            image="/images/boutique/bag.jpg"
+            image={getImagePath("/images/boutique/bag.jpg")}
           />
         </Section>
 
@@ -131,7 +138,7 @@ const BoutiquePage = () => {
         <Section
           variant="highlight"
           layout="split"
-          backgroundImage="/images/boutique/about.jpg"
+          backgroundImage={getImagePath("/images/boutique/about.jpg")}
           overlay
           title="Our Heritage"
           subtitle="A legacy of craftsmanship and style"
@@ -158,22 +165,22 @@ const BoutiquePage = () => {
           gridCols={4}
         >
           <img
-            src="/images/boutique/gallery1.jpg"
+            src={getImagePath("/images/boutique/gallery1.jpg")}
             alt="Instagram post"
             className="aspect-square object-cover"
           />
           <img
-            src="/images/boutique/gallery2.jpg"
+            src={getImagePath("/images/boutique/gallery2.jpg")}
             alt="Instagram post"
             className="aspect-square object-cover"
           />
           <img
-            src="/images/boutique/gallery3.jpg"
+            src={getImagePath("/images/boutique/gallery3.jpg")}
             alt="Instagram post"
             className="aspect-square object-cover"
           />
           <img
-            src="/images/boutique/gallery4.jpg"
+            src={getImagePath("/images/boutique/gallery4.jpg")}
             alt="Instagram post"
             className="aspect-square object-cover"
           />
