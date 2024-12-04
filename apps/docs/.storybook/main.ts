@@ -21,8 +21,9 @@ const config: StorybookConfig = {
     autodocs: "tag",
   },
   staticDirs: ["../public"],
-  async viteFinal(config, { configType }) {
+  viteFinal: async (config, { configType }) => {
     const baseConfig = {
+      base: configType === "PRODUCTION" ? "/ajk-ui-components/" : "/",
       resolve: {
         alias: {
           "@ajk-ui/core": path.resolve(__dirname, "../../../packages/core/src"),
