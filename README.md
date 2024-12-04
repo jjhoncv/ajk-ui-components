@@ -12,6 +12,8 @@ A comprehensive React component library with industry-specific themes and layout
 - 🎭 Theme variants (Modern, Classic, Vintage)
 - 🛠️ Built with TypeScript
 - 🎉 Powered by Tailwind CSS
+- 🔄 Automated versioning with Changesets
+- 🚀 Continuous Integration/Deployment
 
 ## Installation
 
@@ -352,16 +354,45 @@ function CustomBoutique() {
 
 ## Documentation
 
-Visit our [Storybook documentation](https://your-storybook-url) to see all components, themes, and examples.
+Visit our [Storybook documentation](https://jjhoncv.github.io/ajk-ui-components/) to see all components, themes, and examples.
+
+## Development
+
+### Local Development
+
+1. Clone the repository
+2. Install dependencies: `pnpm install`
+3. Start Storybook: `pnpm storybook`
+
+### Version Management
+
+We use Changesets for version management. When making changes:
+
+1. Make your code changes
+2. Run `pnpm gen:changelog`
+3. Select the packages you modified
+4. Choose the version bump type (patch/minor/major)
+5. Write a description of your changes
+6. Commit and push your changes
+
+### Continuous Integration/Deployment
+
+The project uses GitHub Actions for CI/CD:
+
+- **Documentation**: Automatically deploys Storybook to GitHub Pages on push to main
+- **NPM Publishing**: Automatically publishes packages when version changes are merged
+  - Creates a "Version Packages" PR when changesets are pushed
+  - Publishes to npm when the PR is merged
 
 ## Contributing
 
-1. Clone the repository
-2. Install dependencies: \`pnpm install\`
-3. Start Storybook: \`pnpm storybook\`
-4. Make your changes
-5. Create a changeset: \`pnpm changeset\`
-6. Submit a PR
+1. Fork the repository
+2. Create your feature branch: `git checkout -b feature/amazing-feature`
+3. Make your changes
+4. Create a changeset: `pnpm gen:changelog`
+5. Commit your changes: `git commit -m 'feat: add amazing feature'`
+6. Push to the branch: `git push origin feature/amazing-feature`
+7. Submit a Pull Request
 
 ## License
 
