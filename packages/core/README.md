@@ -1,6 +1,6 @@
 # @ajk-ui/core
 
-Core utilities and types for ajk-ui components library.
+Core utilities and types for the AJK UI Components library.
 
 ## Installation
 
@@ -12,30 +12,109 @@ yarn add @ajk-ui/core
 pnpm add @ajk-ui/core
 ```
 
+## Features
+
+- Core utility functions
+- Common TypeScript types and interfaces
+- Base theme types
+- Shared constants
+- Helper functions for styling and class management
+
 ## Usage
-
-```tsx
-import { cn, type BaseProps } from "@ajk-ui/core";
-
-// Use utility functions
-const className = cn("base-class", "conditional-class");
-
-// Use types
-interface MyComponentProps extends BaseProps {
-  customProp: string;
-}
-```
-
-## API Reference
-
-### Utilities
-
-- `cn`: Utility for merging class names with Tailwind CSS
-- `generateId`: Generate unique IDs for components
 
 ### Types
 
-- `BaseProps`: Base props interface for all components
-- `Theme`: Theme configuration type
-- `ThemeColors`: Theme colors configuration
-- `ThemeTypography`: Typography configuration
+```typescript
+import { BaseProps, ThemeVariant, Size } from "@ajk-ui/core";
+
+// Component props interface
+interface MyComponentProps extends BaseProps {
+  variant?: ThemeVariant;
+  size?: Size;
+}
+```
+
+### Utilities
+
+```typescript
+import { mergeClasses, createStyles } from "@ajk-ui/core";
+
+// Merge CSS classes
+const className = mergeClasses(
+  "base-class",
+  variant && `variant-${variant}`,
+  size && `size-${size}`,
+  customClass
+);
+
+// Create dynamic styles
+const styles = createStyles({
+  color: theme.colors.primary,
+  padding: theme.spacing.md,
+});
+```
+
+## Available Exports
+
+### Types
+
+```typescript
+// Base Props
+interface BaseProps {
+  className?: string;
+  children?: ReactNode;
+  [key: string]: any;
+}
+
+// Theme Types
+type ThemeVariant = "primary" | "secondary" | "outline" | "ghost";
+type Size = "sm" | "md" | "lg";
+type ColorScheme = "light" | "dark";
+
+// Component Types
+interface StyleProps {
+  className?: string;
+  style?: CSSProperties;
+}
+```
+
+### Utilities
+
+```typescript
+// Class Management
+function mergeClasses(...classes: (string | undefined | null)[]): string;
+
+// Style Utilities
+function createStyles(styles: CSSProperties): CSSProperties;
+function getThemeValue(theme: Theme, path: string): any;
+
+// Type Guards
+function isValidColor(color: string): boolean;
+function isValidSize(size: string): size is Size;
+```
+
+## Integration with Theme System
+
+The core package works seamlessly with `@ajk-ui/theme-utils`:
+
+```typescript
+import { useTheme } from "@ajk-ui/theme-utils";
+import { getThemeValue } from "@ajk-ui/core";
+
+function MyComponent() {
+  const theme = useTheme();
+  const primaryColor = getThemeValue(theme, "colors.primary");
+
+  return <div style={{ color: primaryColor }}>Themed Content</div>;
+}
+```
+
+## Version History
+
+Current version: 0.2.0
+
+See [Changelog](../../CHANGELOG.md) for details about changes and updates.
+
+## License
+
+MIT © [Your Name]

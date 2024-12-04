@@ -1,5 +1,18 @@
 # @ajk-ui/theme-utils
 
+## 1.2.1
+
+### Patch Changes
+
+- Updated dependencies
+  - @ajk-ui/core@0.3.0
+
+## 1.2.0
+
+### Minor Changes
+
+- update readme
+
 ## 1.1.1
 
 ### Patch Changes

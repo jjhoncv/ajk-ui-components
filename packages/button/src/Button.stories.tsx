@@ -34,7 +34,9 @@ const meta = {
   decorators: [
     (Story) => (
       <ThemeProvider initialTheme={sampleTheme}>
-        <Story />
+        <div className="p-4">
+          <Story />
+        </div>
       </ThemeProvider>
     ),
   ],

@@ -1,5 +1,35 @@
 # @ajk-ui/section
 
+## 0.3.2
+
+### Patch Changes
+
+- Updated dependencies
+  - @ajk-ui/core@0.3.0
+  - @ajk-ui/card@0.3.1
+  - @ajk-ui/theme-utils@1.2.1
+
+## 0.3.1
+
+### Patch Changes
+
+- Updated dependencies
+  - @ajk-ui/card@0.3.0
+
+## 0.3.0
+
+### Minor Changes
+
+- update readme
+
+## 0.2.3
+
+### Patch Changes
+
+- Updated dependencies
+  - @ajk-ui/theme-utils@1.2.0
+  - @ajk-ui/card@0.2.2
+
 ## 0.2.2
 
 ### Patch Changes

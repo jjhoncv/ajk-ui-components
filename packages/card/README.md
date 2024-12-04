@@ -1,6 +1,6 @@
 # @ajk-ui/card
 
-Card component for ajk-ui components library.
+A versatile card component for React applications with multiple variants and layouts.
 
 ## Installation
 
@@ -19,73 +19,38 @@ import { Card } from "@ajk-ui/card";
 
 function MyComponent() {
   return (
-    <>
-      {/* Basic usage */}
-      <Card>
-        <h2>Card Title</h2>
-        <p>Card content</p>
-      </Card>
-
-      {/* With image */}
-      <Card
-        image="https://example.com/image.jpg"
-        title="Product Title"
-        description="Product description"
-      />
-
-      {/* Product variant */}
-      <Card
-        variant="product"
-        title="Product Name"
-        subtitle="$24.99"
-        description="Product description"
-        image="https://example.com/product.jpg"
-      />
-
-      {/* Service variant */}
-      <Card
-        variant="service"
-        title="Service Name"
-        subtitle="From $50"
-        description="Service description"
-        image="https://example.com/service.jpg"
-      />
-    </>
+    <Card
+      variant="product"
+      title="Product Title"
+      subtitle="$99.99"
+      description="Product description goes here"
+      image="/path/to/image.jpg"
+    />
   );
 }
 ```
 
+## Features
+
+- Multiple variants (product, service, testimonial, feature)
+- Responsive design
+- Image support
+- Customizable layouts
+- Theme integration
+- TypeScript support
+- Accessible by default
+
 ## Props
 
-| Prop        | Type                                | Default   | Description            |
-| ----------- | ----------------------------------- | --------- | ---------------------- |
-| variant     | 'default' \| 'product' \| 'service' | 'default' | Card style variant     |
-| title       | string                              | -         | Card title             |
-| subtitle    | string                              | -         | Card subtitle          |
-| description | string                              | -         | Card description       |
-| image       | string                              | -         | URL of the card image  |
-| className   | string                              | -         | Additional CSS classes |
-| children    | ReactNode                           | -         | Card content           |
-
-## Theme Customization
-
-The card component uses the theme context for styling. You can customize its appearance through the theme:
-
-```tsx
-const theme = createTheme({
-  colors: {
-    primary: "#FF6B6B",
-    background: "#ffffff",
-  },
-  borderRadius: {
-    md: "0.375rem",
-  },
-});
-
-<ThemeProvider theme={theme}>
-  <Card>Themed Card</Card>
-</ThemeProvider>;
-```
+| Prop        | Type                                                 | Default   | Description                          |
+| ----------- | ---------------------------------------------------- | --------- | ------------------------------------ |
+| variant     | 'product' \| 'service' \| 'testimonial' \| 'feature' | 'product' | The visual style variant of the card |
+| title       | string                                               | required  | The title of the card                |
+| subtitle    | string                                               | undefined | Optional subtitle                    |
+| description | string                                               | undefined | Card description                     |
+| image       | string                                               | undefined | URL of the card image                |
+| className   | string                                               | undefined | Additional CSS classes               |
+| children    | ReactNode                                            | undefined | Optional child elements              |
 
 ## Examples
 
@@ -94,10 +59,10 @@ const theme = createTheme({
 ```tsx
 <Card
   variant="product"
-  title="Premium Coffee"
-  subtitle="$4.99"
-  description="Rich and aromatic coffee blend"
-  image="/coffee.jpg"
+  title="Premium Product"
+  subtitle="$199.99"
+  description="High-quality product with amazing features"
+  image="/product-image.jpg"
 />
 ```
 
@@ -106,21 +71,46 @@ const theme = createTheme({
 ```tsx
 <Card
   variant="service"
-  title="Haircut & Style"
-  subtitle="From $30"
-  description="Professional haircut service"
-  image="/haircut.jpg"
+  title="Professional Service"
+  subtitle="Starting at $99"
+  description="Expert service delivery"
+  image="/service-image.jpg"
 />
 ```
 
-### Custom Content
+### Testimonial Card
 
 ```tsx
-<Card className="p-6">
-  <div className="flex items-center justify-between">
-    <h3>Custom Header</h3>
-    <button>Action</button>
-  </div>
-  <p>Custom content goes here</p>
-</Card>
+<Card
+  variant="testimonial"
+  title="Great Experience!"
+  description="Amazing service and support"
+  author={{
+    name: "John Doe",
+    title: "CEO",
+    avatar: "/avatar.jpg",
+  }}
+/>
 ```
+
+## Customization
+
+Customize card styles using Tailwind CSS:
+
+```tsx
+<Card
+  className="bg-custom-color shadow-custom"
+  variant="product"
+  title="Custom Card"
+/>
+```
+
+## Version History
+
+Current version: 0.2.1
+
+See [Changelog](../../CHANGELOG.md) for details about changes and updates.
+
+## License
+
+MIT © [Your Name]

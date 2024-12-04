@@ -1,6 +1,6 @@
 # @ajk-ui/header
 
-Header component for ajk-ui components library.
+A flexible header component for React applications with built-in navigation and hero section support.
 
 ## Installation
 
@@ -16,110 +16,127 @@ pnpm add @ajk-ui/header
 
 ```tsx
 import { Header } from "@ajk-ui/header";
-import { Nav } from "@ajk-ui/nav";
 
 function MyComponent() {
-  return (
-    <Header>
-      {/* Basic usage */}
-      <Header.Logo src="/logo.svg" alt="Company Name" />
-      <Nav>
-        <Nav.Item href="/">Home</Nav.Item>
-        <Nav.Item href="/about">About</Nav.Item>
-      </Nav>
-      <Header.Actions>
-        <Button>Contact Us</Button>
-      </Header.Actions>
+  const navItems = [
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "Contact", href: "/contact" },
+  ];
 
-      {/* With hero section */}
-      <Header variant="hero">
-        <Header.Logo src="/logo.svg" alt="Company Name" />
-        <Header.Hero
-          title="Welcome to Our Restaurant"
-          subtitle="Experience fine dining at its best"
-          backgroundImage="/hero-bg.jpg"
-        >
-          <Button size="lg">Make a Reservation</Button>
-        </Header.Hero>
-      </Header>
-    </Header>
+  return (
+    <Header
+      title="Welcome"
+      subtitle="Discover amazing things"
+      backgroundImage="/hero.jpg"
+      variant="hero"
+      navItems={navItems}
+      cta={{ label: "Get Started", href: "/start" }}
+    />
   );
 }
 ```
 
+## Features
+
+- Multiple variants (hero, simple, transparent)
+- Integrated navigation
+- Hero section support
+- Background image support
+- Call-to-action button
+- Responsive design
+- Theme integration
+- TypeScript support
+
 ## Props
 
-### Header
+| Prop            | Type                                | Default   | Description              |
+| --------------- | ----------------------------------- | --------- | ------------------------ |
+| variant         | 'hero' \| 'simple' \| 'transparent' | 'simple'  | Header style variant     |
+| title           | string                              | required  | Header title             |
+| subtitle        | string                              | undefined | Optional subtitle        |
+| backgroundImage | string                              | undefined | URL for background image |
+| navItems        | NavItem[]                           | []        | Navigation items         |
+| cta             | CTAButton                           | undefined | Call-to-action button    |
+| height          | 'sm' \| 'md' \| 'lg'                | 'md'      | Header height            |
+| className       | string                              | undefined | Additional CSS classes   |
 
-| Prop      | Type                                 | Default   | Description            |
-| --------- | ------------------------------------ | --------- | ---------------------- |
-| variant   | 'default' \| 'transparent' \| 'hero' | 'default' | Header style variant   |
-| sticky    | boolean                              | false     | Make header sticky     |
-| className | string                               | -         | Additional CSS classes |
+## Types
 
-### Header.Logo
+```typescript
+interface NavItem {
+  label: string;
+  href: string;
+}
 
-| Prop | Type   | Default | Description           |
-| ---- | ------ | ------- | --------------------- |
-| src  | string | -       | Logo image source     |
-| alt  | string | -       | Logo alt text         |
-| href | string | '/'     | Logo link destination |
-
-### Header.Hero
-
-| Prop            | Type    | Default | Description                  |
-| --------------- | ------- | ------- | ---------------------------- |
-| title           | string  | -       | Hero title                   |
-| subtitle        | string  | -       | Hero subtitle                |
-| backgroundImage | string  | -       | Hero background image        |
-| overlay         | boolean | true    | Enable overlay on background |
-| overlayOpacity  | number  | 0.5     | Overlay opacity              |
-
-## Industry-Specific Styles
-
-### Restaurant Modern
-
-```tsx
-<ThemeProvider theme={themes.restaurant.modern}>
-  <Header variant="hero">
-    <Header.Logo src="/restaurant-logo.svg" alt="Fine Dining" />
-    <Header.Hero
-      title="Modern Cuisine"
-      subtitle="A culinary journey"
-      backgroundImage="/restaurant-hero.jpg"
-    >
-      <Button>View Menu</Button>
-    </Header.Hero>
-  </Header>
-</ThemeProvider>
+interface CTAButton {
+  label: string;
+  href: string;
+  variant?: 'solid' \| 'outline';
+}
 ```
 
-### Barbershop Vintage
+## Examples
+
+### Hero Header
 
 ```tsx
-<ThemeProvider theme={themes.barbershop.vintage}>
-  <Header>
-    <Header.Logo src="/barbershop-logo.svg" alt="Classic Cuts" />
-    <Nav>
-      <Nav.Item href="/services">Services</Nav.Item>
-      <Nav.Item href="/booking">Book Now</Nav.Item>
-    </Nav>
-  </Header>
-</ThemeProvider>
+<Header
+  variant="hero"
+  title="Welcome to Our Site"
+  subtitle="Discover amazing features"
+  backgroundImage="/hero-bg.jpg"
+  navItems={[
+    { label: "Home", href: "/" },
+    { label: "Features", href: "/features" },
+    { label: "Contact", href: "/contact" },
+  ]}
+  cta={{ label: "Get Started", href: "/start" }}
+  height="lg"
+/>
 ```
 
-## Mobile Responsive
-
-The Header component includes responsive design and mobile menu integration:
+### Simple Header
 
 ```tsx
-<Header>
-  <Header.Logo src="/logo.svg" alt="Brand" />
-  <Header.MobileMenu>
-    <Nav>
-      <Nav.Item href="/">Home</Nav.Item>
-      <Nav.Item href="/about">About</Nav.Item>
-    </Nav>
-  </Header.MobileMenu>
-</Header>
+<Header
+  variant="simple"
+  title="Company Name"
+  navItems={[
+    { label: "About", href: "/about" },
+    { label: "Services", href: "/services" },
+  ]}
+/>
 ```
+
+### Transparent Header
+
+```tsx
+<Header
+  variant="transparent"
+  title="Brand"
+  navItems={navItems}
+  className="absolute top-0 left-0 right-0"
+/>
+```
+
+## Customization
+
+Customize header styles using Tailwind CSS:
+
+```tsx
+<Header
+  className="bg-gradient-to-r from-blue-500 to-purple-500"
+  title="Custom Header"
+/>
+```
+
+## Version History
+
+Current version: 0.2.2
+
+See [Changelog](../../CHANGELOG.md) for details about changes and updates.
+
+## License
+
+MIT © [Your Name]

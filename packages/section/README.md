@@ -1,6 +1,6 @@
 # @ajk-ui/section
 
-Section component with industry-specific layouts for ajk-ui components library.
+A versatile section component for React applications with multiple layout options and grid support.
 
 ## Installation
 
@@ -16,88 +16,81 @@ pnpm add @ajk-ui/section
 
 ```tsx
 import { Section } from "@ajk-ui/section";
-import { Card } from "@ajk-ui/card";
 
 function MyComponent() {
   return (
-    <>
-      {/* Basic usage */}
-      <Section title="Our Services" subtitle="Discover what makes us special">
-        <div className="grid grid-cols-3 gap-6">{/* Content */}</div>
-      </Section>
-
-      {/* Feature layout */}
-      <Section
-        variant="feature"
-        layout="grid"
-        title="Featured Items"
-        subtitle="Our special selection"
-        gridCols={3}
-      >
-        <Card variant="product" />
-        <Card variant="product" />
-        <Card variant="product" />
-      </Section>
-
-      {/* With background image */}
-      <Section
-        backgroundImage="/hero.jpg"
-        overlay
-        overlayOpacity={0.7}
-        title="Welcome"
-        subtitle="Experience excellence"
-      >
-        {/* Content */}
-      </Section>
-    </>
+    <Section
+      variant="feature"
+      layout="grid"
+      title="Our Features"
+      subtitle="Discover what makes us special"
+      gridCols={3}
+    >
+      {/* Your content here */}
+    </Section>
   );
 }
 ```
 
+## Features
+
+- Multiple variants (feature, highlight, alternate, cta)
+- Various layouts (grid, split, centered)
+- Background image support
+- Responsive grid system
+- Theme integration
+- TypeScript support
+- Customizable spacing and padding
+
 ## Props
 
-| Prop            | Type                                                          | Default   | Description                      |
-| --------------- | ------------------------------------------------------------- | --------- | -------------------------------- |
-| variant         | 'default' \| 'alternate' \| 'highlight' \| 'feature' \| 'cta' | 'default' | Section style variant            |
-| layout          | 'default' \| 'grid' \| 'split' \| 'centered' \| 'zigzag'      | 'default' | Layout style                     |
-| backgroundImage | string                                                        | -         | Background image URL             |
-| overlay         | boolean                                                       | false     | Enable overlay on background     |
-| overlayOpacity  | number                                                        | 0.5       | Opacity of overlay               |
-| title           | string                                                        | -         | Section title                    |
-| subtitle        | string                                                        | -         | Section subtitle                 |
-| gridCols        | 1 \| 2 \| 3 \| 4                                              | 3         | Number of columns in grid layout |
-| spacing         | 'none' \| 'sm' \| 'md' \| 'lg' \| 'xl'                        | 'lg'      | Section padding                  |
-| align           | 'left' \| 'center' \| 'right'                                 | 'left'    | Content alignment                |
+| Prop            | Type                                             | Default   | Description                    |
+| --------------- | ------------------------------------------------ | --------- | ------------------------------ |
+| variant         | 'feature' \| 'highlight' \| 'alternate' \| 'cta' | 'feature' | Section style variant          |
+| layout          | 'grid' \| 'split' \| 'centered'                  | 'grid'    | Layout type                    |
+| title           | string                                           | undefined | Section title                  |
+| subtitle        | string                                           | undefined | Section subtitle               |
+| gridCols        | number                                           | 3         | Number of grid columns         |
+| gap             | 'sm' \| 'md' \| 'lg'                             | 'md'      | Grid gap size                  |
+| backgroundImage | string                                           | undefined | Background image URL           |
+| overlay         | boolean                                          | false     | Add dark overlay to background |
+| className       | string                                           | undefined | Additional CSS classes         |
+| children        | ReactNode                                        | required  | Section content                |
 
-## Industry-Specific Layouts
+## Examples
 
-### Restaurant Modern
-
-```tsx
-<Section
-  variant="feature"
-  layout="grid"
-  title="Featured Dishes"
-  subtitle="Chef's special selection"
->
-  <Card variant="product" />
-  <Card variant="product" />
-  <Card variant="product" />
-</Section>
-```
-
-### Barbershop Vintage
+### Feature Grid Section
 
 ```tsx
 <Section
   variant="feature"
   layout="grid"
   title="Our Services"
-  subtitle="Professional grooming services"
+  subtitle="What we offer"
+  gridCols={3}
+  gap="lg"
 >
-  <Card variant="service" />
-  <Card variant="service" />
-  <Card variant="service" />
+  <Card title="Service 1" />
+  <Card title="Service 2" />
+  <Card title="Service 3" />
+</Section>
+```
+
+### Split Layout Section
+
+```tsx
+<Section
+  variant="highlight"
+  layout="split"
+  title="About Us"
+  subtitle="Our Story"
+  backgroundImage="/about-bg.jpg"
+  overlay
+>
+  <div className="flex flex-col gap-4">
+    <p>Content goes here...</p>
+    <Button variant="primary">Learn More</Button>
+  </div>
 </Section>
 ```
 
@@ -107,21 +100,48 @@ function MyComponent() {
 <Section
   variant="cta"
   layout="centered"
-  title="Ready to Get Started?"
-  subtitle="Join our community today"
-  backgroundImage="/cta-bg.jpg"
-  overlay
+  title="Get Started"
+  subtitle="Join us today"
 >
-  <Button size="lg">Book Now</Button>
+  <Button variant="primary">Sign Up Now</Button>
 </Section>
 ```
 
-## Theme Integration
+## Grid System
 
-The section component automatically adapts to your selected industry theme:
+The section component includes a responsive grid system:
 
 ```tsx
-<ThemeProvider theme={themes.restaurant.modern}>
-  <Section>{/* Will use restaurant modern theme styles */}</Section>
-</ThemeProvider>
+// 3 columns on desktop, 2 on tablet, 1 on mobile
+<Section
+  layout="grid"
+  gridCols={3}
+  className="grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+>
+  {/* Grid items */}
+</Section>
 ```
+
+## Customization
+
+Customize section styles using Tailwind CSS:
+
+```tsx
+<Section
+  className="bg-gradient-to-r from-blue-500 to-purple-500 text-white"
+  variant="feature"
+  layout="grid"
+>
+  {/* Content */}
+</Section>
+```
+
+## Version History
+
+Current version: 0.2.2
+
+See [Changelog](../../CHANGELOG.md) for details about changes and updates.
+
+## License
+
+MIT © [Your Name]

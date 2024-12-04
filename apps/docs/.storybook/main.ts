@@ -6,7 +6,7 @@ const config: StorybookConfig = {
   stories: [
     "../../../packages/**/*.stories.@(js|jsx|ts|tsx)",
     "../stories/**/*.stories.@(js|jsx|ts|tsx)",
-    "!../../../packages/**/node_modules/**/*.stories.@(js|jsx|ts|tsx)", // Excluir historias de node_modules
+    "!../../../packages/**/node_modules/**/*.stories.@(js|jsx|ts|tsx)",
   ],
   addons: [
     "@storybook/addon-links",
@@ -51,34 +51,29 @@ const config: StorybookConfig = {
           ),
         },
       },
-    };
-
-    if (configType === "PRODUCTION" || process.env.NODE_ENV === "production") {
-      return mergeConfig(config, {
-        ...baseConfig,
-        build: {
-          rollupOptions: {
-            external: [
-              "@storybook/test",
-              "@storybook/testing-library",
-              "@storybook/jest",
-              /\.css$/, // Excluir archivos CSS durante la construcción
-            ],
-          },
+      css: {
+        postcss: {
+          plugins: [require("tailwindcss"), require("autoprefixer")],
         },
-      });
-    }
-
-    return mergeConfig(config, {
-      ...baseConfig,
+      },
       optimizeDeps: {
         include: [
           "@storybook/test",
           "@storybook/testing-library",
           "@storybook/jest",
+          "react",
+          "react-dom",
         ],
       },
-    });
+      build: {
+        commonjsOptions: {
+          transformMixedEsModules: true,
+        },
+        sourcemap: true,
+      },
+    };
+
+    return mergeConfig(config, baseConfig);
   },
 };
 

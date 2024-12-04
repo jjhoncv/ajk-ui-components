@@ -1,6 +1,6 @@
 # @ajk-ui/footer
 
-Footer component for ajk-ui components library.
+A comprehensive footer component for React applications with multiple layout options.
 
 ## Installation
 
@@ -18,130 +18,155 @@ pnpm add @ajk-ui/footer
 import { Footer } from "@ajk-ui/footer";
 
 function MyComponent() {
+  const footerColumns = [
+    {
+      title: "Company",
+      links: [
+        { label: "About", href: "/about" },
+        { label: "Contact", href: "/contact" },
+      ],
+    },
+    {
+      title: "Legal",
+      links: [
+        { label: "Privacy", href: "/privacy" },
+        { label: "Terms", href: "/terms" },
+      ],
+    },
+  ];
+
   return (
-    <Footer>
-      {/* Basic usage */}
-      <Footer.Brand
-        logo="/logo.svg"
-        name="Your Company"
-        description="Short description about your company"
-      />
-
-      <Footer.Links>
-        <Footer.LinkGroup title="Company">
-          <Footer.Link href="/about">About</Footer.Link>
-          <Footer.Link href="/contact">Contact</Footer.Link>
-        </Footer.LinkGroup>
-
-        <Footer.LinkGroup title="Legal">
-          <Footer.Link href="/privacy">Privacy Policy</Footer.Link>
-          <Footer.Link href="/terms">Terms of Service</Footer.Link>
-        </Footer.LinkGroup>
-      </Footer.Links>
-
-      <Footer.Social>
-        <Footer.SocialLink href="https://twitter.com" icon="twitter" />
-        <Footer.SocialLink href="https://facebook.com" icon="facebook" />
-        <Footer.SocialLink href="https://instagram.com" icon="instagram" />
-      </Footer.Social>
-    </Footer>
+    <Footer
+      variant="multicolumn"
+      columns={footerColumns}
+      copyright="© 2024 Company Name"
+    />
   );
 }
 ```
 
+## Features
+
+- Multiple variants (simple, multicolumn, centered)
+- Newsletter signup support
+- Social media links
+- Copyright information
+- Responsive design
+- Theme integration
+- TypeScript support
+
 ## Props
 
-### Footer
+| Prop       | Type                                    | Default   | Description                     |
+| ---------- | --------------------------------------- | --------- | ------------------------------- |
+| variant    | 'simple' \| 'multicolumn' \| 'centered' | 'simple'  | Footer layout variant           |
+| columns    | FooterColumn[]                          | []        | Footer content columns          |
+| social     | SocialLink[]                            | []        | Social media links              |
+| copyright  | string                                  | undefined | Copyright text                  |
+| newsletter | NewsletterConfig                        | undefined | Newsletter signup configuration |
+| className  | string                                  | undefined | Additional CSS classes          |
 
-| Prop      | Type                               | Default   | Description            |
-| --------- | ---------------------------------- | --------- | ---------------------- |
-| variant   | 'default' \| 'simple' \| 'complex' | 'default' | Footer style variant   |
-| className | string                             | -         | Additional CSS classes |
+## Types
 
-### Footer.Brand
+```typescript
+interface FooterColumn {
+  title: string;
+  links: Array<{
+    label: string;
+    href: string;
+  }>;
+}
 
-| Prop        | Type   | Default | Description         |
-| ----------- | ------ | ------- | ------------------- |
-| logo        | string | -       | Logo image source   |
-| name        | string | -       | Company name        |
-| description | string | -       | Company description |
+interface SocialLink {
+  platform: string;
+  href: string;
+  icon?: ReactNode;
+}
 
-### Footer.LinkGroup
-
-| Prop      | Type   | Default | Description            |
-| --------- | ------ | ------- | ---------------------- |
-| title     | string | -       | Group title            |
-| className | string | -       | Additional CSS classes |
-
-### Footer.Link
-
-| Prop     | Type    | Default | Description      |
-| -------- | ------- | ------- | ---------------- |
-| href     | string  | -       | Link destination |
-| external | boolean | false   | Open in new tab  |
-
-### Footer.SocialLink
-
-| Prop | Type                                                 | Default | Description       |
-| ---- | ---------------------------------------------------- | ------- | ----------------- |
-| href | string                                               | -       | Social media link |
-| icon | 'twitter' \| 'facebook' \| 'instagram' \| 'linkedin' | -       | Social media icon |
-
-## Industry-Specific Styles
-
-### Restaurant Modern
-
-```tsx
-<ThemeProvider theme={themes.restaurant.modern}>
-  <Footer>
-    <Footer.Brand
-      logo="/restaurant-logo.svg"
-      name="Fine Dining"
-      description="Modern cuisine in a sophisticated atmosphere"
-    />
-    <Footer.Links>
-      <Footer.LinkGroup title="Visit Us">
-        <Footer.Link href="/menu">Menu</Footer.Link>
-        <Footer.Link href="/reservations">Reservations</Footer.Link>
-      </Footer.LinkGroup>
-    </Footer.Links>
-    <Footer.Social>
-      <Footer.SocialLink href="#" icon="instagram" />
-      <Footer.SocialLink href="#" icon="facebook" />
-    </Footer.Social>
-  </Footer>
-</ThemeProvider>
+interface NewsletterConfig {
+  title: string;
+  description?: string;
+  buttonText: string;
+  onSubmit?: (email: string) => void;
+}
 ```
 
-### Barbershop Vintage
+## Examples
+
+### Multicolumn Footer
 
 ```tsx
-<ThemeProvider theme={themes.barbershop.vintage}>
-  <Footer variant="simple">
-    <Footer.Brand
-      logo="/barbershop-logo.svg"
-      name="Classic Cuts"
-      description="Traditional barbershop experience"
-    />
-    <Footer.Links>
-      <Footer.LinkGroup title="Services">
-        <Footer.Link href="/services">Our Services</Footer.Link>
-        <Footer.Link href="/booking">Book Now</Footer.Link>
-      </Footer.LinkGroup>
-    </Footer.Links>
-  </Footer>
-</ThemeProvider>
+<Footer
+  variant="multicolumn"
+  columns={[
+    {
+      title: "Products",
+      links: [
+        { label: "Features", href: "/features" },
+        { label: "Pricing", href: "/pricing" },
+      ],
+    },
+    {
+      title: "Company",
+      links: [
+        { label: "About", href: "/about" },
+        { label: "Careers", href: "/careers" },
+      ],
+    },
+  ]}
+  social={[
+    { platform: "twitter", href: "https://twitter.com" },
+    { platform: "linkedin", href: "https://linkedin.com" },
+  ]}
+  copyright="© 2024 Company Name. All rights reserved."
+/>
 ```
 
-## Newsletter Integration
+### Simple Footer
 
 ```tsx
-<Footer>
-  <Footer.Newsletter
-    title="Subscribe to Our Newsletter"
-    description="Get updates about our latest offers and events"
-  >
-    <NewsletterForm />
-  </Footer.Newsletter>
-</Footer>
+<Footer
+  variant="simple"
+  copyright="© 2024 Brand Name"
+  social={[
+    { platform: "facebook", href: "https://facebook.com" },
+    { platform: "instagram", href: "https://instagram.com" },
+  ]}
+/>
 ```
+
+### With Newsletter
+
+```tsx
+<Footer
+  variant="centered"
+  newsletter={{
+    title: "Subscribe to our newsletter",
+    description: "Get the latest updates",
+    buttonText: "Subscribe",
+    onSubmit: (email) => console.log("Subscribed:", email),
+  }}
+/>
+```
+
+## Customization
+
+Customize footer styles using Tailwind CSS:
+
+```tsx
+<Footer
+  className="bg-gradient-to-b from-gray-800 to-gray-900"
+  variant="multicolumn"
+  columns={footerColumns}
+/>
+```
+
+## Version History
+
+Current version: 0.2.1
+
+See [Changelog](../../CHANGELOG.md) for details about changes and updates.
+
+## License
+
+MIT © [Your Name]

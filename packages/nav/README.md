@@ -1,6 +1,6 @@
 # @ajk-ui/nav
 
-Navigation component for ajk-ui components library.
+A responsive navigation component for React applications with multiple layout options.
 
 ## Installation
 
@@ -18,89 +18,113 @@ pnpm add @ajk-ui/nav
 import { Nav } from "@ajk-ui/nav";
 
 function MyComponent() {
-  return (
-    <Nav>
-      {/* Basic usage */}
-      <Nav.Item href="/">Home</Nav.Item>
-      <Nav.Item href="/about">About</Nav.Item>
-      <Nav.Item href="/services">Services</Nav.Item>
+  const navItems = [
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "Contact", href: "/contact" },
+  ];
 
-      {/* With dropdown */}
-      <Nav.Dropdown label="More">
-        <Nav.Item href="/blog">Blog</Nav.Item>
-        <Nav.Item href="/contact">Contact</Nav.Item>
-      </Nav.Dropdown>
-
-      {/* With icons */}
-      <Nav.Item href="/profile">
-        <UserIcon /> Profile
-      </Nav.Item>
-    </Nav>
-  );
+  return <Nav items={navItems} variant="horizontal" />;
 }
 ```
 
+## Features
+
+- Multiple layouts (horizontal, vertical, dropdown)
+- Responsive mobile menu
+- Active state handling
+- Theme integration
+- Customizable styles
+- TypeScript support
+- Accessible navigation
+
 ## Props
 
-### Nav
+| Prop        | Type                                     | Default      | Description               |
+| ----------- | ---------------------------------------- | ------------ | ------------------------- |
+| items       | NavItem[]                                | required     | Array of navigation items |
+| variant     | 'horizontal' \| 'vertical' \| 'dropdown' | 'horizontal' | Layout variant            |
+| className   | string                                   | undefined    | Additional CSS classes    |
+| activeItem  | string                                   | undefined    | Currently active item     |
+| onItemClick | (item: NavItem) => void                  | undefined    | Click handler             |
 
-| Prop      | Type                            | Default   | Description              |
-| --------- | ------------------------------- | --------- | ------------------------ |
-| variant   | 'default' \| 'transparent'      | 'default' | Navigation style variant |
-| position  | 'fixed' \| 'sticky' \| 'static' | 'static'  | Navigation position      |
-| className | string                          | -         | Additional CSS classes   |
+## NavItem Type
 
-### Nav.Item
-
-| Prop     | Type    | Default | Description     |
-| -------- | ------- | ------- | --------------- |
-| href     | string  | -       | Navigation link |
-| active   | boolean | false   | Active state    |
-| disabled | boolean | false   | Disabled state  |
-
-### Nav.Dropdown
-
-| Prop  | Type              | Default | Description        |
-| ----- | ----------------- | ------- | ------------------ |
-| label | string            | -       | Dropdown label     |
-| align | 'left' \| 'right' | 'left'  | Dropdown alignment |
-
-## Industry-Specific Styles
-
-### Restaurant Modern
-
-```tsx
-<ThemeProvider theme={themes.restaurant.modern}>
-  <Nav variant="transparent">
-    <Nav.Item href="/">Home</Nav.Item>
-    <Nav.Item href="/menu">Menu</Nav.Item>
-    <Nav.Item href="/reservations">Reservations</Nav.Item>
-  </Nav>
-</ThemeProvider>
+```typescript
+interface NavItem {
+  label: string;
+  href: string;
+  icon?: ReactNode;
+  children?: NavItem[];
+}
 ```
 
-### Barbershop Vintage
+## Examples
+
+### Basic Navigation
 
 ```tsx
-<ThemeProvider theme={themes.barbershop.vintage}>
-  <Nav>
-    <Nav.Item href="/">Home</Nav.Item>
-    <Nav.Item href="/services">Services</Nav.Item>
-    <Nav.Item href="/booking">Book Now</Nav.Item>
-  </Nav>
-</ThemeProvider>
+const items = [
+  { label: "Home", href: "/" },
+  { label: "Products", href: "/products" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+];
+
+<Nav items={items} variant="horizontal" />;
 ```
 
-## Mobile Responsive
-
-The Nav component is fully responsive and includes a mobile menu:
+### Dropdown Navigation
 
 ```tsx
-<Nav>
-  {/* Mobile menu button appears automatically on small screens */}
-  <Nav.MobileMenu>
-    <Nav.Item href="/">Home</Nav.Item>
-    <Nav.Item href="/about">About</Nav.Item>
-  </Nav.MobileMenu>
-</Nav>
+const items = [
+  {
+    label: "Products",
+    href: "/products",
+    children: [
+      { label: "Category 1", href: "/products/cat1" },
+      { label: "Category 2", href: "/products/cat2" },
+    ],
+  },
+  { label: "About", href: "/about" },
+];
+
+<Nav items={items} variant="dropdown" />;
 ```
+
+### With Icons
+
+```tsx
+const items = [
+  {
+    label: "Home",
+    href: "/",
+    icon: <HomeIcon />,
+  },
+  {
+    label: "Settings",
+    href: "/settings",
+    icon: <SettingsIcon />,
+  },
+];
+
+<Nav items={items} />;
+```
+
+## Customization
+
+Customize navigation styles using Tailwind CSS:
+
+```tsx
+<Nav className="bg-custom-color text-custom-text" items={items} />
+```
+
+## Version History
+
+Current version: 0.2.0
+
+See [Changelog](../../CHANGELOG.md) for details about changes and updates.
+
+## License
+
+MIT © [Your Name]

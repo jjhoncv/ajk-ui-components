@@ -1,6 +1,6 @@
 # @ajk-ui/button
 
-Button component for ajk-ui components library.
+A flexible and customizable button component for React applications.
 
 ## Installation
 
@@ -19,76 +19,71 @@ import { Button } from "@ajk-ui/button";
 
 function MyComponent() {
   return (
-    <>
-      {/* Basic usage */}
-      <Button>Click me</Button>
-
-      {/* Variants */}
-      <Button variant="primary">Primary</Button>
-      <Button variant="secondary">Secondary</Button>
-      <Button variant="outline">Outline</Button>
-
-      {/* Sizes */}
-      <Button size="sm">Small</Button>
-      <Button size="md">Medium</Button>
-      <Button size="lg">Large</Button>
-
-      {/* With icon */}
-      <Button>
-        <Icon /> Button with Icon
-      </Button>
-    </>
+    <Button variant="primary" onClick={() => console.log("Clicked!")}>
+      Click me
+    </Button>
   );
 }
 ```
 
+## Features
+
+- Multiple variants (primary, secondary, outline, ghost)
+- Responsive design
+- Tailwind CSS integration
+- Theme customization support
+- TypeScript support
+- Accessible by default
+
 ## Props
 
-| Prop      | Type                                  | Default   | Description            |
-| --------- | ------------------------------------- | --------- | ---------------------- |
-| variant   | 'primary' \| 'secondary' \| 'outline' | 'primary' | Button style variant   |
-| size      | 'sm' \| 'md' \| 'lg'                  | 'md'      | Button size            |
-| disabled  | boolean                               | false     | Disable button         |
-| className | string                                | -         | Additional CSS classes |
-| children  | ReactNode                             | -         | Button content         |
-
-## Theme Customization
-
-The button component uses the theme context for styling. You can customize its appearance through the theme:
-
-```tsx
-const theme = createTheme({
-  colors: {
-    primary: "#FF6B6B",
-    secondary: "#4ECDC4",
-  },
-});
-
-<ThemeProvider theme={theme}>
-  <Button>Themed Button</Button>
-</ThemeProvider>;
-```
+| Prop      | Type                                             | Default   | Description                            |
+| --------- | ------------------------------------------------ | --------- | -------------------------------------- |
+| variant   | 'primary' \| 'secondary' \| 'outline' \| 'ghost' | 'primary' | The visual style variant of the button |
+| size      | 'sm' \| 'md' \| 'lg'                             | 'md'      | The size of the button                 |
+| disabled  | boolean                                          | false     | Whether the button is disabled         |
+| className | string                                           | undefined | Additional CSS classes                 |
+| children  | ReactNode                                        | required  | The content of the button              |
 
 ## Examples
 
-### Loading State
+### Basic Usage
 
 ```tsx
-<Button disabled>
-  <LoadingSpinner /> Loading...
-</Button>
+<Button variant="primary">Primary Button</Button>
+<Button variant="secondary">Secondary Button</Button>
+<Button variant="outline">Outline Button</Button>
+<Button variant="ghost">Ghost Button</Button>
 ```
 
-### With Icon
+### With Different Sizes
 
 ```tsx
-<Button>
-  <Icon /> Save Changes
-</Button>
+<Button size="sm">Small Button</Button>
+<Button size="md">Medium Button</Button>
+<Button size="lg">Large Button</Button>
 ```
 
-### Full Width
+### Disabled State
 
 ```tsx
-<Button className="w-full">Full Width Button</Button>
+<Button disabled>Disabled Button</Button>
 ```
+
+## Customization
+
+You can customize the button styles using Tailwind CSS classes:
+
+```tsx
+<Button className="bg-custom-color hover:bg-custom-hover">Custom Button</Button>
+```
+
+## Version History
+
+Current version: 1.1.2
+
+See [Changelog](../../CHANGELOG.md) for details about changes and updates.
+
+## License
+
+MIT © [Your Name]

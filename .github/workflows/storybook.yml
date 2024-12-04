@@ -15,11 +15,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "18"
+          registry-url: "https://registry.npmjs.org"
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
@@ -27,10 +30,26 @@ jobs:
           version: 8
 
       - name: Install dependencies
-        run: pnpm install
+        run: |
+          echo "Installing dependencies..."
+          pnpm install
+          echo "Dependencies installed successfully"
+
+      - name: Build packages
+        run: |
+          echo "Building all packages..."
+          pnpm build
+          echo "Packages built successfully"
 
       - name: Build Storybook
-        run: cd apps/docs && pnpm build-storybook
+        run: |
+          echo "Building Storybook..."
+          cd apps/docs
+          pnpm build-storybook --debug
+          echo "Storybook build output:"
+          ls -la storybook-static
+          echo "Checking for index.html:"
+          cat storybook-static/index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v3
@@ -43,3 +62,10 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
+
+      - name: Post Deployment Check
+        run: |
+          echo "Deployment completed"
+          echo "Checking final build output:"
+          ls -la apps/docs/storybook-static
+          echo "You can view the documentation at: https://jjhoncv.github.io/ajk-ui-components/"

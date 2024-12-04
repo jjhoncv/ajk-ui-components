@@ -1,5 +1,35 @@
 # @ajk-ui/header
 
+## 0.3.2
+
+### Patch Changes
+
+- Updated dependencies
+  - @ajk-ui/nav@0.3.0
+
+## 0.3.1
+
+### Patch Changes
+
+- Updated dependencies
+  - @ajk-ui/core@0.3.0
+  - @ajk-ui/nav@0.2.2
+  - @ajk-ui/theme-utils@1.2.1
+
+## 0.3.0
+
+### Minor Changes
+
+- update readme
+
+## 0.2.3
+
+### Patch Changes
+
+- Updated dependencies
+  - @ajk-ui/theme-utils@1.2.0
+  - @ajk-ui/nav@0.2.1
+
 ## 0.2.2
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @ajk-ui/core
 
+## 0.3.0
+
+### Minor Changes
+
+- update readme
+
 ## 0.2.0
 
 ### Minor Changes

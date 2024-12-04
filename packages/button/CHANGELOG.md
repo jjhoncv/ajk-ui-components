@@ -1,5 +1,24 @@
 # @ajk-ui/button
 
+## 1.2.1
+
+### Patch Changes
+
+- @ajk-ui/theme-utils@1.2.1
+
+## 1.2.0
+
+### Minor Changes
+
+- update readme
+
+## 1.1.3
+
+### Patch Changes
+
+- Updated dependencies
+  - @ajk-ui/theme-utils@1.2.0
+
 ## 1.1.2
 
 ### Patch Changes
