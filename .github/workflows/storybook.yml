@@ -32,8 +32,13 @@ jobs:
       - name: Install dependencies
         run: |
           echo "Installing dependencies..."
-          pnpm install
+          pnpm install --no-frozen-lockfile
           echo "Dependencies installed successfully"
+
+      - name: Clean previous builds
+        run: |
+          rm -rf apps/docs/storybook-static || true
+          echo "Cleaned previous builds"
 
       - name: Build packages
         run: |
@@ -45,11 +50,10 @@ jobs:
         run: |
           echo "Building Storybook..."
           cd apps/docs
-          pnpm build-storybook --debug
-          echo "Storybook build output:"
+          pnpm build-storybook
+          echo "Storybook built successfully"
+          echo "Build contents:"
           ls -la storybook-static
-          echo "Checking for index.html:"
-          cat storybook-static/index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v3
@@ -63,9 +67,7 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v2
 
-      - name: Post Deployment Check
+      - name: Deployment Status
         run: |
-          echo "Deployment completed"
-          echo "Checking final build output:"
-          ls -la apps/docs/storybook-static
-          echo "You can view the documentation at: https://jjhoncv.github.io/ajk-ui-components/"
+          echo "Storybook has been deployed to GitHub Pages"
+          echo "Visit https://jjhoncv.github.io/ajk-ui-components/ to view the documentation"

@@ -4,9 +4,8 @@ import path from "path";
 
 const config: StorybookConfig = {
   stories: [
-    "../../../packages/**/*.stories.@(js|jsx|ts|tsx)",
     "../stories/**/*.stories.@(js|jsx|ts|tsx)",
-    "!../../../packages/**/node_modules/**/*.stories.@(js|jsx|ts|tsx)",
+    "../../../packages/**/src/**/*.stories.@(js|jsx|ts|tsx)",
   ],
   addons: [
     "@storybook/addon-links",
@@ -50,26 +49,6 @@ const config: StorybookConfig = {
             "../../../packages/footer/src"
           ),
         },
-      },
-      css: {
-        postcss: {
-          plugins: [require("tailwindcss"), require("autoprefixer")],
-        },
-      },
-      optimizeDeps: {
-        include: [
-          "@storybook/test",
-          "@storybook/testing-library",
-          "@storybook/jest",
-          "react",
-          "react-dom",
-        ],
-      },
-      build: {
-        commonjsOptions: {
-          transformMixedEsModules: true,
-        },
-        sourcemap: true,
       },
     };
 
