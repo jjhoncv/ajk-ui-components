@@ -185,7 +185,7 @@ const VeterinaryPage = () => {
             author={{
               name: "Carolina Méndez",
               title: "Dueña de Luna",
-              avatar: {getImagePath("/images/veterinary/avatar1.jpg")}
+              avatar: getImagePath("/images/veterinary/avatar1.jpg"),
             }}
           />
           <Card
@@ -195,7 +195,7 @@ const VeterinaryPage = () => {
             author={{
               name: "Roberto Silva",
               title: "Dueño de Max",
-              avatar: {getImagePath("/images/veterinary/avatar2.jpg")}
+              avatar: getImagePath("/images/veterinary/avatar2.jpg"),
             }}
           />
         </Section>

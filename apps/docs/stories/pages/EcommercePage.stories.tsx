@@ -190,7 +190,7 @@ const TechStorePage = () => {
             author={{
               name: "Ana García",
               title: "Cliente Verificado",
-              avatar: {getImagePath("/images/ecommerce/avatar1.jpg")}
+              avatar: getImagePath("/images/ecommerce/avatar1.jpg"),
             }}
           />
           <Card
@@ -200,7 +200,7 @@ const TechStorePage = () => {
             author={{
               name: "Carlos Ruiz",
               title: "Cliente Frecuente",
-              avatar: {getImagePath("/images/ecommerce/avatar2.jpg")}
+              avatar: getImagePath("/images/ecommerce/avatar2.jpg"),
             }}
           />
         </Section>
