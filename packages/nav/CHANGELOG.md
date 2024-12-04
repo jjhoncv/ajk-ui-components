@@ -1,24 +1,31 @@
-# @ajk-ui/button
+# @ajk-ui/nav
 
-## 1.1.2
+## 0.2.0
+
+### Minor Changes
+
+- new features
+
+## 0.1.2
 
 ### Patch Changes
 
-- @ajk-ui/theme-utils@1.1.1
+- Updated dependencies
+  - @ajk-ui/core@0.2.0
+  - @ajk-ui/theme-utils@1.1.1
 
-## 1.1.1
+## 0.1.1
 
 ### Patch Changes
 
 - Updated dependencies
   - @ajk-ui/theme-utils@1.1.0
 
-## 1.1.0
+## 0.1.0
 
 ### Minor Changes
 
 - 361a95a: docs: add comprehensive documentation for all packages
-- new feature
 
 ### Patch Changes
 
@@ -37,11 +44,5 @@
 - Updated dependencies [cb1650e]
 - Updated dependencies [c4aac75]
 - Updated dependencies [361a95a]
+  - @ajk-ui/core@0.1.0
   - @ajk-ui/theme-utils@1.0.0
-
-## 1.0.1
-
-### Patch Changes
-
-- 1a9706a: first version basic button
-- continue basic component

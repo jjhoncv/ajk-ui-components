@@ -1,24 +1,16 @@
-# @ajk-ui/button
+# @ajk-ui/core
 
-## 1.1.2
+## 0.2.0
 
-### Patch Changes
+### Minor Changes
 
-- @ajk-ui/theme-utils@1.1.1
+- new feautures
 
-## 1.1.1
-
-### Patch Changes
-
-- Updated dependencies
-  - @ajk-ui/theme-utils@1.1.0
-
-## 1.1.0
+## 0.1.0
 
 ### Minor Changes
 
 - 361a95a: docs: add comprehensive documentation for all packages
-- new feature
 
 ### Patch Changes
 
@@ -33,15 +25,3 @@
   - Layout components with industry-specific themes
   - Theme presets for restaurant and barbershop industries
   - Storybook documentation
-
-- Updated dependencies [cb1650e]
-- Updated dependencies [c4aac75]
-- Updated dependencies [361a95a]
-  - @ajk-ui/theme-utils@1.0.0
-
-## 1.0.1
-
-### Patch Changes
-
-- 1a9706a: first version basic button
-- continue basic component
