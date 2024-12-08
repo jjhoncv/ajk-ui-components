@@ -32,7 +32,11 @@ export const Primary: Story = {
   args: {
     items: defaultItems,
     variant: "primary",
-    logo: <span className="text-xl font-bold">Logo</span>,
+    logo: () => <span className="text-xl font-bold">Logo</span>,
+    variantBoxMobile: "full",
+    logoNavMenuMobile: () => (
+      <span className="text-xl font-bold">Logo Mobile</span>
+    ),
   },
 };
 
@@ -40,18 +44,23 @@ export const Transparent: Story = {
   args: {
     items: defaultItems,
     variant: "transparent",
-    logo: <span className="text-xl font-bold">Logo</span>,
+    logo: () => <span className="text-xl text-gray-300 font-bold">Logo</span>,
   },
   parameters: {
     backgrounds: { default: "dark" },
   },
+  render: (args) => (
+    <div style={{ background: "url(/images/barbershop/hero.jpg)" }}>
+      <Nav {...args} />
+    </div>
+  ),
 };
 
 export const Minimal: Story = {
   args: {
     items: defaultItems,
     variant: "minimal",
-    logo: <span className="text-xl font-bold">Logo</span>,
+    logo: () => <span className="text-xl font-bold">Logo</span>,
   },
 };
 
@@ -60,7 +69,7 @@ export const CenteredItems: Story = {
     items: defaultItems,
     variant: "primary",
     align: "center",
-    logo: <span className="text-xl font-bold">Logo</span>,
+    logo: () => <span className="text-xl font-bold">Logo</span>,
   },
 };
 
@@ -126,7 +135,7 @@ export const WithIcons: Story = {
       },
     ],
     variant: "primary",
-    logo: <span className="text-xl font-bold">Logo</span>,
+    logo: () => <span className="text-xl font-bold">Logo</span>,
   },
 };
 

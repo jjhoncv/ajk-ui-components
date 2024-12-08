@@ -14,22 +14,36 @@ const getImagePath = (path: string) => {
   return `${basePath}${path}`;
 };
 
-const BarbershopLogo = () => (
-  <div className="flex items-center">
-    <svg
-      className="h-8 w-8 text-primary-500"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
-      />
-    </svg>
-    <span className="ml-2 text-xl font-bold">Classic Cuts</span>
+const Logo = () => (
+  <div className="flex items-center gap-2">
+    <div className="w-6">
+      <img src="/images/barbershop/Logo.svg" />
+    </div>
+    <div className="ml-1 text-xl flex flex-col" style={{ lineHeight: "15px" }}>
+      <p className="font-extralight text-gray-300">Classic Cuts</p>
+    </div>
+  </div>
+);
+
+const LogoFooter = () => (
+  <div className="flex items-center gap-2">
+    <div className="w-6">
+      <img src="/images/barbershop/LogoInverter.svg" />
+    </div>
+    <div className="ml-1 text-xl flex flex-col" style={{ lineHeight: "15px" }}>
+      <p className="font-extralight text-gray-800">Classic Cuts</p>
+    </div>
+  </div>
+);
+
+const LogoNavMenuMobile = () => (
+  <div className="flex items-center gap-2">
+    <div className="w-6">
+      <img src="/images/barbershop/LogoInverter.svg" />
+    </div>
+    <div className="ml-1 text-xl flex flex-col" style={{ lineHeight: "15px" }}>
+      <p className="font-extralight text-gray-800">Classic Cuts</p>
+    </div>
   </div>
 );
 
@@ -76,7 +90,8 @@ const VintageBarbershop = () => {
           variant="hero"
           height="lg"
           navItems={navItems}
-          logo={<BarbershopLogo />}
+          logo={Logo}
+          logoNavMenuMobile={LogoNavMenuMobile}
           cta={{
             label: "Book Appointment",
             href: "/booking",
@@ -86,7 +101,7 @@ const VintageBarbershop = () => {
 
         {/* Services */}
         <Section
-          variant="feature"
+          variant="highlight"
           layout="grid"
           title="Our Services"
           subtitle="Professional grooming services for every gentleman"
@@ -169,7 +184,7 @@ const VintageBarbershop = () => {
         {/* Footer */}
         <Footer
           variant="simple"
-          logo={<BarbershopLogo />}
+          logo={<LogoFooter />}
           columns={footerColumns}
           social={socialLinks}
           copyright="© 2024 Classic Cuts Barbershop. All rights reserved."

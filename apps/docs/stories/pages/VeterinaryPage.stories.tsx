@@ -27,22 +27,32 @@ const vetTheme = createTheme({
   },
 });
 
-const VetLogo = () => (
+const Logo = () => (
   <div className="flex items-center">
-    <svg
-      className="h-8 w-8"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M20 12H4M12 4v16m4-8h.01M8 12h.01M12 12h.01"
-      />
-    </svg>
-    <span className="ml-2 text-xl font-bold">ModernVet</span>
+    <div className="w-6">
+      <img src="/images/veterinary/Logo.svg" />
+    </div>
+    <span className="ml-2 text-xl text-white font-extralight">Modern Vet</span>
+  </div>
+);
+
+const LogoFooter = () => (
+  <div className="flex items-center gap-2">
+    <div className="w-6">
+      <img src="/images/veterinary/LogoInverter.svg" />
+    </div>
+    <div className="ml-1 text-xl flex flex-col" style={{ lineHeight: "15px" }}>
+      <p className="font-extralight text-xl text-gray-800 ">Modern Vet</p>
+    </div>
+  </div>
+);
+
+const LogoNavMenuMobile = () => (
+  <div className="flex items-center">
+    <div className="w-6">
+      <img src="/images/veterinary/LogoInverter.svg" />
+    </div>
+    <span className="ml-2 text-xl font-extralight">Modern Vet</span>
   </div>
 );
 
@@ -92,7 +102,8 @@ const VeterinaryPage = () => {
           variant="hero"
           height="lg"
           navItems={navItems}
-          logo={<VetLogo />}
+          logo={Logo}
+          logoNavMenuMobile={LogoNavMenuMobile}
           cta={{
             label: "Agendar Cita Online",
             href: "/agendar",
@@ -203,7 +214,7 @@ const VeterinaryPage = () => {
         {/* Footer */}
         <Footer
           variant="simple"
-          logo={<VetLogo />}
+          logo={<LogoFooter />}
           columns={footerColumns}
           social={socialLinks}
           copyright="© 2024 ModernVet. Todos los derechos reservados."

@@ -11,7 +11,8 @@ export interface HeaderProps extends BaseProps {
   overlayOpacity?: number;
   height?: "sm" | "md" | "lg" | "full";
   navItems?: NavItem[];
-  logo?: React.ReactNode;
+  logo?: () => JSX.Element;
+  logoNavMenuMobile?: () => JSX.Element;
   variant?: "simple" | "hero" | "centered" | "split";
   position?: "fixed" | "sticky" | "relative" | "absolute";
   cta?: {
@@ -20,6 +21,7 @@ export interface HeaderProps extends BaseProps {
     align?: "left" | "center" | "right";
     variant?: "primary" | "secondary" | "outline";
   };
+  variantBoxMobile?: "full";
 }
 
 export function Header({
@@ -31,11 +33,13 @@ export function Header({
   height = "md",
   navItems,
   logo,
+  logoNavMenuMobile,
   variant = "simple",
   position = "relative",
   cta,
   className,
   children,
+  variantBoxMobile = "full",
   ...props
 }: HeaderProps) {
   const { theme } = useTheme();
@@ -119,8 +123,11 @@ export function Header({
         <Nav
           items={navItems}
           logo={logo}
+          logoNavMenuMobile={logoNavMenuMobile}
           variant={backgroundImage ? "transparent" : "primary"}
           position={position}
+          variantBoxMobile={variantBoxMobile}
+          align="start"
         />
       )}
 

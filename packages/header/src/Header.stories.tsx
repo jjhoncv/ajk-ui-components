@@ -33,7 +33,7 @@ export const Simple: Story = {
     title: "Welcome to Our Restaurant",
     subtitle: "Experience the finest dining in town",
     navItems: defaultNavItems,
-    logo: <span className="text-xl font-bold">Restaurant</span>,
+    logo: () => <span className="text-xl font-bold">Restaurant</span>,
     variant: "simple",
   },
 };
@@ -46,7 +46,9 @@ export const Hero: Story = {
     backgroundImage:
       "https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1974&auto=format&fit=crop",
     navItems: defaultNavItems,
-    logo: <span className="text-xl font-bold text-white">Restaurant</span>,
+    logo: () => (
+      <span className="text-xl font-bold text-white">Restaurant</span>
+    ),
     variant: "hero",
     height: "lg",
     cta: {
@@ -68,7 +70,7 @@ export const Centered: Story = {
       { label: "Gallery", href: "#" },
       { label: "Book Now", href: "#" },
     ],
-    logo: <span className="text-xl font-bold text-white">BarberCo</span>,
+    logo: () => <span className="text-xl font-bold text-white">BarberCo</span>,
     variant: "centered",
     height: "full",
     cta: {
@@ -99,7 +101,7 @@ export const Split: Story = {
       { label: "Trainers", href: "#" },
       { label: "Join Now", href: "#" },
     ],
-    logo: <span className="text-xl font-bold text-white">FitZone</span>,
+    logo: () => <span className="text-xl font-bold text-white">FitZone</span>,
     variant: "split",
     height: "lg",
     cta: {

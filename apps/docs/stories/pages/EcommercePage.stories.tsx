@@ -27,22 +27,32 @@ const techTheme = createTheme({
   },
 });
 
-const TechStoreLogo = () => (
+const Logo = () => (
   <div className="flex items-center">
-    <svg
-      className="h-8 w-8"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-      />
-    </svg>
-    <span className="ml-2 text-xl font-bold">TechStore</span>
+    <div className="w-6">
+      <img src="/images/ecommerce/Logo.svg" />
+    </div>
+    <span className="ml-2 text-xl text-white font-extralight">TechStore</span>
+  </div>
+);
+
+const LogoFooter = () => (
+  <div className="flex items-center gap-2">
+    <div className="w-6">
+      <img src="/images/ecommerce/LogoInverter.svg" />
+    </div>
+    <div className="ml-1 text-xl flex flex-col" style={{ lineHeight: "15px" }}>
+      <p className="font-extralight text-xl text-gray-800 ">TechStore</p>
+    </div>
+  </div>
+);
+
+const LogoNavMenuMobile = () => (
+  <div className="flex items-center">
+    <div className="w-6">
+      <img src="/images/ecommerce/LogoInverter.svg" />
+    </div>
+    <span className="ml-2 text-xl font-extralight">TechStore</span>
   </div>
 );
 
@@ -90,7 +100,8 @@ const TechStorePage = () => {
           variant="hero"
           height="lg"
           navItems={navItems}
-          logo={<TechStoreLogo />}
+          logo={Logo}
+          logoNavMenuMobile={LogoNavMenuMobile}
           cta={{
             label: "Ver Ofertas",
             href: "/ofertas",
@@ -208,7 +219,7 @@ const TechStorePage = () => {
         {/* Footer */}
         <Footer
           variant="simple"
-          logo={<TechStoreLogo />}
+          logo={<LogoFooter />}
           columns={footerColumns}
           social={socialLinks}
           copyright="© 2024 TechStore. Todos los derechos reservados."
