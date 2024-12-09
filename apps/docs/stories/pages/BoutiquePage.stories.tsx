@@ -17,7 +17,7 @@ const getImagePath = (path: string) => {
 const Logo = () => (
   <div className="flex items-center">
     <div className="w-6">
-      <img src="/images/boutique/Logo.svg" />
+      <img src={getImagePath("/images/boutique/Logo.svg")} />
     </div>
     <span className="ml-2 text-xl text-white font-extralight">
       Maison Élégante
@@ -28,7 +28,7 @@ const Logo = () => (
 const LogoFooter = () => (
   <div className="flex items-center">
     <div className="w-6">
-      <img src="/images/boutique/LogoInverter.svg" />
+      <img src={getImagePath("/images/boutique/LogoInverter.svg")} />
     </div>
     <span className="ml-2 text-xl text-primary-700 font-extralight">
       Maison Élégante
@@ -39,7 +39,7 @@ const LogoFooter = () => (
 const LogoNavMenuMobile = () => (
   <div className="flex items-center">
     <div className="w-6">
-      <img src="/images/boutique/LogoInverter.svg" />
+      <img src={getImagePath("/images/boutique/LogoInverter.svg")} />
     </div>
     <span className="ml-2 text-xl text-primary-500 font-extralight">
       Maison Élégante
