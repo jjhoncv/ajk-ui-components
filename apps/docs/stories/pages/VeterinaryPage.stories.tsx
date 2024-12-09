@@ -52,7 +52,7 @@ const LogoNavMenuMobile = () => (
     <div className="w-12 h-12"> {/* Incrementa el tamaño del contenedor */}
       <img src={getImagePath("/images/veterinary/LogoInverter.svg")} className="w-full h-full object-contain"  />
     </div>
-    <span className="ml-2 text-xl font-extralight">Modern Vet</span>
+    <span className="ml-2 text-3xl font-extralight">Modern Vet</span>
   </div>
 );
 
