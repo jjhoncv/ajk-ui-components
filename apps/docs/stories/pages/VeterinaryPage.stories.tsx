@@ -29,7 +29,7 @@ const vetTheme = createTheme({
 
 const Logo = () => (
   <div className="flex items-center">
-    <div className="w-12 h-12"> {/* Incrementa el tamaño del contenedor */}
+    <div className="w-8 h-8"> {/* Incrementa el tamaño del contenedor */}
       <img src={getImagePath("/images/veterinary/Logo.svg")} className="w-full h-full object-contain" />
     </div>
     <span className="ml-2 text-3xl text-white font-extralight">Modern Vet</span>
@@ -49,7 +49,7 @@ const LogoFooter = () => (
 
 const LogoNavMenuMobile = () => (
   <div className="flex items-center">
-    <div className="w-12 h-12"> {/* Incrementa el tamaño del contenedor */}
+    <div className="w-8 h-8"> {/* Incrementa el tamaño del contenedor */}
       <img src={getImagePath("/images/veterinary/LogoInverter.svg")} className="w-full h-full object-contain"  />
     </div>
     <span className="ml-2 text-3xl font-extralight">Modern Vet</span>
