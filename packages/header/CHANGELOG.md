@@ -1,5 +1,16 @@
 # @ajk-ui/header
 
+## 0.4.0
+
+### Minor Changes
+
+- 3d38a99: change more options
+
+### Patch Changes
+
+- Updated dependencies [3d38a99]
+  - @ajk-ui/nav@0.4.0
+
 ## 0.3.2
 
 ### Patch Changes

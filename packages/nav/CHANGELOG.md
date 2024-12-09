@@ -1,5 +1,11 @@
 # @ajk-ui/nav
 
+## 0.4.0
+
+### Minor Changes
+
+- 3d38a99: change more options
+
 ## 0.3.0
 
 ### Minor Changes
