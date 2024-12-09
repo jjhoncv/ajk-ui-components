@@ -17,7 +17,7 @@ const getImagePath = (path: string) => {
 const Logo = () => (
   <div className="flex items-center gap-2">
     <div className="w-6">
-      <img src="/images/barbershop/Logo.svg" />
+      <img src={getImagePath("/images/barbershop/Logo.svg")} />
     </div>
     <div className="ml-1 text-xl flex flex-col" style={{ lineHeight: "15px" }}>
       <p className="font-extralight text-gray-300">Classic Cuts</p>
@@ -28,7 +28,7 @@ const Logo = () => (
 const LogoFooter = () => (
   <div className="flex items-center gap-2">
     <div className="w-6">
-      <img src="/images/barbershop/LogoInverter.svg" />
+      <img src={getImagePath("/images/barbershop/LogoInverter.svg")}/>
     </div>
     <div className="ml-1 text-xl flex flex-col" style={{ lineHeight: "15px" }}>
       <p className="font-extralight text-gray-800">Classic Cuts</p>
@@ -39,7 +39,7 @@ const LogoFooter = () => (
 const LogoNavMenuMobile = () => (
   <div className="flex items-center gap-2">
     <div className="w-6">
-      <img src="/images/barbershop/LogoInverter.svg" />
+      <img src={getImagePath("/images/barbershop/LogoInverter.svg")} />
     </div>
     <div className="ml-1 text-xl flex flex-col" style={{ lineHeight: "15px" }}>
       <p className="font-extralight text-gray-800">Classic Cuts</p>
