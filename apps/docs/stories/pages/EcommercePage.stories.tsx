@@ -32,7 +32,7 @@ const Logo = () => (
     <div className="w-6">
       <img src={getImagePath("/images/ecommerce/Logo.svg")} />
     </div>
-    <span className="ml-2 text-xl text-white font-extralight">TechStore</span>
+    <span className="ml-2 text-2xl text-white font-extralight">TechStore</span>
   </div>
 );
 
@@ -41,7 +41,7 @@ const LogoFooter = () => (
     <div className="w-6">
       <img src={getImagePath("/images/ecommerce/LogoInverter.svg")} />
     </div>
-    <div className="ml-1 text-xl flex flex-col" style={{ lineHeight: "15px" }}>
+    <div className="ml-1 text-2xl flex flex-col" style={{ lineHeight: "15px" }}>
       <p className="font-extralight text-xl text-gray-800 ">TechStore</p>
     </div>
   </div>
@@ -52,7 +52,7 @@ const LogoNavMenuMobile = () => (
     <div className="w-6">
       <img src={getImagePath("/images/ecommerce/LogoInverter.svg")} />
     </div>
-    <span className="ml-2 text-xl font-extralight">TechStore</span>
+    <span className="ml-2 text-2xl font-extralight">TechStore</span>
   </div>
 );
 
