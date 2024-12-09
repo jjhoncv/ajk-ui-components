@@ -41,8 +41,8 @@ const LogoFooter = () => (
     <div className="w-6">
       <img src={getImagePath("/images/ecommerce/LogoInverter.svg")} />
     </div>
-    <div className="ml-1 text-3xl flex flex-col" style={{ lineHeight: "15px" }}>
-      <p className="font-extralight text-xl text-gray-800 ">TechStore</p>
+    <div className="ml-1 flex flex-col" style={{ lineHeight: "15px" }}>
+      <p className="font-extralight text-3xl text-gray-800 ">TechStore</p>
     </div>
   </div>
 );
