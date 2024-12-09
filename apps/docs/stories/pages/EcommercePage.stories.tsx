@@ -30,7 +30,7 @@ const techTheme = createTheme({
 const Logo = () => (
   <div className="flex items-center">
     <div className="w-6">
-      <img src="/images/ecommerce/Logo.svg" />
+      <img src={getImagePath("/images/ecommerce/Logo.svg")} />
     </div>
     <span className="ml-2 text-xl text-white font-extralight">TechStore</span>
   </div>
@@ -39,7 +39,7 @@ const Logo = () => (
 const LogoFooter = () => (
   <div className="flex items-center gap-2">
     <div className="w-6">
-      <img src="/images/ecommerce/LogoInverter.svg" />
+      <img src={getImagePath("/images/ecommerce/LogoInverter.svg")} />
     </div>
     <div className="ml-1 text-xl flex flex-col" style={{ lineHeight: "15px" }}>
       <p className="font-extralight text-xl text-gray-800 ">TechStore</p>
@@ -50,7 +50,7 @@ const LogoFooter = () => (
 const LogoNavMenuMobile = () => (
   <div className="flex items-center">
     <div className="w-6">
-      <img src="/images/ecommerce/LogoInverter.svg" />
+      <img src={getImagePath("/images/ecommerce/LogoInverter.svg")} />
     </div>
     <span className="ml-2 text-xl font-extralight">TechStore</span>
   </div>
