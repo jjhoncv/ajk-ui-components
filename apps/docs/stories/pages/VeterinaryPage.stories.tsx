@@ -30,7 +30,7 @@ const vetTheme = createTheme({
 const Logo = () => (
   <div className="flex items-center">
     <div className="w-6">
-      <img src="/images/veterinary/Logo.svg" />
+      <img src={getImagePath("/images/veterinary/Logo.svg")} />
     </div>
     <span className="ml-2 text-xl text-white font-extralight">Modern Vet</span>
   </div>
@@ -39,7 +39,7 @@ const Logo = () => (
 const LogoFooter = () => (
   <div className="flex items-center gap-2">
     <div className="w-6">
-      <img src="/images/veterinary/LogoInverter.svg" />
+      <img src={getImagePath("/images/veterinary/LogoInverter.svg")} />
     </div>
     <div className="ml-1 text-xl flex flex-col" style={{ lineHeight: "15px" }}>
       <p className="font-extralight text-xl text-gray-800 ">Modern Vet</p>
@@ -50,7 +50,7 @@ const LogoFooter = () => (
 const LogoNavMenuMobile = () => (
   <div className="flex items-center">
     <div className="w-6">
-      <img src="/images/veterinary/LogoInverter.svg" />
+      <img src={getImagePath("/images/veterinary/LogoInverter.svg")} />
     </div>
     <span className="ml-2 text-xl font-extralight">Modern Vet</span>
   </div>
