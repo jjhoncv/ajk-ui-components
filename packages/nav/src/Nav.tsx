@@ -45,7 +45,7 @@ export function Nav({
   };
 
   const baseStyles = {
-    nav: "w-full px-4 py-2",
+    nav: "w-full px-4 py-2 mt-2",
     container: "mx-auto flex justify-between",
     logo: "flex items-center",
     menuButton: "block md:hidden",
