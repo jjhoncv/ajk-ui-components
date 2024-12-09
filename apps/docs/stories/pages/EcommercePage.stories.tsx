@@ -18,7 +18,7 @@ const getImagePath = (path: string) => {
 const techTheme = createTheme({
   colors: {
     primary: "#4F46E5", // Indigo para el color principal
-    secondary: "#10B981", // Verde esmeralda para acentos
+    secondary: "#fde68a", // Verde esmeralda para acentos
     background: "#F9FAFB", // Gris muy claro para el fondo
     text: "#111827", // Casi negro para el texto
   },
