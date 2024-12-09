@@ -120,7 +120,7 @@ export function Nav({
         aria-label="Toggle menu"
       >
         <svg
-          className={cn(baseStyles.menuIcon)}
+          className={cn(baseStyles.menuIcon, "w-8 h-8")}
           fill="none"
           viewBox="0 0 24 24"
         >
