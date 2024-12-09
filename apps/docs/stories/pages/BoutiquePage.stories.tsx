@@ -30,7 +30,7 @@ const LogoFooter = () => (
     <div className="w-6">
       <img src={getImagePath("/images/boutique/LogoInverter.svg")} />
     </div>
-    <span className="ml-2 text-xl text-primary-700 font-extralight">
+    <span className="ml-2 text-3xl text-primary-700 font-extralight">
       Maison Élégante
     </span>
   </div>
