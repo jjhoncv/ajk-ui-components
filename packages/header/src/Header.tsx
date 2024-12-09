@@ -56,7 +56,7 @@ export function Header({
     background: "absolute inset-0 bg-cover bg-center bg-no-repeat",
     overlay: "absolute inset-0 bg-black",
     content: "relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8",
-    title: "font-bold",
+    title: "font-bold text-2xl md:text-base",
     subtitle: "mt-4",
     cta: {
       align: {
