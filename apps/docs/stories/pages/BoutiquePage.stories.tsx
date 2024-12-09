@@ -19,7 +19,7 @@ const Logo = () => (
     <div className="w-6">
       <img src={getImagePath("/images/boutique/Logo.svg")} />
     </div>
-    <span className="ml-2 text-3xl text-white font-extralight">
+    <span className="ml-2 text-2xl text-white font-extralight">
       Maison Élégante
     </span>
   </div>
@@ -41,7 +41,7 @@ const LogoNavMenuMobile = () => (
     <div className="w-6">
       <img src={getImagePath("/images/boutique/LogoInverter.svg")} />
     </div>
-    <span className="ml-2 text-xl text-primary-500 font-extralight">
+    <span className="ml-2 text-2xl text-primary-500 font-extralight">
       Maison Élégante
     </span>
   </div>
