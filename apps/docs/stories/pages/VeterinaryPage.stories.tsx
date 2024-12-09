@@ -18,7 +18,7 @@ const getImagePath = (path: string) => {
 const vetTheme = createTheme({
   colors: {
     primary: "#06B6D4", // Cyan para un look moderno y limpio
-    secondary: "#8B5CF6", // Violeta para acentos
+    secondary: "#c4b5fd", // Violeta para acentos
     background: "#F8FAFC", // Gris muy claro para el fondo
     text: "#0F172A", // Slate oscuro para texto
   },
