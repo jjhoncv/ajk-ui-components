@@ -32,7 +32,7 @@ const Logo = () => (
     <div className="w-8 h-8"> {/* Incrementa el tamaño del contenedor */}
       <img src={getImagePath("/images/veterinary/Logo.svg")} className="w-full h-full object-contain" />
     </div>
-    <span className="ml-2 text-3xl text-white font-extralight">Modern Vet</span>
+    <span className="ml-2 text-2xl text-white font-extralight">Modern Vet</span>
   </div>
 );
 
@@ -52,7 +52,7 @@ const LogoNavMenuMobile = () => (
     <div className="w-8 h-8"> {/* Incrementa el tamaño del contenedor */}
       <img src={getImagePath("/images/veterinary/LogoInverter.svg")} className="w-full h-full object-contain"  />
     </div>
-    <span className="ml-2 text-3xl font-extralight">Modern Vet</span>
+    <span className="ml-2 text-2xl font-extralight">Modern Vet</span>
   </div>
 );
 
