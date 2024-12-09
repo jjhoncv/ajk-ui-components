@@ -51,7 +51,7 @@ const LogoNavMenuMobile = () => (
 const boutiqueTheme = createTheme({
   colors: {
     primary: "#D4AF37", // Gold
-    secondary: "#1E2832", // Dark slate
+    secondary: "#ca8a04", // Dark slate
     background: "#FFFFFF",
     text: "#1A1A1A",
   },
