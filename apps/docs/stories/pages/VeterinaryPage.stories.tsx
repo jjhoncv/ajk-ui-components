@@ -127,7 +127,9 @@ const VeterinaryPage = () => {
             description="Programas personalizados de prevención y vacunación para mantener a tu mascota saludable."
             image={getImagePath("/images/veterinary/service1.jpg")}
           >
-            <Button variant="secondary">Ver Planes</Button>
+              <div className="flex mt-2">
+<Button variant="secondary">Ver Planes</Button>
+</div>
           </Card>
           <Card
             variant="service"
@@ -136,8 +138,10 @@ const VeterinaryPage = () => {
             description="Procedimientos quirúrgicos mínimamente invasivos con recuperación rápida."
             image={getImagePath("/images/veterinary/service2.jpg")}
           >
+  <div className="flex mt-2">
             <Button variant="secondary">Consultar</Button>
-          </Card>
+          </div>
+</Card>
           <Card
             variant="service"
             title="Diagnóstico Digital"
@@ -145,8 +149,10 @@ const VeterinaryPage = () => {
             description="Radiografía digital y ultrasonido para diagnósticos precisos y rápidos."
             image={getImagePath("/images/veterinary/service3.jpg")}
           >
+  <div className="flex mt-2">
             <Button variant="secondary">Más Info</Button>
-          </Card>
+          </div>
+</Card>
           <Card
             variant="service"
             title="Hospitalización"
@@ -154,8 +160,10 @@ const VeterinaryPage = () => {
             description="Unidad de cuidados intensivos con monitoreo constante y personal especializado."
             image={getImagePath("/images/veterinary/service4.jpg")}
           >
+  <div className="flex mt-2">
             <Button variant="secondary">Emergencias</Button>
-          </Card>
+          </div>
+</Card>
         </Section>
 
         {/* Sobre Nosotros */}
