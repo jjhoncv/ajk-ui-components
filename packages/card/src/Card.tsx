@@ -129,15 +129,18 @@ export function Card({
     >
       {/* Image */}
       {image && (
-        <div
-          className={cn(
-            layout === "horizontal" ? "md:w-1/3" : "w-full",
-            aspectRatioStyles[aspectRatio]
-          )}
-        >
-          <img src={image} alt={title} className={baseStyles.image} />
-        </div>
-      )}
+  <div
+    className={cn(
+      layout === "horizontal" ? "md:w-1/3" : "w-full",
+      aspectRatioStyles[aspectRatio]
+    )}
+    style={{
+      backgroundImage: `url(${image})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    }}
+  />
+)}
 
       {/* Content */}
       <div
