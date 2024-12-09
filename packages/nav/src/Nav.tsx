@@ -205,7 +205,7 @@ export function Nav({
             isMobileMenuOpen ? "translate-x-[0%] transition-all" : ""
           )}
         >
-          <div>
+          <div className="mt-2">
             <div className="relative">
               {LogoNavMenuMobile && (
                 <div className={baseStyles.logo}>{<LogoNavMenuMobile />}</div>
