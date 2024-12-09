@@ -29,8 +29,8 @@ const vetTheme = createTheme({
 
 const Logo = () => (
   <div className="flex items-center">
-    <div className="w-6">
-      <img src={getImagePath("/images/veterinary/Logo.svg")} />
+    <div className="w-12 h-12"> {/* Incrementa el tamaño del contenedor */}
+      <img src={getImagePath("/images/veterinary/Logo.svg")} className="w-full h-full object-contain" />
     </div>
     <span className="ml-2 text-xl text-white font-extralight">Modern Vet</span>
   </div>
