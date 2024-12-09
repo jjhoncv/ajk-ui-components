@@ -36,7 +36,7 @@ export function Nav({
   const { theme } = useTheme();
 
   const baseStylesMobile = {
-    box: "md:invisible transition-all shadow-2xl  translate-x-[-100%] w-[80%] fixed z-40 left-0 h-dvh top-0 px-4 py-2",
+    box: "md:invisible duration-300 transition-all shadow-2xl  translate-x-[-100%] w-[80%] fixed z-40 left-0 h-dvh top-0 px-4 py-2",
     bg: "bg-white",
     item: "text-gray-800",
     burger: "text-white",
