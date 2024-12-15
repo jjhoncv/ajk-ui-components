@@ -1,7 +1,7 @@
 import { cn, type BaseProps } from "@ajk-ui/core";
 import { useTheme } from "@ajk-ui/theme-utils";
 import React from "react";
-import { ButtonCart, MiniCart } from "../../cart";
+import { ButtonCart, MiniCart } from "../../cart/src";
 import { MenuMobile } from "./MenuMobile";
 
 export interface NavItemEcommerce {
