@@ -55,21 +55,7 @@ export const MenuMobile = ({
   return (
     <>
       {ButtonCloseNav()}
-      {isMobileMenuOpen && (
-        <div
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="fixed opacity-10 w-full h-dvh top-0 right-0 left-0 bottom-0 z-20"
-        />
-      )}
-      <div
-        className={cn(
-          baseStylesMobile.box,
-          baseStylesMobile.bg,
-          variantBoxMobileStyles[variantBoxMobile][variant].box,
-          variantBoxMobileStyles[variantBoxMobile][variant].bg,
-          isMobileMenuOpen ? "translate-x-[0%] transition-all" : ""
-        )}
-      >
+      <Sheet isOpen={isMobileMenuOpen}>
         <div className="mt-2">
           <div className="relative">
             {LogoNavMenuMobile && (
@@ -94,7 +80,7 @@ export const MenuMobile = ({
             ))}
           </div>
         </div>
-      </div>
+      </Sheet>
     </>
   );
 };
