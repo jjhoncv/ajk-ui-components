@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ButtonCart from "./ButtonCart";
 import { cn } from "@ajk-ui/core";
+import { Sheet } from "./../../nav/src/sheet";
 
 interface Item {
   id: number;
@@ -81,7 +82,8 @@ export const MiniCart = ({
           </span>
         )}
       </button> */}
-      {isOpen && (
+
+      <Sheet isOpen={isOpen} onClose={()=>{ setIsOpen(!isOpen) }} side="right">
         <div className={cn("fixed inset-y-0 right-0 w-[80%] sm:w-96 bg-white shadow-xl flex flex-col")}>
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b">
@@ -159,7 +161,7 @@ export const MiniCart = ({
             </button>
           </div>
         </div>
-      )}
+      </Sheet>
     </div>
   );
 };
