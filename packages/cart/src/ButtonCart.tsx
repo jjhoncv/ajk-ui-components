@@ -18,7 +18,7 @@ export const ButtonCart = ({
       }}
       className={cn("w-7 flex items-end relative", { "h-7": total })}
     >
-      <div className="w-5 ">
+      <div className="w-7 ">
         <svg
           className={cn("w-full h-full fill-gray-800", className)}
           width="92"
