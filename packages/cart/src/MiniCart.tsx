@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ButtonCart from "./ButtonCart";
+import { cn } from "@ajk-ui/core";
 
 interface Item {
   id: number;
