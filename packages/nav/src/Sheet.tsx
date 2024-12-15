@@ -31,7 +31,10 @@ export const Sheet:FC<SheetProps> = ({
       <>
         {isOpen && (
           <div
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => { 
+              setIsOpen(!isOpen);
+              onClose?.();
+            }
             className="fixed opacity-10 w-full h-dvh top-0 right-0 left-0 bottom-0 z-20"
           />
         )}
