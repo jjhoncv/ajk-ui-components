@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import React, { type FC }, useState  from "react";
 
 interface SheetProps {
   isOpen?: boolean;
@@ -8,11 +8,13 @@ interface SheetProps {
 }
 
 export const Sheet:FC<SheetProps> = ({ 
-  isOpen = false, 
+  isOpen: isOpenInitial  = false, 
   onClose,
   children,
   side = "left"
   }) => {
+
+  const [isOpen, setIsOpen] = useState(isOpenInitial);
   
   const sideStyles = {
     left: "left-0 translate-x-[-100%]",
@@ -25,15 +27,23 @@ export const Sheet:FC<SheetProps> = ({
   };
 
   return (
-      <div
-        className={cn(
-          baseStylesMobile.box,
-          baseStylesMobile.bg,
-          sideStyles[side],
-          isOpen ? "translate-x-[0%] transition-all" : ""
+      <>
+        {isOpen && (
+          <div
+            onClick={() => setIsOpen(!isOpen)}
+            className="fixed opacity-10 w-full h-dvh top-0 right-0 left-0 bottom-0 z-20"
+          />
         )}
-      >
-       {children}
-      </div>
+        <div
+          className={cn(
+            baseStylesMobile.box,
+            baseStylesMobile.bg,
+            sideStyles[side],
+            isOpen ? "translate-x-[0%] transition-all" : ""
+          )}
+        >
+         {children}
+        </div>
+      </>
   )
 }
