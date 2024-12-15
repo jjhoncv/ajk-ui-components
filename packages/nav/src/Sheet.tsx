@@ -1,4 +1,4 @@
-import React, { type FC } from "react";
+import React, { type FC, useEffect } from "react";
 import { cn } from "@ajk-ui/core";
 
 interface SheetProps {
@@ -26,6 +26,10 @@ export const Sheet:FC<SheetProps> = ({
     box: "md:invisible duration-300 transition-all shadow-2xl w-[80%] fixed z-40 h-dvh top-0 px-4 py-2",
     bg: "bg-white"
   };
+
+  useEffect(()=>{
+    setIsOpen(isOpenInitial)
+  },[isOpenInitial])
 
   return (
       <>
