@@ -1,7 +1,7 @@
 import React from "react";
 import { cn, type BaseProps } from "@ajk-ui/core";
 import { useTheme } from "@ajk-ui/theme-utils";
-import { Nav, type NavItem } from "@ajk-ui/nav";
+import { Nav, NavEcommerce, type NavItem } from "../../nav";
 
 export interface HeaderProps extends BaseProps {
   title?: string;
@@ -15,6 +15,7 @@ export interface HeaderProps extends BaseProps {
   logoNavMenuMobile?: () => JSX.Element;
   variant?: "simple" | "hero" | "centered" | "split";
   position?: "fixed" | "sticky" | "relative" | "absolute";
+  type?: "default" | "ecommerce";
   cta?: {
     label: string;
     href: string;
@@ -40,6 +41,7 @@ export function Header({
   className,
   children,
   variantBoxMobile = "full",
+  type = "default",
   ...props
 }: HeaderProps) {
   const { theme } = useTheme();
@@ -119,17 +121,28 @@ export function Header({
       )}
 
       {/* Navigation */}
-      {navItems && (
-        <Nav
-          items={navItems}
-          logo={logo}
-          logoNavMenuMobile={logoNavMenuMobile}
-          variant={backgroundImage ? "transparent" : "primary"}
-          position={position}
-          variantBoxMobile={variantBoxMobile}
-          align="start"
-        />
-      )}
+      {navItems &&
+        (type === "default" ? (
+          <Nav
+            items={navItems}
+            logo={logo}
+            logoNavMenuMobile={logoNavMenuMobile}
+            variant={backgroundImage ? "transparent" : "primary"}
+            position={position}
+            variantBoxMobile={variantBoxMobile}
+            align="start"
+          />
+        ) : (
+          <NavEcommerce
+            items={navItems}
+            logo={logo}
+            logoNavMenuMobile={logoNavMenuMobile}
+            variant={backgroundImage ? "transparent" : "primary"}
+            position={position}
+            variantBoxMobile={variantBoxMobile}
+            align="start"
+          />
+        ))}
 
       {/* Content */}
       <div className={cn(baseStyles.content, variantStyles[variant].content)}>

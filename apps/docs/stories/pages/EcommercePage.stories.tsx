@@ -107,6 +107,7 @@ const TechStorePage = () => {
             href: "/ofertas",
             variant: "primary",
           }}
+          type="ecommerce"
         />
 
         {/* Productos Destacados */}

@@ -1,16 +1,17 @@
-import React from "react";
 import { cn, type BaseProps } from "@ajk-ui/core";
 import { useTheme } from "@ajk-ui/theme-utils";
+import React from "react";
+import { ButtonCart, MiniCart } from "../../cart";
 import { MenuMobile } from "./MenuMobile";
 
-export interface NavItem {
+export interface NavItemEcommerce {
   label: string;
   href: string;
   icon?: React.ReactNode;
 }
 
-export interface NavProps extends BaseProps {
-  items: NavItem[];
+export interface NavEcommerceProps extends BaseProps {
+  items: NavItemEcommerce[];
   logo?: () => JSX.Element;
   logoNavMenuMobile?: () => JSX.Element;
   variant?: "primary" | "transparent" | "minimal";
@@ -22,7 +23,7 @@ export interface NavProps extends BaseProps {
   variantBoxMobile?: "full";
 }
 
-export function Nav({
+export function NavEcommerce({
   items,
   logo: Logo = () => <>Logo</>,
   logoNavMenuMobile: LogoNavMenuMobile = () => <>Logo Mobile</>,
@@ -35,7 +36,8 @@ export function Nav({
   variantBoxMobile = "full",
   type = "default",
   ...props
-}: NavProps) {
+}: NavEcommerceProps) {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const { theme } = useTheme();
 
   const baseStylesMobile = {
@@ -53,7 +55,7 @@ export function Nav({
     logo: "flex items-center",
     menuButton: "block md:hidden",
     menuIcon: "h-6 w-6",
-    menu: "hidden md:flex space-x-4",
+    menu: "hidden md:flex space-x-4 mt-3",
     item: "text-sm font-medium transition-colors hover:text-primary",
   };
 
@@ -119,6 +121,12 @@ export function Nav({
     end: "justify-end",
   };
 
+  const buttonCartStyles = {
+    primary: "fill-gray-800",
+    transparent: "fill-white",
+    minimal: "fill-gray-800",
+  };
+
   return (
     <nav
       className={cn(
@@ -135,25 +143,29 @@ export function Nav({
       }
       {...props}
     >
-      <div className={cn(baseStyles.container, containerStyles[container])}>
-        {Logo && (
-          <div className={baseStyles.logo}>
-            <Logo />
+      <>
+        <div className={cn(baseStyles.container, containerStyles[container])}>
+          <MenuMobile
+            {...{
+              baseStyles,
+              baseStylesMobile,
+              variantBoxMobileStyles,
+              variantBoxMobile,
+              variant,
+              LogoNavMenuMobile,
+              items,
+            }}
+          />
+          {Logo && (
+            <div className={baseStyles.logo}>
+              <Logo />
+            </div>
+          )}
+
+          <div>
+            <MiniCart className={cn(buttonCartStyles[variant])} />
           </div>
-        )}
-
-        <MenuMobile
-          {...{
-            baseStyles,
-            baseStylesMobile,
-            variantBoxMobileStyles,
-            variantBoxMobile,
-            variant,
-            LogoNavMenuMobile,
-            items,
-          }}
-        />
-
+        </div>
         <div className={cn(baseStyles.menu, alignStyles[align])}>
           {items.map((item, index) => (
             <a
@@ -166,7 +178,7 @@ export function Nav({
             </a>
           ))}
         </div>
-      </div>
+      </>
     </nav>
   );
 }

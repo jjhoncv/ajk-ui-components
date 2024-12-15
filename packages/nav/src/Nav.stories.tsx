@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Nav } from "./Nav";
 import { ThemeProvider, themes } from "@ajk-ui/theme-utils";
+import { ButtonCart } from "./../../cart";
+import { NavEcommerce } from "./NavEcommerce";
 
 const meta = {
   title: "Components/Nav",
@@ -70,6 +72,19 @@ export const CenteredItems: Story = {
     variant: "primary",
     align: "center",
     logo: () => <span className="text-xl font-bold">Logo</span>,
+  },
+};
+
+export const WithEcommerce: Story = {
+  args: {
+    items: defaultItems,
+    variant: "primary",
+    type: "ecommerce",
+    align: "start",
+    logo: () => <span className="text-xl font-bold ">Logo</span>,
+  },
+  render: (args) => {
+    return <NavEcommerce {...args} />;
   },
 };
 

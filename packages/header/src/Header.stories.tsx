@@ -112,6 +112,53 @@ export const Split: Story = {
   },
 };
 
+export const EcommerceHero: Story = {
+  args: {
+    title: "Exceptional Dining Experience",
+    subtitle:
+      "Discover our carefully crafted menu featuring the finest ingredients and expert preparation",
+    backgroundImage:
+      "https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1974&auto=format&fit=crop",
+    navItems: defaultNavItems,
+    logo: () => (
+      <span className="text-xl font-bold text-white">Restaurant</span>
+    ),
+    variant: "hero",
+    height: "lg",
+    cta: {
+      label: "Make a Reservation",
+      href: "#",
+      variant: "primary",
+    },
+    type: "ecommerce",
+  },
+  render: (args) => {
+    return (
+      <ThemeProvider initialTheme={themes.restaurant.modern}>
+        <Header {...args} />
+      </ThemeProvider>
+    );
+  },
+};
+
+export const EcommerSimple: Story = {
+  args: {
+    title: "Welcome to Our Restaurant",
+    subtitle: "Experience the finest dining in town",
+    navItems: defaultNavItems,
+    logo: () => <span className="text-xl font-bold">Restaurant</span>,
+    variant: "simple",
+    type: "ecommerce",
+  },
+  render: (args) => {
+    return (
+      <ThemeProvider initialTheme={themes.restaurant.modern}>
+        <Header {...args} />
+      </ThemeProvider>
+    );
+  },
+};
+
 // Mostrar el Header con diferentes temas
 export const RestaurantModern: Story = {
   args: {
