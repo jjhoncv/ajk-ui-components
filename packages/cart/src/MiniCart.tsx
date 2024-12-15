@@ -81,7 +81,7 @@ export const MiniCart = ({
         )}
       </button> */}
       {isOpen && (
-        <div className="fixed inset-y-0 right-0 w-full sm:w-96 bg-white shadow-xl flex flex-col">
+        <div className={cn("fixed inset-y-0 right-0 w-[80%] sm:w-96 bg-white shadow-xl flex flex-col")}>
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b">
             <h2 className="text-lg font-semibold">Shopping Cart</h2>
