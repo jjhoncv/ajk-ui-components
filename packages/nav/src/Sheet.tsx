@@ -1,4 +1,4 @@
-import React, { type FC }, useState  from "react";
+import React, { type FC } from "react";
 import { cn } from "@ajk-ui/core";
 
 interface SheetProps {
@@ -15,7 +15,7 @@ export const Sheet:FC<SheetProps> = ({
   side = "left"
   }) => {
 
-  const [isOpen, setIsOpen] = useState(isOpenInitial);
+  const [isOpen, setIsOpen] = React.useState(isOpenInitial);
   
   const sideStyles = {
     left: "left-0 translate-x-[-100%]",
