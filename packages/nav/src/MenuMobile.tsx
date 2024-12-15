@@ -56,7 +56,7 @@ export const MenuMobile = ({
   return (
     <>
       {ButtonCloseNav()}
-      <Sheet isOpen={isMobileMenuOpen}>
+      <Sheet onClose={()=>{ setIsMobileMenuOpen(false) }} isOpen={isMobileMenuOpen}>
         <div className="mt-2">
           <div className="relative">
             {LogoNavMenuMobile && (
