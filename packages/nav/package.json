@@ -19,6 +19,7 @@
     "@ajk-ui/core": "workspace:*",
     "@ajk-ui/theme-utils": "workspace:*",
     "@ajk-ui/cart": "workspace:*",
+    "@ajk-ui/sheet": "workspace:*",
     "clsx": "^2.0.0",
     "tailwind-merge": "^2.0.0"
   },
