@@ -84,7 +84,6 @@ export const MiniCart = ({
       </button> */}
 
       <Sheet isOpen={isOpen} onClose={()=>{ setIsOpen(!isOpen) }} side="right">
-        <div className={cn("fixed inset-y-0 right-0 w-[80%] sm:w-96 bg-white shadow-xl flex flex-col")}>
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b">
             <h2 className="text-lg font-semibold">Shopping Cart</h2>
@@ -160,7 +159,6 @@ export const MiniCart = ({
               Proceed to Checkout
             </button>
           </div>
-        </div>
       </Sheet>
     </div>
   );
