@@ -23,7 +23,7 @@ export const Sheet:FC<SheetProps> = ({
   };
 
   const baseStylesMobile = {
-    box: "md:invisible duration-300 transition-all shadow-2xl w-[80%] fixed z-40 h-dvh top-0 px-4 py-2",
+    box: "md:invisible duration-300 transition-all shadow-2xl w-[70%] fixed z-40 h-dvh top-0 px-8 py-3",
     bg: "bg-white"
   };
 
