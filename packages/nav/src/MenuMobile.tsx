@@ -1,6 +1,6 @@
 import { cn } from "@ajk-ui/core";
 import React from "react";
-import { Sheet } from "./Sheet"; 
+import { Sheet } from "@ajk-ui/sheet";
 
 export const MenuMobile = ({
   baseStylesMobile,
