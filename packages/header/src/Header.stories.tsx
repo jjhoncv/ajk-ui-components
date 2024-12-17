@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Header } from "./Header";
 import { ThemeProvider, themes } from "@ajk-ui/theme-utils";
+import { CartProvider } from "@ajk-ui/cart";
 
 const meta = {
   title: "Components/Header",
@@ -134,9 +135,11 @@ export const EcommerceHero: Story = {
   },
   render: (args) => {
     return (
-      <ThemeProvider initialTheme={themes.restaurant.modern}>
-        <Header {...args} />
-      </ThemeProvider>
+      <CartProvider>
+        <ThemeProvider initialTheme={themes.restaurant.modern}>
+          <Header {...args} />
+        </ThemeProvider>
+      </CartProvider>
     );
   },
 };
@@ -152,9 +155,11 @@ export const EcommerSimple: Story = {
   },
   render: (args) => {
     return (
-      <ThemeProvider initialTheme={themes.restaurant.modern}>
-        <Header {...args} />
-      </ThemeProvider>
+      <CartProvider>
+        <ThemeProvider initialTheme={themes.restaurant.modern}>
+          <Header {...args} />
+        </ThemeProvider>
+      </CartProvider>
     );
   },
 };

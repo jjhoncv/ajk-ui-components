@@ -6,6 +6,9 @@ import { Section } from "@ajk-ui/section";
 import { Card } from "@ajk-ui/card";
 import { Footer } from "@ajk-ui/footer";
 import { Button } from "@ajk-ui/button";
+import { CartProvider } from "@ajk-ui/cart";
+import { mockCartItems } from "../../public/images/ecommerce/mockCartItems";
+import { ProductCart } from "@ajk-ui/cart";
 
 // Helper para manejar las rutas de imágenes
 const getImagePath = (path: string) => {
@@ -90,148 +93,119 @@ const TechStorePage = () => {
   ];
 
   return (
-    <ThemeProvider initialTheme={techTheme}>
-      <div className="min-h-screen bg-background">
-        {/* Header */}
-        <Header
-          title="TechStore"
-          subtitle="Tu destino tecnológico"
-          backgroundImage={getImagePath("/images/ecommerce/hero.jpg")}
-          variant="hero"
-          height="lg"
-          navItems={navItems}
-          logo={Logo}
-          logoNavMenuMobile={LogoNavMenuMobile}
-          cta={{
-            label: "Ver Ofertas",
-            href: "/ofertas",
-            variant: "primary",
-          }}
-          type="ecommerce"
-        />
+    <CartProvider>
+      <ThemeProvider initialTheme={techTheme}>
+        <div className="min-h-screen bg-background">
+          {/* Header */}
+          <Header
+            title="TechStore"
+            position="relative"
+            subtitle="Tu destino tecnológico"
+            backgroundImage={getImagePath("/images/ecommerce/hero.jpg")}
+            variant="hero"
+            height="lg"
+            navItems={navItems}
+            logo={Logo}
+            logoNavMenuMobile={LogoNavMenuMobile}
+            cta={{
+              label: "Ver Ofertas",
+              href: "/ofertas",
+              variant: "primary",
+            }}
+            type="ecommerce"
+          />
 
-        {/* Productos Destacados */}
-        <Section
-          variant="feature"
-          layout="grid"
-          title="Productos Destacados"
-          subtitle="Las últimas novedades en tecnología"
-          gridCols={4}
-          gap="lg"
-        >
-          <Card
-            variant="product"
-            title="MacBook Pro M2"
-            subtitle="$1,999.99"
-            description="Potencia y rendimiento excepcional"
-            image={getImagePath("/images/ecommerce/macbook.jpg")}
-            badge="Nuevo"
+          {/* Productos Destacados */}
+          <Section
+            variant="feature"
+            layout="grid"
+            title="Productos Destacados"
+            subtitle="Las últimas novedades en tecnología"
+            gridCols={4}
+            gap="lg"
           >
-            <div className="flex mt-2">
-              <Button variant="secondary">Comprar Ahora</Button>
-            </div>
-          </Card>
-          <Card
-            variant="product"
-            title="iPhone 15 Pro"
-            subtitle="$999.99"
-            description="La última innovación en smartphones"
-            image={getImagePath("/images/ecommerce/iphone.jpg")}
-            badge="Destacado"
-          >
-            <div className="flex mt-2">
-              <Button variant="secondary">Comprar Ahora</Button>
-            </div>
-          </Card>
-          <Card
-            variant="product"
-            title="AirPods Pro"
-            subtitle="$249.99"
-            description="Audio inmersivo de alta calidad"
-            image={getImagePath("/images/ecommerce/airpods1.jpg")}
-          >
-            <div className="flex mt-2">
-              <Button variant="secondary">Comprar Ahora</Button>
-            </div>
-          </Card>
-          <Card
-            variant="product"
-            title="AirPods Max"
-            subtitle="$549.99"
-            description="Experiencia auditiva premium"
-            image={getImagePath("/images/ecommerce/airpods2.jpg")}
-          >
-            <div className="flex mt-2">
-              <Button variant="secondary">Comprar Ahora</Button>
-            </div>
-          </Card>
-        </Section>
+            {mockCartItems.map((item, key) => (
+              <ProductCart
+                id={item.id}
+                subname={item.subname}
+                key={key}
+                name={item.name}
+                price={item.price}
+                formatPrice={item.formatPrice}
+                description={item.description}
+                image={getImagePath(item.image.lg)}
+              />
+            ))}
+          </Section>
 
-        {/* Sección de Ofertas */}
-        <Section
-          variant="highlight"
-          layout="split"
-          backgroundImage={getImagePath("/images/ecommerce/special-offers.jpg")}
-          overlay
-          title="Ofertas Especiales"
-          subtitle="¡No te pierdas nuestros descuentos!"
-        >
-          <div className="flex flex-col space-y-4">
-            <p className="text-gray-200">
-              Descubre nuestras ofertas exclusivas en productos seleccionados.
-              ¡Hasta 30% de descuento en las mejores marcas de tecnología!
-            </p>
-            <div>
-              <Button variant="outline">Ver Todas las Ofertas</Button>
+          {/* Sección de Ofertas */}
+          <Section
+            variant="highlight"
+            layout="split"
+            backgroundImage={getImagePath(
+              "/images/ecommerce/special-offers.jpg"
+            )}
+            overlay
+            title="Ofertas Especiales"
+            subtitle="¡No te pierdas nuestros descuentos!"
+          >
+            <div className="flex flex-col space-y-4">
+              <p className="text-gray-200">
+                Descubre nuestras ofertas exclusivas en productos seleccionados.
+                ¡Hasta 30% de descuento en las mejores marcas de tecnología!
+              </p>
+              <div>
+                <Button variant="outline">Ver Todas las Ofertas</Button>
+              </div>
             </div>
-          </div>
-        </Section>
+          </Section>
 
-        {/* Testimonios */}
-        <Section
-          variant="alternate"
-          title="Opiniones de Clientes"
-          subtitle="Lo que dicen nuestros clientes"
-          layout="grid"
-          gridCols={2}
-        >
-          <Card
-            variant="testimonial"
-            title="Excelente servicio"
-            description="La entrega fue rápida y el producto llegó en perfectas condiciones. El soporte técnico es excepcional."
-            author={{
-              name: "Ana García",
-              title: "Cliente Verificado",
-              avatar: getImagePath("/images/ecommerce/avatar1.jpg"),
+          {/* Testimonios */}
+          <Section
+            variant="alternate"
+            title="Opiniones de Clientes"
+            subtitle="Lo que dicen nuestros clientes"
+            layout="grid"
+            gridCols={2}
+          >
+            <Card
+              variant="testimonial"
+              title="Excelente servicio"
+              description="La entrega fue rápida y el producto llegó en perfectas condiciones. El soporte técnico es excepcional."
+              author={{
+                name: "Ana García",
+                title: "Cliente Verificado",
+                avatar: getImagePath("/images/ecommerce/avatar1.jpg"),
+              }}
+            />
+            <Card
+              variant="testimonial"
+              title="Productos de calidad"
+              description="Los precios son competitivos y la calidad de los productos es excelente. Definitivamente volveré a comprar."
+              author={{
+                name: "Carlos Ruiz",
+                title: "Cliente Frecuente",
+                avatar: getImagePath("/images/ecommerce/avatar2.jpg"),
+              }}
+            />
+          </Section>
+
+          {/* Footer */}
+          <Footer
+            variant="simple"
+            logo={<LogoFooter />}
+            columns={footerColumns}
+            social={socialLinks}
+            copyright="© 2024 TechStore. Todos los derechos reservados."
+            newsletter={{
+              title: "Suscríbete",
+              description: "Recibe las últimas novedades y ofertas exclusivas",
+              buttonText: "Suscribirse",
             }}
           />
-          <Card
-            variant="testimonial"
-            title="Productos de calidad"
-            description="Los precios son competitivos y la calidad de los productos es excelente. Definitivamente volveré a comprar."
-            author={{
-              name: "Carlos Ruiz",
-              title: "Cliente Frecuente",
-              avatar: getImagePath("/images/ecommerce/avatar2.jpg"),
-            }}
-          />
-        </Section>
-
-        {/* Footer */}
-        <Footer
-          variant="simple"
-          logo={<LogoFooter />}
-          columns={footerColumns}
-          social={socialLinks}
-          copyright="© 2024 TechStore. Todos los derechos reservados."
-          newsletter={{
-            title: "Suscríbete",
-            description: "Recibe las últimas novedades y ofertas exclusivas",
-            buttonText: "Suscribirse",
-          }}
-        />
-      </div>
-    </ThemeProvider>
+        </div>
+      </ThemeProvider>
+    </CartProvider>
   );
 };
 

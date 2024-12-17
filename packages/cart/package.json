@@ -16,8 +16,11 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
+    "@ajk-ui/theme-utils": "workspace:*",
     "@ajk-ui/core": "workspace:*",
     "@ajk-ui/sheet": "workspace:*",
+    "@ajk-ui/button": "workspace:*",
+    "@ajk-ui/card": "workspace:*",
     "clsx": "^2.0.0",
     "tailwind-merge": "^2.0.0"
   },

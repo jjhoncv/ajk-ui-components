@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Cart } from "./Cart";
-import { ButtonCart, ListCart, MiniCart } from "./index";
-import { Header } from "./../../header";
+import { ButtonCart, CartProvider, ListCart, MiniCart } from "./";
 
-import { ThemeProvider, themes } from "../../theme-utils";
+import { ThemeProvider, themes } from "@ajk-ui/theme-utils";
+import { mockCartItems } from "./mockCartItems";
+import { ProductCart } from "./ProductCart";
 
 const meta = {
   title: "Components/Cart",
@@ -29,7 +30,23 @@ export const ButtonCartDefault: Story = {
 };
 
 export const MiniCartHeader: Story = {
-  render: () => <MiniCart />,
+  render: () => (
+    <CartProvider>
+      <div className="p-8">
+        <div className="flex justify-end w-full mb-5">
+          <MiniCart />
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          {mockCartItems.map((product, key) => (
+            <ProductCart
+              key={key}
+              {...{ ...product, image: product.image.lg }}
+            />
+          ))}
+        </div>
+      </div>
+    </CartProvider>
+  ),
 };
 
 export const ListCartView: Story = {

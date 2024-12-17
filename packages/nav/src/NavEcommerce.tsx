@@ -1,8 +1,8 @@
+import { MiniCart } from "@ajk-ui/cart";
 import { cn, type BaseProps } from "@ajk-ui/core";
 import { useTheme } from "@ajk-ui/theme-utils";
 import React from "react";
 import { MenuMobile } from "./MenuMobile";
-import { MiniCart } from "@ajk-ui/cart"
 
 export interface NavItemEcommerce {
   label: string;
@@ -40,15 +40,6 @@ export function NavEcommerce({
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const { theme } = useTheme();
 
-  const baseStylesMobile = {
-    box: "md:invisible duration-300 transition-all shadow-2xl  translate-x-[-100%] w-[80%] fixed z-40 left-0 h-dvh top-0 px-4 py-2",
-    bg: "bg-white",
-    item: "text-gray-800",
-    burger: "text-white",
-    x: "text-gray-900",
-    position: "fixed right-5 top-5",
-  };
-
   const baseStyles = {
     nav: "w-full px-4 py-2 mt-2 mb-2",
     container: "mx-auto flex justify-between items-center",
@@ -62,35 +53,6 @@ export function NavEcommerce({
   const containerStyles = {
     default: "mx-auto flex justify-between items-center",
     order: "mx-auto flex",
-  };
-
-  const variantBoxMobileStyles = {
-    full: {
-      transparent: {
-        box: "md:invisible translate-x-[-100%] w-[80%] fixed z-40 h-dvh top-0 border-b-0 border-t-0 border-l-0  px-4 py-2",
-        bg: "bg-white",
-        item: "text-gray-800",
-        burger: "stroke-white",
-        x: "stroke-white",
-        position: "absolute right-0 top-0",
-      },
-      primary: {
-        box: "md:invisible translate-x-[-100%] w-[80%] fixed z-40 h-dvh top-0 border-b-0 border-t-0 border-l-0  px-4 py-2",
-        bg: "bg-white",
-        item: "text-gray-800",
-        burger: "stroke-gray-900",
-        x: "stroke-white",
-        position: "absolute right-0 top-0",
-      },
-      minimal: {
-        box: "md:invisible translate-x-[-100%] w-[80%] fixed z-40 h-dvh top-0 border-b-0 border-t-0 border-l-0  px-4 py-2",
-        bg: "bg-white",
-        item: "text-gray-800",
-        burger: "stroke-gray-800",
-        x: "stroke-white",
-        position: "absolute right-0 top-0",
-      },
-    },
   };
 
   const variantStyles = {
@@ -148,11 +110,9 @@ export function NavEcommerce({
           <MenuMobile
             {...{
               baseStyles,
-              baseStylesMobile,
-              variantBoxMobileStyles,
               variantBoxMobile,
               variant,
-              LogoNavMenuMobile,
+              logoNavMenuMobile: LogoNavMenuMobile,
               items,
             }}
           />

@@ -1,8 +1,9 @@
+import { CartProvider } from "@ajk-ui/cart";
+import { ThemeProvider, themes } from "@ajk-ui/theme-utils";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Nav } from "./Nav";
-import { ThemeProvider, themes } from "@ajk-ui/theme-utils";
-import { ButtonCart } from "./../../cart";
 import { NavEcommerce } from "./NavEcommerce";
+import { mockCartItems } from "./mockCartItems";
 
 const meta = {
   title: "Components/Nav",
@@ -84,7 +85,20 @@ export const WithEcommerce: Story = {
     logo: () => <span className="text-xl font-bold ">Logo</span>,
   },
   render: (args) => {
-    return <NavEcommerce {...args} />;
+    return (
+      <CartProvider
+        initialState={{
+          items: mockCartItems,
+          itemCount: mockCartItems.length,
+          total: mockCartItems.reduce(
+            (acc, item) => acc + item.price * item.quantity,
+            0
+          ),
+        }}
+      >
+        <NavEcommerce {...args} />
+      </CartProvider>
+    );
   },
 };
 

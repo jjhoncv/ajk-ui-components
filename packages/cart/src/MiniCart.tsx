@@ -1,66 +1,30 @@
-import { useState } from "react";
-import ButtonCart from "./ButtonCart";
+import { Button } from "@ajk-ui/button";
 import { cn } from "@ajk-ui/core";
 import { Sheet } from "@ajk-ui/sheet";
+import { useEffect, useState } from "react";
+import ButtonCart from "./ButtonCart";
 
-interface Item {
-  id: number;
-  name: string;
-  image: string;
-  price: number;
-  quantity: number;
-}
+import { ButtonPlusMinus } from "./ButtonPlusMinus";
+import { useCart } from "./CartContext";
 
 interface MiniCartProps {
-  items?: Item[];
   isOpen?: boolean;
-  className: string;
-  updateQuantity?: (id: number, change: number) => void;
+  className?: string;
 }
 
 export const MiniCart = ({
-  items: itemsInitial = [],
   isOpen: isOpenInitial = false,
   className = "",
-  updateQuantity,
 }: MiniCartProps) => {
   const [isOpen, setIsOpen] = useState(isOpenInitial);
-  const [items, setItems] = useState(itemsInitial);
-  // const [items, setItems] = useState([
-  //   {
-  //     id: 1,
-  //     name: "Product 1",
-  //     price: 19.99,
-  //     quantity: 1,
-  //     image: "/api/placeholder/80/80",
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Product 2",
-  //     price: 29.99,
-  //     quantity: 2,
-  //     image: "/api/placeholder/80/80",
-  //   },
-  // ]);
 
-  // const updateQuantity = (id: number, change: number) => {
-  //   setItems(
-  //     items
-  //       .map((item) => {
-  //         if (item.id === id) {
-  //           const newQuantity = Math.max(0, item.quantity + change);
-  //           return { ...item, quantity: newQuantity };
-  //         }
-  //         return item;
-  //       })
-  //       .filter((item) => item.quantity > 0)
-  //   );
-  // };
+  const { items, total, itemCount, removeItem, updateQuantity } = useCart();
 
-  const total = items.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
+  useEffect(() => {
+    if (total > 0) {
+      setIsOpen(true);
+    }
+  }, [total]);
 
   const toggleCart = () => setIsOpen(!isOpen);
   return (
@@ -69,96 +33,106 @@ export const MiniCart = ({
       <ButtonCart
         className={className}
         handleClick={toggleCart}
-        total={items.length}
+        total={items.reduce((acc, item) => acc + item.quantity, 0)}
       />
-      {/* <button
-        onClick={toggleCart}
-        className="fixed top-4 right-4 p-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+
+      <Sheet
+        isOpen={isOpen}
+        onClose={() => {
+          setIsOpen(!isOpen);
+        }}
+        side="right"
+        className="w-full md:w-[400px] md:visible"
       >
-        <ShoppingCart className="w-6 h-6" />
-        {items.length > 0 && (
-          <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-            {items.length}
-          </span>
-        )}
-      </button> */}
+        {/* Header */}
+        <div className="flex items-center justify-between border-b">
+          <h2 className="text-lg font-semibold">
+            Carrito de compras ({itemCount})
+          </h2>
+          <button
+            onClick={toggleCart}
+            className="p-2 hover:bg-gray-100 rounded-full"
+          >
+            <svg className={cn("w-5 h-5")} fill="none" viewBox="0 0 24 24">
+              <path
+                className={cn("stroke-slate-950")}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
 
-      <Sheet isOpen={isOpen} onClose={()=>{ setIsOpen(!isOpen) }} side="right">
-          {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b">
-            <h2 className="text-lg font-semibold">Shopping Cart</h2>
-            <button
-              onClick={toggleCart}
-              className="p-2 hover:bg-gray-100 rounded-full"
-            >
-              cerrar
-            </button>
-          </div>
+        {/* Items List */}
+        <div className="flex-1 overflow-y-auto">
+          {items.length === 0 ? (
+            <div className="text-center py-8 text-gray-500">
+              Tu carrito esta vacio
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {items.map((item) => (
+                <div
+                  key={item.id}
+                  className="flex items-center space-x-4  py-3 rounded-lg"
+                >
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-20 h-20 object-cover rounded"
+                  />
+                  <div className="flex-1">
+                    <h3 className="font-bold block text-xs">{item.name}</h3>
+                    <h4 className="font-medium text-xs">{item.subname}</h4>
 
-          {/* Items List */}
-          <div className="flex-1 overflow-y-auto p-4">
-            {items.length === 0 ? (
-              <div className="text-center py-8 text-gray-500">
-                Your cart is empty
-              </div>
-            ) : (
-              <div className="space-y-4">
-                {items.map((item) => (
-                  <div
-                    key={item.id}
-                    className="flex items-center space-x-4 bg-gray-50 p-3 rounded-lg"
-                  >
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-20 h-20 object-cover rounded"
-                    />
-                    <div className="flex-1">
-                      <h3 className="font-medium">{item.name}</h3>
-                      <p className="text-gray-600">${item.price.toFixed(2)}</p>
-                      <div className="flex items-center space-x-2 mt-2">
-                        <button
-                          onClick={() => updateQuantity?.(item.id, -1)}
-                          className="p-1 hover:bg-gray-200 rounded"
+                    <p className="text-gray-600 font-bold text-sm">
+                      ${item.price.toFixed(2)}
+                    </p>
+                    <div className="flex items-center space-x-2 mt-2">
+                      <ButtonPlusMinus
+                        id={item.id}
+                        updateQuantity={updateQuantity}
+                        quantity={item.quantity}
+                      />
+                      <button
+                        onClick={() =>
+                          updateQuantity?.(item.id, -item.quantity)
+                        }
+                        className="p-1 hover:bg-gray-200 rounded ml-2"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          x="0px"
+                          y="0px"
+                          className={cn("w-5 h-5")}
+                          viewBox="0 0 32 32"
                         >
-                          -
-                        </button>
-                        <span className="w-8 text-center">{item.quantity}</span>
-                        <button
-                          onClick={() => updateQuantity?.(item.id, 1)}
-                          className="p-1 hover:bg-gray-200 rounded"
-                        >
-                          +
-                        </button>
-                        <button
-                          onClick={() =>
-                            updateQuantity?.(item.id, -item.quantity)
-                          }
-                          className="p-1 hover:bg-gray-200 rounded ml-2"
-                        >
-                          Eliminar
-                        </button>
-                      </div>
+                          <path d="M 15 4 C 14.476563 4 13.941406 4.183594 13.5625 4.5625 C 13.183594 4.941406 13 5.476563 13 6 L 13 7 L 7 7 L 7 9 L 8 9 L 8 25 C 8 26.644531 9.355469 28 11 28 L 23 28 C 24.644531 28 26 26.644531 26 25 L 26 9 L 27 9 L 27 7 L 21 7 L 21 6 C 21 5.476563 20.816406 4.941406 20.4375 4.5625 C 20.058594 4.183594 19.523438 4 19 4 Z M 15 6 L 19 6 L 19 7 L 15 7 Z M 10 9 L 24 9 L 24 25 C 24 25.554688 23.554688 26 23 26 L 11 26 C 10.445313 26 10 25.554688 10 25 Z M 12 12 L 12 23 L 14 23 L 14 12 Z M 16 12 L 16 23 L 18 23 L 18 12 Z M 20 12 L 20 23 L 22 23 L 22 12 Z"></path>
+                        </svg>
+                      </button>
                     </div>
                   </div>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* Footer */}
-          <div className="border-t p-4 space-y-4">
-            <div className="flex justify-between items-center font-semibold">
-              <span>Total:</span>
-              <span>${total.toFixed(2)}</span>
+                </div>
+              ))}
             </div>
-            <button
-              className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50"
-              disabled={items.length === 0}
-            >
-              Proceed to Checkout
-            </button>
+          )}
+        </div>
+
+        {/* Footer */}
+        <div className="border-t py-4 space-y-4">
+          <div className="flex justify-between items-center font-semibold">
+            <span>Total:</span>
+            <span>${total.toFixed(2)}</span>
           </div>
+          <Button
+            className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50"
+            disabled={items.length === 0}
+          >
+            Proceed to Checkout
+          </Button>
+        </div>
       </Sheet>
     </div>
   );

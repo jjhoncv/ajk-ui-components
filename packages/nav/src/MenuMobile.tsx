@@ -1,17 +1,59 @@
 import { cn } from "@ajk-ui/core";
 import React from "react";
 import { Sheet } from "@ajk-ui/sheet";
+import { BaseStyles, NavItem, NavProps } from "./Nav";
+
+interface MenuMobileProps extends NavProps {
+  baseStyles: BaseStyles;
+  items: NavItem[];
+}
 
 export const MenuMobile = ({
-  baseStylesMobile,
-  variantBoxMobileStyles,
-  variantBoxMobile,
-  variant,
-  LogoNavMenuMobile,
+  variantBoxMobile = "full",
+  variant = "primary",
+  logoNavMenuMobile: LogoNavMenuMobile = () => <>Logo Mobile</>,
   baseStyles,
   items,
-}: any) => {
+}: MenuMobileProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+
+  const baseStylesMobile = {
+    box: "md:invisible duration-300 transition-all shadow-2xl  translate-x-[-100%] w-[80%] fixed z-40 left-0 h-dvh top-0 px-4 py-2",
+    bg: "bg-white",
+    item: "text-gray-800",
+    burger: "text-white",
+    x: "text-gray-900",
+    position: "fixed right-5 top-5",
+  };
+
+  const variantBoxMobileStyles = {
+    full: {
+      transparent: {
+        box: "md:invisible translate-x-[-100%] w-[100%] fixed z-40 h-dvh top-0 border-b-0 border-t-0 border-l-0  px-4 py-2",
+        bg: "bg-white",
+        item: "text-gray-800",
+        burger: "stroke-white",
+        x: "stroke-white",
+        position: "absolute right-0 top-0",
+      },
+      primary: {
+        box: "md:invisible translate-x-[-100%] w-[100%] fixed z-40 h-dvh top-0 border-b-0 border-t-0 border-l-0  px-4 py-2",
+        bg: "bg-white",
+        item: "text-gray-800",
+        burger: "stroke-gray-900",
+        x: "stroke-white",
+        position: "absolute right-0 top-0",
+      },
+      minimal: {
+        box: "md:invisible translate-x-[-100%] w-[100%] fixed z-40 h-dvh top-0 border-b-0 border-t-0 border-l-0  px-4 py-2",
+        bg: "bg-white",
+        item: "text-gray-800",
+        burger: "stroke-gray-800",
+        x: "stroke-white",
+        position: "absolute right-0 top-0",
+      },
+    },
+  };
 
   const ButtonCloseNav = (classNames?: string) => {
     return (
@@ -56,7 +98,12 @@ export const MenuMobile = ({
   return (
     <>
       {ButtonCloseNav()}
-      <Sheet onClose={()=>{ setIsMobileMenuOpen(false) }} isOpen={isMobileMenuOpen}>
+      <Sheet
+        onClose={() => {
+          setIsMobileMenuOpen(false);
+        }}
+        isOpen={isMobileMenuOpen}
+      >
         <div className="mt-2">
           <div className="relative">
             {LogoNavMenuMobile && (

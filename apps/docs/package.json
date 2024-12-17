@@ -15,6 +15,7 @@
     "@ajk-ui/card": "workspace:*",
     "@ajk-ui/core": "workspace:*",
     "@ajk-ui/footer": "workspace:*",
+    "@ajk-ui/cart": "workspace:*",
     "@ajk-ui/header": "workspace:*",
     "@ajk-ui/nav": "workspace:*",
     "@ajk-ui/section": "workspace:*",

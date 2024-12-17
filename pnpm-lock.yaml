@@ -45,6 +45,9 @@ importers:
       '@ajk-ui/card':
         specifier: workspace:*
         version: link:../../packages/card
+      '@ajk-ui/cart':
+        specifier: workspace:*
+        version: link:../../packages/cart
       '@ajk-ui/core':
         specifier: workspace:*
         version: link:../../packages/core
@@ -198,9 +201,21 @@ importers:
 
   packages/cart:
     dependencies:
+      '@ajk-ui/button':
+        specifier: workspace:*
+        version: link:../button
+      '@ajk-ui/card':
+        specifier: workspace:*
+        version: link:../card
       '@ajk-ui/core':
         specifier: workspace:*
         version: link:../core
+      '@ajk-ui/sheet':
+        specifier: workspace:*
+        version: link:../sheet
+      '@ajk-ui/theme-utils':
+        specifier: workspace:*
+        version: link:../theme-utils
       clsx:
         specifier: ^2.0.0
         version: 2.1.1
@@ -297,6 +312,9 @@ importers:
 
   packages/header:
     dependencies:
+      '@ajk-ui/cart':
+        specifier: workspace:*
+        version: link:../cart
       '@ajk-ui/core':
         specifier: workspace:*
         version: link:../core
@@ -337,9 +355,15 @@ importers:
 
   packages/nav:
     dependencies:
+      '@ajk-ui/cart':
+        specifier: workspace:*
+        version: link:../cart
       '@ajk-ui/core':
         specifier: workspace:*
         version: link:../core
+      '@ajk-ui/sheet':
+        specifier: workspace:*
+        version: link:../sheet
       '@ajk-ui/theme-utils':
         specifier: workspace:*
         version: link:../theme-utils
@@ -383,6 +407,40 @@ importers:
       '@ajk-ui/theme-utils':
         specifier: workspace:*
         version: link:../theme-utils
+      clsx:
+        specifier: ^2.0.0
+        version: 2.1.1
+      tailwind-merge:
+        specifier: ^2.0.0
+        version: 2.5.5
+    devDependencies:
+      '@storybook/react':
+        specifier: ^7.0.0
+        version: 7.6.20(react-dom@18.3.1)(react@18.3.1)(typescript@5.7.2)
+      '@types/react':
+        specifier: ^18.3.12
+        version: 18.3.12
+      '@types/react-dom':
+        specifier: ^18.3.1
+        version: 18.3.1
+      eslint:
+        specifier: ^8.0.0
+        version: 8.57.1
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      tsup:
+        specifier: ^8.0.0
+        version: 8.3.5(postcss@8.4.49)(typescript@5.7.2)
+      typescript:
+        specifier: ^5.7.2
+        version: 5.7.2
+
+  packages/sheet:
+    dependencies:
+      '@ajk-ui/core':
+        specifier: workspace:*
+        version: link:../core
       clsx:
         specifier: ^2.0.0
         version: 2.1.1

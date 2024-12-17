@@ -1,4 +1,5 @@
 import { cn } from "@ajk-ui/core";
+import { useTheme } from "@ajk-ui/theme-utils";
 
 export const ButtonCart = ({
   total,
@@ -9,6 +10,7 @@ export const ButtonCart = ({
   className?: string;
   handleClick?: () => void;
 }) => {
+  const { theme } = useTheme();
   return (
     <button
       type="button"
@@ -16,9 +18,9 @@ export const ButtonCart = ({
         handleClick?.();
         e.preventDefault();
       }}
-      className={cn("w-7 flex items-end relative", { "h-7": total })}
+      className={cn("w-8 flex items-end relative")}
     >
-      <div className="w-7 ">
+      <div className="w-8 ">
         <svg
           className={cn("w-full h-full fill-gray-800", className)}
           width="92"
@@ -31,7 +33,14 @@ export const ButtonCart = ({
         </svg>
       </div>
       {total > 0 && (
-        <div className="absolute text-xs right-0 top-0 rounded-full w-4 h-4 flex justify-center items-center z-10 bg-red-500 border border-red-800 text-white">
+        <div
+          className={cn(
+            "absolute text-xs right-[-10px] top-[-10px] rounded-full w-5 h-5 flex justify-center items-center z-10 bg-red-500 border border-transparent text-white"
+          )}
+          style={{
+            backgroundColor: theme.colors.primary,
+          }}
+        >
           {total}
         </div>
       )}
