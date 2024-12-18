@@ -33,10 +33,12 @@ const Logo = () => (
       }
     }}
   >
-    <div className="w-6">
+    <div className="w-6 md:w-12">
       <img src={getImagePath("/images/ecommerce/Logo.svg")} />
     </div>
-    <span className="ml-2 text-2xl text-black font-extralight">TechStore</span>
+    <span className="ml-2 text-2xl md:text-4xl text-black font-extralight">
+      TechStore
+    </span>
   </div>
 );
 
@@ -62,7 +64,6 @@ const LogoNavMenuMobile = () => (
 
 const TechStorePage = () => {
   const navItems = [
-    { label: "Inicio", href: "/" },
     { label: "Productos", href: "/productos" },
     { label: "Ofertas", href: "/ofertas" },
     { label: "Soporte", href: "/soporte" },
@@ -98,12 +99,24 @@ const TechStorePage = () => {
       <ThemeProvider initialTheme={techTheme}>
         <div className="min-h-screen bg-background">
           {/* Header */}
-          <div className="mx-auto px-4 sm:px-6 max-w-7xl bg-white w-full">
+          <div className="hidden md:flex bg-white border-b text-gray-600 text-sm font-light">
+            <div className="w-full mx-auto px-4 sm:px-6 max-w-7xl">
+              <div className="w-full justify-between h-10 flex items-center ">
+                <div>
+                  <div>About Us | My Account | Wishlist | Order Tracking</div>
+                </div>
+                <div>100% Secure delivery without contacting the courier</div>
+                <div>Need help? Call Us:+ 1800 900 | English | USD</div>
+              </div>
+            </div>
+          </div>
+          <div className="w-full z-40 bg-white border-b shadow-sm">
             <NavEcommerce
               items={navItems}
               logo={Logo}
               variant="transparent"
               logoNavMenuMobile={LogoNavMenuMobile}
+              className="w-full mx-auto px-4 sm:px-6 max-w-7xl h-16 md:h-24 items-center flex "
             />
           </div>
           <Header

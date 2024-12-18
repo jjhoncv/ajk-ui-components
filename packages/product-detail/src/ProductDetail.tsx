@@ -55,7 +55,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
   };
 
   return (
-    <div className="px-4 py-8">
+    <div className="py-8">
       {/* Breadcrumb */}
       <nav className="mb-8 text-sm">
         <ol className="flex gap-2">

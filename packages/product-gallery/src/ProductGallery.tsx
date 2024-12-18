@@ -269,7 +269,7 @@ export const ProductGallery: React.FC<ProductGalleryProps> = ({
             <img
               src={selectedImage.size.lg.url}
               alt={selectedImage.alt}
-              className="max-h-screen max-w-screen-lg object-contain"
+              className="md:max-h-screen  md:max-w-screen-lg object-contain"
             />
 
             <button

@@ -1,5 +1,5 @@
 {
-  "name": "@ajk-ui/nav",
+  "name": "@ajk-ui/account",
   "version": "0.3.0",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -17,11 +17,6 @@
   },
   "dependencies": {
     "@ajk-ui/core": "workspace:*",
-    "@ajk-ui/data": "workspace:*",
-    "@ajk-ui/account": "workspace:*",
-    "@ajk-ui/theme-utils": "workspace:*",
-    "@ajk-ui/cart": "workspace:*",
-    "@ajk-ui/sheet": "workspace:*",
     "clsx": "^2.0.0",
     "tailwind-merge": "^2.0.0"
   },

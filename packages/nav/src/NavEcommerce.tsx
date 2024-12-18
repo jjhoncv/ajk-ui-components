@@ -3,6 +3,7 @@ import { cn, type BaseProps } from "@ajk-ui/core";
 import { useTheme } from "@ajk-ui/theme-utils";
 import React from "react";
 import { MenuMobile } from "./MenuMobile";
+import { MiniAccount } from "@ajk-ui/account";
 
 export interface NavItemEcommerce {
   label: string;
@@ -45,7 +46,7 @@ export function NavEcommerce({
     logo: "flex items-center",
     menuButton: "block md:hidden",
     menuIcon: "h-6 w-6",
-    menu: "hidden md:flex space-x-4 mt-3",
+    menu: "hidden md:flex space-x-4 h-[60px] items-center",
     item: "text-sm font-medium transition-colors hover:text-primary",
   };
 
@@ -89,39 +90,55 @@ export function NavEcommerce({
   };
 
   return (
-    <nav
-      className={cn(
-        baseStyles.nav,
-        variantStyles[variant].nav,
-        positionStyles[position],
-        className
-      )}
-      style={
-        {
-          "--nav-bg": theme.colors.background,
-          "--nav-text": theme.colors.text,
-        } as React.CSSProperties
-      }
-      {...props}
-    >
-      <div className="w-full flex justify-between items-center">
-        <div>
-          <div className={cn(baseStyles.container, containerStyles[container])}>
-            <MenuMobile
-              {...{
-                baseStyles,
-                variantBoxMobile,
-                variant,
-                logoNavMenuMobile: LogoNavMenuMobile,
-                items,
-              }}
-            />
-            {Logo && (
-              <div className={cn(`ml-3 md:ml-0`, baseStyles.logo)}>
-                <Logo />
-              </div>
-            )}
+    <div className="w-full">
+      <nav
+        className={cn(
+          baseStyles.nav,
+          variantStyles[variant].nav,
+          positionStyles[position],
+          className
+        )}
+        style={
+          {
+            "--nav-bg": theme.colors.background,
+            "--nav-text": theme.colors.text,
+          } as React.CSSProperties
+        }
+        {...props}
+      >
+        <div className="w-full flex justify-between items-center">
+          <div>
+            <div
+              className={cn(baseStyles.container, containerStyles[container])}
+            >
+              <MenuMobile
+                {...{
+                  baseStyles,
+                  variantBoxMobile,
+                  variant,
+                  logoNavMenuMobile: LogoNavMenuMobile,
+                  items,
+                }}
+              />
+              {Logo && (
+                <div className={cn(`ml-3 md:ml-0`, baseStyles.logo)}>
+                  <Logo />
+                </div>
+              )}
+            </div>
           </div>
+          <div className="flex gap-5">
+            <MiniCart
+              openWhenProductIsAddedToCart={true}
+              className={cn(buttonCartStyles[variant])}
+            />
+            <MiniAccount />
+            {/* <MiniAccount /> */}
+          </div>
+        </div>
+      </nav>
+      <div className="flex w-full items-center h-full border-t">
+        <div className="w-full mx-auto px-4 sm:px-6 max-w-7xl h-full flex items-center">
           <div className={cn(baseStyles.menu, alignStyles[align])}>
             {items.map((item, index) => (
               <a
@@ -135,13 +152,7 @@ export function NavEcommerce({
             ))}
           </div>
         </div>
-        <div className="mr-[10px] mt-[10px]">
-          <MiniCart
-            openWhenProductIsAddedToCart={true}
-            className={cn(buttonCartStyles[variant])}
-          />
-        </div>
       </div>
-    </nav>
+    </div>
   );
 }
