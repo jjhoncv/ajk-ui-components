@@ -22,7 +22,9 @@ export const ButtonAccount = ({
         )}
       >
         <User className="w-5 h-5 text-gray-600" />
-        <span className="text-sm font-medium text-gray-700">Mi Cuenta</span>
+        <span className="hidden md:block text-sm font-medium text-gray-700">
+          Mi Cuenta
+        </span>
       </button>
     </>
   );

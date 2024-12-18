@@ -1,5 +1,5 @@
 import { cn } from "@ajk-ui/core";
-import { LogIn } from "lucide-react";
+import { User } from "lucide-react";
 
 export const ButtonSignIn = ({
   className,
@@ -21,8 +21,8 @@ export const ButtonSignIn = ({
           className
         )}
       >
-        <LogIn className="w-5 h-5 text-gray-600" />
-        <span className="text-sm font-medium text-gray-700">
+        <User className="w-5 h-5 text-gray-600" />
+        <span className="hidden md:block text-sm font-medium text-gray-700">
           Iniciar Sesión
         </span>
       </button>

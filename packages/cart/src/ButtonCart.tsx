@@ -37,7 +37,9 @@ export const ButtonCart = ({
           </div>
         )}
       </div>
-      <span className="text-sm font-medium text-gray-700">Mi Carrito</span>
+      <span className="hidden md:block text-sm font-medium text-gray-700">
+        Mi Carrito
+      </span>
     </button>
   );
 };

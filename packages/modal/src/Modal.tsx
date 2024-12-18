@@ -82,6 +82,24 @@ export const Modal: FC<ModalProps> = ({
             className
           )}
         >
+          <div className="flex justify-end w-full md:hidden">
+            <button
+              onClick={() => {
+                onClose();
+              }}
+              className="p-2 bg-gray-100 hover:bg-gray-200 rounded-full"
+            >
+              <svg className={cn("w-5 h-5")} fill="none" viewBox="0 0 24 24">
+                <path
+                  className={cn("stroke-slate-950")}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1.5}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
           {children}
         </div>
       </div>
