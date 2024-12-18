@@ -80,7 +80,7 @@ export const CenteredItems: Story = {
 export const WithEcommerce: Story = {
   args: {
     items: defaultItems,
-    variant: "primary",
+    variant: "transparent",
     type: "ecommerce",
     align: "start",
     logo: () => <span className="text-xl font-bold ">Logo</span>,
@@ -107,8 +107,16 @@ export const WithEcommerce: Story = {
             ),
           }}
         >
-          <div className="mx-auto px-4 sm:px-6 max-w-7xl bg-white w-full">
-            <NavEcommerce {...args} />
+          <div className="w-full z-40 bg-white">
+            <NavEcommerce
+              {...args}
+              className="w-full mx-auto px-4 sm:px-6 max-w-7xl h-16 md:h-24 items-center flex "
+            />
+          </div>
+          <div className="w-full p-4 gap-5 flex flex-col">
+            {[1, 2, 3, 4, 5, 6, 7].map((index) => (
+              <div key={index} className="w-full h-56 bg-slate-300"></div>
+            ))}
           </div>
         </CartProvider>
       </AuthProvider>

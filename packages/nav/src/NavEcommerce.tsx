@@ -1,9 +1,42 @@
 import { MiniCart } from "@ajk-ui/cart";
 import { cn, type BaseProps } from "@ajk-ui/core";
 import { useTheme } from "@ajk-ui/theme-utils";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { MenuMobile } from "./MenuMobile";
 import { MiniAccount } from "@ajk-ui/account";
+
+const useNavScroll = (navRef: React.RefObject<HTMLDivElement>) => {
+  const [scrolled, setScrolled] = useState(false);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    const updateHeight = () => {
+      if (navRef.current) {
+        setHeight(navRef.current.offsetHeight);
+      }
+    };
+
+    // Actualizar altura inicial
+    updateHeight();
+
+    // Actualizar altura en cambios de ventana
+    window.addEventListener("resize", updateHeight);
+
+    const handleScroll = () => {
+      const shouldBeFixed = window.scrollY > height;
+      setScrolled(shouldBeFixed);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", updateHeight);
+    };
+  }, [height, navRef]);
+
+  return { scrolled, height };
+};
 
 export interface NavItemEcommerce {
   label: string;
@@ -40,6 +73,9 @@ export function NavEcommerce({
 }: NavEcommerceProps) {
   const { theme } = useTheme();
 
+  const navRef = useRef<HTMLDivElement>(null);
+  const { scrolled, height } = useNavScroll(navRef);
+
   const baseStyles = {
     nav: "w-full py-2",
     container: "mx-auto flex justify-between items-center",
@@ -57,15 +93,15 @@ export function NavEcommerce({
 
   const variantStyles = {
     primary: {
-      nav: "bg-white border-b shadow-sm",
+      nav: cn("bg-white border-b"),
       item: "text-gray-600 hover:text-gray-900",
     },
     transparent: {
-      nav: "bg-transparent",
+      nav: cn("bg-white"),
       item: "text-gray-600 hover:text-gray-900",
     },
     minimal: {
-      nav: "bg-white",
+      nav: cn("bg-white"),
       item: "text-gray-600 hover:text-gray-900",
     },
   };
@@ -90,68 +126,82 @@ export function NavEcommerce({
   };
 
   return (
-    <div className="w-full">
-      <nav
+    <>
+      {scrolled && <div style={{ height: `${height}px` }} />}
+
+      <div
+        ref={navRef}
         className={cn(
-          baseStyles.nav,
-          variantStyles[variant].nav,
-          positionStyles[position],
-          className
+          "w-full",
+          scrolled ? "fixed top-0 left-0 right-0 z-50 bg-white" : position
         )}
-        style={
-          {
-            "--nav-bg": theme.colors.background,
-            "--nav-text": theme.colors.text,
-          } as React.CSSProperties
-        }
-        {...props}
       >
-        <div className="w-full flex justify-between items-center">
-          <div>
-            <div
-              className={cn(baseStyles.container, containerStyles[container])}
-            >
-              <MenuMobile
-                {...{
-                  baseStyles,
-                  variantBoxMobile,
-                  variant,
-                  logoNavMenuMobile: LogoNavMenuMobile,
-                  items,
-                }}
+        <nav
+          className={cn(
+            baseStyles.nav,
+            variantStyles[variant].nav,
+            className,
+            "transition-all duration-50 ease-in-out"
+          )}
+          style={
+            {
+              "--nav-bg": theme.colors.background,
+              "--nav-text": theme.colors.text,
+            } as React.CSSProperties
+          }
+          {...props}
+        >
+          <div className="w-full flex justify-between items-center">
+            <div>
+              <div
+                className={cn(baseStyles.container, containerStyles[container])}
+              >
+                <MenuMobile
+                  {...{
+                    baseStyles,
+                    variantBoxMobile,
+                    variant,
+                    logoNavMenuMobile: LogoNavMenuMobile,
+                    items,
+                  }}
+                />
+                {Logo && (
+                  <div className={cn(`ml-3 md:ml-0`, baseStyles.logo)}>
+                    <Logo />
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className="flex gap-5">
+              <MiniCart
+                openWhenProductIsAddedToCart={true}
+                className={cn(buttonCartStyles[variant])}
               />
-              {Logo && (
-                <div className={cn(`ml-3 md:ml-0`, baseStyles.logo)}>
-                  <Logo />
-                </div>
-              )}
+              <MiniAccount />
             </div>
           </div>
-          <div className="flex gap-5">
-            <MiniCart
-              openWhenProductIsAddedToCart={true}
-              className={cn(buttonCartStyles[variant])}
-            />
-            <MiniAccount />
-          </div>
-        </div>
-      </nav>
-      <div className="flex w-full items-center h-full border-t">
-        <div className="w-full mx-auto px-4 sm:px-6 max-w-7xl h-full flex items-center">
-          <div className={cn(baseStyles.menu, alignStyles[align])}>
-            {items.map((item, index) => (
-              <a
-                key={index}
-                href={item.href}
-                className={cn(baseStyles.item, variantStyles[variant].item)}
-              >
-                {item.icon && <span className="mr-2">{item.icon}</span>}
-                {item.label}
-              </a>
-            ))}
+        </nav>
+        <div
+          className={cn("flex bg-white w-full items-center h-full border-t", {
+            "shadow-lg": scrolled,
+          })}
+        >
+          <div className="w-full mx-auto px-4 sm:px-6 max-w-7xl h-full flex items-center">
+            <div className={cn(baseStyles.menu, alignStyles[align])}>
+              {items.map((item, index) => (
+                <a
+                  key={index}
+                  href={item.href}
+                  className={cn(baseStyles.item, variantStyles[variant].item)}
+                >
+                  {item.icon && <span className="mr-2">{item.icon}</span>}
+                  {item.label}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
