@@ -40,7 +40,7 @@ export function NavEcommerce({
   const { theme } = useTheme();
 
   const baseStyles = {
-    nav: "w-full px-4 py-2",
+    nav: "w-full py-2",
     container: "mx-auto flex justify-between items-center",
     logo: "flex items-center",
     menuButton: "block md:hidden",
@@ -61,7 +61,7 @@ export function NavEcommerce({
     },
     transparent: {
       nav: "bg-transparent",
-      item: "text-gray-200 hover:text-white",
+      item: "text-gray-600 hover:text-gray-900",
     },
     minimal: {
       nav: "bg-white",
@@ -84,7 +84,7 @@ export function NavEcommerce({
 
   const buttonCartStyles = {
     primary: "fill-gray-800",
-    transparent: "fill-white",
+    transparent: "fill-gray-800",
     minimal: "fill-gray-800",
   };
 
@@ -104,40 +104,44 @@ export function NavEcommerce({
       }
       {...props}
     >
-      <>
-        <div className={cn(baseStyles.container, containerStyles[container])}>
-          <MenuMobile
-            {...{
-              baseStyles,
-              variantBoxMobile,
-              variant,
-              logoNavMenuMobile: LogoNavMenuMobile,
-              items,
-            }}
-          />
-          {Logo && (
-            <div className={baseStyles.logo}>
-              <Logo />
-            </div>
-          )}
-
-          <div>
-            <MiniCart className={cn(buttonCartStyles[variant])} />
+      <div className="w-full flex justify-between items-center">
+        <div>
+          <div className={cn(baseStyles.container, containerStyles[container])}>
+            <MenuMobile
+              {...{
+                baseStyles,
+                variantBoxMobile,
+                variant,
+                logoNavMenuMobile: LogoNavMenuMobile,
+                items,
+              }}
+            />
+            {Logo && (
+              <div className={cn(`ml-3 md:ml-0`, baseStyles.logo)}>
+                <Logo />
+              </div>
+            )}
+          </div>
+          <div className={cn(baseStyles.menu, alignStyles[align])}>
+            {items.map((item, index) => (
+              <a
+                key={index}
+                href={item.href}
+                className={cn(baseStyles.item, variantStyles[variant].item)}
+              >
+                {item.icon && <span className="mr-2">{item.icon}</span>}
+                {item.label}
+              </a>
+            ))}
           </div>
         </div>
-        <div className={cn(baseStyles.menu, alignStyles[align])}>
-          {items.map((item, index) => (
-            <a
-              key={index}
-              href={item.href}
-              className={cn(baseStyles.item, variantStyles[variant].item)}
-            >
-              {item.icon && <span className="mr-2">{item.icon}</span>}
-              {item.label}
-            </a>
-          ))}
+        <div className="mr-[10px] mt-[10px]">
+          <MiniCart
+            openWhenProductIsAddedToCart={true}
+            className={cn(buttonCartStyles[variant])}
+          />
         </div>
-      </>
+      </div>
     </nav>
   );
 }

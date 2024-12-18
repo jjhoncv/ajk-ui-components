@@ -150,7 +150,6 @@ export function Card({
           "--card-border": theme.colors.primary,
         } as React.CSSProperties
       }
-      {...props}
     >
       {/* Image */}
       {image && (
@@ -164,6 +163,7 @@ export function Card({
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
+          {...props}
         />
       )}
 
@@ -174,55 +174,59 @@ export function Card({
           layout === "horizontal" && "md:w-2/3"
         )}
       >
-        {badge && (
-          <span className={cn(baseStyles.badge, currentVariantStyles.badge)}>
-            {badge}
-          </span>
-        )}
+        <div {...props}>
+          {badge && (
+            <span className={cn(baseStyles.badge, currentVariantStyles.badge)}>
+              {badge}
+            </span>
+          )}
 
-        {title && (
-          <h3 className={cn(baseStyles.title, currentVariantStyles.title)}>
-            {title}
-          </h3>
-        )}
+          {title && (
+            <h3 className={cn(baseStyles.title, currentVariantStyles.title)}>
+              {title}
+            </h3>
+          )}
 
-        {subtitle && <p className={baseStyles.subtitle}>{subtitle}</p>}
+          {subtitle && <p className={baseStyles.subtitle}>{subtitle}</p>}
 
-        {price && variant === "pricing" && (
-          <div className={baseStyles.price}>{price}</div>
-        )}
+          {price && variant === "pricing" && (
+            <div className={baseStyles.price}>{price}</div>
+          )}
 
-        {description && <p className={baseStyles.description}>{description}</p>}
+          {description && (
+            <p className={baseStyles.description}>{description}</p>
+          )}
 
-        {features && variant === "pricing" && (
-          <ul
-            className={cn(baseStyles.features, currentVariantStyles.features)}
-          >
-            {features.map((feature, index) => (
-              <li key={index} className="py-2">
-                {feature}
-              </li>
-            ))}
-          </ul>
-        )}
+          {features && variant === "pricing" && (
+            <ul
+              className={cn(baseStyles.features, currentVariantStyles.features)}
+            >
+              {features.map((feature, index) => (
+                <li key={index} className="py-2">
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          )}
 
-        {author && variant === "testimonial" && (
-          <div className={baseStyles.author}>
-            {author.avatar && (
-              <img
-                src={author.avatar}
-                alt={author.name}
-                className={baseStyles.avatar}
-              />
-            )}
-            <div className={baseStyles.authorInfo}>
-              <div className="font-medium">{author.name}</div>
-              {author.title && (
-                <div className="text-sm text-gray-500">{author.title}</div>
+          {author && variant === "testimonial" && (
+            <div className={baseStyles.author}>
+              {author.avatar && (
+                <img
+                  src={author.avatar}
+                  alt={author.name}
+                  className={baseStyles.avatar}
+                />
               )}
+              <div className={baseStyles.authorInfo}>
+                <div className="font-medium">{author.name}</div>
+                {author.title && (
+                  <div className="text-sm text-gray-500">{author.title}</div>
+                )}
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
 
         {children}
 

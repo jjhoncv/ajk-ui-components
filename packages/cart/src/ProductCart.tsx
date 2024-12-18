@@ -29,6 +29,7 @@ export const ProductCart = ({
       description={description}
       image={image}
       badge={condition}
+      className="cursor-pointer"
       {...props}
     >
       <div className="flex mt-2">

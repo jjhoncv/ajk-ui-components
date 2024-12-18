@@ -1,3 +1,4 @@
+import { useCart } from "@ajk-ui/cart";
 import { Product, ProductImage } from "@ajk-ui/product";
 import { ProductGallery } from "@ajk-ui/product-gallery";
 import { ProductInfo } from "@ajk-ui/product-info";
@@ -9,6 +10,8 @@ interface ProductDetailProps {
 }
 
 export const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
+  const { addItem } = useCart();
+
   const [selectedSize, setSelectedSize] = useState<string>("");
   const [quantity, setQuantity] = useState<number>(1);
   const [selectedImage, setSelectedImage] = useState<ProductImage>(
@@ -34,11 +37,21 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
     }
 
     // Aquí implementarías la lógica para añadir al carrito
-    console.log("Añadiendo al carrito:", {
-      productId: product.id,
-      size: selectedSize,
-      quantity: quantity,
+
+    addItem({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: selectedImage.size.xs.url,
+      subname: product.subname,
+      quantity,
     });
+
+    // console.log("Añadiendo al carrito:", {
+    //   productId: product.id,
+    //   size: selectedSize,
+    //   quantity: quantity,
+    // });
   };
 
   return (

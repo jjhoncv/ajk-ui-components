@@ -1,6 +1,6 @@
 import { cn } from "@ajk-ui/core";
-import { Sheet } from "@ajk-ui/sheet";
 import React from "react";
+import { Sheet } from "@ajk-ui/sheet";
 import { BaseStyles, NavItem, NavProps } from "./Nav";
 
 interface MenuMobileProps extends NavProps {
@@ -21,7 +21,7 @@ export const MenuMobile = ({
     box: "md:invisible duration-300 transition-all shadow-2xl  translate-x-[-100%] w-[80%] fixed z-40 left-0 h-dvh top-0 px-4 py-2",
     bg: "bg-white",
     item: "text-gray-800",
-    burger: "text-white",
+    burger: "text-gray",
     x: "text-gray-900",
     position: "fixed right-5 top-5",
   };
@@ -32,7 +32,7 @@ export const MenuMobile = ({
         box: "md:invisible translate-x-[-100%] w-[100%] fixed z-40 h-dvh top-0 border-b-0 border-t-0 border-l-0  px-4 py-2",
         bg: "bg-white",
         item: "text-gray-800",
-        burger: "stroke-white",
+        burger: "stroke-black",
         x: "stroke-white",
         position: "absolute right-0 top-0",
       },
@@ -64,9 +64,9 @@ export const MenuMobile = ({
         aria-label="Toggle menu"
       >
         <svg
-          className={cn(baseStyles.menuIcon, "w-8 h-8")}
+          className={cn(baseStyles.menuIcon, "w-6 h-6")}
           fill="none"
-          viewBox="0 0 24 24"
+          viewBox="3 6 18 12"
         >
           {isMobileMenuOpen ? (
             <path

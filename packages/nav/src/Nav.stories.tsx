@@ -105,7 +105,9 @@ export const WithEcommerce: Story = {
           ),
         }}
       >
-        <NavEcommerce {...args} />
+        <div className="mx-auto px-4 sm:px-6 max-w-7xl bg-white w-full">
+          <NavEcommerce {...args} />
+        </div>
       </CartProvider>
     );
   },

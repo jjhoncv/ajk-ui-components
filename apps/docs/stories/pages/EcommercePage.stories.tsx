@@ -98,12 +98,14 @@ const TechStorePage = () => {
       <ThemeProvider initialTheme={techTheme}>
         <div className="min-h-screen bg-background">
           {/* Header */}
-          <NavEcommerce
-            items={navItems}
-            logo={Logo}
-            variant="primary"
-            logoNavMenuMobile={LogoNavMenuMobile}
-          />
+          <div className="mx-auto px-4 sm:px-6 max-w-7xl bg-white w-full">
+            <NavEcommerce
+              items={navItems}
+              logo={Logo}
+              variant="transparent"
+              logoNavMenuMobile={LogoNavMenuMobile}
+            />
+          </div>
           <Header
             title="TechStore"
             position="relative"

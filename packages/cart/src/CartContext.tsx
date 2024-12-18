@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer } from "react";
+import React, { createContext, useContext, useEffect } from "react";
 
 // Interfaces
 export interface CartItem {
@@ -14,6 +14,7 @@ interface CartState {
   items: CartItem[];
   total: number;
   itemCount: number;
+  changeCounter: number; // Add this new field
 }
 
 interface CartContextType extends CartState {
@@ -28,22 +29,56 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 interface CartProviderProps {
   children: React.ReactNode;
   initialState?: Partial<CartState>;
+  storageKey?: string;
 }
 
 const defaultInitialState: CartState = {
   items: [],
   total: 0,
   itemCount: 0,
+  changeCounter: 0,
+};
+
+// Helper functions for localStorage
+const loadFromStorage = (key: string): CartState => {
+  try {
+    const storedData = localStorage.getItem(key);
+    if (storedData) {
+      return JSON.parse(storedData);
+    }
+  } catch (error) {
+    console.error("Error loading cart from localStorage:", error);
+  }
+  return defaultInitialState;
+};
+
+const saveToStorage = (key: string, state: CartState): void => {
+  try {
+    localStorage.setItem(key, JSON.stringify(state));
+  } catch (error) {
+    console.error("Error saving cart to localStorage:", error);
+  }
 };
 
 export const CartProvider: React.FC<CartProviderProps> = ({
   children,
   initialState = defaultInitialState,
+  storageKey = "shopping-cart",
 }) => {
-  const [state, setState] = React.useState<CartState>({
-    ...defaultInitialState,
-    ...initialState,
+  const [state, setState] = React.useState<CartState>(() => {
+    const storedState = loadFromStorage(storageKey);
+    return {
+      ...defaultInitialState,
+      ...initialState,
+      ...storedState,
+      changeCounter: 0, // Reset counter on initial load
+    };
   });
+
+  // Save to localStorage whenever state changes
+  useEffect(() => {
+    saveToStorage(storageKey, state);
+  }, [state, storageKey]);
 
   const addItem = (
     item: Omit<CartItem, "quantity"> & { quantity?: number }
@@ -61,6 +96,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({
           items: updatedItems,
           total: calculateTotal(updatedItems),
           itemCount: calculateItemCount(updatedItems),
+          changeCounter: prevState.changeCounter + 1,
         };
       }
 
@@ -72,6 +108,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({
         items: newItems,
         total: calculateTotal(newItems),
         itemCount: calculateItemCount(newItems),
+        changeCounter: prevState.changeCounter + 1,
       };
     });
   };
@@ -84,6 +121,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({
         items: newItems,
         total: calculateTotal(newItems),
         itemCount: calculateItemCount(newItems),
+        changeCounter: prevState.changeCounter + 1,
       };
     });
   };
@@ -102,12 +140,16 @@ export const CartProvider: React.FC<CartProviderProps> = ({
         items: updatedItems,
         total: calculateTotal(updatedItems),
         itemCount: calculateItemCount(updatedItems),
+        changeCounter: prevState.changeCounter + 1,
       };
     });
   };
 
   const clearCart = () => {
-    setState(defaultInitialState);
+    setState({
+      ...defaultInitialState,
+      changeCounter: state.changeCounter + 1,
+    });
   };
 
   const value = {
@@ -132,7 +174,7 @@ const calculateItemCount = (items: CartItem[]): number => {
 export const useCart = (): CartContextType => {
   const context = useContext(CartContext);
   if (!context) {
-    throw new Error("useCart debe ser usado dentro de un CartProvider");
+    throw new Error("useCart must be used within a CartProvider");
   }
   return context;
 };

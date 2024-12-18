@@ -1,7 +1,7 @@
 import { Button } from "@ajk-ui/button";
 import { cn, formatPEN } from "@ajk-ui/core";
 import { Sheet } from "@ajk-ui/sheet";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ButtonCart from "./ButtonCart";
 
 import { ButtonPlusMinus } from "./ButtonPlusMinus";
@@ -19,14 +19,19 @@ export const MiniCart = ({
   className = "",
 }: MiniCartProps) => {
   const [isOpen, setIsOpen] = useState(isOpenInitial);
-
-  const { items, total, itemCount, updateQuantity } = useCart();
+  const { items, total, itemCount, updateQuantity, changeCounter } = useCart();
+  const isInitialMount = useRef(true);
 
   useEffect(() => {
-    if (openWhenProductIsAddedToCart && total > 0) {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+
+    if (openWhenProductIsAddedToCart) {
       setIsOpen(true);
     }
-  }, [total]);
+  }, [changeCounter, openWhenProductIsAddedToCart]);
 
   const toggleCart = () => setIsOpen(!isOpen);
   return (
