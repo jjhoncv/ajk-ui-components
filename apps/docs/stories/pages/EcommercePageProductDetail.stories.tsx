@@ -90,14 +90,31 @@ const TechStoreProductDetailPage = () => {
     { platform: "twitter" as const, href: "#" },
   ];
 
-  console.log("window.location", window.location);
-
   const searchParams = new URLSearchParams(window.location.search);
   const id = searchParams.get("productId") || 1;
   if (!id) {
     return null;
   }
   const product = mockProducts.find((product) => product.id === Number(id));
+  if (product === undefined) return;
+
+  const productSolve = {
+    ...product,
+    images: {
+      gallery: product.images.gallery.map((item) => ({
+        ...item,
+        size: {
+          lg: {
+            url: getImagePath(item.size.lg.url),
+          },
+          xs: {
+            url: getImagePath(item.size.xs.url),
+          },
+        },
+      })),
+    },
+  };
+
   return (
     <CartProvider>
       <ThemeProvider initialTheme={techTheme}>
@@ -110,7 +127,7 @@ const TechStoreProductDetailPage = () => {
             logoNavMenuMobile={LogoNavMenuMobile}
           />
 
-          <ProductDetail product={product} />
+          <ProductDetail product={productSolve} />
 
           {/* Footer */}
           <Footer

@@ -7,7 +7,6 @@ import { HTMLAttributes } from "react";
 interface ProductCartProps extends Omit<CartItem, "quantity"> {
   description: string;
   condition: string;
-  link: string;
 }
 
 export const ProductCart = ({
