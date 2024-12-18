@@ -84,7 +84,7 @@ export const MiniCart = ({
               {items.map((item) => (
                 <div
                   key={item.id}
-                  className="flex space-x-4  py-3 rounded-lg items-start"
+                  className="flex space-x-4 py-3 rounded-lg items-start"
                 >
                   <img
                     src={item.image}
@@ -92,10 +92,10 @@ export const MiniCart = ({
                     className="w-20 h-20 object-cover rounded"
                   />
                   <div className="flex-1">
-                    <h3 className="font-bold block text-xs">{item.name}</h3>
-                    <h4 className="font-medium text-xs">{item.subname}</h4>
+                    <h3 className="font-bold block text-sm">{item.name}</h3>
+                    <h4 className="font-medium text-sm">{item.subname}</h4>
 
-                    <p className="text-gray-600 font-bold text-sm">
+                    <p className="text-gray-600 font-bold text-base">
                       {formatPEN(item.price)}
                     </p>
                     <div className="flex items-center space-x-2 mt-2">
@@ -135,10 +135,12 @@ export const MiniCart = ({
             <span>{formatPEN(total)}</span>
           </div>
           <Button
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50"
+            // className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50"
             disabled={items.length === 0}
+            variant="primary"
+            className="w-full !text-white"
           >
-            Proceed to Checkout
+            Continuar compra
           </Button>
         </div>
       </Sheet>
