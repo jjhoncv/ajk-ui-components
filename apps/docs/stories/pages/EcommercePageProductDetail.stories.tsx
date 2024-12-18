@@ -101,6 +101,10 @@ const TechStoreProductDetailPage = () => {
 
   const productSolve = {
     ...product,
+    brand: {
+      ...product.brand,
+      logo: getImagePath(product.brand.logo),
+    },
     images: {
       gallery: product.images.gallery.map((item) => ({
         ...item,
