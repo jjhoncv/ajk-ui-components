@@ -6,6 +6,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src", "../login/src/ButtonSignIn.tsx"],
+  "include": ["src"],
   "exclude": ["node_modules", "dist"]
 }

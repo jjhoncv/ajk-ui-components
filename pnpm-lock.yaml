@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      lucide-react:
+        specifier: ^0.468.0
+        version: 0.468.0(react@18.3.1)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -39,9 +42,9 @@ importers:
 
   apps/docs:
     dependencies:
-      '@ajk-ui/account':
+      '@ajk-ui/auth':
         specifier: workspace:*
-        version: link:../../packages/account
+        version: link:../../packages/auth
       '@ajk-ui/button':
         specifier: workspace:*
         version: link:../../packages/button
@@ -136,15 +139,55 @@ importers:
 
   packages/account:
     dependencies:
+      '@ajk-ui/auth':
+        specifier: workspace:*
+        version: link:../auth
       '@ajk-ui/core':
         specifier: workspace:*
         version: link:../core
+      '@ajk-ui/login':
+        specifier: workspace:*
+        version: link:../login
+      '@ajk-ui/sheet':
+        specifier: workspace:*
+        version: link:../sheet
+      '@ajk-ui/theme-utils':
+        specifier: workspace:*
+        version: link:../theme-utils
       clsx:
         specifier: ^2.0.0
         version: 2.1.1
       tailwind-merge:
         specifier: ^2.0.0
         version: 2.5.5
+    devDependencies:
+      '@storybook/react':
+        specifier: ^7.0.0
+        version: 7.6.20(react-dom@18.3.1)(react@18.3.1)(typescript@5.7.2)
+      '@types/react':
+        specifier: ^18.3.12
+        version: 18.3.12
+      '@types/react-dom':
+        specifier: ^18.3.1
+        version: 18.3.1
+      eslint:
+        specifier: ^8.0.0
+        version: 8.57.1
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      tsup:
+        specifier: ^8.0.0
+        version: 8.3.5(postcss@8.4.49)(typescript@5.7.2)
+      typescript:
+        specifier: ^5.7.2
+        version: 5.7.2
+
+  packages/auth:
+    dependencies:
+      '@ajk-ui/user':
+        specifier: workspace:*
+        version: link:../user
     devDependencies:
       '@storybook/react':
         specifier: ^7.0.0
@@ -436,11 +479,91 @@ importers:
         specifier: ^5.7.2
         version: 5.7.2
 
+  packages/login:
+    dependencies:
+      '@ajk-ui/auth':
+        specifier: workspace:*
+        version: link:../auth
+      '@ajk-ui/core':
+        specifier: workspace:*
+        version: link:../core
+      '@ajk-ui/modal':
+        specifier: workspace:*
+        version: link:../modal
+      '@ajk-ui/theme-utils':
+        specifier: workspace:*
+        version: link:../theme-utils
+      clsx:
+        specifier: ^2.0.0
+        version: 2.1.1
+      tailwind-merge:
+        specifier: ^2.0.0
+        version: 2.5.5
+    devDependencies:
+      '@storybook/react':
+        specifier: ^7.0.0
+        version: 7.6.20(react-dom@18.3.1)(react@18.3.1)(typescript@5.7.2)
+      '@types/react':
+        specifier: ^18.3.12
+        version: 18.3.12
+      '@types/react-dom':
+        specifier: ^18.3.1
+        version: 18.3.1
+      eslint:
+        specifier: ^8.0.0
+        version: 8.57.1
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      tsup:
+        specifier: ^8.0.0
+        version: 8.3.5(postcss@8.4.49)(typescript@5.7.2)
+      typescript:
+        specifier: ^5.7.2
+        version: 5.7.2
+
+  packages/modal:
+    dependencies:
+      '@ajk-ui/core':
+        specifier: workspace:*
+        version: link:../core
+      clsx:
+        specifier: ^2.0.0
+        version: 2.1.1
+      tailwind-merge:
+        specifier: ^2.0.0
+        version: 2.5.5
+    devDependencies:
+      '@storybook/react':
+        specifier: ^7.0.0
+        version: 7.6.20(react-dom@18.3.1)(react@18.3.1)(typescript@5.7.2)
+      '@types/react':
+        specifier: ^18.3.12
+        version: 18.3.12
+      '@types/react-dom':
+        specifier: ^18.3.1
+        version: 18.3.1
+      eslint:
+        specifier: ^8.0.0
+        version: 8.57.1
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      tsup:
+        specifier: ^8.0.0
+        version: 8.3.5(postcss@8.4.49)(typescript@5.7.2)
+      typescript:
+        specifier: ^5.7.2
+        version: 5.7.2
+
   packages/nav:
     dependencies:
       '@ajk-ui/account':
         specifier: workspace:*
         version: link:../account
+      '@ajk-ui/auth':
+        specifier: workspace:*
+        version: link:../auth
       '@ajk-ui/cart':
         specifier: workspace:*
         version: link:../cart
@@ -835,6 +958,30 @@ importers:
         specifier: ^3.0.0
         version: 3.4.15
     devDependencies:
+      '@types/react':
+        specifier: ^18.3.12
+        version: 18.3.12
+      '@types/react-dom':
+        specifier: ^18.3.1
+        version: 18.3.1
+      eslint:
+        specifier: ^8.0.0
+        version: 8.57.1
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      tsup:
+        specifier: ^8.0.0
+        version: 8.3.5(postcss@8.4.49)(typescript@5.7.2)
+      typescript:
+        specifier: ^5.7.2
+        version: 5.7.2
+
+  packages/user:
+    devDependencies:
+      '@storybook/react':
+        specifier: ^7.0.0
+        version: 7.6.20(react-dom@18.3.1)(react@18.3.1)(typescript@5.7.2)
       '@types/react':
         specifier: ^18.3.12
         version: 18.3.12
@@ -7559,6 +7706,14 @@ packages:
     dependencies:
       yallist: 3.1.1
     dev: true
+
+  /lucide-react@0.468.0(react@18.3.1):
+    resolution: {integrity: sha512-6koYRhnM2N0GGZIdXzSeiNwguv1gt/FAjZOiPl76roBi3xKEXa4WmfpxgQwTTL4KipXjefrnf3oV4IsYhi4JFA==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0-rc
+    dependencies:
+      react: 18.3.1
+    dev: false
 
   /lz-string@1.5.0:
     resolution: {integrity: sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==}

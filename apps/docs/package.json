@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@ajk-ui/core": "workspace:*",
+    "@ajk-ui/auth": "workspace:*",
     "@ajk-ui/data": "workspace:*",
     "@ajk-ui/button": "workspace:*",
     "@ajk-ui/card": "workspace:*",

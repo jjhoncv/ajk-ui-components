@@ -1,3 +1,4 @@
+import { AuthProvider } from "@ajk-ui/auth";
 import { CartProvider } from "@ajk-ui/cart";
 import { mockProducts } from "@ajk-ui/data";
 import { Footer } from "@ajk-ui/footer";
@@ -21,7 +22,7 @@ const techTheme = createTheme({
 
 const Logo = () => (
   <div
-    className="flex items-center"
+    className="flex items-center cursor-pointer"
     onClick={() => {
       if (typeof window !== "undefined") {
         window.location.href = getImagePath(
@@ -121,49 +122,52 @@ const TechStoreProductDetailPage = () => {
   };
 
   return (
-    <CartProvider>
-      <ThemeProvider initialTheme={techTheme}>
-        <div className="min-h-screen bg-background">
-          {/* Header */}
-          <div className="hidden md:flex bg-white border-b text-gray-600 text-sm font-light">
-            <div className="w-full mx-auto px-4 sm:px-6 max-w-7xl">
-              <div className="w-full justify-between h-10 flex items-center ">
-                <div>
-                  <div>About Us | My Account | Wishlist | Order Tracking</div>
+    <AuthProvider>
+      <CartProvider>
+        <ThemeProvider initialTheme={techTheme}>
+          <div className="min-h-screen bg-background">
+            {/* Header */}
+            <div className="hidden md:flex bg-white border-b text-gray-600 text-sm font-light">
+              <div className="w-full mx-auto px-4 sm:px-6 max-w-7xl">
+                <div className="w-full justify-between h-10 flex items-center ">
+                  <div>
+                    <div>About Us | My Account | Wishlist | Order Tracking</div>
+                  </div>
+                  <div>100% Secure delivery without contacting the courier</div>
+                  <div>Need help? Call Us:+ 1800 900 | English | USD</div>
                 </div>
-                <div>100% Secure delivery without contacting the courier</div>
-                <div>Need help? Call Us:+ 1800 900 | English | USD</div>
               </div>
             </div>
-          </div>
-          <div className="w-full z-40 bg-white border-b shadow-sm">
-            <NavEcommerce
-              items={navItems}
-              logo={Logo}
-              variant="transparent"
-              logoNavMenuMobile={LogoNavMenuMobile}
-              className="w-full mx-auto px-4 sm:px-6 max-w-7xl h-16 md:h-24 items-center flex "
+            <div className="w-full z-40 bg-white border-b shadow-sm">
+              <NavEcommerce
+                items={navItems}
+                logo={Logo}
+                variant="transparent"
+                logoNavMenuMobile={LogoNavMenuMobile}
+                className="w-full mx-auto px-4 sm:px-6 max-w-7xl h-16 md:h-24 items-center flex "
+              />
+            </div>
+            <div className="w-full mx-auto px-4 sm:px-6 max-w-7xl ">
+              <ProductDetail product={productSolve} />
+            </div>
+            {/* Footer */}
+            <Footer
+              variant="simple"
+              logo={<LogoFooter />}
+              columns={footerColumns}
+              social={socialLinks}
+              copyright="© 2024 TechStore. Todos los derechos reservados."
+              newsletter={{
+                title: "Suscríbete",
+                description:
+                  "Recibe las últimas novedades y ofertas exclusivas",
+                buttonText: "Suscribirse",
+              }}
             />
           </div>
-          <div className="w-full mx-auto px-4 sm:px-6 max-w-7xl ">
-            <ProductDetail product={productSolve} />
-          </div>
-          {/* Footer */}
-          <Footer
-            variant="simple"
-            logo={<LogoFooter />}
-            columns={footerColumns}
-            social={socialLinks}
-            copyright="© 2024 TechStore. Todos los derechos reservados."
-            newsletter={{
-              title: "Suscríbete",
-              description: "Recibe las últimas novedades y ofertas exclusivas",
-              buttonText: "Suscribirse",
-            }}
-          />
-        </div>
-      </ThemeProvider>
-    </CartProvider>
+        </ThemeProvider>
+      </CartProvider>
+    </AuthProvider>
   );
 };
 

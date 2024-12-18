@@ -8,6 +8,7 @@ import { Section } from "@ajk-ui/section";
 import { ThemeProvider, createTheme } from "@ajk-ui/theme-utils";
 import { Meta, StoryObj } from "@storybook/react";
 import { NavEcommerce } from "@ajk-ui/nav";
+import { AuthProvider } from "@ajk-ui/auth";
 
 // Tema personalizado para e-commerce de tecnología
 const techTheme = createTheme({
@@ -24,7 +25,7 @@ const techTheme = createTheme({
 
 const Logo = () => (
   <div
-    className="flex items-center"
+    className="flex items-center cursor-pointer"
     onClick={() => {
       if (typeof window !== "undefined") {
         window.location.href = getImagePath(
@@ -95,137 +96,141 @@ const TechStorePage = () => {
   ];
 
   return (
-    <CartProvider>
-      <ThemeProvider initialTheme={techTheme}>
-        <div className="min-h-screen bg-background">
-          {/* Header */}
-          <div className="hidden md:flex bg-white border-b text-gray-600 text-sm font-light">
-            <div className="w-full mx-auto px-4 sm:px-6 max-w-7xl">
-              <div className="w-full justify-between h-10 flex items-center ">
-                <div>
-                  <div>About Us | My Account | Wishlist | Order Tracking</div>
+    <AuthProvider>
+      <CartProvider>
+        <ThemeProvider initialTheme={techTheme}>
+          <div className="min-h-screen bg-background">
+            {/* Header */}
+            <div className="hidden md:flex bg-white border-b text-gray-600 text-sm font-light">
+              <div className="w-full mx-auto px-4 sm:px-6 max-w-7xl">
+                <div className="w-full justify-between h-10 flex items-center ">
+                  <div>
+                    <div>About Us | My Account | Wishlist | Order Tracking</div>
+                  </div>
+                  <div>100% Secure delivery without contacting the courier</div>
+                  <div>Need help? Call Us:+ 1800 900 | English | USD</div>
                 </div>
-                <div>100% Secure delivery without contacting the courier</div>
-                <div>Need help? Call Us:+ 1800 900 | English | USD</div>
               </div>
             </div>
-          </div>
-          <div className="w-full z-40 bg-white border-b shadow-sm">
-            <NavEcommerce
-              items={navItems}
-              logo={Logo}
-              variant="transparent"
-              logoNavMenuMobile={LogoNavMenuMobile}
-              className="w-full mx-auto px-4 sm:px-6 max-w-7xl h-16 md:h-24 items-center flex "
+            <div className="w-full z-40 bg-white border-b shadow-sm">
+              <NavEcommerce
+                items={navItems}
+                logo={Logo}
+                variant="transparent"
+                logoNavMenuMobile={LogoNavMenuMobile}
+                className="w-full mx-auto px-4 sm:px-6 max-w-7xl h-16 md:h-24 items-center flex "
+              />
+            </div>
+            <Header
+              title="TechStore"
+              position="relative"
+              subtitle="Tu destino tecnológico"
+              backgroundImage={getImagePath("/images/ecommerce/hero.jpg")}
+              variant="hero"
+              height="lg"
+              cta={{
+                label: "Ver Ofertas",
+                href: "/ofertas",
+                variant: "primary",
+              }}
             />
-          </div>
-          <Header
-            title="TechStore"
-            position="relative"
-            subtitle="Tu destino tecnológico"
-            backgroundImage={getImagePath("/images/ecommerce/hero.jpg")}
-            variant="hero"
-            height="lg"
-            cta={{
-              label: "Ver Ofertas",
-              href: "/ofertas",
-              variant: "primary",
-            }}
-          />
 
-          {/* Productos Destacados */}
-          <Section
-            variant="feature"
-            layout="grid"
-            title="Productos Destacados"
-            subtitle="Las últimas novedades en tecnología"
-            gridCols={4}
-            gap="lg"
-          >
-            {mockProducts.map((product, key) => (
-              <ProductCart
-                key={key}
-                onClick={() => {
-                  window.top.location.href = getImagePath(
-                    `/iframe.html?productId=${product.id}&args=&id=pages-ecommerce--product-detail-page&viewMode=story`
-                  );
-                }}
-                {...{
-                  ...product,
-                  image: getImagePath(product.images.gallery[0].size.lg.url),
+            {/* Productos Destacados */}
+            <Section
+              variant="feature"
+              layout="grid"
+              title="Productos Destacados"
+              subtitle="Las últimas novedades en tecnología"
+              gridCols={4}
+              gap="lg"
+            >
+              {mockProducts.map((product, key) => (
+                <ProductCart
+                  key={key}
+                  onClick={() => {
+                    window.top.location.href = getImagePath(
+                      `/iframe.html?productId=${product.id}&args=&id=pages-ecommerce--product-detail-page&viewMode=story`
+                    );
+                  }}
+                  {...{
+                    ...product,
+                    image: getImagePath(product.images.gallery[0].size.lg.url),
+                  }}
+                />
+              ))}
+            </Section>
+
+            {/* Sección de Ofertas */}
+            <Section
+              variant="highlight"
+              layout="split"
+              backgroundImage={getImagePath(
+                "/images/ecommerce/special-offers.jpg"
+              )}
+              overlay
+              title="Ofertas Especiales"
+              subtitle="¡No te pierdas nuestros descuentos!"
+            >
+              <div className="flex flex-col space-y-4">
+                <p className="text-gray-200">
+                  Descubre nuestras ofertas exclusivas en productos
+                  seleccionados. ¡Hasta 30% de descuento en las mejores marcas
+                  de tecnología!
+                </p>
+                <div>
+                  <Button variant="outline">Ver Todas las Ofertas</Button>
+                </div>
+              </div>
+            </Section>
+
+            {/* Testimonios */}
+            <Section
+              variant="alternate"
+              title="Opiniones de Clientes"
+              subtitle="Lo que dicen nuestros clientes"
+              layout="grid"
+              gridCols={2}
+            >
+              <Card
+                variant="testimonial"
+                title="Excelente servicio"
+                description="La entrega fue rápida y el producto llegó en perfectas condiciones. El soporte técnico es excepcional."
+                author={{
+                  name: "Ana García",
+                  title: "Cliente Verificado",
+                  avatar: getImagePath("/images/ecommerce/avatar1.jpg"),
                 }}
               />
-            ))}
-          </Section>
+              <Card
+                variant="testimonial"
+                title="Productos de calidad"
+                description="Los precios son competitivos y la calidad de los productos es excelente. Definitivamente volveré a comprar."
+                author={{
+                  name: "Carlos Ruiz",
+                  title: "Cliente Frecuente",
+                  avatar: getImagePath("/images/ecommerce/avatar2.jpg"),
+                }}
+              />
+            </Section>
 
-          {/* Sección de Ofertas */}
-          <Section
-            variant="highlight"
-            layout="split"
-            backgroundImage={getImagePath(
-              "/images/ecommerce/special-offers.jpg"
-            )}
-            overlay
-            title="Ofertas Especiales"
-            subtitle="¡No te pierdas nuestros descuentos!"
-          >
-            <div className="flex flex-col space-y-4">
-              <p className="text-gray-200">
-                Descubre nuestras ofertas exclusivas en productos seleccionados.
-                ¡Hasta 30% de descuento en las mejores marcas de tecnología!
-              </p>
-              <div>
-                <Button variant="outline">Ver Todas las Ofertas</Button>
-              </div>
-            </div>
-          </Section>
-
-          {/* Testimonios */}
-          <Section
-            variant="alternate"
-            title="Opiniones de Clientes"
-            subtitle="Lo que dicen nuestros clientes"
-            layout="grid"
-            gridCols={2}
-          >
-            <Card
-              variant="testimonial"
-              title="Excelente servicio"
-              description="La entrega fue rápida y el producto llegó en perfectas condiciones. El soporte técnico es excepcional."
-              author={{
-                name: "Ana García",
-                title: "Cliente Verificado",
-                avatar: getImagePath("/images/ecommerce/avatar1.jpg"),
+            {/* Footer */}
+            <Footer
+              variant="simple"
+              logo={<LogoFooter />}
+              columns={footerColumns}
+              social={socialLinks}
+              copyright="© 2024 TechStore. Todos los derechos reservados."
+              newsletter={{
+                title: "Suscríbete",
+                description:
+                  "Recibe las últimas novedades y ofertas exclusivas",
+                buttonText: "Suscribirse",
               }}
             />
-            <Card
-              variant="testimonial"
-              title="Productos de calidad"
-              description="Los precios son competitivos y la calidad de los productos es excelente. Definitivamente volveré a comprar."
-              author={{
-                name: "Carlos Ruiz",
-                title: "Cliente Frecuente",
-                avatar: getImagePath("/images/ecommerce/avatar2.jpg"),
-              }}
-            />
-          </Section>
-
-          {/* Footer */}
-          <Footer
-            variant="simple"
-            logo={<LogoFooter />}
-            columns={footerColumns}
-            social={socialLinks}
-            copyright="© 2024 TechStore. Todos los derechos reservados."
-            newsletter={{
-              title: "Suscríbete",
-              description: "Recibe las últimas novedades y ofertas exclusivas",
-              buttonText: "Suscribirse",
-            }}
-          />
-        </div>
-      </ThemeProvider>
-    </CartProvider>
+          </div>
+        </ThemeProvider>
+      </CartProvider>
+    </AuthProvider>
   );
 };
 

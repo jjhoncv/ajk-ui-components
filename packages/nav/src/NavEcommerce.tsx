@@ -133,7 +133,6 @@ export function NavEcommerce({
               className={cn(buttonCartStyles[variant])}
             />
             <MiniAccount />
-            {/* <MiniAccount /> */}
           </div>
         </div>
       </nav>

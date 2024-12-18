@@ -38,16 +38,12 @@ export const MiniCart = ({
     <div className="relative">
       {/* Cart Toggle Button */}
 
-      {/* <div className="flex gap-1"> */}
-      {/* <div className={cn({ "mr-[10px] mt-[10px]": total > 0 })}> */}
       <ButtonCart
         className={className}
         handleClick={toggleCart}
         total={items.reduce((acc, item) => acc + item.quantity, 0)}
       />
-      {/* </div> */}
-      {/* Cart
-      </div> */}
+
       <Sheet
         isOpen={isOpen}
         onClose={() => {

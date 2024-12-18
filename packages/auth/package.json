@@ -1,5 +1,5 @@
 {
-  "name": "@ajk-ui/account",
+  "name": "@ajk-ui/auth",
   "version": "0.3.0",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -16,13 +16,7 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
-    "@ajk-ui/core": "workspace:*",
-    "@ajk-ui/auth": "workspace:*",
-    "@ajk-ui/sheet": "workspace:*",
-    "@ajk-ui/login": "workspace:*",
-    "@ajk-ui/theme-utils": "workspace:*",
-    "clsx": "^2.0.0",
-    "tailwind-merge": "^2.0.0"
+    "@ajk-ui/user": "workspace:*"
   },
   "devDependencies": {
     "@storybook/react": "^7.0.0",

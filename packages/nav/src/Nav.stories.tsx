@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Nav } from "./Nav";
 import { NavEcommerce } from "./NavEcommerce";
 import { mockProducts } from "@ajk-ui/data";
+import { AuthProvider } from "@ajk-ui/auth";
 
 const meta = {
   title: "Components/Nav",
@@ -95,20 +96,22 @@ export const WithEcommerce: Story = {
     }));
 
     return (
-      <CartProvider
-        initialState={{
-          items: products,
-          itemCount: products.length,
-          total: products.reduce(
-            (acc, item) => acc + item.price * item.quantity,
-            0
-          ),
-        }}
-      >
-        <div className="mx-auto px-4 sm:px-6 max-w-7xl bg-white w-full">
-          <NavEcommerce {...args} />
-        </div>
-      </CartProvider>
+      <AuthProvider>
+        <CartProvider
+          initialState={{
+            items: products,
+            itemCount: products.length,
+            total: products.reduce(
+              (acc, item) => acc + item.price * item.quantity,
+              0
+            ),
+          }}
+        >
+          <div className="mx-auto px-4 sm:px-6 max-w-7xl bg-white w-full">
+            <NavEcommerce {...args} />
+          </div>
+        </CartProvider>
+      </AuthProvider>
     );
   },
 };
