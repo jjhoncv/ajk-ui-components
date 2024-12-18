@@ -27,8 +27,9 @@ const Logo = () => (
     className="flex items-center"
     onClick={() => {
       if (typeof window !== "undefined") {
-        window.location.href =
-          "/iframe.html?args=&id=pages-ecommerce--home-page&viewMode=story";
+        window.location.href = getImagePath(
+          "/iframe.html?args=&id=pages-ecommerce--home-page&viewMode=story"
+        );
       }
     }}
   >
@@ -130,7 +131,9 @@ const TechStorePage = () => {
               <ProductCart
                 key={key}
                 onClick={() => {
-                  window.top.location.href = `/iframe.html?productId=${product.id}&args=&id=pages-ecommerce--product-detail-page&viewMode=story`;
+                  window.top.location.href = getImagePath(
+                    `/iframe.html?productId=${product.id}&args=&id=pages-ecommerce--product-detail-page&viewMode=story`
+                  );
                 }}
                 {...{
                   ...product,

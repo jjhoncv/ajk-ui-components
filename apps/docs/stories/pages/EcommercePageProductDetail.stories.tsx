@@ -24,8 +24,9 @@ const Logo = () => (
     className="flex items-center"
     onClick={() => {
       if (typeof window !== "undefined") {
-        window.location.href =
-          "/iframe.html?args=&id=pages-ecommerce--home-page&viewMode=story";
+        window.location.href = getImagePath(
+          "/iframe.html?args=&id=pages-ecommerce--home-page&viewMode=story"
+        );
       }
     }}
   >
