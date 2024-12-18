@@ -7,13 +7,6 @@ import { Card } from "@ajk-ui/card";
 import { Footer } from "@ajk-ui/footer";
 import { Button } from "@ajk-ui/button";
 
-// Helper para manejar las rutas de imágenes
-const getImagePath = (path: string) => {
-  const basePath =
-    process.env.NODE_ENV === "production" ? "/ajk-ui-components" : "";
-  return `${basePath}${path}`;
-};
-
 // Tema moderno para veterinaria
 const vetTheme = createTheme({
   colors: {
@@ -29,8 +22,13 @@ const vetTheme = createTheme({
 
 const Logo = () => (
   <div className="flex items-center">
-    <div className="w-8 h-8"> {/* Incrementa el tamaño del contenedor */}
-      <img src={getImagePath("/images/veterinary/Logo.svg")} className="w-full h-full object-contain" />
+    <div className="w-8 h-8">
+      {" "}
+      {/* Incrementa el tamaño del contenedor */}
+      <img
+        src={getImagePath("/images/veterinary/Logo.svg")}
+        className="w-full h-full object-contain"
+      />
     </div>
     <span className="ml-2 text-2xl text-white font-extralight">Modern Vet</span>
   </div>
@@ -49,8 +47,13 @@ const LogoFooter = () => (
 
 const LogoNavMenuMobile = () => (
   <div className="flex items-center">
-    <div className="w-8 h-8"> {/* Incrementa el tamaño del contenedor */}
-      <img src={getImagePath("/images/veterinary/LogoInverter.svg")} className="w-full h-full object-contain"  />
+    <div className="w-8 h-8">
+      {" "}
+      {/* Incrementa el tamaño del contenedor */}
+      <img
+        src={getImagePath("/images/veterinary/LogoInverter.svg")}
+        className="w-full h-full object-contain"
+      />
     </div>
     <span className="ml-2 text-2xl font-extralight">Modern Vet</span>
   </div>
@@ -127,9 +130,9 @@ const VeterinaryPage = () => {
             description="Programas personalizados de prevención y vacunación para mantener a tu mascota saludable."
             image={getImagePath("/images/veterinary/service1.jpg")}
           >
-              <div className="flex mt-2">
-<Button variant="secondary">Ver Planes</Button>
-</div>
+            <div className="flex mt-2">
+              <Button variant="secondary">Ver Planes</Button>
+            </div>
           </Card>
           <Card
             variant="service"
@@ -138,10 +141,10 @@ const VeterinaryPage = () => {
             description="Procedimientos quirúrgicos mínimamente invasivos con recuperación rápida."
             image={getImagePath("/images/veterinary/service2.jpg")}
           >
-  <div className="flex mt-2">
-            <Button variant="secondary">Consultar</Button>
-          </div>
-</Card>
+            <div className="flex mt-2">
+              <Button variant="secondary">Consultar</Button>
+            </div>
+          </Card>
           <Card
             variant="service"
             title="Diagnóstico Digital"
@@ -149,10 +152,10 @@ const VeterinaryPage = () => {
             description="Radiografía digital y ultrasonido para diagnósticos precisos y rápidos."
             image={getImagePath("/images/veterinary/service3.jpg")}
           >
-  <div className="flex mt-2">
-            <Button variant="secondary">Más Info</Button>
-          </div>
-</Card>
+            <div className="flex mt-2">
+              <Button variant="secondary">Más Info</Button>
+            </div>
+          </Card>
           <Card
             variant="service"
             title="Hospitalización"
@@ -160,10 +163,10 @@ const VeterinaryPage = () => {
             description="Unidad de cuidados intensivos con monitoreo constante y personal especializado."
             image={getImagePath("/images/veterinary/service4.jpg")}
           >
-  <div className="flex mt-2">
-            <Button variant="secondary">Emergencias</Button>
-          </div>
-</Card>
+            <div className="flex mt-2">
+              <Button variant="secondary">Emergencias</Button>
+            </div>
+          </Card>
         </Section>
 
         {/* Sobre Nosotros */}

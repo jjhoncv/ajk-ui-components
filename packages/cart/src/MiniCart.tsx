@@ -1,5 +1,5 @@
 import { Button } from "@ajk-ui/button";
-import { cn } from "@ajk-ui/core";
+import { cn, formatPEN } from "@ajk-ui/core";
 import { Sheet } from "@ajk-ui/sheet";
 import { useEffect, useState } from "react";
 import ButtonCart from "./ButtonCart";
@@ -9,19 +9,21 @@ import { useCart } from "./CartContext";
 
 interface MiniCartProps {
   isOpen?: boolean;
+  openWhenProductIsAddedToCart?: boolean;
   className?: string;
 }
 
 export const MiniCart = ({
   isOpen: isOpenInitial = false,
+  openWhenProductIsAddedToCart = false,
   className = "",
 }: MiniCartProps) => {
   const [isOpen, setIsOpen] = useState(isOpenInitial);
 
-  const { items, total, itemCount, removeItem, updateQuantity } = useCart();
+  const { items, total, itemCount, updateQuantity } = useCart();
 
   useEffect(() => {
-    if (total > 0) {
+    if (openWhenProductIsAddedToCart && total > 0) {
       setIsOpen(true);
     }
   }, [total]);
@@ -76,7 +78,7 @@ export const MiniCart = ({
               {items.map((item) => (
                 <div
                   key={item.id}
-                  className="flex items-center space-x-4  py-3 rounded-lg"
+                  className="flex space-x-4  py-3 rounded-lg items-start"
                 >
                   <img
                     src={item.image}
@@ -88,7 +90,7 @@ export const MiniCart = ({
                     <h4 className="font-medium text-xs">{item.subname}</h4>
 
                     <p className="text-gray-600 font-bold text-sm">
-                      ${item.price.toFixed(2)}
+                      {formatPEN(item.price)}
                     </p>
                     <div className="flex items-center space-x-2 mt-2">
                       <ButtonPlusMinus
@@ -124,7 +126,7 @@ export const MiniCart = ({
         <div className="border-t py-4 space-y-4">
           <div className="flex justify-between items-center font-semibold">
             <span>Total:</span>
-            <span>${total.toFixed(2)}</span>
+            <span>{formatPEN(total)}</span>
           </div>
           <Button
             className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50"

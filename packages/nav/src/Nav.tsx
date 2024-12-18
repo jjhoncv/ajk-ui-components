@@ -1,6 +1,6 @@
-import React from "react";
 import { cn, type BaseProps } from "@ajk-ui/core";
 import { useTheme } from "@ajk-ui/theme-utils";
+import React from "react";
 import { MenuMobile } from "./MenuMobile";
 
 export interface NavItem {

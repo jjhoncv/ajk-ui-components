@@ -1,7 +1,7 @@
+import { CartProvider } from "@ajk-ui/cart";
+import { ThemeProvider, themes } from "@ajk-ui/theme-utils";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Header } from "./Header";
-import { ThemeProvider, themes } from "@ajk-ui/theme-utils";
-import { CartProvider } from "@ajk-ui/cart";
 
 const meta = {
   title: "Components/Header",

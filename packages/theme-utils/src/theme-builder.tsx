@@ -1,9 +1,9 @@
 import type {
   Theme,
+  ThemeBorderRadius,
   ThemeColors,
   ThemeFontSizes,
   ThemeSpacing,
-  ThemeBorderRadius,
   ThemeTypography,
 } from "@ajk-ui/core";
 

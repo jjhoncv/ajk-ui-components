@@ -1,21 +1,13 @@
-import React from "react";
-import { Meta, StoryObj } from "@storybook/react";
-import { ThemeProvider, createTheme } from "@ajk-ui/theme-utils";
+import { Button } from "@ajk-ui/button";
+import { Card } from "@ajk-ui/card";
+import { CartProvider, ProductCart } from "@ajk-ui/cart";
+import { mockProducts } from "@ajk-ui/data";
+import { Footer } from "@ajk-ui/footer";
 import { Header } from "@ajk-ui/header";
 import { Section } from "@ajk-ui/section";
-import { Card } from "@ajk-ui/card";
-import { Footer } from "@ajk-ui/footer";
-import { Button } from "@ajk-ui/button";
-import { CartProvider } from "@ajk-ui/cart";
-import { mockCartItems } from "../../public/images/ecommerce/mockCartItems";
-import { ProductCart } from "@ajk-ui/cart";
-
-// Helper para manejar las rutas de imágenes
-const getImagePath = (path: string) => {
-  const basePath =
-    process.env.NODE_ENV === "production" ? "/ajk-ui-components" : "";
-  return `${basePath}${path}`;
-};
+import { ThemeProvider, createTheme } from "@ajk-ui/theme-utils";
+import { Meta, StoryObj } from "@storybook/react";
+import { NavEcommerce } from "@ajk-ui/nav";
 
 // Tema personalizado para e-commerce de tecnología
 const techTheme = createTheme({
@@ -31,11 +23,19 @@ const techTheme = createTheme({
 });
 
 const Logo = () => (
-  <div className="flex items-center">
+  <div
+    className="flex items-center"
+    onClick={() => {
+      if (typeof window !== "undefined") {
+        window.location.href =
+          "/iframe.html?args=&id=pages-ecommerce--home-page&viewMode=story";
+      }
+    }}
+  >
     <div className="w-6">
       <img src={getImagePath("/images/ecommerce/Logo.svg")} />
     </div>
-    <span className="ml-2 text-2xl text-white font-extralight">TechStore</span>
+    <span className="ml-2 text-2xl text-black font-extralight">TechStore</span>
   </div>
 );
 
@@ -97,6 +97,12 @@ const TechStorePage = () => {
       <ThemeProvider initialTheme={techTheme}>
         <div className="min-h-screen bg-background">
           {/* Header */}
+          <NavEcommerce
+            items={navItems}
+            logo={Logo}
+            variant="primary"
+            logoNavMenuMobile={LogoNavMenuMobile}
+          />
           <Header
             title="TechStore"
             position="relative"
@@ -104,15 +110,11 @@ const TechStorePage = () => {
             backgroundImage={getImagePath("/images/ecommerce/hero.jpg")}
             variant="hero"
             height="lg"
-            navItems={navItems}
-            logo={Logo}
-            logoNavMenuMobile={LogoNavMenuMobile}
             cta={{
               label: "Ver Ofertas",
               href: "/ofertas",
               variant: "primary",
             }}
-            type="ecommerce"
           />
 
           {/* Productos Destacados */}
@@ -124,16 +126,16 @@ const TechStorePage = () => {
             gridCols={4}
             gap="lg"
           >
-            {mockCartItems.map((item, key) => (
+            {mockProducts.map((product, key) => (
               <ProductCart
-                id={item.id}
-                subname={item.subname}
                 key={key}
-                name={item.name}
-                price={item.price}
-                formatPrice={item.formatPrice}
-                description={item.description}
-                image={getImagePath(item.image.lg)}
+                onClick={() => {
+                  window.top.location.href = `/iframe.html?productId=${product.id}&args=&id=pages-ecommerce--product-detail-page&viewMode=story`;
+                }}
+                {...{
+                  ...product,
+                  image: getImagePath(product.images.gallery[0].size.lg.url),
+                }}
               />
             ))}
           </Section>
@@ -438,6 +440,6 @@ export default meta;
 
 type Story = StoryObj<typeof TechStorePage>;
 
-export const Modern: Story = {
+export const HomePage: Story = {
   render: () => <TechStorePage />,
 };

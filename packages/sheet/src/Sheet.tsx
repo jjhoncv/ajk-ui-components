@@ -1,5 +1,5 @@
-import React, { type FC, useEffect } from "react";
 import { cn } from "@ajk-ui/core";
+import React, { type FC, useEffect } from "react";
 
 interface SheetProps {
   isOpen?: boolean;
@@ -17,38 +17,62 @@ export const Sheet: FC<SheetProps> = ({
   className = "",
 }) => {
   const [isOpen, setIsOpen] = React.useState(isOpenInitial);
+  const [isVisible, setIsVisible] = React.useState(false);
 
   const sideStyles = {
-    left: "left-0 translate-x-[-100%]",
-    right: "right-0 translate-x-[100%]",
+    left: "left-0 -translate-x-full",
+    right: "right-0 translate-x-full",
   };
 
   const baseMobileStyles = {
-    box: "md:invisible ease-out duration-500 transition-all shadow-2xl w-[70%] fixed z-40 h-dvh top-0 px-6 py-3",
+    box: "fixed z-50 h-dvh top-0 w-[320px] transition-transform duration-300 ease-out shadow-2xl px-6 py-3",
     bg: "bg-white",
   };
 
   useEffect(() => {
-    setIsOpen(isOpenInitial);
+    if (isOpenInitial) {
+      setIsVisible(true);
+      requestAnimationFrame(() => {
+        setIsOpen(true);
+      });
+    } else {
+      setIsOpen(false);
+      const timer = setTimeout(() => {
+        setIsVisible(false);
+      }, 300);
+      return () => clearTimeout(timer);
+    }
   }, [isOpenInitial]);
+
+  const handleOverlayClick = () => {
+    setIsOpen(false);
+    onClose?.();
+  };
 
   return (
     <>
-      {isOpen && (
-        <div
-          onClick={() => {
-            setIsOpen(!isOpen);
-            onClose?.();
-          }}
-          className="fixed opacity-70 w-full bg-black h-dvh top-0 right-0 left-0 bottom-0 z-20"
-        />
-      )}
+      <div
+        className={cn(
+          "fixed inset-0 z-40 transition-all duration-300 ease-out",
+          {
+            invisible: !isVisible,
+            visible: isVisible,
+            "bg-black/60": isOpen,
+            "bg-black/0": !isOpen,
+          }
+        )}
+        onClick={handleOverlayClick}
+      />
       <div
         className={cn(
           baseMobileStyles.box,
           baseMobileStyles.bg,
           sideStyles[side],
-          isOpen ? "translate-x-[0%] transition-all" : "",
+          {
+            "translate-x-0": isOpen,
+            invisible: !isVisible,
+            visible: isVisible,
+          },
           className
         )}
       >

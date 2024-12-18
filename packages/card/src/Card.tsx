@@ -13,8 +13,11 @@ export interface CardProps extends BaseProps {
   variant?: "default" | "product" | "service" | "testimonial" | "pricing";
   image?: string;
   title?: string;
+  link?: string;
+  titleLines?: number;
   subtitle?: string;
   description?: string;
+  descriptionLines?: number;
   footer?: React.ReactNode;
   badge?: string;
   price?: string;
@@ -33,8 +36,10 @@ export function Card({
   variant = "default",
   image,
   title,
+  titleLines = 2,
   subtitle,
   description,
+  descriptionLines = 2,
   footer,
   badge,
   price,
@@ -53,9 +58,29 @@ export function Card({
     card: "overflow-hidden rounded-lg bg-white relative",
     image: "w-full object-cover",
     content: "p-6",
-    title: "font-semibold",
+    title: cn(
+      "font-semibold",
+      "line-clamp-1", // Default para compatibilidad
+      titleLines > 0 && [
+        "display-webkit-box",
+        "-webkit-box-orient-vertical",
+        "overflow-hidden",
+        `line-clamp-${titleLines}`,
+        `-webkit-line-clamp-${titleLines}`,
+      ]
+    ),
+    description: cn(
+      "mt-2 text-gray-600",
+      "line-clamp-2", // Default para compatibilidad
+      descriptionLines > 0 && [
+        "display-webkit-box",
+        "-webkit-box-orient-vertical",
+        "overflow-hidden",
+        `line-clamp-${descriptionLines}`,
+        `-webkit-line-clamp-${descriptionLines}`,
+      ]
+    ),
     subtitle: "text-sm text-gray-500",
-    description: "mt-2 text-gray-600",
     footer: "mt-4",
     badge: "absolute top-4 right-4 rounded-full px-3 py-1 text-sm font-medium",
     price: "text-2xl font-bold",
@@ -129,18 +154,18 @@ export function Card({
     >
       {/* Image */}
       {image && (
-  <div
-    className={cn(
-      layout === "horizontal" ? "md:w-1/3" : "w-full",
-      aspectRatioStyles[aspectRatio]
-    )}
-    style={{
-      backgroundImage: `url(${image})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-    }}
-  />
-)}
+        <div
+          className={cn(
+            layout === "horizontal" ? "md:w-1/3" : "w-full",
+            aspectRatioStyles[aspectRatio]
+          )}
+          style={{
+            backgroundImage: `url(${image})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+      )}
 
       {/* Content */}
       <div

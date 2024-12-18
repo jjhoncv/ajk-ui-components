@@ -7,13 +7,6 @@ import { Card } from "@ajk-ui/card";
 import { Footer } from "@ajk-ui/footer";
 import { Button } from "@ajk-ui/button";
 
-// Helper para manejar las rutas de imágenes
-const getImagePath = (path: string) => {
-  const basePath =
-    process.env.NODE_ENV === "production" ? "/ajk-ui-components" : "";
-  return `${basePath}${path}`;
-};
-
 const Logo = () => (
   <div className="flex items-center gap-2">
     <div className="w-6">
@@ -28,7 +21,7 @@ const Logo = () => (
 const LogoFooter = () => (
   <div className="flex items-center gap-2">
     <div className="w-6">
-      <img src={getImagePath("/images/barbershop/LogoInverter.svg")}/>
+      <img src={getImagePath("/images/barbershop/LogoInverter.svg")} />
     </div>
     <div className="ml-1 text-xl flex flex-col" style={{ lineHeight: "15px" }}>
       <p className="font-extralight text-gray-800">Classic Cuts</p>

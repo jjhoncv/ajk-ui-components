@@ -18,6 +18,7 @@
   "dependencies": {
     "@ajk-ui/theme-utils": "workspace:*",
     "@ajk-ui/core": "workspace:*",
+    "@ajk-ui/data": "workspace:*",
     "@ajk-ui/sheet": "workspace:*",
     "@ajk-ui/button": "workspace:*",
     "@ajk-ui/card": "workspace:*",

@@ -1,9 +1,6 @@
-import React from "react";
 import { cn, type BaseProps } from "@ajk-ui/core";
 import { useTheme } from "@ajk-ui/theme-utils";
 import { Nav, NavEcommerce, type NavItem } from "../../nav";
-import { CartProvider } from "@ajk-ui/cart";
-import { mockCartItems } from "./mockCartItems";
 
 export interface HeaderProps extends BaseProps {
   title?: string;

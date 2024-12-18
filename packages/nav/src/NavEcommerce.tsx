@@ -37,11 +37,10 @@ export function NavEcommerce({
   type = "default",
   ...props
 }: NavEcommerceProps) {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const { theme } = useTheme();
 
   const baseStyles = {
-    nav: "w-full px-4 py-2 mt-2 mb-2",
+    nav: "w-full px-4 py-2",
     container: "mx-auto flex justify-between items-center",
     logo: "flex items-center",
     menuButton: "block md:hidden",

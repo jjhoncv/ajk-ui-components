@@ -1,9 +1,9 @@
-import { CartProvider } from "@ajk-ui/cart";
+import { CartItem, CartProvider } from "@ajk-ui/cart";
 import { ThemeProvider, themes } from "@ajk-ui/theme-utils";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Nav } from "./Nav";
 import { NavEcommerce } from "./NavEcommerce";
-import { mockCartItems } from "./mockCartItems";
+import { mockProducts } from "@ajk-ui/data";
 
 const meta = {
   title: "Components/Nav",
@@ -85,12 +85,21 @@ export const WithEcommerce: Story = {
     logo: () => <span className="text-xl font-bold ">Logo</span>,
   },
   render: (args) => {
+    const products: CartItem[] = mockProducts.map((product) => ({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      subname: product.subname,
+      image: product.images.gallery[0].size.xs.url,
+      quantity: 1,
+    }));
+
     return (
       <CartProvider
         initialState={{
-          items: mockCartItems,
-          itemCount: mockCartItems.length,
-          total: mockCartItems.reduce(
+          items: products,
+          itemCount: products.length,
+          total: products.reduce(
             (acc, item) => acc + item.price * item.quantity,
             0
           ),

@@ -76,3 +76,10 @@ export function isValidColor(color: string): boolean {
 
   return hexRegex.test(color) || rgbRegex.test(color) || rgbaRegex.test(color);
 }
+
+export const formatPEN = (number: number) => {
+  return new Intl.NumberFormat("es-PE", {
+    style: "currency",
+    currency: "PEN",
+  }).format(number);
+};

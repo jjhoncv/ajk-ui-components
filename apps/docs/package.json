@@ -11,12 +11,14 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@ajk-ui/core": "workspace:*",
+    "@ajk-ui/data": "workspace:*",
     "@ajk-ui/button": "workspace:*",
     "@ajk-ui/card": "workspace:*",
-    "@ajk-ui/core": "workspace:*",
     "@ajk-ui/footer": "workspace:*",
     "@ajk-ui/cart": "workspace:*",
     "@ajk-ui/header": "workspace:*",
+    "@ajk-ui/product-detail": "workspace:*",
     "@ajk-ui/nav": "workspace:*",
     "@ajk-ui/section": "workspace:*",
     "@ajk-ui/theme-utils": "workspace:*",

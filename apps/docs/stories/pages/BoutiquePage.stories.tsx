@@ -7,13 +7,6 @@ import { Card } from "@ajk-ui/card";
 import { Footer } from "@ajk-ui/footer";
 import { Button } from "@ajk-ui/button";
 
-// Helper para manejar las rutas de imágenes
-const getImagePath = (path: string) => {
-  const basePath =
-    process.env.NODE_ENV === "production" ? "/ajk-ui-components" : "";
-  return `${basePath}${path}`;
-};
-
 const Logo = () => (
   <div className="flex items-center">
     <div className="w-6">

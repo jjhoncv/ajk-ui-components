@@ -1,6 +1,6 @@
+import { ThemeProvider, createTheme } from "@ajk-ui/theme-utils";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "./Button";
-import { ThemeProvider, createTheme } from "@ajk-ui/theme-utils";
 
 const sampleTheme = createTheme({
   colors: {

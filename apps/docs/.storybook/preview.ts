@@ -1,12 +1,21 @@
 import type { Preview } from "@storybook/react";
 import "../styles/tailwind.css";
 
-// Helper para manejar las rutas de imágenes en Storybook
-window.getImagePath = (path: string) => {
+declare global {
+  interface Window {
+    getImagePath(path: string): string;
+  }
+}
+
+// Definimos la función
+const getImagePathFn = (path: string): string => {
   const basePath =
     process.env.NODE_ENV === "production" ? "/ajk-ui-components" : "";
   return `${basePath}${path}`;
 };
+
+// Asignamos la función a window
+(window as Window).getImagePath = getImagePathFn;
 
 const preview: Preview = {
   parameters: {
@@ -33,11 +42,7 @@ const preview: Preview = {
   },
   globals: {
     // Función global para manejar rutas de imágenes
-    getImagePath: (path: string) => {
-      const basePath =
-        process.env.NODE_ENV === "production" ? "/ajk-ui-components" : "";
-      return `${basePath}${path}`;
-    },
+    getImagePath: window.getImagePath,
   },
 };
 
