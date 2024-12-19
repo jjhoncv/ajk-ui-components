@@ -1,5 +1,23 @@
 # @ajk-ui/nav
 
+## 0.4.0
+
+### Minor Changes
+
+- 3d38a99: change more options
+- 39a8ada: changes
+
+### Patch Changes
+
+- Updated dependencies [39a8ada]
+- Updated dependencies [39a8ada]
+  - @ajk-ui/core@1.0.0
+  - @ajk-ui/theme-utils@2.0.0
+  - @ajk-ui/sheet@0.4.0
+  - @ajk-ui/cart@0.4.0
+  - @ajk-ui/account@0.3.1
+  - @ajk-ui/data@0.3.1
+
 ## 0.3.0
 
 ### Minor Changes

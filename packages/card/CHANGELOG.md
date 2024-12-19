@@ -1,5 +1,17 @@
 # @ajk-ui/card
 
+## 1.0.0
+
+### Major Changes
+
+- 39a8ada: changes
+
+### Patch Changes
+
+- Updated dependencies [39a8ada]
+  - @ajk-ui/core@1.0.0
+  - @ajk-ui/theme-utils@2.0.0
+
 ## 0.3.1
 
 ### Patch Changes
