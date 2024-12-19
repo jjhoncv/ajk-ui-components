@@ -17,6 +17,8 @@
   },
   "dependencies": {
     "@ajk-ui/core": "workspace:*",
+    "@ajk-ui/button": "workspace:*",
+    "@ajk-ui/theme-utils": "workspace:*",
     "clsx": "^2.0.0",
     "tailwind-merge": "^2.0.0"
   },

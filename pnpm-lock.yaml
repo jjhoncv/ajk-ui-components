@@ -696,9 +696,15 @@ importers:
 
   packages/pagination:
     dependencies:
+      '@ajk-ui/button':
+        specifier: workspace:*
+        version: link:../button
       '@ajk-ui/core':
         specifier: workspace:*
         version: link:../core
+      '@ajk-ui/theme-utils':
+        specifier: workspace:*
+        version: link:../theme-utils
       clsx:
         specifier: ^2.0.0
         version: 2.1.1

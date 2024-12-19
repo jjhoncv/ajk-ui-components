@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Pagination } from ".";
+import { ThemeProvider, themes } from "@ajk-ui/theme-utils";
 
 const meta = {
   title: "Navigation/Pagination",
@@ -7,6 +8,13 @@ const meta = {
   parameters: {
     layout: "centered",
   },
+  decorators: [
+    (Story) => (
+      <ThemeProvider initialTheme={themes.restaurant.modern}>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
   tags: ["autodocs"],
 } satisfies Meta<typeof Pagination>;
 

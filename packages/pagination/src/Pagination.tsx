@@ -1,3 +1,4 @@
+import { Button } from "@ajk-ui/button";
 import { cn } from "@ajk-ui/core";
 
 interface PaginationProps {
@@ -15,17 +16,19 @@ export const Pagination = ({
 
   return (
     <div className="flex items-center justify-center space-x-2 py-8">
-      <button
+      <Button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
+        variant="outline"
         className="px-4 py-2 border rounded-md text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
       >
         Anterior
-      </button>
+      </Button>
 
       <div className="flex space-x-1">
         {pageNumbers.map((page) => (
-          <button
+          <Button
+            variant="outline"
             key={page}
             onClick={() => onPageChange(page)}
             className={cn(
@@ -36,17 +39,18 @@ export const Pagination = ({
             )}
           >
             {page}
-          </button>
+          </Button>
         ))}
       </div>
 
-      <button
+      <Button
+        variant="outline"
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
         className="px-4 py-2 border rounded-md text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
       >
         Siguiente
-      </button>
+      </Button>
     </div>
   );
 };
