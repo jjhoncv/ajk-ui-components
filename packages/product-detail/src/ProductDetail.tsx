@@ -1,3 +1,4 @@
+import { Breadcrumb } from "@ajk-ui/breadcrumb";
 import { useCart } from "@ajk-ui/cart";
 import { Product, ProductImage } from "@ajk-ui/product";
 import { ProductGallery } from "@ajk-ui/product-gallery";
@@ -36,8 +37,6 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
       return;
     }
 
-    // Aquí implementarías la lógica para añadir al carrito
-
     addItem({
       id: product.id,
       name: product.name,
@@ -46,37 +45,20 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
       subname: product.subname,
       quantity,
     });
-
-    // console.log("Añadiendo al carrito:", {
-    //   productId: product.id,
-    //   size: selectedSize,
-    //   quantity: quantity,
-    // });
   };
 
   return (
     <div className="py-8">
       {/* Breadcrumb */}
-      <nav className="mb-8 text-sm">
-        <ol className="flex gap-2">
-          <li>
-            <a href="/" className="text-gray-500 hover:text-primary-600">
-              Inicio
-            </a>
-          </li>
-          <li className="text-gray-500">/</li>
-          <li>
-            <a
-              href="/zapatillas"
-              className="text-gray-500 hover:text-primary-600"
-            >
-              Zapatillas
-            </a>
-          </li>
-          <li className="text-gray-500">/</li>
-          <li className="text-gray-900 font-medium">{product.name}</li>
-        </ol>
-      </nav>
+      <div className="mb-8 text-sm">
+        <Breadcrumb
+          items={product.categories.map((categorie) => ({
+            href: `#/${categorie}`,
+            label: categorie,
+          }))}
+          showHomeIcon={false}
+        />
+      </div>
 
       {/* Product Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

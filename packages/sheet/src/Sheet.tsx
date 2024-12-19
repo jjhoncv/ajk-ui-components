@@ -25,7 +25,7 @@ export const Sheet: FC<SheetProps> = ({
   };
 
   const baseMobileStyles = {
-    box: "fixed z-50 h-dvh top-0 w-[320px] transition-transform duration-300 ease-out shadow-2xl px-6 py-3",
+    box: "fixed z-50 h-dvh top-0 w-[320px] transition-transform duration-300 ease-out shadow-2xl px-6 py-3 ove",
     bg: "bg-white",
   };
 

@@ -1,5 +1,5 @@
 {
-  "name": "@ajk-ui/product-detail",
+  "name": "@ajk-ui/product-grid",
   "version": "0.3.0",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -18,13 +18,9 @@
   "dependencies": {
     "@ajk-ui/core": "workspace:*",
     "@ajk-ui/data": "workspace:*",
-    "@ajk-ui/theme-utils": "workspace:*",
-    "@ajk-ui/breadcrumb": "workspace:*",
-    "@ajk-ui/cart": "workspace:*",
-    "@ajk-ui/product-gallery": "workspace:*",
-    "@ajk-ui/product-info": "workspace:*",
-    "@ajk-ui/product-tabs": "workspace:*",
     "@ajk-ui/product": "workspace:*",
+    "@ajk-ui/cart": "workspace:*",
+    "@ajk-ui/theme-utils": "workspace:*",
     "clsx": "^2.0.0",
     "tailwind-merge": "^2.0.0"
   },

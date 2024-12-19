@@ -211,6 +211,40 @@ importers:
         specifier: ^5.7.2
         version: 5.7.2
 
+  packages/breadcrumb:
+    dependencies:
+      '@ajk-ui/core':
+        specifier: workspace:*
+        version: link:../core
+      clsx:
+        specifier: ^2.0.0
+        version: 2.1.1
+      tailwind-merge:
+        specifier: ^2.0.0
+        version: 2.5.5
+    devDependencies:
+      '@storybook/react':
+        specifier: ^7.0.0
+        version: 7.6.20(react-dom@18.3.1)(react@18.3.1)(typescript@5.7.2)
+      '@types/react':
+        specifier: ^18.3.12
+        version: 18.3.12
+      '@types/react-dom':
+        specifier: ^18.3.1
+        version: 18.3.1
+      eslint:
+        specifier: ^8.0.0
+        version: 8.57.1
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      tsup:
+        specifier: ^8.0.0
+        version: 8.3.5(postcss@8.4.49)(typescript@5.7.2)
+      typescript:
+        specifier: ^5.7.2
+        version: 5.7.2
+
   packages/button:
     dependencies:
       '@ajk-ui/theme-utils':
@@ -370,6 +404,58 @@ importers:
       '@ajk-ui/product':
         specifier: workspace:*
         version: link:../product
+      clsx:
+        specifier: ^2.0.0
+        version: 2.1.1
+      tailwind-merge:
+        specifier: ^2.0.0
+        version: 2.5.5
+    devDependencies:
+      '@storybook/react':
+        specifier: ^7.0.0
+        version: 7.6.20(react-dom@18.3.1)(react@18.3.1)(typescript@5.7.2)
+      '@types/react':
+        specifier: ^18.3.12
+        version: 18.3.12
+      '@types/react-dom':
+        specifier: ^18.3.1
+        version: 18.3.1
+      eslint:
+        specifier: ^8.0.0
+        version: 8.57.1
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      tsup:
+        specifier: ^8.0.0
+        version: 8.3.5(postcss@8.4.49)(typescript@5.7.2)
+      typescript:
+        specifier: ^5.7.2
+        version: 5.7.2
+
+  packages/filter-bar:
+    dependencies:
+      '@ajk-ui/breadcrumb':
+        specifier: workspace:*
+        version: link:../breadcrumb
+      '@ajk-ui/cart':
+        specifier: workspace:*
+        version: link:../cart
+      '@ajk-ui/core':
+        specifier: workspace:*
+        version: link:../core
+      '@ajk-ui/data':
+        specifier: workspace:*
+        version: link:../data
+      '@ajk-ui/product-grid':
+        specifier: workspace:*
+        version: link:../product-grid
+      '@ajk-ui/sheet':
+        specifier: workspace:*
+        version: link:../sheet
+      '@ajk-ui/theme-utils':
+        specifier: workspace:*
+        version: link:../theme-utils
       clsx:
         specifier: ^2.0.0
         version: 2.1.1
@@ -608,6 +694,40 @@ importers:
         specifier: ^5.7.2
         version: 5.7.2
 
+  packages/pagination:
+    dependencies:
+      '@ajk-ui/core':
+        specifier: workspace:*
+        version: link:../core
+      clsx:
+        specifier: ^2.0.0
+        version: 2.1.1
+      tailwind-merge:
+        specifier: ^2.0.0
+        version: 2.5.5
+    devDependencies:
+      '@storybook/react':
+        specifier: ^7.0.0
+        version: 7.6.20(react-dom@18.3.1)(react@18.3.1)(typescript@5.7.2)
+      '@types/react':
+        specifier: ^18.3.12
+        version: 18.3.12
+      '@types/react-dom':
+        specifier: ^18.3.1
+        version: 18.3.1
+      eslint:
+        specifier: ^8.0.0
+        version: 8.57.1
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      tsup:
+        specifier: ^8.0.0
+        version: 8.3.5(postcss@8.4.49)(typescript@5.7.2)
+      typescript:
+        specifier: ^5.7.2
+        version: 5.7.2
+
   packages/product:
     dependencies:
       '@ajk-ui/core':
@@ -644,6 +764,9 @@ importers:
 
   packages/product-detail:
     dependencies:
+      '@ajk-ui/breadcrumb':
+        specifier: workspace:*
+        version: link:../breadcrumb
       '@ajk-ui/cart':
         specifier: workspace:*
         version: link:../cart
@@ -752,6 +875,52 @@ importers:
         specifier: ^5.7.2
         version: 5.7.2
 
+  packages/product-grid:
+    dependencies:
+      '@ajk-ui/cart':
+        specifier: workspace:*
+        version: link:../cart
+      '@ajk-ui/core':
+        specifier: workspace:*
+        version: link:../core
+      '@ajk-ui/data':
+        specifier: workspace:*
+        version: link:../data
+      '@ajk-ui/product':
+        specifier: workspace:*
+        version: link:../product
+      '@ajk-ui/theme-utils':
+        specifier: workspace:*
+        version: link:../theme-utils
+      clsx:
+        specifier: ^2.0.0
+        version: 2.1.1
+      tailwind-merge:
+        specifier: ^2.0.0
+        version: 2.5.5
+    devDependencies:
+      '@storybook/react':
+        specifier: ^7.0.0
+        version: 7.6.20(react-dom@18.3.1)(react@18.3.1)(typescript@5.7.2)
+      '@types/react':
+        specifier: ^18.3.12
+        version: 18.3.12
+      '@types/react-dom':
+        specifier: ^18.3.1
+        version: 18.3.1
+      eslint:
+        specifier: ^8.0.0
+        version: 8.57.1
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      tsup:
+        specifier: ^8.0.0
+        version: 8.3.5(postcss@8.4.49)(typescript@5.7.2)
+      typescript:
+        specifier: ^5.7.2
+        version: 5.7.2
+
   packages/product-info:
     dependencies:
       '@ajk-ui/core':
@@ -763,6 +932,64 @@ importers:
       '@ajk-ui/product':
         specifier: workspace:*
         version: link:../product
+      '@ajk-ui/theme-utils':
+        specifier: workspace:*
+        version: link:../theme-utils
+      clsx:
+        specifier: ^2.0.0
+        version: 2.1.1
+      tailwind-merge:
+        specifier: ^2.0.0
+        version: 2.5.5
+    devDependencies:
+      '@storybook/react':
+        specifier: ^7.0.0
+        version: 7.6.20(react-dom@18.3.1)(react@18.3.1)(typescript@5.7.2)
+      '@types/react':
+        specifier: ^18.3.12
+        version: 18.3.12
+      '@types/react-dom':
+        specifier: ^18.3.1
+        version: 18.3.1
+      eslint:
+        specifier: ^8.0.0
+        version: 8.57.1
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      tsup:
+        specifier: ^8.0.0
+        version: 8.3.5(postcss@8.4.49)(typescript@5.7.2)
+      typescript:
+        specifier: ^5.7.2
+        version: 5.7.2
+
+  packages/product-list:
+    dependencies:
+      '@ajk-ui/breadcrumb':
+        specifier: workspace:*
+        version: link:../breadcrumb
+      '@ajk-ui/cart':
+        specifier: workspace:*
+        version: link:../cart
+      '@ajk-ui/core':
+        specifier: workspace:*
+        version: link:../core
+      '@ajk-ui/data':
+        specifier: workspace:*
+        version: link:../data
+      '@ajk-ui/filter-bar':
+        specifier: workspace:*
+        version: link:../filter-bar
+      '@ajk-ui/pagination':
+        specifier: workspace:*
+        version: link:../pagination
+      '@ajk-ui/product':
+        specifier: workspace:*
+        version: link:../product
+      '@ajk-ui/product-grid':
+        specifier: workspace:*
+        version: link:../product-grid
       '@ajk-ui/theme-utils':
         specifier: workspace:*
         version: link:../theme-utils
