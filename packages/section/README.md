@@ -15,7 +15,7 @@ pnpm add @ajk-ui/section
 ## Usage
 
 ```tsx
-import { Section } from "@ajk-ui/section";
+import { Section } from '@ajk-ui/section'
 
 function MyComponent() {
   return (
@@ -28,7 +28,7 @@ function MyComponent() {
     >
       {/* Your content here */}
     </Section>
-  );
+  )
 }
 ```
 
@@ -97,12 +97,7 @@ function MyComponent() {
 ### CTA Section
 
 ```tsx
-<Section
-  variant="cta"
-  layout="centered"
-  title="Get Started"
-  subtitle="Join us today"
->
+<Section variant="cta" layout="centered" title="Get Started" subtitle="Join us today">
   <Button variant="primary">Sign Up Now</Button>
 </Section>
 ```
@@ -113,11 +108,7 @@ The section component includes a responsive grid system:
 
 ```tsx
 // 3 columns on desktop, 2 on tablet, 1 on mobile
-<Section
-  layout="grid"
-  gridCols={3}
-  className="grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
->
+<Section layout="grid" gridCols={3} className="grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
   {/* Grid items */}
 </Section>
 ```

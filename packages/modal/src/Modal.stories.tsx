@@ -1,28 +1,28 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { Modal } from ".";
-import { useState } from "react";
+import type { Meta, StoryObj } from '@storybook/react'
+import { Modal } from '.'
+import { useState } from 'react'
 
 const meta = {
-  title: "Components/Modal",
+  title: 'Components/Modal',
   component: Modal,
 
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  decorators: [(Story) => <Story />],
-} satisfies Meta<typeof Modal>;
+  decorators: [Story => <Story />],
+} satisfies Meta<typeof Modal>
 
-export default meta;
-type Story = StoryObj<typeof Modal>;
+export default meta
+type Story = StoryObj<typeof Modal>
 
 const ModalHook = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
   return (
     <div>
       <button
         onClick={() => {
-          setIsOpen(true);
+          setIsOpen(true)
         }}
       >
         Open Modal
@@ -30,15 +30,15 @@ const ModalHook = () => {
       <Modal
         isOpen={isOpen}
         onClose={() => {
-          setIsOpen(false);
+          setIsOpen(false)
         }}
       >
         Hola
       </Modal>
     </div>
-  );
-};
+  )
+}
 
 export const ModalDefault: Story = {
   render: () => <ModalHook />,
-};
+}

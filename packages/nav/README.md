@@ -15,16 +15,16 @@ pnpm add @ajk-ui/nav
 ## Usage
 
 ```tsx
-import { Nav } from "@ajk-ui/nav";
+import { Nav } from '@ajk-ui/nav'
 
 function MyComponent() {
   const navItems = [
-    { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
-    { label: "Contact", href: "/contact" },
-  ];
+    { label: 'Home', href: '/' },
+    { label: 'About', href: '/about' },
+    { label: 'Contact', href: '/contact' },
+  ]
 
-  return <Nav items={navItems} variant="horizontal" />;
+  return <Nav items={navItems} variant="horizontal" />
 }
 ```
 
@@ -52,10 +52,10 @@ function MyComponent() {
 
 ```typescript
 interface NavItem {
-  label: string;
-  href: string;
-  icon?: ReactNode;
-  children?: NavItem[];
+  label: string
+  href: string
+  icon?: ReactNode
+  children?: NavItem[]
 }
 ```
 
@@ -65,13 +65,13 @@ interface NavItem {
 
 ```tsx
 const items = [
-  { label: "Home", href: "/" },
-  { label: "Products", href: "/products" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
-];
+  { label: 'Home', href: '/' },
+  { label: 'Products', href: '/products' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
+]
 
-<Nav items={items} variant="horizontal" />;
+;<Nav items={items} variant="horizontal" />
 ```
 
 ### Dropdown Navigation
@@ -79,17 +79,17 @@ const items = [
 ```tsx
 const items = [
   {
-    label: "Products",
-    href: "/products",
+    label: 'Products',
+    href: '/products',
     children: [
-      { label: "Category 1", href: "/products/cat1" },
-      { label: "Category 2", href: "/products/cat2" },
+      { label: 'Category 1', href: '/products/cat1' },
+      { label: 'Category 2', href: '/products/cat2' },
     ],
   },
-  { label: "About", href: "/about" },
-];
+  { label: 'About', href: '/about' },
+]
 
-<Nav items={items} variant="dropdown" />;
+;<Nav items={items} variant="dropdown" />
 ```
 
 ### With Icons
@@ -97,18 +97,18 @@ const items = [
 ```tsx
 const items = [
   {
-    label: "Home",
-    href: "/",
+    label: 'Home',
+    href: '/',
     icon: <HomeIcon />,
   },
   {
-    label: "Settings",
-    href: "/settings",
+    label: 'Settings',
+    href: '/settings',
     icon: <SettingsIcon />,
   },
-];
+]
 
-<Nav items={items} />;
+;<Nav items={items} />
 ```
 
 ## Customization

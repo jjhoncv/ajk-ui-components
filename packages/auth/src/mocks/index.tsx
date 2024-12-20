@@ -1,3 +1,3 @@
-export * from "./mockLoginAPI";
-export * from "./mockLogoutAPI";
-export * from "./mockUpdateUserAPI";
+export * from './mockLoginAPI'
+export * from './mockLogoutAPI'
+export * from './mockUpdateUserAPI'

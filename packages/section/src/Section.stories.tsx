@@ -1,34 +1,34 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { Section } from "./Section";
-import { Card } from "@ajk-ui/card";
-import { ThemeProvider, themes } from "@ajk-ui/theme-utils";
+import type { Meta, StoryObj } from '@storybook/react'
+import { Section } from './Section'
+import { Card } from '@ajk-ui/card'
+import { ThemeProvider, themes } from '@ajk-ui/theme-utils'
 
 const meta = {
-  title: "Components/Section",
+  title: 'Components/Section',
   component: Section,
   parameters: {
-    layout: "fullscreen",
+    layout: 'fullscreen',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   decorators: [
-    (Story) => (
+    Story => (
       <ThemeProvider initialTheme={themes.restaurant.modern}>
         <Story />
       </ThemeProvider>
     ),
   ],
-} satisfies Meta<typeof Section>;
+} satisfies Meta<typeof Section>
 
-export default meta;
-type Story = StoryObj<typeof Section>;
+export default meta
+type Story = StoryObj<typeof Section>
 
 export const Default: Story = {
   args: {
-    title: "Our Services",
-    subtitle: "Discover what makes us special",
+    title: 'Our Services',
+    subtitle: 'Discover what makes us special',
     children: (
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {[1, 2, 3].map((i) => (
+        {[1, 2, 3].map(i => (
           <Card
             key={i}
             title={`Service ${i}`}
@@ -39,18 +39,18 @@ export const Default: Story = {
       </div>
     ),
   },
-};
+}
 
 export const Feature: Story = {
   args: {
-    variant: "feature",
-    title: "Featured Dishes",
+    variant: 'feature',
+    title: 'Featured Dishes',
     subtitle: "Our chef's special selection",
-    layout: "grid",
+    layout: 'grid',
     gridCols: 3,
     children: (
       <>
-        {[1, 2, 3].map((i) => (
+        {[1, 2, 3].map(i => (
           <Card
             key={i}
             variant="product"
@@ -63,21 +63,21 @@ export const Feature: Story = {
       </>
     ),
   },
-};
+}
 
 export const Highlight: Story = {
   args: {
-    variant: "highlight",
-    title: "Special Offer",
-    subtitle: "Limited time promotion",
-    layout: "split",
+    variant: 'highlight',
+    title: 'Special Offer',
+    subtitle: 'Limited time promotion',
+    layout: 'split',
     children: (
       <>
         <div className="space-y-4">
           <h3 className="text-2xl font-bold text-white">50% Off First Visit</h3>
           <p className="text-primary-100">
-            Book your first appointment today and receive a special discount.
-            Valid for new customers only.
+            Book your first appointment today and receive a special discount. Valid for new
+            customers only.
           </p>
           <button className="rounded-md bg-white px-6 py-3 text-primary-600 hover:bg-primary-50">
             Book Now
@@ -93,15 +93,15 @@ export const Highlight: Story = {
       </>
     ),
   },
-};
+}
 
 export const CTA: Story = {
   args: {
-    variant: "cta",
-    title: "Ready to Get Started?",
-    subtitle: "Join our community today",
-    layout: "centered",
-    spacing: "xl",
+    variant: 'cta',
+    title: 'Ready to Get Started?',
+    subtitle: 'Join our community today',
+    layout: 'centered',
+    spacing: 'xl',
     children: (
       <div className="mt-8 flex flex-wrap justify-center gap-4">
         <button className="rounded-md bg-white px-8 py-3 text-primary-600 hover:bg-primary-50">
@@ -113,24 +113,23 @@ export const CTA: Story = {
       </div>
     ),
   },
-};
+}
 
 export const WithBackground: Story = {
   args: {
-    title: "Our Restaurant",
-    subtitle: "Experience fine dining at its best",
-    backgroundImage:
-      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200",
+    title: 'Our Restaurant',
+    subtitle: 'Experience fine dining at its best',
+    backgroundImage: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200',
     overlay: true,
     overlayOpacity: 0.7,
-    layout: "centered",
-    align: "center",
-    spacing: "xl",
+    layout: 'centered',
+    align: 'center',
+    spacing: 'xl',
     children: (
       <div className="mt-8 text-center text-white">
         <p className="mx-auto max-w-2xl text-lg">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua.
         </p>
         <button className="mt-8 rounded-md bg-primary-500 px-8 py-3 text-white hover:bg-primary-600">
           Make a Reservation
@@ -138,27 +137,27 @@ export const WithBackground: Story = {
       </div>
     ),
   },
-};
+}
 
 export const ZigzagLayout: Story = {
   args: {
-    title: "Our Services",
-    subtitle: "What we offer",
-    layout: "zigzag",
+    title: 'Our Services',
+    subtitle: 'What we offer',
+    layout: 'zigzag',
     children: (
       <>
-        {[1, 2, 3].map((i) => (
+        {[1, 2, 3].map(i => (
           <div
             key={i}
             className={`grid grid-cols-1 gap-8 lg:grid-cols-2 ${
-              i % 2 === 0 ? "lg:flex-row-reverse" : ""
+              i % 2 === 0 ? 'lg:flex-row-reverse' : ''
             }`}
           >
             <div className="space-y-4">
               <h3 className="text-2xl font-bold">Service {i}</h3>
               <p className="text-gray-600">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua.
               </p>
               <button className="rounded-md bg-primary-500 px-6 py-2 text-white hover:bg-primary-600">
                 Learn More
@@ -176,7 +175,7 @@ export const ZigzagLayout: Story = {
       </>
     ),
   },
-};
+}
 
 // Mostrar diferentes temas
 export const RestaurantModern: Story = {
@@ -184,37 +183,37 @@ export const RestaurantModern: Story = {
     ...Feature.args,
   },
   decorators: [
-    (Story) => (
+    Story => (
       <ThemeProvider initialTheme={themes.restaurant.modern}>
         <Story />
       </ThemeProvider>
     ),
   ],
-};
+}
 
 export const RestaurantClassic: Story = {
   args: {
     ...Feature.args,
   },
   decorators: [
-    (Story) => (
+    Story => (
       <ThemeProvider initialTheme={themes.restaurant.classic}>
         <Story />
       </ThemeProvider>
     ),
   ],
-};
+}
 
 export const BarbershopVintage: Story = {
   args: {
-    variant: "feature",
-    title: "Our Services",
-    subtitle: "Professional grooming services",
-    layout: "grid",
+    variant: 'feature',
+    title: 'Our Services',
+    subtitle: 'Professional grooming services',
+    layout: 'grid',
     gridCols: 3,
     children: (
       <>
-        {[1, 2, 3].map((i) => (
+        {[1, 2, 3].map(i => (
           <Card
             key={i}
             variant="service"
@@ -228,23 +227,23 @@ export const BarbershopVintage: Story = {
     ),
   },
   decorators: [
-    (Story) => (
+    Story => (
       <ThemeProvider initialTheme={themes.barbershop.vintage}>
         <Story />
       </ThemeProvider>
     ),
   ],
-};
+}
 
 export const BarbershopModern: Story = {
   args: {
     ...BarbershopVintage.args,
   },
   decorators: [
-    (Story) => (
+    Story => (
       <ThemeProvider initialTheme={themes.barbershop.modern}>
         <Story />
       </ThemeProvider>
     ),
   ],
-};
+}

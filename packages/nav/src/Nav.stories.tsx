@@ -1,99 +1,97 @@
-import { CartItem, CartProvider } from "@ajk-ui/cart";
-import { ThemeProvider, themes } from "@ajk-ui/theme-utils";
-import type { Meta, StoryObj } from "@storybook/react";
-import { Nav } from "./Nav";
-import { NavEcommerce } from "./NavEcommerce";
-import { mockProducts } from "@ajk-ui/data";
-import { AuthProvider } from "@ajk-ui/auth";
+import { CartItem, CartProvider } from '@ajk-ui/cart'
+import { ThemeProvider, themes } from '@ajk-ui/theme-utils'
+import type { Meta, StoryObj } from '@storybook/react'
+import { Nav } from './Nav'
+import { NavEcommerce } from './NavEcommerce'
+import { mockProducts } from '@ajk-ui/data'
+import { AuthProvider } from '@ajk-ui/auth'
 
 const meta = {
-  title: "Components/Nav",
+  title: 'Components/Nav',
   component: Nav,
   parameters: {
-    layout: "fullscreen",
+    layout: 'fullscreen',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   decorators: [
-    (Story) => (
+    Story => (
       <ThemeProvider initialTheme={themes.restaurant.modern}>
         <Story />
       </ThemeProvider>
     ),
   ],
-} satisfies Meta<typeof Nav>;
+} satisfies Meta<typeof Nav>
 
-export default meta;
-type Story = StoryObj<typeof Nav>;
+export default meta
+type Story = StoryObj<typeof Nav>
 
 const defaultItems = [
-  { label: "Home", href: "#" },
-  { label: "About", href: "#" },
-  { label: "Services", href: "#" },
-  { label: "Contact", href: "#" },
-];
+  { label: 'Home', href: '#' },
+  { label: 'About', href: '#' },
+  { label: 'Services', href: '#' },
+  { label: 'Contact', href: '#' },
+]
 
 export const Primary: Story = {
   args: {
     items: defaultItems,
-    variant: "primary",
+    variant: 'primary',
     logo: () => <span className="text-xl font-bold">Logo</span>,
-    variantBoxMobile: "full",
-    logoNavMenuMobile: () => (
-      <span className="text-xl font-bold">Logo Mobile</span>
-    ),
+    variantBoxMobile: 'full',
+    logoNavMenuMobile: () => <span className="text-xl font-bold">Logo Mobile</span>,
   },
-};
+}
 
 export const Transparent: Story = {
   args: {
     items: defaultItems,
-    variant: "transparent",
-    logo: () => <span className="text-xl text-gray-300 font-bold">Logo</span>,
+    variant: 'transparent',
+    logo: () => <span className="text-xl font-bold text-gray-300">Logo</span>,
   },
   parameters: {
-    backgrounds: { default: "dark" },
+    backgrounds: { default: 'dark' },
   },
-  render: (args) => (
-    <div style={{ background: "url(/images/barbershop/hero.jpg)" }}>
+  render: args => (
+    <div style={{ background: 'url(/images/barbershop/hero.jpg)' }}>
       <Nav {...args} />
     </div>
   ),
-};
+}
 
 export const Minimal: Story = {
   args: {
     items: defaultItems,
-    variant: "minimal",
+    variant: 'minimal',
     logo: () => <span className="text-xl font-bold">Logo</span>,
   },
-};
+}
 
 export const CenteredItems: Story = {
   args: {
     items: defaultItems,
-    variant: "primary",
-    align: "center",
+    variant: 'primary',
+    align: 'center',
     logo: () => <span className="text-xl font-bold">Logo</span>,
   },
-};
+}
 
 export const WithEcommerce: Story = {
   args: {
     items: defaultItems,
-    variant: "transparent",
-    type: "ecommerce",
-    align: "start",
-    logo: () => <span className="text-xl font-bold ">Logo</span>,
+    variant: 'transparent',
+    type: 'ecommerce',
+    align: 'start',
+    logo: () => <span className="text-xl font-bold">Logo</span>,
   },
-  render: (args) => {
-    const products: CartItem[] = mockProducts.map((product) => ({
+  render: args => {
+    const products: CartItem[] = mockProducts.map(product => ({
       id: product.id,
       name: product.name,
       price: product.price,
       subname: product.subname,
       image: product.images.gallery[0].size.xs.url,
       quantity: 1,
-    }));
+    }))
 
     return (
       <AuthProvider>
@@ -101,42 +99,34 @@ export const WithEcommerce: Story = {
           initialState={{
             items: products,
             itemCount: products.length,
-            total: products.reduce(
-              (acc, item) => acc + item.price * item.quantity,
-              0
-            ),
+            total: products.reduce((acc, item) => acc + item.price * item.quantity, 0),
           }}
         >
-          <div className="w-full z-40 bg-white">
+          <div className="z-40 w-full bg-white">
             <NavEcommerce
               {...args}
-              className="w-full mx-auto px-4 sm:px-6 max-w-7xl h-16 md:h-24 items-center flex "
+              className="mx-auto flex h-16 w-full max-w-7xl items-center px-4 sm:px-6 md:h-24"
             />
           </div>
-          <div className="w-full p-4 gap-5 flex flex-col">
-            {[1, 2, 3, 4, 5, 6, 7].map((index) => (
-              <div key={index} className="w-full h-56 bg-slate-300"></div>
+          <div className="flex w-full flex-col gap-5 p-4">
+            {[1, 2, 3, 4, 5, 6, 7].map(index => (
+              <div key={index} className="h-56 w-full bg-slate-300"></div>
             ))}
           </div>
         </CartProvider>
       </AuthProvider>
-    );
+    )
   },
-};
+}
 
 export const WithIcons: Story = {
   args: {
     items: [
       {
-        label: "Home",
-        href: "#",
+        label: 'Home',
+        href: '#',
         icon: (
-          <svg
-            className="h-4 w-4"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
+          <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -147,15 +137,10 @@ export const WithIcons: Story = {
         ),
       },
       {
-        label: "About",
-        href: "#",
+        label: 'About',
+        href: '#',
         icon: (
-          <svg
-            className="h-4 w-4"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
+          <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -166,15 +151,10 @@ export const WithIcons: Story = {
         ),
       },
       {
-        label: "Services",
-        href: "#",
+        label: 'Services',
+        href: '#',
         icon: (
-          <svg
-            className="h-4 w-4"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
+          <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -185,10 +165,10 @@ export const WithIcons: Story = {
         ),
       },
     ],
-    variant: "primary",
+    variant: 'primary',
     logo: () => <span className="text-xl font-bold">Logo</span>,
   },
-};
+}
 
 // Mostrar el Nav con diferentes temas
 export const RestaurantModern: Story = {
@@ -196,49 +176,49 @@ export const RestaurantModern: Story = {
     ...Primary.args,
   },
   decorators: [
-    (Story) => (
+    Story => (
       <ThemeProvider initialTheme={themes.restaurant.modern}>
         <Story />
       </ThemeProvider>
     ),
   ],
-};
+}
 
 export const RestaurantClassic: Story = {
   args: {
     ...Primary.args,
   },
   decorators: [
-    (Story) => (
+    Story => (
       <ThemeProvider initialTheme={themes.restaurant.classic}>
         <Story />
       </ThemeProvider>
     ),
   ],
-};
+}
 
 export const BarbershopVintage: Story = {
   args: {
     ...Primary.args,
   },
   decorators: [
-    (Story) => (
+    Story => (
       <ThemeProvider initialTheme={themes.barbershop.vintage}>
         <Story />
       </ThemeProvider>
     ),
   ],
-};
+}
 
 export const BarbershopModern: Story = {
   args: {
     ...Primary.args,
   },
   decorators: [
-    (Story) => (
+    Story => (
       <ThemeProvider initialTheme={themes.barbershop.modern}>
         <Story />
       </ThemeProvider>
     ),
   ],
-};
+}

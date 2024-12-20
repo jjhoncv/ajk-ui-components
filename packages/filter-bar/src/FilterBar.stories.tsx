@@ -1,24 +1,24 @@
 // FilterBar.stories.tsx
-import type { Meta, StoryObj } from "@storybook/react";
-import { FilterBar } from "./FilterBar";
-import { FilterProvider } from "./FilterContext";
-import { ProductGrid } from "@ajk-ui/product-grid";
-import { mockProducts } from "@ajk-ui/data";
-import { CartProvider } from "@ajk-ui/cart";
-import { ThemeProvider, themes } from "@ajk-ui/theme-utils";
-import { Breadcrumb } from "@ajk-ui/breadcrumb";
+import type { Meta, StoryObj } from '@storybook/react'
+import { FilterBar } from './FilterBar'
+import { FilterProvider } from './FilterContext'
+import { ProductGrid } from '@ajk-ui/product-grid'
+import { mockProducts } from '@ajk-ui/data'
+import { CartProvider } from '@ajk-ui/cart'
+import { ThemeProvider, themes } from '@ajk-ui/theme-utils'
+import { Breadcrumb } from '@ajk-ui/breadcrumb'
 
 const meta = {
-  title: "Ecommerce/FilterBar",
+  title: 'Ecommerce/FilterBar',
   component: FilterBar,
   parameters: {
-    layout: "fullscreen",
+    layout: 'fullscreen',
   },
   decorators: [
     (Story, context) => (
       <ThemeProvider initialTheme={themes.restaurant.modern}>
         <FilterProvider
-          onFilterChange={(filters) => console.log("Filters changed:", filters)}
+          onFilterChange={filters => console.log('Filters changed:', filters)}
           totalProducts={100}
         >
           <div className="min-h-screen bg-gray-50">
@@ -32,22 +32,22 @@ const meta = {
   ],
   argTypes: {
     position: {
-      control: "radio",
-      options: ["top", "left", "right"],
-      defaultValue: "left",
+      control: 'radio',
+      options: ['top', 'left', 'right'],
+      defaultValue: 'left',
     },
   },
-} satisfies Meta<typeof FilterBar>;
+} satisfies Meta<typeof FilterBar>
 
-export default meta;
-type Story = StoryObj<typeof FilterBar>;
+export default meta
+type Story = StoryObj<typeof FilterBar>
 
 // Historia básica
 export const Default: Story = {
   args: {
-    position: "left",
+    position: 'left',
   },
-};
+}
 
 // Historia con layout completo y toggle de posición
 export const WithLayout: Story = {
@@ -55,12 +55,12 @@ export const WithLayout: Story = {
     return (
       <div className="min-h-screen bg-gray-50">
         {/* Header */}
-        <div className="bg-white border-b">
-          <div className="max-w-7xl mx-auto px-4 py-4">
+        <div className="border-b bg-white">
+          <div className="mx-auto max-w-7xl px-4 py-4">
             <Breadcrumb
               items={[
-                { href: "#", label: "Inicio" },
-                { href: "#", label: "Zapatillas" },
+                { href: '#', label: 'Inicio' },
+                { href: '#', label: 'Zapatillas' },
               ]}
             />
 
@@ -74,7 +74,7 @@ export const WithLayout: Story = {
         <FilterBar position="top" />
 
         {/* Main Content */}
-        <div className="max-w-7xl mx-auto px-4 py-6">
+        <div className="mx-auto max-w-7xl px-4 py-6">
           <div className="flex gap-6">
             {/* SideFilter */}
             <FilterBar position="left" />
@@ -82,7 +82,7 @@ export const WithLayout: Story = {
             {/* Product Grid */}
             <div className="flex-1">
               <ProductGrid
-                products={mockProducts.map((product) => ({
+                products={mockProducts.map(product => ({
                   ...{
                     ...product,
                     image: getImagePath(product.images.gallery[0].size.lg.url),
@@ -93,18 +93,18 @@ export const WithLayout: Story = {
           </div>
         </div>
       </div>
-    );
+    )
   },
-};
+}
 
 // Historia versión móvil
 export const Mobile: Story = {
   args: {
-    position: "left",
+    position: 'left',
   },
   parameters: {
     viewport: {
-      defaultViewport: "mobile1",
+      defaultViewport: 'mobile1',
     },
   },
-};
+}

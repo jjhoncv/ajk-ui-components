@@ -1,12 +1,12 @@
-import { Button } from "@ajk-ui/button";
-import { Card } from "@ajk-ui/card";
-import { CartItem, useCart } from "./CartContext";
-import { cn, formatPEN } from "@ajk-ui/core";
-import { HTMLAttributes } from "react";
+import { Button } from '@ajk-ui/button'
+import { Card } from '@ajk-ui/card'
+import { CartItem, useCart } from './CartContext'
+import { cn, formatPEN } from '@ajk-ui/core'
+import { HTMLAttributes } from 'react'
 
-interface ProductCartProps extends Omit<CartItem, "quantity"> {
-  description: string;
-  condition: string;
+interface ProductCartProps extends Omit<CartItem, 'quantity'> {
+  description: string
+  condition: string
 }
 
 export const ProductCart = ({
@@ -19,7 +19,7 @@ export const ProductCart = ({
   condition,
   ...props
 }: ProductCartProps) => {
-  const { addItem } = useCart();
+  const { addItem } = useCart()
 
   return (
     <Card
@@ -29,10 +29,10 @@ export const ProductCart = ({
       description={description}
       image={image}
       badge={condition}
-      className="cursor-pointer relative pb-16 group"
+      className="group relative cursor-pointer pb-16"
       {...props}
     >
-      <div className="flex mt-2 absolute bottom-6 w-full justify-center left-0 right-0">
+      <div className="absolute bottom-6 left-0 right-0 mt-2 flex w-full justify-center">
         <Button
           onClick={() => {
             addItem({
@@ -42,16 +42,16 @@ export const ProductCart = ({
               image,
               subname,
               quantity: 1,
-            });
+            })
           }}
           variant="secondary"
           size="sm"
-          className="flex md:hidden group-hover:flex"
+          className="flex group-hover:flex md:hidden"
         >
-          <div className="w-full flex gap-2">
+          <div className="flex w-full gap-2">
             <div className="w-5">
               <svg
-                className={cn("w-full h-full fill-gray-800")}
+                className={cn('h-full w-full fill-gray-800')}
                 width="92"
                 height="80"
                 viewBox="0 0 92 80"
@@ -66,5 +66,5 @@ export const ProductCart = ({
         </Button>
       </div>
     </Card>
-  );
-};
+  )
+}

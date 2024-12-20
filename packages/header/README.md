@@ -15,14 +15,14 @@ pnpm add @ajk-ui/header
 ## Usage
 
 ```tsx
-import { Header } from "@ajk-ui/header";
+import { Header } from '@ajk-ui/header'
 
 function MyComponent() {
   const navItems = [
-    { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
-    { label: "Contact", href: "/contact" },
-  ];
+    { label: 'Home', href: '/' },
+    { label: 'About', href: '/about' },
+    { label: 'Contact', href: '/contact' },
+  ]
 
   return (
     <Header
@@ -31,9 +31,9 @@ function MyComponent() {
       backgroundImage="/hero.jpg"
       variant="hero"
       navItems={navItems}
-      cta={{ label: "Get Started", href: "/start" }}
+      cta={{ label: 'Get Started', href: '/start' }}
     />
-  );
+  )
 }
 ```
 
@@ -87,11 +87,11 @@ interface CTAButton {
   subtitle="Discover amazing features"
   backgroundImage="/hero-bg.jpg"
   navItems={[
-    { label: "Home", href: "/" },
-    { label: "Features", href: "/features" },
-    { label: "Contact", href: "/contact" },
+    { label: 'Home', href: '/' },
+    { label: 'Features', href: '/features' },
+    { label: 'Contact', href: '/contact' },
   ]}
-  cta={{ label: "Get Started", href: "/start" }}
+  cta={{ label: 'Get Started', href: '/start' }}
   height="lg"
 />
 ```
@@ -103,8 +103,8 @@ interface CTAButton {
   variant="simple"
   title="Company Name"
   navItems={[
-    { label: "About", href: "/about" },
-    { label: "Services", href: "/services" },
+    { label: 'About', href: '/about' },
+    { label: 'Services', href: '/services' },
   ]}
 />
 ```
@@ -116,7 +116,7 @@ interface CTAButton {
   variant="transparent"
   title="Brand"
   navItems={navItems}
-  className="absolute top-0 left-0 right-0"
+  className="absolute left-0 right-0 top-0"
 />
 ```
 
@@ -125,10 +125,7 @@ interface CTAButton {
 Customize header styles using Tailwind CSS:
 
 ```tsx
-<Header
-  className="bg-gradient-to-r from-blue-500 to-purple-500"
-  title="Custom Header"
-/>
+<Header className="bg-gradient-to-r from-blue-500 to-purple-500" title="Custom Header" />
 ```
 
 ## Version History

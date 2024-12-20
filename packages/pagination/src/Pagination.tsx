@@ -1,20 +1,16 @@
-import { Button } from "@ajk-ui/button";
-import { useTheme } from "@ajk-ui/theme-utils";
+import { Button } from '@ajk-ui/button'
+import { useTheme } from '@ajk-ui/theme-utils'
 
 export interface PaginationProps {
-  totalPages: number;
-  currentPage: number;
-  onPageChange: (page: number) => void;
+  totalPages: number
+  currentPage: number
+  onPageChange: (page: number) => void
 }
 
-export const Pagination = ({
-  totalPages,
-  currentPage,
-  onPageChange,
-}: PaginationProps) => {
-  const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
+export const Pagination = ({ totalPages, currentPage, onPageChange }: PaginationProps) => {
+  const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1)
 
-  const { theme } = useTheme();
+  const { theme } = useTheme()
 
   return (
     <div className="flex items-center justify-center space-x-2 py-8">
@@ -28,7 +24,7 @@ export const Pagination = ({
       </Button>
 
       <div className="flex space-x-1">
-        {pageNumbers.map((page) => (
+        {pageNumbers.map(page => (
           <Button
             variant="primary"
             key={page}
@@ -50,5 +46,5 @@ export const Pagination = ({
         Siguiente
       </Button>
     </div>
-  );
-};
+  )
+}

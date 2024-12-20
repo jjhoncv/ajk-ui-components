@@ -1,104 +1,102 @@
-import { AuthProvider } from "@ajk-ui/auth";
-import { CartProvider } from "@ajk-ui/cart";
-import { mockProducts } from "@ajk-ui/data";
-import { Footer } from "@ajk-ui/footer";
-import { NavEcommerce } from "@ajk-ui/nav";
-import { ProductDetail } from "@ajk-ui/product-detail";
-import { ThemeProvider, createTheme } from "@ajk-ui/theme-utils";
-import { Meta, StoryObj } from "@storybook/react";
+import { AuthProvider } from '@ajk-ui/auth'
+import { CartProvider } from '@ajk-ui/cart'
+import { mockProducts } from '@ajk-ui/data'
+import { Footer } from '@ajk-ui/footer'
+import { NavEcommerce } from '@ajk-ui/nav'
+import { ProductDetail } from '@ajk-ui/product-detail'
+import { ThemeProvider, createTheme } from '@ajk-ui/theme-utils'
+import { Meta, StoryObj } from '@storybook/react'
 
 // Tema personalizado para e-commerce de tecnología
 const techTheme = createTheme({
   colors: {
-    primary: "#4F46E5", // Indigo para el color principal
-    secondary: "#fde68a", // Verde esmeralda para acentos
-    background: "#F9FAFB", // Gris muy claro para el fondo
-    text: "#111827", // Casi negro para el texto
+    primary: '#4F46E5', // Indigo para el color principal
+    secondary: '#fde68a', // Verde esmeralda para acentos
+    background: '#F9FAFB', // Gris muy claro para el fondo
+    text: '#111827', // Casi negro para el texto
   },
   typography: {
-    fontFamily: "Inter, system-ui, sans-serif",
+    fontFamily: 'Inter, system-ui, sans-serif',
   },
-});
+})
 
 const Logo = () => (
   <div
-    className="flex items-center cursor-pointer"
+    className="flex cursor-pointer items-center"
     onClick={() => {
-      if (typeof window !== "undefined") {
+      if (typeof window !== 'undefined') {
         window.location.href = getImagePath(
-          "/iframe.html?args=&id=pages-ecommerce--home-page&viewMode=story"
-        );
+          '/iframe.html?args=&id=pages-ecommerce--home-page&viewMode=story'
+        )
       }
     }}
   >
     <div className="w-6 md:w-12">
-      <img src={getImagePath("/images/ecommerce/Logo.svg")} />
+      <img src={getImagePath('/images/ecommerce/Logo.svg')} />
     </div>
-    <span className="ml-2 text-2xl md:text-4xl text-black font-extralight">
-      TechStore
-    </span>
+    <span className="ml-2 text-2xl font-extralight text-black md:text-4xl">TechStore</span>
   </div>
-);
+)
 
 const LogoFooter = () => (
   <div className="flex items-center gap-2">
     <div className="w-6">
-      <img src={getImagePath("/images/ecommerce/LogoInverter.svg")} />
+      <img src={getImagePath('/images/ecommerce/LogoInverter.svg')} />
     </div>
-    <div className="ml-1 flex flex-col" style={{ lineHeight: "15px" }}>
-      <p className="font-extralight text-3xl text-gray-800 ">TechStore</p>
+    <div className="ml-1 flex flex-col" style={{ lineHeight: '15px' }}>
+      <p className="text-3xl font-extralight text-gray-800">TechStore</p>
     </div>
   </div>
-);
+)
 
 const LogoNavMenuMobile = () => (
   <div className="flex items-center">
     <div className="w-6">
-      <img src={getImagePath("/images/ecommerce/LogoInverter.svg")} />
+      <img src={getImagePath('/images/ecommerce/LogoInverter.svg')} />
     </div>
     <span className="ml-2 text-2xl font-extralight">TechStore</span>
   </div>
-);
+)
 
 const TechStoreProductDetailPage = () => {
   const navItems = [
-    { label: "Productos", href: "/productos" },
-    { label: "Ofertas", href: "/ofertas" },
-    { label: "Soporte", href: "/soporte" },
-  ];
+    { label: 'Productos', href: '/productos' },
+    { label: 'Ofertas', href: '/ofertas' },
+    { label: 'Soporte', href: '/soporte' },
+  ]
 
   const footerColumns = [
     {
-      title: "Productos",
+      title: 'Productos',
       links: [
-        { label: "Computadoras", href: "/computadoras" },
-        { label: "Smartphones", href: "/smartphones" },
-        { label: "Accesorios", href: "/accesorios" },
+        { label: 'Computadoras', href: '/computadoras' },
+        { label: 'Smartphones', href: '/smartphones' },
+        { label: 'Accesorios', href: '/accesorios' },
       ],
     },
     {
-      title: "Soporte",
+      title: 'Soporte',
       links: [
-        { label: "Centro de Ayuda", href: "/ayuda" },
-        { label: "Garantía", href: "/garantia" },
-        { label: "Contacto", href: "/contacto" },
+        { label: 'Centro de Ayuda', href: '/ayuda' },
+        { label: 'Garantía', href: '/garantia' },
+        { label: 'Contacto', href: '/contacto' },
       ],
     },
-  ];
+  ]
 
   const socialLinks = [
-    { platform: "instagram" as const, href: "#" },
-    { platform: "facebook" as const, href: "#" },
-    { platform: "twitter" as const, href: "#" },
-  ];
+    { platform: 'instagram' as const, href: '#' },
+    { platform: 'facebook' as const, href: '#' },
+    { platform: 'twitter' as const, href: '#' },
+  ]
 
-  const searchParams = new URLSearchParams(window.location.search);
-  const id = searchParams.get("productId") || 1;
+  const searchParams = new URLSearchParams(window.location.search)
+  const id = searchParams.get('productId') || 1
   if (!id) {
-    return null;
+    return null
   }
-  const product = mockProducts.find((product) => product.id === Number(id));
-  if (product === undefined) return;
+  const product = mockProducts.find(product => product.id === Number(id))
+  if (product === undefined) return
 
   const productSolve = {
     ...product,
@@ -107,7 +105,7 @@ const TechStoreProductDetailPage = () => {
       logo: getImagePath(product.brand.logo),
     },
     images: {
-      gallery: product.images.gallery.map((item) => ({
+      gallery: product.images.gallery.map(item => ({
         ...item,
         size: {
           lg: {
@@ -119,17 +117,17 @@ const TechStoreProductDetailPage = () => {
         },
       })),
     },
-  };
+  }
 
   return (
     <AuthProvider>
       <CartProvider>
         <ThemeProvider initialTheme={techTheme}>
-          <div className="min-h-screen bg-background">
+          <div className="bg-background min-h-screen">
             {/* Header */}
-            <div className="hidden md:flex bg-white border-b text-gray-600 text-sm font-light">
-              <div className="w-full mx-auto px-4 sm:px-6 max-w-7xl">
-                <div className="w-full justify-between h-10 flex items-center ">
+            <div className="hidden border-b bg-white text-sm font-light text-gray-600 md:flex">
+              <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
+                <div className="flex h-10 w-full items-center justify-between">
                   <div>
                     <div>About Us | My Account | Wishlist | Order Tracking</div>
                   </div>
@@ -138,16 +136,16 @@ const TechStoreProductDetailPage = () => {
                 </div>
               </div>
             </div>
-            <div className="w-full z-40 bg-white border-b shadow-sm">
+            <div className="z-40 w-full border-b bg-white shadow-sm">
               <NavEcommerce
                 items={navItems}
                 logo={Logo}
                 variant="transparent"
                 logoNavMenuMobile={LogoNavMenuMobile}
-                className="w-full mx-auto px-4 sm:px-6 max-w-7xl h-16 md:h-24 items-center flex "
+                className="mx-auto flex h-16 w-full max-w-7xl items-center px-4 sm:px-6 md:h-24"
               />
             </div>
-            <div className="w-full mx-auto px-4 sm:px-6 max-w-7xl ">
+            <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
               <ProductDetail product={productSolve} />
             </div>
             {/* Footer */}
@@ -158,28 +156,27 @@ const TechStoreProductDetailPage = () => {
               social={socialLinks}
               copyright="© 2024 TechStore. Todos los derechos reservados."
               newsletter={{
-                title: "Suscríbete",
-                description:
-                  "Recibe las últimas novedades y ofertas exclusivas",
-                buttonText: "Suscribirse",
+                title: 'Suscríbete',
+                description: 'Recibe las últimas novedades y ofertas exclusivas',
+                buttonText: 'Suscribirse',
               }}
             />
           </div>
         </ThemeProvider>
       </CartProvider>
     </AuthProvider>
-  );
-};
+  )
+}
 
 const meta = {
-  title: "Pages/Ecommerce",
+  title: 'Pages/Ecommerce',
   component: TechStoreProductDetailPage,
   parameters: {
-    layout: "fullscreen",
+    layout: 'fullscreen',
     docs: {
       description: {
         component:
-          "Implementación completa de la página de ecommerce usando los componentes de AJK UI.",
+          'Implementación completa de la página de ecommerce usando los componentes de AJK UI.',
       },
       source: {
         code: `// Tema personalizado para e-commerce de tecnología
@@ -393,13 +390,13 @@ const TechStoreProductDetailPage = () => {
       },
     },
   },
-  tags: ["autodocs"],
-} satisfies Meta<typeof TechStoreProductDetailPage>;
+  tags: ['autodocs'],
+} satisfies Meta<typeof TechStoreProductDetailPage>
 
-export default meta;
+export default meta
 
-type Story = StoryObj<typeof TechStoreProductDetailPage>;
+type Story = StoryObj<typeof TechStoreProductDetailPage>
 
 export const ProductDetailPage: Story = {
   render: () => <TechStoreProductDetailPage />,
-};
+}

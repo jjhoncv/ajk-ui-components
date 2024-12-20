@@ -1,2 +1,2 @@
-export * from "./ProductDetail";
-export * from "./hooks/useProductStock";
+export * from './ProductDetail'
+export * from './hooks/useProductStock'

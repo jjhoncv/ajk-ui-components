@@ -1,18 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { ModernTech } from "./ThemeModernTech";
-import {
-  Block,
-  BlockContent,
-  BlockHeader,
-  BlockTitle,
-  ColorSection,
-} from "./../components";
+import type { Meta, StoryObj } from '@storybook/react'
+import { ModernTech } from './ThemeModernTech'
+import { Block, BlockContent, BlockHeader, BlockTitle, ColorSection } from './../components'
 
 const TechThemeColors = () => {
-  const theme = ModernTech;
+  const theme = ModernTech
 
   return (
-    <div className="p-8 space-y-8 max-w-6xl mx-auto bg-slate-50">
+    <div className="mx-auto max-w-6xl space-y-8 bg-slate-50 p-8">
       <div className="space-y-4">
         <h1 className="text-3xl font-bold">Tech Theme Colors</h1>
         <p className="text-slate-600">
@@ -65,13 +59,13 @@ const TechThemeColors = () => {
               <h3 className="font-semibold">Botones</h3>
               <div className="flex gap-4">
                 <button
-                  className="px-4 py-2 rounded-md text-white"
+                  className="rounded-md px-4 py-2 text-white"
                   style={{ backgroundColor: theme.colors.primary }}
                 >
                   Botón Primario
                 </button>
                 <button
-                  className="px-4 py-2 rounded-md"
+                  className="rounded-md px-4 py-2"
                   style={{
                     backgroundColor: theme.colors.secondary,
                     color: theme.colors.text,
@@ -80,7 +74,7 @@ const TechThemeColors = () => {
                   Botón Secundario
                 </button>
                 <button
-                  className="px-4 py-2 rounded-md"
+                  className="rounded-md px-4 py-2"
                   style={{
                     backgroundColor: theme.colors.disabled.background,
                     color: theme.colors.disabled.text,
@@ -95,15 +89,9 @@ const TechThemeColors = () => {
             <div className="space-y-2">
               <h3 className="font-semibold">Texto</h3>
               <div className="space-y-2">
-                <p style={{ color: theme.colors.textVariants.dark }}>
-                  Texto Principal
-                </p>
-                <p style={{ color: theme.colors.textVariants.light }}>
-                  Texto Secundario
-                </p>
-                <p style={{ color: theme.colors.textVariants.muted }}>
-                  Texto Muted
-                </p>
+                <p style={{ color: theme.colors.textVariants.dark }}>Texto Principal</p>
+                <p style={{ color: theme.colors.textVariants.light }}>Texto Secundario</p>
+                <p style={{ color: theme.colors.textVariants.muted }}>Texto Muted</p>
               </div>
             </div>
 
@@ -112,7 +100,7 @@ const TechThemeColors = () => {
               <h3 className="font-semibold">Estados Interactivos</h3>
               <div className="flex gap-4">
                 <button
-                  className="px-4 py-2 rounded-md transition-colors"
+                  className="rounded-md px-4 py-2 transition-colors"
                   style={{
                     backgroundColor: theme.colors.primaryVariants.default,
                     color: theme.colors.text,
@@ -121,7 +109,7 @@ const TechThemeColors = () => {
                   Estado Normal
                 </button>
                 <button
-                  className="px-4 py-2 rounded-md transition-colors"
+                  className="rounded-md px-4 py-2 transition-colors"
                   style={{
                     backgroundColor: theme.colors.primaryVariants.hover,
                     color: theme.colors.textVariants.light,
@@ -130,7 +118,7 @@ const TechThemeColors = () => {
                   Estado Hover
                 </button>
                 <button
-                  className="px-4 py-2 rounded-md transition-colors"
+                  className="rounded-md px-4 py-2 transition-colors"
                   style={{
                     backgroundColor: theme.colors.primaryVariants.active,
                     color: theme.colors.textVariants.light,
@@ -144,24 +132,24 @@ const TechThemeColors = () => {
         </BlockContent>
       </Block>
     </div>
-  );
-};
+  )
+}
 
 const meta = {
-  title: "Themes/Tech/Modern",
+  title: 'Themes/Tech/Modern',
   component: TechThemeColors,
 
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  decorators: [(Story) => <Story />],
-} satisfies Meta<typeof TechThemeColors>;
+  decorators: [Story => <Story />],
+} satisfies Meta<typeof TechThemeColors>
 
-export default meta;
+export default meta
 
-type Story = StoryObj<typeof TechThemeColors>;
+type Story = StoryObj<typeof TechThemeColors>
 
 export const Theme: Story = {
   render: () => <TechThemeColors />,
-};
+}

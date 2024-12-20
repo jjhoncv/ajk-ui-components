@@ -1,5 +1,5 @@
 ---
-"@ajk-ui/nav": minor
+'@ajk-ui/nav': minor
 ---
 
 change more options

@@ -1,13 +1,13 @@
-import { cn, formatPEN } from "@ajk-ui/core";
-import { Product } from "@ajk-ui/product";
+import { cn, formatPEN } from '@ajk-ui/core'
+import { Product } from '@ajk-ui/product'
 
 interface ProductInfoProps {
-  product: Product;
-  selectedSize: string;
-  quantity: number;
-  onSizeSelect: (size: string) => void;
-  onQuantityChange: (quantity: number) => void;
-  onAddToCart: () => void;
+  product: Product
+  selectedSize: string
+  quantity: number
+  onSizeSelect: (size: string) => void
+  onQuantityChange: (quantity: number) => void
+  onAddToCart: () => void
 }
 export const ProductInfo: React.FC<ProductInfoProps> = ({
   product,
@@ -21,21 +21,17 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
     <div className="space-y-6">
       {/* Brand */}
       <div className="h-8">
-        <img
-          src={product.brand.logo}
-          alt={product.brand.name}
-          className="h-full object-contain"
-        />
+        <img src={product.brand.logo} alt={product.brand.name} className="h-full object-contain" />
       </div>
 
       {/* Title & Rating */}
       <div>
         <h1 className="text-3xl font-bold text-gray-900">{product.name}</h1>
-        <p className="text-lg text-gray-500 mt-1">{product.subname}</p>
-        <div className="flex items-center gap-4 mt-4">
+        <p className="mt-1 text-lg text-gray-500">{product.subname}</p>
+        <div className="mt-4 flex items-center gap-4">
           <div className="flex items-center">
             {[...Array(5)].map((_, i) => (
-              <div className="w-5 h-5">
+              <div className="h-5 w-5">
                 <svg
                   width="85"
                   height="81"
@@ -43,11 +39,9 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                   className={cn(
-                    "w-full h-full",
+                    'h-full w-full',
                     `${
-                      i < Math.floor(product.ratings.average)
-                        ? "fill-yellow-400"
-                        : "fill-gray-300"
+                      i < Math.floor(product.ratings.average) ? 'fill-yellow-400' : 'fill-gray-300'
                     }`
                   )}
                 >
@@ -64,17 +58,13 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
 
       {/* Price */}
       <div className="flex items-baseline gap-4">
-        <span className="text-3xl font-bold text-gray-900">
-          {formatPEN(product.price)}
-        </span>
+        <span className="text-3xl font-bold text-gray-900">{formatPEN(product.price)}</span>
         {product.originalPrice && (
           <>
             <span className="text-xl text-gray-500 line-through">
               {formatPEN(product.originalPrice)}
             </span>
-            <span className="text-sm font-medium text-green-600">
-              {product.discount}% OFF
-            </span>
+            <span className="text-sm font-medium text-green-600">{product.discount}% OFF</span>
           </>
         )}
       </div>
@@ -82,18 +72,18 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
       {/* Size Selector */}
       <div>
         <h3 className="text-sm font-medium text-gray-900">Talla</h3>
-        <div className="grid grid-cols-4 gap-2 mt-2">
+        <div className="mt-2 grid grid-cols-4 gap-2">
           {product.variants[0].sizes.map(({ size, stock }) => (
             <button
               key={size}
               onClick={() => onSizeSelect(size)}
               disabled={stock === 0}
-              className={`px-4 py-3 text-sm font-medium rounded-md ${
+              className={`rounded-md px-4 py-3 text-sm font-medium ${
                 selectedSize === size
-                  ? "bg-gray-900 text-white"
+                  ? 'bg-gray-900 text-white'
                   : stock === 0
-                  ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                  : "bg-gray-100 text-gray-900 hover:bg-gray-200"
+                    ? 'cursor-not-allowed bg-gray-100 text-gray-400'
+                    : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
               }`}
             >
               {size}
@@ -105,10 +95,10 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
       {/* Quantity */}
       <div>
         <h3 className="text-sm font-medium text-gray-900">Cantidad</h3>
-        <div className="flex items-center gap-2 mt-2">
+        <div className="mt-2 flex items-center gap-2">
           <button
             onClick={() => onQuantityChange(Math.max(1, quantity - 1))}
-            className="p-2 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200"
+            className="rounded-md bg-gray-100 p-2 text-gray-600 hover:bg-gray-200"
           >
             -
           </button>
@@ -116,14 +106,12 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
             type="number"
             min="1"
             value={quantity}
-            onChange={(e) =>
-              onQuantityChange(Math.max(1, parseInt(e.target.value)))
-            }
-            className="w-16 text-center p-2 rounded-md border"
+            onChange={e => onQuantityChange(Math.max(1, parseInt(e.target.value)))}
+            className="w-16 rounded-md border p-2 text-center"
           />
           <button
             onClick={() => onQuantityChange(quantity + 1)}
-            className="p-2 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200"
+            className="rounded-md bg-gray-100 p-2 text-gray-600 hover:bg-gray-200"
           >
             +
           </button>
@@ -133,22 +121,22 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
       {/* Add to Cart */}
       <button
         onClick={onAddToCart}
-        className="w-full py-4 px-8 text-lg font-medium text-white bg-primary-600 rounded-lg hover:bg-primary-700"
+        className="w-full rounded-lg bg-primary-600 px-8 py-4 text-lg font-medium text-white hover:bg-primary-700"
       >
         Agregar al carrito
       </button>
 
       {/* Shipping & Returns */}
-      <div className="grid grid-cols-2 gap-4 pt-6 border-t">
+      <div className="grid grid-cols-2 gap-4 border-t pt-6">
         <div className="flex gap-4">
-          <div className="w-6 h-6">
+          <div className="h-6 w-6">
             <svg
               width="95"
               height="67"
               viewBox="0 0 95 67"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="w-full h-full fill-gray-400"
+              className="h-full w-full fill-gray-400"
             >
               <path d="M85.4299 55.3678C85.4299 61.778 80.2346 66.9768 73.8209 66.9768C67.4107 66.9768 62.2119 61.7776 62.2119 55.3678C62.2119 48.9537 67.4111 43.7588 73.8209 43.7588C80.235 43.7588 85.4299 48.9541 85.4299 55.3678Z" />
               <path d="M34.6018 55.3678C34.6018 61.778 29.4065 66.9768 22.9928 66.9768C16.5826 66.9768 11.3838 61.7776 11.3838 55.3678C11.3838 48.9537 16.583 43.7588 22.9928 43.7588C29.4069 43.7588 34.6018 48.9541 34.6018 55.3678Z" />
@@ -161,14 +149,14 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
           </div>
         </div>
         <div className="flex gap-4">
-          <div className="w-6 h-6">
+          <div className="h-6 w-6">
             <svg
               width="69"
               height="87"
               viewBox="0 0 69 87"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="w-full h-full fill-gray-400"
+              className="h-full w-full fill-gray-400"
             >
               <path d="M63.076 11.3974C58.9744 11.0068 54.9432 10.081 51.099 8.6435C46.4584 6.913 42.1381 4.4638 38.247 1.3623C35.9697 -0.4541 32.7861 -0.4541 30.5087 1.3623C26.622 4.46 22.2978 6.9092 17.6567 8.6435C13.8129 10.081 9.7817 11.0068 5.6797 11.3974C2.4414 11.706 0 14.3818 0 17.6162V48.5112C0 61.6132 7.2812 73.3942 19.004 79.2572L31.582 85.5463C32.457 85.9838 33.4179 86.1986 34.375 86.1986C35.3359 86.1986 36.293 85.9799 37.1719 85.5463L49.7499 79.2572C61.4689 73.3939 68.7539 61.6122 68.7539 48.5112L68.7578 17.6162C68.7578 14.3779 66.3164 11.706 63.0781 11.3974H63.076ZM49.107 37.0614L33.482 52.9674C32.8961 53.5651 32.0914 53.901 31.2554 53.901H31.2476C30.4038 53.901 29.5992 53.5572 29.0171 52.9557L19.6421 43.2995C18.439 42.0612 18.4702 40.0847 19.7085 38.8815C20.9468 37.6783 22.9273 37.7057 24.1265 38.9479L31.2749 46.3073L44.6579 32.6863C45.8688 31.4519 47.8415 31.4363 49.0759 32.6472C50.3064 33.8581 50.3259 35.8347 49.115 37.0652L49.107 37.0614Z" />
             </svg>
@@ -180,5 +168,5 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

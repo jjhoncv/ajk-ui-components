@@ -1,15 +1,15 @@
 export const mockLoginAPI = async (email: string, password: string) => {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     setTimeout(() => {
       resolve({
-        token: "mock-jwt-token",
+        token: 'mock-jwt-token',
         user: {
-          id: "1",
-          name: "Usuario Demo",
+          id: '1',
+          name: 'Usuario Demo',
           email: email,
-          role: "user",
+          role: 'user',
         },
-      });
-    }, 500);
-  });
-};
+      })
+    }, 500)
+  })
+}

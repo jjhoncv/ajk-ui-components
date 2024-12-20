@@ -1,57 +1,57 @@
 // src/stories/ProductInfo.stories.tsx
-import type { Meta, StoryObj } from "@storybook/react";
-import { ProductInfo } from "./";
-import { mockProducts } from "@ajk-ui/data";
+import type { Meta, StoryObj } from '@storybook/react'
+import { ProductInfo } from './'
+import { mockProducts } from '@ajk-ui/data'
 
 const meta: Meta<typeof ProductInfo> = {
-  title: "Feature/ProductInfo",
+  title: 'Feature/ProductInfo',
   component: ProductInfo,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   decorators: [
-    (Story) => (
-      <div className="max-w-xl p-6 bg-white rounded-lg">
+    Story => (
+      <div className="max-w-xl rounded-lg bg-white p-6">
         <Story />
       </div>
     ),
   ],
   argTypes: {
-    onSizeSelect: { action: "size selected" },
-    onQuantityChange: { action: "quantity changed" },
-    onAddToCart: { action: "add to cart clicked" },
+    onSizeSelect: { action: 'size selected' },
+    onQuantityChange: { action: 'quantity changed' },
+    onAddToCart: { action: 'add to cart clicked' },
   },
-};
+}
 
-export default meta;
-type Story = StoryObj<typeof ProductInfo>;
+export default meta
+type Story = StoryObj<typeof ProductInfo>
 
 // Story por defecto
 export const Default: Story = {
   args: {
     product: mockProducts[0],
-    selectedSize: "",
+    selectedSize: '',
     quantity: 1,
   },
-};
+}
 
 // Con tamaño seleccionado
 export const WithSelectedSize: Story = {
   args: {
     product: mockProducts[0],
-    selectedSize: "37",
+    selectedSize: '37',
     quantity: 1,
   },
-};
+}
 
 // Con descuento
 export const WithDiscount: Story = {
   args: {
     product: mockProducts[1],
-    selectedSize: "",
+    selectedSize: '',
     quantity: 1,
   },
-};
+}
 
 // Sin descuento
 export const NoDiscount: Story = {
@@ -61,10 +61,10 @@ export const NoDiscount: Story = {
       originalPrice: undefined,
       discount: undefined,
     },
-    selectedSize: "",
+    selectedSize: '',
     quantity: 1,
   },
-};
+}
 
 // Stock bajo
 export const LowStock: Story = {
@@ -73,23 +73,23 @@ export const LowStock: Story = {
       ...mockProducts[0],
       stock: {
         total: 3,
-        status: "low_stock" as const,
+        status: 'low_stock' as const,
         threshold: 5,
       },
       variants: [
         {
           ...mockProducts[0].variants[0],
-          sizes: mockProducts[0].variants[0].sizes.map((size) => ({
+          sizes: mockProducts[0].variants[0].sizes.map(size => ({
             ...size,
             stock: size.stock > 0 ? 1 : 0,
           })),
         },
       ],
     },
-    selectedSize: "",
+    selectedSize: '',
     quantity: 1,
   },
-};
+}
 
 // Sin stock
 export const OutOfStock: Story = {
@@ -98,37 +98,37 @@ export const OutOfStock: Story = {
       ...mockProducts[0],
       stock: {
         total: 0,
-        status: "out_of_stock" as const,
+        status: 'out_of_stock' as const,
         threshold: 5,
       },
       variants: [
         {
           ...mockProducts[0].variants[0],
-          sizes: mockProducts[0].variants[0].sizes.map((size) => ({
+          sizes: mockProducts[0].variants[0].sizes.map(size => ({
             ...size,
             stock: 0,
           })),
         },
       ],
     },
-    selectedSize: "",
+    selectedSize: '',
     quantity: 1,
   },
-};
+}
 
 // Móvil
 export const Mobile: Story = {
   parameters: {
     viewport: {
-      defaultViewport: "mobile1",
+      defaultViewport: 'mobile1',
     },
   },
   args: {
     product: mockProducts[0],
-    selectedSize: "",
+    selectedSize: '',
     quantity: 1,
   },
-};
+}
 
 // Calificación perfecta
 export const PerfectRating: Story = {
@@ -147,19 +147,19 @@ export const PerfectRating: Story = {
         },
       },
     },
-    selectedSize: "",
+    selectedSize: '',
     quantity: 1,
   },
-};
+}
 
 // Cantidad máxima
 export const MaxQuantity: Story = {
   args: {
     product: mockProducts[0],
-    selectedSize: "37",
+    selectedSize: '37',
     quantity: 5,
   },
-};
+}
 
 // Todas las tallas agotadas excepto una
 export const OneSizeLeft: Story = {
@@ -176,10 +176,10 @@ export const OneSizeLeft: Story = {
         },
       ],
     },
-    selectedSize: "",
+    selectedSize: '',
     quantity: 1,
   },
-};
+}
 
 // Envío gratis deshabilitado
 export const NoFreeShipping: Story = {
@@ -192,20 +192,20 @@ export const NoFreeShipping: Story = {
         methods: [
           {
             id: 1,
-            name: "Envío estándar",
+            name: 'Envío estándar',
             price: 5.99,
             estimatedDays: 3,
           },
           {
             id: 2,
-            name: "Envío express",
+            name: 'Envío express',
             price: 12.99,
             estimatedDays: 1,
           },
         ],
       },
     },
-    selectedSize: "",
+    selectedSize: '',
     quantity: 1,
   },
-};
+}

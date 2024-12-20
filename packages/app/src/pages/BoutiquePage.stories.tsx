@@ -1,91 +1,84 @@
-import React from "react";
-import { Meta, StoryObj } from "@storybook/react";
-import { ThemeProvider, createTheme } from "@ajk-ui/theme-utils";
-import { Header } from "@ajk-ui/header";
-import { Section } from "@ajk-ui/section";
-import { Card } from "@ajk-ui/card";
-import { Footer } from "@ajk-ui/footer";
-import { Button } from "@ajk-ui/button";
+import { Button } from '@ajk-ui/button'
+import { Card } from '@ajk-ui/card'
+import { Footer } from '@ajk-ui/footer'
+import { Header } from '@ajk-ui/header'
+import { Section } from '@ajk-ui/section'
+import { ThemeProvider, createTheme } from '@ajk-ui/theme-utils'
+import { Meta, StoryObj } from '@storybook/react'
 
 const Logo = () => (
   <div className="flex items-center">
     <div className="w-6">
-      <img src={getImagePath("/images/boutique/Logo.svg")} />
+      <img src={getImagePath('/images/boutique/Logo.svg')} />
     </div>
-    <span className="ml-2 text-2xl text-white font-extralight">
-      Maison Élégante
-    </span>
+    <span className="ml-2 text-2xl font-extralight text-white">Maison Élégante</span>
   </div>
-);
+)
 
 const LogoFooter = () => (
   <div className="flex items-center">
     <div className="w-6">
-      <img src={getImagePath("/images/boutique/LogoInverter.svg")} />
+      <img src={getImagePath('/images/boutique/LogoInverter.svg')} />
     </div>
-    <span className="ml-2 text-3xl text-primary-700 font-extralight">
-      Maison Élégante
-    </span>
+    <span className="ml-2 text-3xl font-extralight text-primary-700">Maison Élégante</span>
   </div>
-);
+)
 
 const LogoNavMenuMobile = () => (
   <div className="flex items-center">
     <div className="w-6">
-      <img src={getImagePath("/images/boutique/LogoInverter.svg")} />
+      <img src={getImagePath('/images/boutique/LogoInverter.svg')} />
     </div>
-    <span className="ml-2 text-2xl text-primary-700 font-extralight">
-      Maison Élégante
-    </span>
+    <span className="ml-2 text-2xl font-extralight text-primary-700">Maison Élégante</span>
   </div>
-);
+)
 
 // Create a custom theme
 const boutiqueTheme = createTheme({
   colors: {
-    primary: "#D4AF37", // Gold
-    secondary: "#ca8a04", // Dark slate
-    background: "#FFFFFF",
-    text: "#1A1A1A",
+    primary: '#D4AF37', // Gold
+    secondary: '#ca8a04', // Dark slate
+    background: '#FFFFFF',
+    text: '#1A1A1A',
   },
   typography: {
-    fontFamily: "Montserrat, sans-serif",
+    fontFamily: 'Montserrat, sans-serif',
   },
-});
+})
 
 const BoutiquePage = () => {
   const navItems = [
-    { label: "Home", href: "/" },
-    { label: "Collections", href: "/collections" },
-    { label: "Lookbook", href: "/lookbook" },
-    { label: "About", href: "/about" },
-    { label: "Contact", href: "/contact" },
-  ];
+    { label: 'Home', href: '/' },
+    { label: 'Collections', href: '/collections' },
+    { label: 'Lookbook', href: '/lookbook' },
+    { label: 'About', href: '/about' },
+    { label: 'Contact', href: '/contact' },
+  ]
 
   const footerColumns = [
     {
-      title: "Collections",
+      title: 'Collections',
       links: [
-        { label: "New Arrivals", href: "/new" },
-        { label: "Bestsellers", href: "/bestsellers" },
-        { label: "Summer 2024", href: "/summer" },
+        { label: 'New Arrivals', href: '/new' },
+        { label: 'Bestsellers', href: '/bestsellers' },
+        { label: 'Summer 2024', href: '/summer' },
       ],
     },
     {
-      title: "Customer Care",
+      title: 'Customer Care',
       links: [
-        { label: "Size Guide", href: "/size-guide" },
-        { label: "Shipping", href: "/shipping" },
-        { label: "Returns", href: "/returns" },
+        { label: 'Size Guide', href: '/size-guide' },
+        { label: 'Shipping', href: '/shipping' },
+        { label: 'Returns', href: '/returns' },
       ],
     },
-  ];
+  ]
 
   const socialLinks = [
-    { platform: "instagram" as const, href: "#" },
-    { platform: "facebook" as const, href: "#" },
-    { platform: "twitter" as const, href: "#" },
-  ];
+    { platform: 'instagram' as const, href: '#' },
+    { platform: 'facebook' as const, href: '#' },
+    { platform: 'twitter' as const, href: '#' },
+  ]
 
   return (
     <ThemeProvider initialTheme={boutiqueTheme}>
@@ -94,17 +87,17 @@ const BoutiquePage = () => {
         <Header
           title="Timeless Elegance"
           subtitle="Discover our new collection"
-          backgroundImage={getImagePath("/images/boutique/hero.jpg")}
+          backgroundImage={getImagePath('/images/boutique/hero.jpg')}
           variant="hero"
           height="lg"
           navItems={navItems}
           logo={Logo}
           logoNavMenuMobile={LogoNavMenuMobile}
           cta={{
-            label: "Shop Now",
-            href: "/collections",
-            variant: "outline",
-            align: "center",
+            label: 'Shop Now',
+            href: '/collections',
+            variant: 'outline',
+            align: 'center',
           }}
         />
 
@@ -122,7 +115,7 @@ const BoutiquePage = () => {
             title="Silk Evening Dress"
             subtitle="$599"
             description="Elegant silk dress with delicate embroidery"
-            image={getImagePath("/images/boutique/dress.jpg")}
+            image={getImagePath('/images/boutique/dress.jpg')}
             badge="New"
           />
           <Card
@@ -130,7 +123,7 @@ const BoutiquePage = () => {
             title="Tailored Blazer"
             subtitle="$399"
             description="Classic wool blend blazer with gold buttons"
-            image={getImagePath("/images/boutique/blazer.jpg")}
+            image={getImagePath('/images/boutique/blazer.jpg')}
             badge="Bestseller"
           />
           <Card
@@ -138,7 +131,7 @@ const BoutiquePage = () => {
             title="Leather Handbag"
             subtitle="$299"
             description="Handcrafted Italian leather bag"
-            image={getImagePath("/images/boutique/bag.jpg")}
+            image={getImagePath('/images/boutique/bag.jpg')}
           />
         </Section>
 
@@ -146,17 +139,16 @@ const BoutiquePage = () => {
         <Section
           variant="highlight"
           layout="split"
-          backgroundImage={getImagePath("/images/boutique/about.jpg")}
+          backgroundImage={getImagePath('/images/boutique/about.jpg')}
           overlay
           title="Our Heritage"
           subtitle="A legacy of craftsmanship and style"
         >
           <div className="flex flex-col space-y-4">
             <p className="text-gray-200">
-              Since our founding in Paris, we've been dedicated to creating
-              timeless pieces that combine traditional craftsmanship with
-              contemporary design. Each piece tells a story of elegance and
-              sophistication.
+              Since our founding in Paris, we've been dedicated to creating timeless pieces that
+              combine traditional craftsmanship with contemporary design. Each piece tells a story
+              of elegance and sophistication.
             </p>
             <div>
               <Button variant="outline">Discover More</Button>
@@ -173,22 +165,22 @@ const BoutiquePage = () => {
           gridCols={4}
         >
           <img
-            src={getImagePath("/images/boutique/gallery1.jpg")}
+            src={getImagePath('/images/boutique/gallery1.jpg')}
             alt="Instagram post"
             className="aspect-square object-cover"
           />
           <img
-            src={getImagePath("/images/boutique/gallery2.jpg")}
+            src={getImagePath('/images/boutique/gallery2.jpg')}
             alt="Instagram post"
             className="aspect-square object-cover"
           />
           <img
-            src={getImagePath("/images/boutique/gallery3.jpg")}
+            src={getImagePath('/images/boutique/gallery3.jpg')}
             alt="Instagram post"
             className="aspect-square object-cover"
           />
           <img
-            src={getImagePath("/images/boutique/gallery4.jpg")}
+            src={getImagePath('/images/boutique/gallery4.jpg')}
             alt="Instagram post"
             className="aspect-square object-cover"
           />
@@ -202,26 +194,25 @@ const BoutiquePage = () => {
           social={socialLinks}
           copyright="© 2024 Maison Élégante. All rights reserved."
           newsletter={{
-            title: "Join Our List",
-            description:
-              "Be the first to know about new collections and exclusive offers",
-            buttonText: "Subscribe",
+            title: 'Join Our List',
+            description: 'Be the first to know about new collections and exclusive offers',
+            buttonText: 'Subscribe',
           }}
         />
       </div>
     </ThemeProvider>
-  );
-};
+  )
+}
 
 const meta = {
-  title: "Pages/Boutique",
+  title: 'Pages/Boutique',
   component: BoutiquePage,
   parameters: {
-    layout: "fullscreen",
+    layout: 'fullscreen',
     docs: {
       description: {
         component:
-          "Implementación completa de la página de boutique usando los componentes de AJK UI.",
+          'Implementación completa de la página de boutique usando los componentes de AJK UI.',
       },
       source: {
         code: `const BoutiqueLogo = () => (
@@ -414,18 +405,18 @@ const BoutiquePage = () => {
     </ThemeProvider>
   );
 };`,
-        language: "tsx",
-        type: "code",
+        language: 'tsx',
+        type: 'code',
       },
     },
   },
-  tags: ["autodocs"],
-} satisfies Meta<typeof BoutiquePage>;
+  tags: ['autodocs'],
+} satisfies Meta<typeof BoutiquePage>
 
-export default meta;
+export default meta
 
-type Story = StoryObj<typeof BoutiquePage>;
+type Story = StoryObj<typeof BoutiquePage>
 
 export const Modern: Story = {
   render: () => <BoutiquePage />,
-};
+}

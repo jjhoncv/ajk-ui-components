@@ -15,7 +15,7 @@ pnpm add @ajk-ui/card
 ## Usage
 
 ```tsx
-import { Card } from "@ajk-ui/card";
+import { Card } from '@ajk-ui/card'
 
 function MyComponent() {
   return (
@@ -26,7 +26,7 @@ function MyComponent() {
       description="Product description goes here"
       image="/path/to/image.jpg"
     />
-  );
+  )
 }
 ```
 
@@ -86,9 +86,9 @@ function MyComponent() {
   title="Great Experience!"
   description="Amazing service and support"
   author={{
-    name: "John Doe",
-    title: "CEO",
-    avatar: "/avatar.jpg",
+    name: 'John Doe',
+    title: 'CEO',
+    avatar: '/avatar.jpg',
   }}
 />
 ```
@@ -98,11 +98,7 @@ function MyComponent() {
 Customize card styles using Tailwind CSS:
 
 ```tsx
-<Card
-  className="bg-custom-color shadow-custom"
-  variant="product"
-  title="Custom Card"
-/>
+<Card className="bg-custom-color shadow-custom" variant="product" title="Custom Card" />
 ```
 
 ## Version History

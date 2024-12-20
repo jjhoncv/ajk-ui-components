@@ -4,20 +4,37 @@
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
-    "storybook": "turbo run storybook --",
+    "storybook": "storybook dev -p 6007",
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "turbo run build && changeset publish --access public",
-    "gen:changelog": "pnpm changeset && pnpm version-packages"
+    "gen:changelog": "pnpm changeset && pnpm version-packages",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\""
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.10",
     "@types/node": "^22.10.1",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
     "tsup": "^8.3.5",
     "turbo": "^1.13.4",
-    "typescript": "^5.7.2"
+    "@storybook/addon-essentials": "^7.6.6",
+    "@storybook/addon-interactions": "^7.6.6",
+    "@storybook/addon-links": "^7.6.6",
+    "@storybook/blocks": "^7.6.6",
+    "@storybook/react": "^7.6.6",
+    "@storybook/react-vite": "^7.6.6",
+    "@storybook/testing-library": "^0.2.2",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "prop-types": "^15.8.1",
+    "storybook": "^7.6.6",
+    "tailwindcss": "^3.4.0",
+    "prettier": "^3.4.2",
+    "prettier-plugin-tailwindcss": "0.6.9",
+    "typescript": "^5.2.2",
+    "vite": "^4.5.1"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",

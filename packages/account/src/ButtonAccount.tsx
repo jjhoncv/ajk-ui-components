@@ -1,31 +1,26 @@
-import { cn } from "@ajk-ui/core";
-import { User } from "lucide-react";
+import { cn } from '@ajk-ui/core'
+import { User } from 'lucide-react'
 
 export const ButtonAccount = ({
   className,
   handleClick,
 }: {
-  className?: string;
-  handleClick?: () => void;
+  className?: string
+  handleClick?: () => void
 }) => {
   return (
     <>
       <button
         type="button"
-        onClick={(e) => {
-          handleClick?.();
-          e.preventDefault();
+        onClick={e => {
+          handleClick?.()
+          e.preventDefault()
         }}
-        className={cn(
-          "flex items-center hover:bg-gray-100 rounded-lg gap-1",
-          className
-        )}
+        className={cn('flex items-center gap-1 rounded-lg hover:bg-gray-100', className)}
       >
-        <User className="w-5 h-5 text-gray-600" />
-        <span className="hidden md:block text-sm font-medium text-gray-700">
-          Mi Cuenta
-        </span>
+        <User className="h-5 w-5 text-gray-600" />
+        <span className="hidden text-sm font-medium text-gray-700 md:block">Mi Cuenta</span>
       </button>
     </>
-  );
-};
+  )
+}

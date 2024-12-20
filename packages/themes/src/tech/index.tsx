@@ -1,1 +1,1 @@
-export * from "./ThemeModernTech";
+export * from './ThemeModernTech'

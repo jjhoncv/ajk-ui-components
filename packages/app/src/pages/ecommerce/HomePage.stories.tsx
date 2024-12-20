@@ -1,109 +1,95 @@
-import { Button } from "@ajk-ui/button";
-import { Card } from "@ajk-ui/card";
-import { CartProvider, ProductCart } from "@ajk-ui/cart";
-import { mockProducts } from "@ajk-ui/data";
-import { Footer } from "@ajk-ui/footer";
-import { Header } from "@ajk-ui/header";
-import { Section } from "@ajk-ui/section";
-import { ThemeProvider, createTheme } from "@ajk-ui/theme-utils";
-import { Meta, StoryObj } from "@storybook/react";
-import { NavEcommerce } from "@ajk-ui/nav";
-import { AuthProvider } from "@ajk-ui/auth";
-
-// Tema personalizado para e-commerce de tecnología
-const techTheme = createTheme({
-  colors: {
-    primary: "#4F46E5", // Indigo para el color principal
-    secondary: "#fde68a", // Verde esmeralda para acentos
-    background: "#F9FAFB", // Gris muy claro para el fondo
-    text: "#111827", // Casi negro para el texto
-  },
-  typography: {
-    fontFamily: "Inter, system-ui, sans-serif",
-  },
-});
+import { AuthProvider } from '@ajk-ui/auth'
+import { Button } from '@ajk-ui/button'
+import { Card } from '@ajk-ui/card'
+import { CartProvider, ProductCart } from '@ajk-ui/cart'
+import { mockProducts } from '@ajk-ui/data'
+import { Footer } from '@ajk-ui/footer'
+import { Header } from '@ajk-ui/header'
+import { NavEcommerce } from '@ajk-ui/nav'
+import { Section } from '@ajk-ui/section'
+import { ThemeProvider } from '@ajk-ui/theme-utils'
+import { ModernTech } from '@ajk-ui/themes'
+import { Meta, StoryObj } from '@storybook/react'
 
 const Logo = () => (
   <div
-    className="flex items-center cursor-pointer"
+    className="flex cursor-pointer items-center"
     onClick={() => {
-      if (typeof window !== "undefined") {
+      if (typeof window !== 'undefined') {
         window.location.href = getImagePath(
-          "/iframe.html?args=&id=pages-ecommerce--home-page&viewMode=story"
-        );
+          '/iframe.html?args=&id=pages-ecommerce--home-page&viewMode=story'
+        )
       }
     }}
   >
     <div className="w-6 md:w-12">
-      <img src={getImagePath("/images/ecommerce/Logo.svg")} />
+      <img src={getImagePath('/images/ecommerce/Logo.svg')} />
     </div>
-    <span className="ml-2 text-2xl md:text-4xl text-black font-extralight">
-      TechStore
-    </span>
+    <span className="ml-2 text-2xl font-extralight text-black md:text-4xl">TechStore</span>
   </div>
-);
+)
 
 const LogoFooter = () => (
   <div className="flex items-center gap-2">
     <div className="w-6">
-      <img src={getImagePath("/images/ecommerce/LogoInverter.svg")} />
+      <img src={getImagePath('/images/ecommerce/LogoInverter.svg')} />
     </div>
-    <div className="ml-1 flex flex-col" style={{ lineHeight: "15px" }}>
-      <p className="font-extralight text-3xl text-gray-800 ">TechStore</p>
+    <div className="ml-1 flex flex-col" style={{ lineHeight: '15px' }}>
+      <p className="text-3xl font-extralight text-gray-800">TechStore</p>
     </div>
   </div>
-);
+)
 
 const LogoNavMenuMobile = () => (
   <div className="flex items-center">
     <div className="w-6">
-      <img src={getImagePath("/images/ecommerce/LogoInverter.svg")} />
+      <img src={getImagePath('/images/ecommerce/LogoInverter.svg')} />
     </div>
     <span className="ml-2 text-2xl font-extralight">TechStore</span>
   </div>
-);
+)
 
 const TechStorePage = () => {
   const navItems = [
-    { label: "Productos", href: "/productos" },
-    { label: "Ofertas", href: "/ofertas" },
-    { label: "Soporte", href: "/soporte" },
-  ];
+    { label: 'Productos', href: '/productos' },
+    { label: 'Ofertas', href: '/ofertas' },
+    { label: 'Soporte', href: '/soporte' },
+  ]
 
   const footerColumns = [
     {
-      title: "Productos",
+      title: 'Productos',
       links: [
-        { label: "Computadoras", href: "/computadoras" },
-        { label: "Smartphones", href: "/smartphones" },
-        { label: "Accesorios", href: "/accesorios" },
+        { label: 'Computadoras', href: '/computadoras' },
+        { label: 'Smartphones', href: '/smartphones' },
+        { label: 'Accesorios', href: '/accesorios' },
       ],
     },
     {
-      title: "Soporte",
+      title: 'Soporte',
       links: [
-        { label: "Centro de Ayuda", href: "/ayuda" },
-        { label: "Garantía", href: "/garantia" },
-        { label: "Contacto", href: "/contacto" },
+        { label: 'Centro de Ayuda', href: '/ayuda' },
+        { label: 'Garantía', href: '/garantia' },
+        { label: 'Contacto', href: '/contacto' },
       ],
     },
-  ];
+  ]
 
   const socialLinks = [
-    { platform: "instagram" as const, href: "#" },
-    { platform: "facebook" as const, href: "#" },
-    { platform: "twitter" as const, href: "#" },
-  ];
+    { platform: 'instagram' as const, href: '#' },
+    { platform: 'facebook' as const, href: '#' },
+    { platform: 'twitter' as const, href: '#' },
+  ]
 
   return (
     <AuthProvider>
       <CartProvider>
-        <ThemeProvider initialTheme={techTheme}>
-          <div className="min-h-screen bg-background">
+        <ThemeProvider initialTheme={ModernTech}>
+          <div className="bg-background min-h-screen">
             {/* Header */}
-            <div className="hidden md:flex bg-white border-b text-gray-600 text-sm font-light">
-              <div className="w-full mx-auto px-4 sm:px-6 max-w-7xl">
-                <div className="w-full justify-between h-10 flex items-center ">
+            <div className="hidden border-b bg-white text-sm font-light text-gray-600 md:flex">
+              <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
+                <div className="flex h-10 w-full items-center justify-between">
                   <div>
                     <div>About Us | My Account | Wishlist | Order Tracking</div>
                   </div>
@@ -112,26 +98,26 @@ const TechStorePage = () => {
                 </div>
               </div>
             </div>
-            <div className="w-full z-40 bg-white border-b shadow-sm">
+            <div className="z-40 w-full border-b bg-white shadow-sm">
               <NavEcommerce
                 items={navItems}
                 logo={Logo}
                 variant="transparent"
                 logoNavMenuMobile={LogoNavMenuMobile}
-                className="w-full mx-auto px-4 sm:px-6 max-w-7xl h-16 md:h-24 items-center flex "
+                className="mx-auto flex h-16 w-full max-w-7xl items-center px-4 sm:px-6 md:h-24"
               />
             </div>
             <Header
               title="TechStore"
               position="relative"
               subtitle="Tu destino tecnológico"
-              backgroundImage={getImagePath("/images/ecommerce/hero.jpg")}
+              backgroundImage={getImagePath('/images/ecommerce/hero.jpg')}
               variant="hero"
               height="lg"
               cta={{
-                label: "Ver Ofertas",
-                href: "/ofertas",
-                variant: "primary",
+                label: 'Ver Ofertas',
+                href: '/ofertas',
+                variant: 'primary',
               }}
             />
 
@@ -150,7 +136,7 @@ const TechStorePage = () => {
                   onClick={() => {
                     window.top.location.href = getImagePath(
                       `/iframe.html?productId=${product.id}&args=&id=pages-ecommerce--product-detail-page&viewMode=story`
-                    );
+                    )
                   }}
                   {...{
                     ...product,
@@ -164,18 +150,15 @@ const TechStorePage = () => {
             <Section
               variant="highlight"
               layout="split"
-              backgroundImage={getImagePath(
-                "/images/ecommerce/special-offers.jpg"
-              )}
+              backgroundImage={getImagePath('/images/ecommerce/special-offers.jpg')}
               overlay
               title="Ofertas Especiales"
               subtitle="¡No te pierdas nuestros descuentos!"
             >
               <div className="flex flex-col space-y-4">
                 <p className="text-gray-200">
-                  Descubre nuestras ofertas exclusivas en productos
-                  seleccionados. ¡Hasta 30% de descuento en las mejores marcas
-                  de tecnología!
+                  Descubre nuestras ofertas exclusivas en productos seleccionados. ¡Hasta 30% de
+                  descuento en las mejores marcas de tecnología!
                 </p>
                 <div>
                   <Button variant="outline">Ver Todas las Ofertas</Button>
@@ -196,9 +179,9 @@ const TechStorePage = () => {
                 title="Excelente servicio"
                 description="La entrega fue rápida y el producto llegó en perfectas condiciones. El soporte técnico es excepcional."
                 author={{
-                  name: "Ana García",
-                  title: "Cliente Verificado",
-                  avatar: getImagePath("/images/ecommerce/avatar1.jpg"),
+                  name: 'Ana García',
+                  title: 'Cliente Verificado',
+                  avatar: getImagePath('/images/ecommerce/avatar1.jpg'),
                 }}
               />
               <Card
@@ -206,9 +189,9 @@ const TechStorePage = () => {
                 title="Productos de calidad"
                 description="Los precios son competitivos y la calidad de los productos es excelente. Definitivamente volveré a comprar."
                 author={{
-                  name: "Carlos Ruiz",
-                  title: "Cliente Frecuente",
-                  avatar: getImagePath("/images/ecommerce/avatar2.jpg"),
+                  name: 'Carlos Ruiz',
+                  title: 'Cliente Frecuente',
+                  avatar: getImagePath('/images/ecommerce/avatar2.jpg'),
                 }}
               />
             </Section>
@@ -221,28 +204,27 @@ const TechStorePage = () => {
               social={socialLinks}
               copyright="© 2024 TechStore. Todos los derechos reservados."
               newsletter={{
-                title: "Suscríbete",
-                description:
-                  "Recibe las últimas novedades y ofertas exclusivas",
-                buttonText: "Suscribirse",
+                title: 'Suscríbete',
+                description: 'Recibe las últimas novedades y ofertas exclusivas',
+                buttonText: 'Suscribirse',
               }}
             />
           </div>
         </ThemeProvider>
       </CartProvider>
     </AuthProvider>
-  );
-};
+  )
+}
 
 const meta = {
-  title: "Pages/Ecommerce",
+  title: 'Pages/Ecommerce',
   component: TechStorePage,
   parameters: {
-    layout: "fullscreen",
+    layout: 'fullscreen',
     docs: {
       description: {
         component:
-          "Implementación completa de la página de ecommerce usando los componentes de AJK UI.",
+          'Implementación completa de la página de ecommerce usando los componentes de AJK UI.',
       },
       source: {
         code: `// Tema personalizado para e-commerce de tecnología
@@ -456,13 +438,13 @@ const TechStorePage = () => {
       },
     },
   },
-  tags: ["autodocs"],
-} satisfies Meta<typeof TechStorePage>;
+  tags: ['autodocs'],
+} satisfies Meta<typeof TechStorePage>
 
-export default meta;
+export default meta
 
-type Story = StoryObj<typeof TechStorePage>;
+type Story = StoryObj<typeof TechStorePage>
 
 export const HomePage: Story = {
   render: () => <TechStorePage />,
-};
+}

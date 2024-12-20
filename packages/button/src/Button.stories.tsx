@@ -1,76 +1,76 @@
 // Button.stories.tsx
-import type { Meta, StoryObj } from "@storybook/react";
-import { Button } from "./Button";
-import { Mail, ArrowRight, Plus, Settings } from "lucide-react";
-import { createTheme, ThemeProvider } from "@ajk-ui/theme-utils";
+import type { Meta, StoryObj } from '@storybook/react'
+import { Button } from './Button'
+import { Mail, ArrowRight, Plus, Settings } from 'lucide-react'
+import { createTheme, ThemeProvider } from '@ajk-ui/theme-utils'
 
 const techTheme = createTheme({
   colors: {
-    primary: "#4F46E5", // Indigo para el color principal
-    secondary: "#fde68a", // Verde esmeralda para acentos
-    background: "#F9FAFB", // Gris muy claro para el fondo
-    text: "#111827", // Casi negro para el texto
+    primary: '#4F46E5', // Indigo para el color principal
+    secondary: '#fde68a', // Verde esmeralda para acentos
+    background: '#F9FAFB', // Gris muy claro para el fondo
+    text: '#111827', // Casi negro para el texto
   },
   typography: {
-    fontFamily: "Inter, system-ui, sans-serif",
+    fontFamily: 'Inter, system-ui, sans-serif',
   },
-});
+})
 
 const meta = {
-  title: "Components/Button",
+  title: 'Components/Button',
   component: Button,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   argTypes: {
     variant: {
-      control: "radio",
-      options: ["primary", "secondary", "outline"],
-      description: "Estilo visual del botón",
+      control: 'radio',
+      options: ['primary', 'secondary', 'outline'],
+      description: 'Estilo visual del botón',
     },
     size: {
-      control: "radio",
-      options: ["sm", "md", "lg"],
-      description: "Tamaño del botón",
+      control: 'radio',
+      options: ['sm', 'md', 'lg'],
+      description: 'Tamaño del botón',
     },
     disabled: {
-      control: "boolean",
-      description: "Estado deshabilitado",
+      control: 'boolean',
+      description: 'Estado deshabilitado',
     },
     fullWidth: {
-      control: "boolean",
-      description: "Botón de ancho completo",
+      control: 'boolean',
+      description: 'Botón de ancho completo',
     },
     leftIcon: {
-      control: "select",
-      options: ["none", "mail", "plus", "settings"],
+      control: 'select',
+      options: ['none', 'mail', 'plus', 'settings'],
       mapping: {
         none: undefined,
         mail: Mail,
         plus: Plus,
         settings: Settings,
       },
-      description: "Icono a la izquierda",
+      description: 'Icono a la izquierda',
     },
     rightIcon: {
-      control: "select",
-      options: ["none", "arrowRight", "plus", "settings"],
+      control: 'select',
+      options: ['none', 'arrowRight', 'plus', 'settings'],
       mapping: {
         none: undefined,
         arrowRight: ArrowRight,
         plus: Plus,
         settings: Settings,
       },
-      description: "Icono a la derecha",
+      description: 'Icono a la derecha',
     },
     children: {
-      control: "text",
-      description: "Contenido del botón",
+      control: 'text',
+      description: 'Contenido del botón',
     },
   },
   decorators: [
-    (Story) => (
+    Story => (
       <ThemeProvider initialTheme={techTheme}>
         <div className="p-4">
           <Story />
@@ -78,17 +78,17 @@ const meta = {
       </ThemeProvider>
     ),
   ],
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof Button>
 
-export default meta;
-type Story = StoryObj<typeof Button>;
+export default meta
+type Story = StoryObj<typeof Button>
 
 // Historia básica
 export const Default: Story = {
   args: {
-    children: "Button",
+    children: 'Button',
   },
-};
+}
 
 // Variantes
 export const Variants: Story = {
@@ -99,7 +99,7 @@ export const Variants: Story = {
       <Button variant="outline">Outline</Button>
     </div>
   ),
-};
+}
 
 // Tamaños
 export const Sizes: Story = {
@@ -110,7 +110,7 @@ export const Sizes: Story = {
       <Button size="lg">Large</Button>
     </div>
   ),
-};
+}
 
 // Con iconos
 export const WithIcons: Story = {
@@ -133,7 +133,7 @@ export const WithIcons: Story = {
       </div>
     </div>
   ),
-};
+}
 
 // Estados
 export const States: Story = {
@@ -151,7 +151,7 @@ export const States: Story = {
       </div>
     </div>
   ),
-};
+}
 
 // Ancho completo
 export const FullWidth: Story = {
@@ -163,15 +163,15 @@ export const FullWidth: Story = {
       </Button>
     </div>
   ),
-};
+}
 
 // Historia interactiva
 export const Interactive: Story = {
   args: {
-    variant: "primary",
-    size: "md",
-    children: "Interactive Button",
+    variant: 'primary',
+    size: 'md',
+    children: 'Interactive Button',
     disabled: false,
     fullWidth: false,
   },
-};
+}

@@ -15,33 +15,27 @@ pnpm add @ajk-ui/footer
 ## Usage
 
 ```tsx
-import { Footer } from "@ajk-ui/footer";
+import { Footer } from '@ajk-ui/footer'
 
 function MyComponent() {
   const footerColumns = [
     {
-      title: "Company",
+      title: 'Company',
       links: [
-        { label: "About", href: "/about" },
-        { label: "Contact", href: "/contact" },
+        { label: 'About', href: '/about' },
+        { label: 'Contact', href: '/contact' },
       ],
     },
     {
-      title: "Legal",
+      title: 'Legal',
       links: [
-        { label: "Privacy", href: "/privacy" },
-        { label: "Terms", href: "/terms" },
+        { label: 'Privacy', href: '/privacy' },
+        { label: 'Terms', href: '/terms' },
       ],
     },
-  ];
+  ]
 
-  return (
-    <Footer
-      variant="multicolumn"
-      columns={footerColumns}
-      copyright="© 2024 Company Name"
-    />
-  );
+  return <Footer variant="multicolumn" columns={footerColumns} copyright="© 2024 Company Name" />
 }
 ```
 
@@ -70,24 +64,24 @@ function MyComponent() {
 
 ```typescript
 interface FooterColumn {
-  title: string;
+  title: string
   links: Array<{
-    label: string;
-    href: string;
-  }>;
+    label: string
+    href: string
+  }>
 }
 
 interface SocialLink {
-  platform: string;
-  href: string;
-  icon?: ReactNode;
+  platform: string
+  href: string
+  icon?: ReactNode
 }
 
 interface NewsletterConfig {
-  title: string;
-  description?: string;
-  buttonText: string;
-  onSubmit?: (email: string) => void;
+  title: string
+  description?: string
+  buttonText: string
+  onSubmit?: (email: string) => void
 }
 ```
 
@@ -100,23 +94,23 @@ interface NewsletterConfig {
   variant="multicolumn"
   columns={[
     {
-      title: "Products",
+      title: 'Products',
       links: [
-        { label: "Features", href: "/features" },
-        { label: "Pricing", href: "/pricing" },
+        { label: 'Features', href: '/features' },
+        { label: 'Pricing', href: '/pricing' },
       ],
     },
     {
-      title: "Company",
+      title: 'Company',
       links: [
-        { label: "About", href: "/about" },
-        { label: "Careers", href: "/careers" },
+        { label: 'About', href: '/about' },
+        { label: 'Careers', href: '/careers' },
       ],
     },
   ]}
   social={[
-    { platform: "twitter", href: "https://twitter.com" },
-    { platform: "linkedin", href: "https://linkedin.com" },
+    { platform: 'twitter', href: 'https://twitter.com' },
+    { platform: 'linkedin', href: 'https://linkedin.com' },
   ]}
   copyright="© 2024 Company Name. All rights reserved."
 />
@@ -129,8 +123,8 @@ interface NewsletterConfig {
   variant="simple"
   copyright="© 2024 Brand Name"
   social={[
-    { platform: "facebook", href: "https://facebook.com" },
-    { platform: "instagram", href: "https://instagram.com" },
+    { platform: 'facebook', href: 'https://facebook.com' },
+    { platform: 'instagram', href: 'https://instagram.com' },
   ]}
 />
 ```
@@ -141,10 +135,10 @@ interface NewsletterConfig {
 <Footer
   variant="centered"
   newsletter={{
-    title: "Subscribe to our newsletter",
-    description: "Get the latest updates",
-    buttonText: "Subscribe",
-    onSubmit: (email) => console.log("Subscribed:", email),
+    title: 'Subscribe to our newsletter',
+    description: 'Get the latest updates',
+    buttonText: 'Subscribe',
+    onSubmit: email => console.log('Subscribed:', email),
   }}
 />
 ```

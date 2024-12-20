@@ -9,7 +9,7 @@
       "cache": false,
       "persistent": true
     },
-    "storybook": {
+    "storybook:dev": {
       "dependsOn": ["^build"],
       "cache": false,
       "persistent": true

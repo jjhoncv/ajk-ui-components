@@ -1,18 +1,18 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { ProductDetail } from "./";
-import { mockProducts } from "@ajk-ui/data";
-import { CartProvider } from "@ajk-ui/cart";
+import type { Meta, StoryObj } from '@storybook/react'
+import { ProductDetail } from './'
+import { mockProducts } from '@ajk-ui/data'
+import { CartProvider } from '@ajk-ui/cart'
 
 const meta: Meta<typeof ProductDetail> = {
-  title: "Feature/ProductDetail",
+  title: 'Feature/ProductDetail',
   component: ProductDetail,
   parameters: {
-    layout: "fullscreen",
+    layout: 'fullscreen',
   },
   decorators: [
-    (Story) => (
+    Story => (
       <div className="min-h-screen bg-gray-50">
-        <div className="w-full mx-auto px-4 sm:px-6 max-w-7xl ">
+        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
           <CartProvider>
             <Story />
           </CartProvider>
@@ -20,17 +20,17 @@ const meta: Meta<typeof ProductDetail> = {
       </div>
     ),
   ],
-};
+}
 
-export default meta;
-type Story = StoryObj<typeof ProductDetail>;
+export default meta
+type Story = StoryObj<typeof ProductDetail>
 
 // Story por defecto
 export const Default: Story = {
   args: {
     product: mockProducts[0],
   },
-};
+}
 
 // Story con producto sin descuento
 export const NoDiscount: Story = {
@@ -41,7 +41,7 @@ export const NoDiscount: Story = {
       discount: undefined,
     },
   },
-};
+}
 
 // Story con stock bajo
 export const LowStock: Story = {
@@ -50,12 +50,12 @@ export const LowStock: Story = {
       ...mockProducts[0],
       stock: {
         total: 3,
-        status: "low_stock" as const,
+        status: 'low_stock' as const,
         threshold: 5,
       },
     },
   },
-};
+}
 
 // Story sin stock
 export const OutOfStock: Story = {
@@ -64,13 +64,13 @@ export const OutOfStock: Story = {
       ...mockProducts[0],
       stock: {
         total: 0,
-        status: "out_of_stock" as const,
+        status: 'out_of_stock' as const,
         threshold: 5,
       },
       variants: [
         {
           ...mockProducts[0].variants[0],
-          sizes: mockProducts[0].variants[0].sizes.map((size) => ({
+          sizes: mockProducts[0].variants[0].sizes.map(size => ({
             ...size,
             stock: 0,
           })),
@@ -78,7 +78,7 @@ export const OutOfStock: Story = {
       ],
     },
   },
-};
+}
 
 // Story con calificación perfecta
 export const PerfectRating: Story = {
@@ -98,14 +98,14 @@ export const PerfectRating: Story = {
       },
     },
   },
-};
+}
 
 // Story móvil (usando el viewport addon)
 export const Mobile: Story = {
   ...Default,
   parameters: {
     viewport: {
-      defaultViewport: "mobile1",
+      defaultViewport: 'mobile1',
     },
   },
-};
+}

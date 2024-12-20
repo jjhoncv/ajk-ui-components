@@ -27,41 +27,37 @@ pnpm add @ajk-ui/theme-utils
 ### Basic Theme Provider
 
 ```tsx
-import { ThemeProvider, themes } from "@ajk-ui/theme-utils";
+import { ThemeProvider, themes } from '@ajk-ui/theme-utils'
 
 function App() {
-  return (
-    <ThemeProvider theme={themes.restaurant.modern}>
-      {/* Your app content */}
-    </ThemeProvider>
-  );
+  return <ThemeProvider theme={themes.restaurant.modern}>{/* Your app content */}</ThemeProvider>
 }
 ```
 
 ### Create Custom Theme
 
 ```tsx
-import { createTheme } from "@ajk-ui/theme-utils";
+import { createTheme } from '@ajk-ui/theme-utils'
 
 const customTheme = createTheme({
   colors: {
-    primary: "#FF6B6B",
-    secondary: "#4ECDC4",
-    background: "#ffffff",
-    text: "#2C3E50",
+    primary: '#FF6B6B',
+    secondary: '#4ECDC4',
+    background: '#ffffff',
+    text: '#2C3E50',
   },
   typography: {
-    fontFamily: "Poppins, sans-serif",
+    fontFamily: 'Poppins, sans-serif',
     headings: {
-      fontFamily: "Montserrat, sans-serif",
+      fontFamily: 'Montserrat, sans-serif',
     },
   },
   spacing: {
-    sm: "0.5rem",
-    md: "1rem",
-    lg: "2rem",
+    sm: '0.5rem',
+    md: '1rem',
+    lg: '2rem',
   },
-});
+})
 ```
 
 ## Available Themes
@@ -69,22 +65,22 @@ const customTheme = createTheme({
 ### Industry Themes
 
 ```typescript
-import { themes } from "@ajk-ui/theme-utils";
+import { themes } from '@ajk-ui/theme-utils'
 
 // Restaurant Themes
-themes.restaurant.modern;
-themes.restaurant.classic;
-themes.restaurant.vintage;
+themes.restaurant.modern
+themes.restaurant.classic
+themes.restaurant.vintage
 
 // Barbershop Themes
-themes.barbershop.modern;
-themes.barbershop.vintage;
-themes.barbershop.classic;
+themes.barbershop.modern
+themes.barbershop.vintage
+themes.barbershop.classic
 
 // Boutique Themes
-themes.boutique.modern;
-themes.boutique.elegant;
-themes.boutique.minimal;
+themes.boutique.modern
+themes.boutique.elegant
+themes.boutique.minimal
 ```
 
 ## Theme Hooks
@@ -122,41 +118,41 @@ function DarkModeToggle() {
 ```typescript
 interface Theme {
   colors: {
-    primary: string;
-    secondary: string;
-    background: string;
-    text: string;
-    [key: string]: string;
-  };
+    primary: string
+    secondary: string
+    background: string
+    text: string
+    [key: string]: string
+  }
   typography: {
-    fontFamily: string;
+    fontFamily: string
     headings?: {
-      fontFamily?: string;
-    };
+      fontFamily?: string
+    }
     sizes: {
-      sm: string;
-      md: string;
-      lg: string;
-    };
-  };
+      sm: string
+      md: string
+      lg: string
+    }
+  }
   spacing: {
-    sm: string;
-    md: string;
-    lg: string;
-    [key: string]: string;
-  };
+    sm: string
+    md: string
+    lg: string
+    [key: string]: string
+  }
   borderRadius: {
-    sm: string;
-    md: string;
-    lg: string;
-    [key: string]: string;
-  };
+    sm: string
+    md: string
+    lg: string
+    [key: string]: string
+  }
   shadows: {
-    sm: string;
-    md: string;
-    lg: string;
-    [key: string]: string;
-  };
+    sm: string
+    md: string
+    lg: string
+    [key: string]: string
+  }
 }
 ```
 
@@ -165,14 +161,14 @@ interface Theme {
 ### Extending Existing Themes
 
 ```typescript
-import { extendTheme, themes } from "@ajk-ui/theme-utils";
+import { extendTheme, themes } from '@ajk-ui/theme-utils'
 
 const customRestaurantTheme = extendTheme(themes.restaurant.modern, {
   colors: {
-    primary: "#custom-color",
+    primary: '#custom-color',
     // Other overrides
   },
-});
+})
 ```
 
 ### Dark Mode Support
@@ -181,15 +177,15 @@ const customRestaurantTheme = extendTheme(themes.restaurant.modern, {
 const themWithDarkMode = createTheme({
   colors: {
     light: {
-      background: "#ffffff",
-      text: "#000000",
+      background: '#ffffff',
+      text: '#000000',
     },
     dark: {
-      background: "#1a1a1a",
-      text: "#ffffff",
+      background: '#1a1a1a',
+      text: '#ffffff',
     },
   },
-});
+})
 ```
 
 ## Version History

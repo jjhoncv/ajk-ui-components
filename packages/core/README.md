@@ -25,33 +25,33 @@ pnpm add @ajk-ui/core
 ### Types
 
 ```typescript
-import { BaseProps, ThemeVariant, Size } from "@ajk-ui/core";
+import { BaseProps, ThemeVariant, Size } from '@ajk-ui/core'
 
 // Component props interface
 interface MyComponentProps extends BaseProps {
-  variant?: ThemeVariant;
-  size?: Size;
+  variant?: ThemeVariant
+  size?: Size
 }
 ```
 
 ### Utilities
 
 ```typescript
-import { mergeClasses, createStyles } from "@ajk-ui/core";
+import { mergeClasses, createStyles } from '@ajk-ui/core'
 
 // Merge CSS classes
 const className = mergeClasses(
-  "base-class",
+  'base-class',
   variant && `variant-${variant}`,
   size && `size-${size}`,
   customClass
-);
+)
 
 // Create dynamic styles
 const styles = createStyles({
   color: theme.colors.primary,
   padding: theme.spacing.md,
-});
+})
 ```
 
 ## Available Exports
@@ -61,20 +61,20 @@ const styles = createStyles({
 ```typescript
 // Base Props
 interface BaseProps {
-  className?: string;
-  children?: ReactNode;
-  [key: string]: any;
+  className?: string
+  children?: ReactNode
+  [key: string]: any
 }
 
 // Theme Types
-type ThemeVariant = "primary" | "secondary" | "outline" | "ghost";
-type Size = "sm" | "md" | "lg";
-type ColorScheme = "light" | "dark";
+type ThemeVariant = 'primary' | 'secondary' | 'outline' | 'ghost'
+type Size = 'sm' | 'md' | 'lg'
+type ColorScheme = 'light' | 'dark'
 
 // Component Types
 interface StyleProps {
-  className?: string;
-  style?: CSSProperties;
+  className?: string
+  style?: CSSProperties
 }
 ```
 
@@ -82,15 +82,15 @@ interface StyleProps {
 
 ```typescript
 // Class Management
-function mergeClasses(...classes: (string | undefined | null)[]): string;
+function mergeClasses(...classes: (string | undefined | null)[]): string
 
 // Style Utilities
-function createStyles(styles: CSSProperties): CSSProperties;
-function getThemeValue(theme: Theme, path: string): any;
+function createStyles(styles: CSSProperties): CSSProperties
+function getThemeValue(theme: Theme, path: string): any
 
 // Type Guards
-function isValidColor(color: string): boolean;
-function isValidSize(size: string): size is Size;
+function isValidColor(color: string): boolean
+function isValidSize(size: string): size is Size
 ```
 
 ## Integration with Theme System

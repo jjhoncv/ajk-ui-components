@@ -1,5 +1,5 @@
 ---
-"@ajk-ui/button": minor
+'@ajk-ui/button': minor
 ---
 
 change

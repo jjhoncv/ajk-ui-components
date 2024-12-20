@@ -1,33 +1,33 @@
 // src/stories/ProductTabs.stories.tsx
-import type { Meta, StoryObj } from "@storybook/react";
-import { ProductTabs } from "./ProductTabs";
-import { mockProducts } from "@ajk-ui/data";
+import type { Meta, StoryObj } from '@storybook/react'
+import { ProductTabs } from './ProductTabs'
+import { mockProducts } from '@ajk-ui/data'
 
 const meta: Meta<typeof ProductTabs> = {
-  title: "Feature/ProductTabs",
+  title: 'Feature/ProductTabs',
   component: ProductTabs,
   parameters: {
-    layout: "padded",
+    layout: 'padded',
   },
   decorators: [
-    (Story) => (
-      <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg">
+    Story => (
+      <div className="mx-auto max-w-4xl rounded-lg bg-white p-6">
         <Story />
       </div>
     ),
   ],
-};
+}
 
-export default meta;
-type Story = StoryObj<typeof ProductTabs>;
+export default meta
+type Story = StoryObj<typeof ProductTabs>
 
-const mockProduct = mockProducts[0];
+const mockProduct = mockProducts[0]
 
 export const Default: Story = {
   args: {
     product: mockProduct,
   },
-};
+}
 
 // Variante con muchas reseñas
 export const ManyReviews: Story = {
@@ -38,24 +38,24 @@ export const ManyReviews: Story = {
         ...mockProduct.reviews,
         {
           id: 4,
-          userName: "Pedro S.",
+          userName: 'Pedro S.',
           rating: 3,
-          comment: "El producto está bien, pero esperaba mejor calidad.",
-          date: "2024-02-05",
+          comment: 'El producto está bien, pero esperaba mejor calidad.',
+          date: '2024-02-05',
           verified: true,
         },
         {
           id: 5,
-          userName: "Laura M.",
+          userName: 'Laura M.',
           rating: 5,
-          comment: "¡Increíbles! Son muy cómodas y el diseño es genial.",
-          date: "2024-02-03",
+          comment: '¡Increíbles! Son muy cómodas y el diseño es genial.',
+          date: '2024-02-03',
           verified: true,
         },
       ],
     },
   },
-};
+}
 
 // Variante con calificación baja
 export const LowRating: Story = {
@@ -75,7 +75,7 @@ export const LowRating: Story = {
       },
     },
   },
-};
+}
 
 // Variante sin reseñas
 export const NoReviews: Story = {
@@ -96,7 +96,7 @@ export const NoReviews: Story = {
       reviews: [],
     },
   },
-};
+}
 
 // Variante con descripción larga
 export const LongDescription: Story = {
@@ -112,17 +112,17 @@ export const LongDescription: Story = {
       La versatilidad de las Old Skool ha permitido que trascienda su origen en el skateboarding para convertirse en un ícono de la moda streetwear, siendo una opción popular tanto para el uso diario como para ocasiones casuales.`,
     },
   },
-};
+}
 
 // Variante móvil
 export const Mobile: Story = {
   ...Default,
   parameters: {
     viewport: {
-      defaultViewport: "mobile1",
+      defaultViewport: 'mobile1',
     },
   },
-};
+}
 
 // Variante con especificaciones técnicas extensas
 export const ExtendedSpecs: Story = {
@@ -132,25 +132,25 @@ export const ExtendedSpecs: Story = {
       specs: {
         ...mockProduct.specs,
         material: [
-          "Upper: Combinación de lona y gamuza premium",
-          "Forro: Textil transpirable",
-          "Suela: Goma vulcanizada waffle pattern",
-          "Ojales: Metal reforzado",
-          "Lengüeta: Espuma acolchada",
-          "Plantilla: EVA removible",
-          "Entresuela: Amortiguación de espuma",
-          "Refuerzos: Piel sintética en puntera y talón",
+          'Upper: Combinación de lona y gamuza premium',
+          'Forro: Textil transpirable',
+          'Suela: Goma vulcanizada waffle pattern',
+          'Ojales: Metal reforzado',
+          'Lengüeta: Espuma acolchada',
+          'Plantilla: EVA removible',
+          'Entresuela: Amortiguación de espuma',
+          'Refuerzos: Piel sintética en puntera y talón',
         ],
         care: [
-          "Limpiar con un paño húmedo",
-          "No lavar en máquina",
-          "Dejar secar a temperatura ambiente",
-          "Usar protector de calzado",
-          "Evitar exposición directa al sol",
-          "Guardar en lugar fresco y seco",
-          "Rotar el uso con otro calzado",
+          'Limpiar con un paño húmedo',
+          'No lavar en máquina',
+          'Dejar secar a temperatura ambiente',
+          'Usar protector de calzado',
+          'Evitar exposición directa al sol',
+          'Guardar en lugar fresco y seco',
+          'Rotar el uso con otro calzado',
         ],
       },
     },
   },
-};
+}

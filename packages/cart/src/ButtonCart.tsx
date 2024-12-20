@@ -1,33 +1,33 @@
-import { cn } from "@ajk-ui/core";
-import { useTheme } from "@ajk-ui/theme-utils";
-import { ShoppingCart } from "lucide-react";
+import { cn } from '@ajk-ui/core'
+import { useTheme } from '@ajk-ui/theme-utils'
+import { ShoppingCart } from 'lucide-react'
 
 export const ButtonCart = ({
   total,
   className,
   handleClick,
 }: {
-  total: number;
-  className?: string;
-  handleClick?: () => void;
+  total: number
+  className?: string
+  handleClick?: () => void
 }) => {
-  const { theme } = useTheme();
+  const { theme } = useTheme()
   return (
     <button
       type="button"
-      onClick={(e) => {
-        handleClick?.();
-        e.preventDefault();
+      onClick={e => {
+        handleClick?.()
+        e.preventDefault()
       }}
-      className={cn("flex items-center gap-1")}
+      className={cn('flex items-center gap-1')}
     >
       <div className="relative">
-        <ShoppingCart className="w-5 h-5 text-gray-600" />
+        <ShoppingCart className="h-5 w-5 text-gray-600" />
 
         {total > 0 && (
           <div
             className={cn(
-              "absolute text-xs right-[-10px] top-[-10px] rounded-full w-5 h-5 flex justify-center items-center z-10 bg-red-500 border border-transparent text-white"
+              'absolute right-[-10px] top-[-10px] z-10 flex h-5 w-5 items-center justify-center rounded-full border border-transparent bg-red-500 text-xs text-white'
             )}
             style={{
               backgroundColor: theme.colors.primary,
@@ -37,11 +37,9 @@ export const ButtonCart = ({
           </div>
         )}
       </div>
-      <span className="hidden md:block text-sm font-medium text-gray-700">
-        Mi Carrito
-      </span>
+      <span className="hidden text-sm font-medium text-gray-700 md:block">Mi Carrito</span>
     </button>
-  );
-};
+  )
+}
 
-export default ButtonCart;
+export default ButtonCart

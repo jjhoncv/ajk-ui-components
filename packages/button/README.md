@@ -15,14 +15,14 @@ pnpm add @ajk-ui/button
 ## Usage
 
 ```tsx
-import { Button } from "@ajk-ui/button";
+import { Button } from '@ajk-ui/button'
 
 function MyComponent() {
   return (
-    <Button variant="primary" onClick={() => console.log("Clicked!")}>
+    <Button variant="primary" onClick={() => console.log('Clicked!')}>
       Click me
     </Button>
-  );
+  )
 }
 ```
 

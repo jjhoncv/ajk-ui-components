@@ -1,34 +1,34 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react'
 
-import { mockProducts } from "@ajk-ui/data";
-import { ThemeProvider } from "@ajk-ui/theme-utils";
-import { Rating } from "./";
-import { ModernTech } from "@ajk-ui/themes";
+import { mockProducts } from '@ajk-ui/data'
+import { ThemeProvider } from '@ajk-ui/theme-utils'
+import { Rating } from './'
+import { ModernTech } from '@ajk-ui/themes'
 
 const meta = {
-  title: "Components/Rating",
+  title: 'Components/Rating',
   component: Rating,
 
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   decorators: [
-    (Story) => (
+    Story => (
       <ThemeProvider initialTheme={ModernTech}>
         <Story />
       </ThemeProvider>
     ),
   ],
-} satisfies Meta<typeof Rating>;
+} satisfies Meta<typeof Rating>
 
-export default meta;
-type Story = StoryObj<typeof Rating>;
+export default meta
+type Story = StoryObj<typeof Rating>
 
 export const RatingDefault: Story = {
   render: () => <Rating average={2} />,
-};
+}
 
 export const RatingThin: Story = {
-  render: () => <Rating average={2} className="w-3 h-3 gap-3" />,
-};
+  render: () => <Rating average={2} className="h-3 w-3 gap-3" />,
+}

@@ -1,25 +1,24 @@
-import { ProductStock } from "@ajk-ui/product";
-import { useState } from "react";
+import { ProductStock } from '@ajk-ui/product'
+import { useState } from 'react'
 
 export const useProductStock = (initialStock: ProductStock) => {
-  const [stock, setStock] = useState(initialStock);
+  const [stock, setStock] = useState(initialStock)
 
   const checkStockStatus = (quantity: number): boolean => {
-    return quantity <= stock.total;
-  };
+    return quantity <= stock.total
+  }
 
   const updateStock = (quantity: number) => {
-    setStock((prev) => ({
+    setStock(prev => ({
       ...prev,
       total: prev.total - quantity,
-      status:
-        prev.total - quantity <= prev.threshold ? "low_stock" : "in_stock",
-    }));
-  };
+      status: prev.total - quantity <= prev.threshold ? 'low_stock' : 'in_stock',
+    }))
+  }
 
   return {
     stock,
     checkStockStatus,
     updateStock,
-  };
-};
+  }
+}

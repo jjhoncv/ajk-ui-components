@@ -34,39 +34,39 @@ pnpm add @ajk-ui/button @ajk-ui/card @ajk-ui/nav @ajk-ui/header @ajk-ui/footer @
 ### Modern Restaurant Website
 
 ```tsx
-import { ThemeProvider, themes } from "@ajk-ui/theme-utils";
-import { Header, Nav, Section, Card, Footer, Button } from "@ajk-ui";
+import { ThemeProvider, themes } from '@ajk-ui/theme-utils'
+import { Header, Nav, Section, Card, Footer, Button } from '@ajk-ui'
 
 function ModernRestaurant() {
   const navItems = [
-    { label: "Home", href: "/" },
-    { label: "Menu", href: "/menu" },
-    { label: "Reservations", href: "/reservations" },
-    { label: "About", href: "/about" },
-  ];
+    { label: 'Home', href: '/' },
+    { label: 'Menu', href: '/menu' },
+    { label: 'Reservations', href: '/reservations' },
+    { label: 'About', href: '/about' },
+  ]
 
   const footerColumns = [
     {
-      title: "Visit Us",
+      title: 'Visit Us',
       links: [
-        { label: "Menu", href: "/menu" },
-        { label: "Reservations", href: "/reservations" },
-        { label: "Private Events", href: "/events" },
+        { label: 'Menu', href: '/menu' },
+        { label: 'Reservations', href: '/reservations' },
+        { label: 'Private Events', href: '/events' },
       ],
     },
     {
-      title: "Contact",
+      title: 'Contact',
       links: [
-        { label: "Contact Us", href: "/contact" },
-        { label: "Location", href: "/location" },
+        { label: 'Contact Us', href: '/contact' },
+        { label: 'Location', href: '/location' },
       ],
     },
-  ];
+  ]
 
   const socialLinks = [
-    { platform: "instagram", href: "#" },
-    { platform: "facebook", href: "#" },
-  ];
+    { platform: 'instagram', href: '#' },
+    { platform: 'facebook', href: '#' },
+  ]
 
   return (
     <ThemeProvider theme={themes.restaurant.modern}>
@@ -78,7 +78,7 @@ function ModernRestaurant() {
         variant="hero"
         height="lg"
         navItems={navItems}
-        cta={{ label: "Make a Reservation", href: "/reservations" }}
+        cta={{ label: 'Make a Reservation', href: '/reservations' }}
       />
 
       {/* Featured Menu Section */}
@@ -132,47 +132,47 @@ function ModernRestaurant() {
         social={socialLinks}
         copyright="© 2024 Fine Dining. All rights reserved."
         newsletter={{
-          title: "Stay Updated",
-          description: "Subscribe for special offers and events",
-          buttonText: "Subscribe",
+          title: 'Stay Updated',
+          description: 'Subscribe for special offers and events',
+          buttonText: 'Subscribe',
         }}
       />
     </ThemeProvider>
-  );
+  )
 }
 ```
 
 ### Vintage Barbershop Website
 
 ```tsx
-import { ThemeProvider, themes } from "@ajk-ui/theme-utils";
-import { Header, Section, Card, Footer } from "@ajk-ui";
+import { ThemeProvider, themes } from '@ajk-ui/theme-utils'
+import { Header, Section, Card, Footer } from '@ajk-ui'
 
 function VintageBarbershop() {
   const navItems = [
-    { label: "Home", href: "/" },
-    { label: "Services", href: "/services" },
-    { label: "Gallery", href: "/gallery" },
-    { label: "Book Now", href: "/booking" },
-  ];
+    { label: 'Home', href: '/' },
+    { label: 'Services', href: '/services' },
+    { label: 'Gallery', href: '/gallery' },
+    { label: 'Book Now', href: '/booking' },
+  ]
 
   const footerColumns = [
     {
-      title: "Services",
+      title: 'Services',
       links: [
-        { label: "Haircut", href: "/services#haircut" },
-        { label: "Beard Trim", href: "/services#beard" },
-        { label: "Hot Towel Shave", href: "/services#shave" },
+        { label: 'Haircut', href: '/services#haircut' },
+        { label: 'Beard Trim', href: '/services#beard' },
+        { label: 'Hot Towel Shave', href: '/services#shave' },
       ],
     },
     {
-      title: "Book Now",
+      title: 'Book Now',
       links: [
-        { label: "Online Booking", href: "/booking" },
-        { label: "Contact Us", href: "/contact" },
+        { label: 'Online Booking', href: '/booking' },
+        { label: 'Contact Us', href: '/contact' },
       ],
     },
-  ];
+  ]
 
   return (
     <ThemeProvider theme={themes.barbershop.vintage}>
@@ -183,7 +183,7 @@ function VintageBarbershop() {
         backgroundImage="/barber-hero.jpg"
         variant="hero"
         navItems={navItems}
-        cta={{ label: "Book Appointment", href: "/booking" }}
+        cta={{ label: 'Book Appointment', href: '/booking' }}
       />
 
       {/* Services Section */}
@@ -218,20 +218,15 @@ function VintageBarbershop() {
       </Section>
 
       {/* Testimonials */}
-      <Section
-        variant="alternate"
-        title="What Our Clients Say"
-        layout="grid"
-        gridCols={2}
-      >
+      <Section variant="alternate" title="What Our Clients Say" layout="grid" gridCols={2}>
         <Card
           variant="testimonial"
           title="Best barbershop in town!"
           description="The attention to detail and service is unmatched."
           author={{
-            name: "John Doe",
-            title: "Regular Client",
-            avatar: "/john.jpg",
+            name: 'John Doe',
+            title: 'Regular Client',
+            avatar: '/john.jpg',
           }}
         />
         <Card
@@ -239,9 +234,9 @@ function VintageBarbershop() {
           title="True professionals"
           description="Always leave looking and feeling great."
           author={{
-            name: "Mike Smith",
-            title: "Client since 2020",
-            avatar: "/mike.jpg",
+            name: 'Mike Smith',
+            title: 'Client since 2020',
+            avatar: '/mike.jpg',
           }}
         />
       </Section>
@@ -253,36 +248,36 @@ function VintageBarbershop() {
         copyright="© 2024 Classic Cuts Barbershop"
       />
     </ThemeProvider>
-  );
+  )
 }
 ```
 
 ### Custom Theme Example
 
 ```tsx
-import { ThemeProvider, createTheme } from "@ajk-ui/theme-utils";
-import { Header, Section, Card, Footer } from "@ajk-ui";
+import { ThemeProvider, createTheme } from '@ajk-ui/theme-utils'
+import { Header, Section, Card, Footer } from '@ajk-ui'
 
 // Create a custom theme
 const customTheme = createTheme({
   colors: {
-    primary: "#FF6B6B",
-    secondary: "#4ECDC4",
-    background: "#ffffff",
-    text: "#2C3E50",
+    primary: '#FF6B6B',
+    secondary: '#4ECDC4',
+    background: '#ffffff',
+    text: '#2C3E50',
   },
   typography: {
-    fontFamily: "Poppins, sans-serif",
+    fontFamily: 'Poppins, sans-serif',
   },
-});
+})
 
 function CustomBoutique() {
   const navItems = [
-    { label: "Home", href: "/" },
-    { label: "Collections", href: "/collections" },
-    { label: "Lookbook", href: "/lookbook" },
-    { label: "Contact", href: "/contact" },
-  ];
+    { label: 'Home', href: '/' },
+    { label: 'Collections', href: '/collections' },
+    { label: 'Lookbook', href: '/lookbook' },
+    { label: 'Contact', href: '/contact' },
+  ]
 
   return (
     <ThemeProvider theme={customTheme}>
@@ -293,7 +288,7 @@ function CustomBoutique() {
         backgroundImage="/boutique-hero.jpg"
         variant="hero"
         navItems={navItems}
-        cta={{ label: "Shop Now", href: "/collections", variant: "outline" }}
+        cta={{ label: 'Shop Now', href: '/collections', variant: 'outline' }}
       />
 
       {/* Featured Collection */}
@@ -322,20 +317,20 @@ function CustomBoutique() {
         title="Stay Updated"
         subtitle="Subscribe to our newsletter"
       >
-        <div className="max-w-md mx-auto">{/* Newsletter form */}</div>
+        <div className="mx-auto max-w-md">{/* Newsletter form */}</div>
       </Section>
 
       {/* Footer */}
       <Footer
         variant="centered"
         newsletter={{
-          title: "Join Our List",
-          description: "Be the first to know about new collections",
-          buttonText: "Subscribe",
+          title: 'Join Our List',
+          description: 'Be the first to know about new collections',
+          buttonText: 'Subscribe',
         }}
       />
     </ThemeProvider>
-  );
+  )
 }
 ```
 

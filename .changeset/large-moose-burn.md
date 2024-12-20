@@ -1,5 +1,5 @@
 ---
-"@ajk-ui/header": minor
+'@ajk-ui/header': minor
 ---
 
 change

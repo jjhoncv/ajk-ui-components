@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback } from 'react'
 import type {
   Theme,
   ThemeColors,
@@ -6,21 +6,21 @@ import type {
   ThemeSpacing,
   ThemeBorderRadius,
   ComponentSize,
-} from "@ajk-ui/core";
-import { useThemeContext } from "./theme-context";
+} from '@ajk-ui/core'
+import { useThemeContext } from './theme-context'
 
 export function useTheme() {
-  const { theme, setTheme } = useThemeContext();
+  const { theme, setTheme } = useThemeContext()
 
   const updateTheme = useCallback(
     (updates: Partial<Theme>) => {
       setTheme({
         ...theme,
         ...updates,
-      });
+      })
     },
     [theme, setTheme]
-  );
+  )
 
   const updateColors = useCallback(
     (colorUpdates: Partial<ThemeColors>) => {
@@ -58,10 +58,10 @@ export function useTheme() {
             ...(colorUpdates.shadow || {}),
           },
         } as ThemeColors,
-      });
+      })
     },
     [theme, setTheme]
-  );
+  )
 
   const updateTypography = useCallback(
     (typographyUpdates: Partial<ThemeTypography>) => {
@@ -83,10 +83,10 @@ export function useTheme() {
             ...(typographyUpdates.lineHeight || {}),
           },
         },
-      });
+      })
     },
     [theme, setTheme]
-  );
+  )
 
   const updateSpacing = useCallback(
     (spacingUpdates: Partial<ThemeSpacing>) => {
@@ -96,10 +96,10 @@ export function useTheme() {
           ...theme.spacing,
           ...spacingUpdates,
         } as ThemeSpacing,
-      });
+      })
     },
     [theme, setTheme]
-  );
+  )
 
   const updateBorderRadius = useCallback(
     (borderRadiusUpdates: Partial<ThemeBorderRadius>) => {
@@ -109,10 +109,10 @@ export function useTheme() {
           ...theme.borderRadius,
           ...borderRadiusUpdates,
         } as ThemeBorderRadius,
-      });
+      })
     },
     [theme, setTheme]
-  );
+  )
 
   return {
     theme,
@@ -122,56 +122,56 @@ export function useTheme() {
     updateTypography,
     updateSpacing,
     updateBorderRadius,
-  };
+  }
 }
 
 export function useThemeColor(colorKey: keyof ThemeColors) {
-  const { theme } = useThemeContext();
-  return theme.colors[colorKey];
+  const { theme } = useThemeContext()
+  return theme.colors[colorKey]
 }
 
 export function useThemeTypography() {
-  const { theme } = useThemeContext();
-  return theme.typography;
+  const { theme } = useThemeContext()
+  return theme.typography
 }
 
 export function useThemeSpacing() {
-  const { theme } = useThemeContext();
-  return theme.spacing;
+  const { theme } = useThemeContext()
+  return theme.spacing
 }
 
 export function useThemeBorderRadius() {
-  const { theme } = useThemeContext();
-  return theme.borderRadius;
+  const { theme } = useThemeContext()
+  return theme.borderRadius
 }
 
 export function useThemeVariants() {
-  const { theme } = useThemeContext();
+  const { theme } = useThemeContext()
   return {
     primary: theme.colors.primaryVariants,
     secondary: theme.colors.secondaryVariants,
-  };
+  }
 }
 
 export function useThemeTextVariants() {
-  const { theme } = useThemeContext();
-  return theme.colors.textVariants;
+  const { theme } = useThemeContext()
+  return theme.colors.textVariants
 }
 
 export function useThemeStates() {
-  const { theme } = useThemeContext();
+  const { theme } = useThemeContext()
   return {
     disabled: theme.colors.disabled,
     border: theme.colors.border,
     feedback: theme.colors.feedback,
-  };
+  }
 }
 
 export function useComponentStyles(
-  variant: "primary" | "secondary" | "outline" | "ghost" | "link" = "primary",
-  size: keyof Theme["typography"]["fontSize"] = "base"
+  variant: 'primary' | 'secondary' | 'outline' | 'ghost' | 'link' = 'primary',
+  size: keyof Theme['typography']['fontSize'] = 'base'
 ) {
-  const { theme } = useThemeContext();
+  const { theme } = useThemeContext()
 
   return {
     colors: {
@@ -188,5 +188,5 @@ export function useComponentStyles(
     },
     borderRadius: theme.borderRadius,
     transitions: theme.transitions,
-  };
+  }
 }

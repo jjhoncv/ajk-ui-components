@@ -1,2 +1,2 @@
-export * from "./ColorSwatch";
-export * from "./ColorSection";
+export * from './ColorSwatch'
+export * from './ColorSection'

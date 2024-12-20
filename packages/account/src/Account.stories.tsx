@@ -1,31 +1,31 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { ButtonAccount, MiniAccount } from "./";
-import { ThemeProvider, themes } from "@ajk-ui/theme-utils";
-import { AuthProvider } from "@ajk-ui/auth";
+import type { Meta, StoryObj } from '@storybook/react'
+import { ButtonAccount, MiniAccount } from './'
+import { ThemeProvider, themes } from '@ajk-ui/theme-utils'
+import { AuthProvider } from '@ajk-ui/auth'
 
 const meta = {
-  title: "Components/Account",
+  title: 'Components/Account',
   component: ButtonAccount,
 
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   decorators: [
-    (Story) => (
+    Story => (
       <ThemeProvider initialTheme={themes.restaurant.modern}>
         <Story />
       </ThemeProvider>
     ),
   ],
-} satisfies Meta<typeof ButtonAccount>;
+} satisfies Meta<typeof ButtonAccount>
 
-export default meta;
-type Story = StoryObj<typeof ButtonAccount>;
+export default meta
+type Story = StoryObj<typeof ButtonAccount>
 
 export const ButtonAccountDefault: Story = {
   render: () => <ButtonAccount />,
-};
+}
 
 export const MiniAccountDefault: Story = {
   render: () => (
@@ -33,4 +33,4 @@ export const MiniAccountDefault: Story = {
       <MiniAccount />
     </AuthProvider>
   ),
-};
+}
