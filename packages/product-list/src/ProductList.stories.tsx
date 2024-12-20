@@ -3,6 +3,7 @@ import { ProductList } from "./";
 import { mockProducts } from "@ajk-ui/data";
 import { ThemeProvider, themes } from "@ajk-ui/theme-utils";
 import { CartProvider } from "@ajk-ui/cart";
+import { ModernTech } from "@ajk-ui/themes";
 
 const meta: Meta<typeof ProductList> = {
   title: "Feature/ProductList",
@@ -14,7 +15,7 @@ const meta: Meta<typeof ProductList> = {
     (Story) => (
       <div className="min-h-screen">
         <div className="w-full mx-auto px-4 sm:px-6 max-w-7xl ">
-          <ThemeProvider initialTheme={themes.restaurant.modern}>
+          <ThemeProvider initialTheme={ModernTech}>
             <CartProvider>
               <Story />
             </CartProvider>

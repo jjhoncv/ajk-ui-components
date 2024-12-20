@@ -2,9 +2,10 @@ import { useCallback } from "react";
 import type {
   Theme,
   ThemeColors,
-  ThemeFontSizes,
+  ThemeTypography,
   ThemeSpacing,
   ThemeBorderRadius,
+  ComponentSize,
 } from "@ajk-ui/core";
 import { useThemeContext } from "./theme-context";
 
@@ -28,6 +29,34 @@ export function useTheme() {
         colors: {
           ...theme.colors,
           ...colorUpdates,
+          primaryVariants: {
+            ...theme.colors.primaryVariants,
+            ...(colorUpdates.primaryVariants || {}),
+          },
+          secondaryVariants: {
+            ...theme.colors.secondaryVariants,
+            ...(colorUpdates.secondaryVariants || {}),
+          },
+          textVariants: {
+            ...theme.colors.textVariants,
+            ...(colorUpdates.textVariants || {}),
+          },
+          disabled: {
+            ...theme.colors.disabled,
+            ...(colorUpdates.disabled || {}),
+          },
+          border: {
+            ...theme.colors.border,
+            ...(colorUpdates.border || {}),
+          },
+          feedback: {
+            ...theme.colors.feedback,
+            ...(colorUpdates.feedback || {}),
+          },
+          shadow: {
+            ...theme.colors.shadow,
+            ...(colorUpdates.shadow || {}),
+          },
         } as ThemeColors,
       });
     },
@@ -35,12 +64,24 @@ export function useTheme() {
   );
 
   const updateTypography = useCallback(
-    (typographyUpdates: Partial<Theme["typography"]>) => {
+    (typographyUpdates: Partial<ThemeTypography>) => {
       setTheme({
         ...theme,
         typography: {
           ...theme.typography,
           ...typographyUpdates,
+          fontSize: {
+            ...theme.typography.fontSize,
+            ...(typographyUpdates.fontSize || {}),
+          },
+          fontWeight: {
+            ...theme.typography.fontWeight,
+            ...(typographyUpdates.fontWeight || {}),
+          },
+          lineHeight: {
+            ...theme.typography.lineHeight,
+            ...(typographyUpdates.lineHeight || {}),
+          },
         },
       });
     },
@@ -102,4 +143,50 @@ export function useThemeSpacing() {
 export function useThemeBorderRadius() {
   const { theme } = useThemeContext();
   return theme.borderRadius;
+}
+
+export function useThemeVariants() {
+  const { theme } = useThemeContext();
+  return {
+    primary: theme.colors.primaryVariants,
+    secondary: theme.colors.secondaryVariants,
+  };
+}
+
+export function useThemeTextVariants() {
+  const { theme } = useThemeContext();
+  return theme.colors.textVariants;
+}
+
+export function useThemeStates() {
+  const { theme } = useThemeContext();
+  return {
+    disabled: theme.colors.disabled,
+    border: theme.colors.border,
+    feedback: theme.colors.feedback,
+  };
+}
+
+export function useComponentStyles(
+  variant: "primary" | "secondary" | "outline" | "ghost" | "link" = "primary",
+  size: keyof Theme["typography"]["fontSize"] = "base"
+) {
+  const { theme } = useThemeContext();
+
+  return {
+    colors: {
+      primary: theme.colors.primaryVariants,
+      secondary: theme.colors.secondaryVariants,
+      text: theme.colors.textVariants,
+      disabled: theme.colors.disabled,
+    },
+    spacing: theme.spacing,
+    typography: {
+      fontSize: theme.typography.fontSize[size],
+      fontWeight: theme.typography.fontWeight,
+      lineHeight: theme.typography.lineHeight,
+    },
+    borderRadius: theme.borderRadius,
+    transitions: theme.transitions,
+  };
 }

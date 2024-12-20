@@ -1,8 +1,9 @@
+import { CartProvider } from "@ajk-ui/cart";
 import { mockProducts } from "@ajk-ui/data";
+import { ThemeProvider } from "@ajk-ui/theme-utils";
+import { ModernTech } from "@ajk-ui/themes";
 import type { Meta, StoryObj } from "@storybook/react";
 import { ProductGrid } from ".";
-import { CartProvider } from "@ajk-ui/cart";
-import { ThemeProvider, themes } from "@ajk-ui/theme-utils";
 
 const meta: Meta<typeof ProductGrid> = {
   title: "Feature/ProductGrid",
@@ -14,7 +15,7 @@ const meta: Meta<typeof ProductGrid> = {
     (Story) => (
       <div className="min-h-screen bg-gray-50">
         <div className="w-full mx-auto px-4 sm:px-6 max-w-7xl ">
-          <ThemeProvider initialTheme={themes.restaurant.modern}>
+          <ThemeProvider initialTheme={ModernTech}>
             <CartProvider>
               <Story />
             </CartProvider>

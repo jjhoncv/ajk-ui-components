@@ -1,4 +1,3 @@
-// Breadcrumb.stories.tsx
 import type { Meta, StoryObj } from "@storybook/react";
 import { Breadcrumb } from "./";
 

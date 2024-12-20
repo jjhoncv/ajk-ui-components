@@ -20,6 +20,7 @@
     "@ajk-ui/data": "workspace:*",
     "@ajk-ui/breadcrumb": "workspace:*",
     "@ajk-ui/filter-bar": "workspace:*",
+    "@ajk-ui/themes": "workspace:*",
     "@ajk-ui/pagination": "workspace:*",
     "@ajk-ui/product": "workspace:*",
     "@ajk-ui/product-grid": "workspace:*",

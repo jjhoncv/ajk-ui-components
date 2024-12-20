@@ -7,6 +7,8 @@ interface VariantStyles {
   title: string;
   badge?: string;
   features?: string;
+  content?: string;
+  description?: string;
 }
 
 export interface CardProps extends BaseProps {
@@ -46,7 +48,7 @@ export function Card({
   features,
   author,
   aspectRatio = "4:3",
-  hover = "lift",
+  hover = "none",
   layout = "vertical",
   className,
   children,
@@ -115,8 +117,10 @@ export function Card({
     },
     product: {
       card: "border",
-      title: "text-lg",
-      badge: "bg-green-100 text-green-800",
+      title: "text-lg md:text-sm",
+      badge: "bg-green-100 text-xs text-green-800 top-2 right-2",
+      content: "p-3",
+      description: "text-sm",
     },
     service: {
       card: "border-0 shadow-sm",
@@ -171,6 +175,7 @@ export function Card({
       <div
         className={cn(
           baseStyles.content,
+          variantStyles.product.content,
           layout === "horizontal" && "md:w-2/3"
         )}
       >
@@ -194,7 +199,14 @@ export function Card({
           )}
 
           {description && (
-            <p className={baseStyles.description}>{description}</p>
+            <p
+              className={cn(
+                baseStyles.description,
+                variantStyles.product.description
+              )}
+            >
+              {description}
+            </p>
           )}
 
           {features && variant === "pricing" && (

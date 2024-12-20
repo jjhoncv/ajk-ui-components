@@ -1,6 +1,8 @@
+import { ThemeProvider } from "@ajk-ui/theme-utils";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Pagination } from ".";
-import { ThemeProvider, themes } from "@ajk-ui/theme-utils";
+import { useState } from "react";
+import { Pagination, PaginationProps } from ".";
+import { ModernTech } from "@ajk-ui/themes";
 
 const meta = {
   title: "Navigation/Pagination",
@@ -10,7 +12,7 @@ const meta = {
   },
   decorators: [
     (Story) => (
-      <ThemeProvider initialTheme={themes.restaurant.modern}>
+      <ThemeProvider initialTheme={ModernTech}>
         <Story />
       </ThemeProvider>
     ),
@@ -21,13 +23,27 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const PaginationHook = ({ ...args }: PaginationProps) => {
+  const [currentPage, setCurrentPage] = useState(args.currentPage);
+
+  return (
+    <Pagination
+      {...args}
+      currentPage={currentPage}
+      onPageChange={(page) => {
+        setCurrentPage(page);
+      }}
+    />
+  );
+};
+
 // Historia básica
 export const Default: Story = {
   args: {
     totalPages: 5,
     currentPage: 2,
-    onPageChange: (page) => {
-      console.log(`Ir a página ${page}`);
-    },
+  },
+  render: (args) => {
+    return <PaginationHook {...args} />;
   },
 };

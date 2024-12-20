@@ -1,7 +1,7 @@
 import { Button } from "@ajk-ui/button";
-import { cn } from "@ajk-ui/core";
+import { useTheme } from "@ajk-ui/theme-utils";
 
-interface PaginationProps {
+export interface PaginationProps {
   totalPages: number;
   currentPage: number;
   onPageChange: (page: number) => void;
@@ -14,13 +14,15 @@ export const Pagination = ({
 }: PaginationProps) => {
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
+  const { theme } = useTheme();
+
   return (
     <div className="flex items-center justify-center space-x-2 py-8">
       <Button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        variant="outline"
-        className="px-4 py-2 border rounded-md text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+        variant="primary"
+        size="sm"
       >
         Anterior
       </Button>
@@ -28,15 +30,11 @@ export const Pagination = ({
       <div className="flex space-x-1">
         {pageNumbers.map((page) => (
           <Button
-            variant="outline"
+            variant="primary"
             key={page}
             onClick={() => onPageChange(page)}
-            className={cn(
-              "w-10 h-10 flex items-center justify-center rounded-md text-sm transition-colors",
-              currentPage === page
-                ? "bg-indigo-600 text-white"
-                : "hover:bg-gray-100"
-            )}
+            active={currentPage === page}
+            size="sm"
           >
             {page}
           </Button>
@@ -44,10 +42,10 @@ export const Pagination = ({
       </div>
 
       <Button
-        variant="outline"
+        variant="primary"
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="px-4 py-2 border rounded-md text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+        size="sm"
       >
         Siguiente
       </Button>

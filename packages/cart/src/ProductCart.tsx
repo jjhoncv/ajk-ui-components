@@ -29,10 +29,10 @@ export const ProductCart = ({
       description={description}
       image={image}
       badge={condition}
-      className="cursor-pointer"
+      className="cursor-pointer relative pb-16 group"
       {...props}
     >
-      <div className="flex mt-2">
+      <div className="flex mt-2 absolute bottom-6 w-full justify-center left-0 right-0">
         <Button
           onClick={() => {
             addItem({
@@ -45,6 +45,8 @@ export const ProductCart = ({
             });
           }}
           variant="secondary"
+          size="sm"
+          className="flex md:hidden group-hover:flex"
         >
           <div className="w-full flex gap-2">
             <div className="w-5">

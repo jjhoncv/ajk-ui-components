@@ -21,7 +21,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
   // Estilos para las versiones laterales
   const sideFilterClass = cn(
     "hidden md:block w-64 p-6 bg-white border rounded-lg",
-    position === "left" ? "mr-6" : "ml-6",
+    position === "left" ? "" : "ml-6",
     className
   );
 

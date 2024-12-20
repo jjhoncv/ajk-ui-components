@@ -6,16 +6,17 @@ import { LucideIcon } from "lucide-react";
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline";
   size?: "sm" | "md" | "lg";
-  // Nuevas props para iconos
   leftIcon?: LucideIcon;
   rightIcon?: LucideIcon;
   iconSize?: number;
   fullWidth?: boolean;
+  active?: boolean;
 }
 
 export function Button({
   variant = "primary",
   size = "md",
+  active = false,
   className,
   children,
   disabled,
@@ -28,109 +29,107 @@ export function Button({
   const { theme } = useTheme();
 
   const getVariantStyles = () => {
-    const baseStyles = {
-      transition: "all 150ms ease",
-    };
-
     if (disabled) {
       return {
-        ...baseStyles,
-        backgroundColor: theme.colors.gray300,
-        color: theme.colors.gray500,
-        border: "none",
+        backgroundColor: theme.colors.disabled.background,
+        color: theme.colors.disabled.text,
+        borderColor: theme.colors.disabled.border,
         cursor: "not-allowed",
-        opacity: 0.7,
+      };
+    }
+
+    if (active) {
+      return {
+        backgroundColor: theme.colors.primaryVariants.active,
+        color: theme.colors.textVariants.light,
       };
     }
 
     switch (variant) {
       case "primary":
         return {
-          ...baseStyles,
-          backgroundColor: theme.colors.primary,
-          color: theme.colors.text,
+          backgroundColor: theme.colors.primaryVariants.default,
+          color: theme.colors.textVariants.onPrimary,
           border: "none",
           "&:hover": {
-            backgroundColor: theme.colors.primaryDark,
+            backgroundColor: theme.colors.primaryVariants.hover,
+          },
+          "&:active": {
+            backgroundColor: theme.colors.primaryVariants.active,
           },
         };
       case "secondary":
         return {
-          ...baseStyles,
-          backgroundColor: theme.colors.secondary,
-          color: theme.colors.text,
+          backgroundColor: theme.colors.secondaryVariants.default,
+          color: theme.colors.textVariants.onSecondary,
           border: "none",
           "&:hover": {
-            backgroundColor: theme.colors.secondaryDark,
+            backgroundColor: theme.colors.secondaryVariants.hover,
+          },
+          "&:active": {
+            backgroundColor: theme.colors.secondaryVariants.active,
           },
         };
       case "outline":
         return {
-          ...baseStyles,
           backgroundColor: "transparent",
           color: theme.colors.primary,
-          border: `2px solid ${theme.colors.primary}`,
+          border: `2px solid ${theme.colors.border.default}`,
           "&:hover": {
-            backgroundColor: theme.colors.primaryLight,
+            borderColor: theme.colors.border.hover,
+            backgroundColor: theme.colors.primaryVariants.light,
+          },
+          "&:active": {
+            borderColor: theme.colors.border.active,
           },
         };
       default:
-        return baseStyles;
+        return {};
     }
   };
 
   const getSizeStyles = () => {
-    const iconSizes = {
-      sm: 16,
-      md: 20,
-      lg: 24,
+    const sizes = {
+      sm: {
+        padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
+        fontSize: theme.typography.fontSize.sm,
+        height: "2rem",
+        iconSize: 16,
+      },
+      md: {
+        padding: `${theme.spacing.sm} ${theme.spacing.md}`,
+        fontSize: theme.typography.fontSize.base,
+        height: "2.5rem",
+        iconSize: 20,
+      },
+      lg: {
+        padding: `${theme.spacing.md} ${theme.spacing.lg}`,
+        fontSize: theme.typography.fontSize.lg,
+        height: "3rem",
+        iconSize: 24,
+      },
     };
 
-    const finalIconSize = iconSize || iconSizes[size];
-
-    switch (size) {
-      case "sm":
-        return {
-          padding: "0.375rem 0.75rem",
-          fontSize: "0.875rem",
-          gap: "0.5rem",
-          iconSize: finalIconSize,
-        };
-      case "md":
-        return {
-          padding: "0.5rem 1rem",
-          fontSize: "1rem",
-          gap: "0.625rem",
-          iconSize: finalIconSize,
-        };
-      case "lg":
-        return {
-          padding: "0.75rem 1.5rem",
-          fontSize: "1.125rem",
-          gap: "0.75rem",
-          iconSize: finalIconSize,
-        };
-      default:
-        return {
-          padding: "0.5rem 1rem",
-          fontSize: "1rem",
-          gap: "0.625rem",
-          iconSize: finalIconSize,
-        };
-    }
+    return sizes[size];
   };
 
   const sizeStyles = getSizeStyles();
+  const finalIconSize = iconSize || sizeStyles.iconSize;
 
   return (
     <button
       className={cn(
-        "rounded-md font-medium inline-flex items-center justify-center",
+        "inline-flex items-center justify-center",
+        "font-medium",
+        "rounded-md",
         "transition-all duration-200 ease-in-out",
         "focus:outline-none focus:ring-2 focus:ring-offset-2",
-        `focus:ring-${variant === "outline" ? "primary" : variant}-500`,
-        disabled && "cursor-not-allowed",
-        fullWidth && "w-full",
+        {
+          "focus:ring-primary": variant === "primary",
+          "focus:ring-secondary": variant === "secondary",
+          "w-full": fullWidth,
+          "opacity-70": disabled,
+        },
         className
       )}
       style={{
@@ -138,17 +137,18 @@ export function Button({
         fontFamily: theme.typography.fontFamily,
         padding: sizeStyles.padding,
         fontSize: sizeStyles.fontSize,
-        gap: sizeStyles.gap,
+        height: sizeStyles.height,
+        gap: theme.spacing.xs,
+        borderRadius: theme.borderRadius.md,
+        transition: theme.transitions.normal,
       }}
       disabled={disabled}
       {...props}
     >
-      {LeftIcon && (
-        <LeftIcon size={sizeStyles.iconSize} className="flex-shrink-0" />
-      )}
+      {LeftIcon && <LeftIcon size={finalIconSize} className="flex-shrink-0" />}
       {children}
       {RightIcon && (
-        <RightIcon size={sizeStyles.iconSize} className="flex-shrink-0" />
+        <RightIcon size={finalIconSize} className="flex-shrink-0" />
       )}
     </button>
   );

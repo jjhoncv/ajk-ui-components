@@ -16,6 +16,7 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
+    "@ajk-ui/themes": "workspace:*",
     "@ajk-ui/core": "workspace:*",
     "@ajk-ui/data": "workspace:*",
     "@ajk-ui/product": "workspace:*",
