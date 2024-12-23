@@ -21,8 +21,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
-          registry-url: "https://registry.npmjs.org"
+          node-version: '18'
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
@@ -37,7 +37,7 @@ jobs:
 
       - name: Clean previous builds
         run: |
-          rm -rf apps/docs/storybook-static || true
+          rm -rf storybook-static || true
           echo "Cleaned previous builds"
 
       - name: Build packages
@@ -49,7 +49,6 @@ jobs:
       - name: Build Storybook
         run: |
           echo "Building Storybook..."
-          cd apps/docs
           pnpm build-storybook
           echo "Storybook built successfully"
           echo "Build contents:"
@@ -61,7 +60,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: "apps/docs/storybook-static"
+          path: 'storybook-static'
 
       - name: Deploy to GitHub Pages
         id: deployment

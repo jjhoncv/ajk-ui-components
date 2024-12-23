@@ -5,6 +5,7 @@
     "dev": "turbo run dev",
     "build": "turbo run build",
     "storybook": "storybook dev -p 6007",
+    "build-storybook": "storybook build",
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "turbo run build && changeset publish --access public",
