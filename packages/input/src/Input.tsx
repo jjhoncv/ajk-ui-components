@@ -25,6 +25,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       iconSize,
       fullWidth = false,
       disabled,
+      autoFocus,
       ...props
     },
     ref
@@ -125,6 +126,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         {LeftIcon && <LeftIcon size={finalIconSize} className="absolute left-3 text-gray-400" />}
         <input
           ref={ref}
+          autoFocus={autoFocus}
           className={cn(
             'w-full',
             'transition-all duration-200 ease-in-out',

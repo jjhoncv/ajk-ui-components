@@ -19,6 +19,7 @@
     "@ajk-ui/core": "workspace:*",
     "@ajk-ui/input": "workspace:*",
     "@ajk-ui/theme-utils": "workspace:*",
+    "@ajk-ui/sheet": "workspace:*",
     "@ajk-ui/data": "workspace:*",
     "clsx": "^2.0.0",
     "lodash": "^4.17.21",
