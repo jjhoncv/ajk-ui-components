@@ -2,6 +2,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ProductInfo } from './'
 import { mockProducts } from '@ajk-ui/data'
+import { ThemeProvider } from '@ajk-ui/theme-utils'
+import { ModernTech } from '@ajk-ui/themes'
 
 const meta: Meta<typeof ProductInfo> = {
   title: 'Feature/ProductInfo',
@@ -11,9 +13,11 @@ const meta: Meta<typeof ProductInfo> = {
   },
   decorators: [
     Story => (
-      <div className="max-w-xl rounded-lg bg-white p-6">
-        <Story />
-      </div>
+      <ThemeProvider initialTheme={ModernTech}>
+        <div className="max-w-xl rounded-lg bg-white p-6">
+          <Story />
+        </div>
+      </ThemeProvider>
     ),
   ],
   argTypes: {

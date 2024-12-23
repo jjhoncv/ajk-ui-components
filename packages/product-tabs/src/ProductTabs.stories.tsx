@@ -3,6 +3,9 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { ProductTabs } from './ProductTabs'
 import { mockProducts } from '@ajk-ui/data'
 
+import { ThemeProvider } from '@ajk-ui/theme-utils'
+import { ModernTech } from '@ajk-ui/themes'
+
 const meta: Meta<typeof ProductTabs> = {
   title: 'Feature/ProductTabs',
   component: ProductTabs,
@@ -12,7 +15,9 @@ const meta: Meta<typeof ProductTabs> = {
   decorators: [
     Story => (
       <div className="mx-auto max-w-4xl rounded-lg bg-white p-6">
-        <Story />
+        <ThemeProvider initialTheme={ModernTech}>
+          <Story />
+        </ThemeProvider>
       </div>
     ),
   ],

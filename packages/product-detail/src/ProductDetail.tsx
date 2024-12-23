@@ -46,16 +46,21 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
   }
 
   return (
-    <div className="py-8">
+    <div className="py-2">
       {/* Breadcrumb */}
-      <div className="mb-8 text-sm">
-        <Breadcrumb
-          items={product.categories.map(categorie => ({
-            href: `#/${categorie}`,
-            label: categorie,
-          }))}
-          showHomeIcon={false}
-        />
+      <div className="">
+        <div className="mx-auto max-w-7xl py-4">
+          <Breadcrumb
+            items={product.categories.map(categorie => ({
+              href: `#/${categorie}`,
+              label: categorie,
+            }))}
+          />
+
+          <div className="mt-4 flex items-center justify-between">
+            <h1 className="text-2xl font-bold text-gray-900">Zapatillas</h1>
+          </div>
+        </div>
       </div>
 
       {/* Product Grid */}

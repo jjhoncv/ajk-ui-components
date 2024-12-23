@@ -109,16 +109,18 @@ export interface ThemeTypography {
   }
 }
 
+export interface ThemeTransitions {
+  fast: string
+  normal: string
+  slow: string
+}
+
 export interface Theme {
   colors: ThemeColors
   typography: ThemeTypography
   spacing: ThemeSpacing
   borderRadius: ThemeBorderRadius
-  transitions: {
-    fast: string
-    normal: string
-    slow: string
-  }
+  transitions: ThemeTransitions
 }
 
 // Tipos para variantes de componentes

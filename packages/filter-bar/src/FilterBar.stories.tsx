@@ -19,7 +19,7 @@ const meta = {
       <ThemeProvider initialTheme={themes.restaurant.modern}>
         <FilterProvider
           onFilterChange={filters => console.log('Filters changed:', filters)}
-          totalProducts={100}
+          totalProducts={mockProducts.length}
         >
           <div className="min-h-screen bg-gray-50">
             <CartProvider>
@@ -49,51 +49,55 @@ export const Default: Story = {
   },
 }
 
-// Historia con layout completo y toggle de posición
-export const WithLayout: Story = {
-  render: () => {
-    return (
-      <div className="min-h-screen bg-gray-50">
-        {/* Header */}
-        <div className="border-b bg-white">
-          <div className="mx-auto max-w-7xl px-4 py-4">
-            <Breadcrumb
-              items={[
-                { href: '#', label: 'Inicio' },
-                { href: '#', label: 'Zapatillas' },
-              ]}
-            />
+const FilterHook = () => {
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <div className="border-b bg-white">
+        <div className="mx-auto max-w-7xl px-4 py-4">
+          <Breadcrumb
+            items={[
+              { href: '#', label: 'Inicio' },
+              { href: '#', label: 'Zapatillas' },
+            ]}
+          />
 
-            <div className="mt-4 flex items-center justify-between">
-              <h1 className="text-2xl font-bold text-gray-900">Zapatillas</h1>
-            </div>
-          </div>
-        </div>
-
-        {/* TopFilter */}
-        <FilterBar position="top" />
-
-        {/* Main Content */}
-        <div className="mx-auto max-w-7xl px-4 py-6">
-          <div className="flex gap-6">
-            {/* SideFilter */}
-            <FilterBar position="left" />
-
-            {/* Product Grid */}
-            <div className="flex-1">
-              <ProductGrid
-                products={mockProducts.map(product => ({
-                  ...{
-                    ...product,
-                    image: getImagePath(product.images.gallery[0].size.lg.url),
-                  },
-                }))}
-              />
-            </div>
+          <div className="mt-4 flex items-center justify-between">
+            <h1 className="text-2xl font-bold text-gray-900">Zapatillas</h1>
           </div>
         </div>
       </div>
-    )
+
+      {/* TopFilter */}
+      <FilterBar position="top" />
+
+      {/* Main Content */}
+      <div className="mx-auto max-w-7xl px-4 py-4 md:py-6">
+        <div className="flex gap-6">
+          {/* SideFilter */}
+          <FilterBar position="left" />
+
+          {/* Product Grid */}
+          <div className="flex-1">
+            <ProductGrid
+              products={mockProducts.map(product => ({
+                ...{
+                  ...product,
+                  image: getImagePath(product.images.gallery[0].size.lg.url),
+                },
+              }))}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// Historia con layout completo y toggle de posición
+export const WithLayout: Story = {
+  render: () => {
+    return <FilterHook />
   },
 }
 
@@ -106,5 +110,8 @@ export const Mobile: Story = {
     viewport: {
       defaultViewport: 'mobile1',
     },
+  },
+  render: () => {
+    return <FilterHook />
   },
 }

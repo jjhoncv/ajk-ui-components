@@ -18,6 +18,8 @@
   "dependencies": {
     "@ajk-ui/core": "workspace:*",
     "@ajk-ui/theme-utils": "workspace:*",
+    "@ajk-ui/form-search": "workspace:*",
+    "@ajk-ui/data": "workspace:*",
     "@ajk-ui/nav": "workspace:*",
     "@ajk-ui/cart": "workspace:*",
     "clsx": "^2.0.0",

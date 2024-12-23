@@ -6,8 +6,8 @@ export const TopFilter = () => {
   const { sortOptions } = filterOptions
 
   return (
-    <div className="border-b bg-white">
-      <div className="mx-auto max-w-7xl px-4 py-4">
+    <div className="">
+      <div className="mx-auto max-w-7xl py-4">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <MobileFilter />

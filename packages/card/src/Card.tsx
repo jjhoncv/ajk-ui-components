@@ -24,6 +24,7 @@ export interface CardProps extends BaseProps {
   badge?: string
   price?: string
   features?: string[]
+  handleClick?: () => void
   author?: {
     name: string
     title?: string
@@ -52,6 +53,7 @@ export function Card({
   layout = 'vertical',
   className,
   children,
+  handleClick,
   ...props
 }: CardProps) {
   const { theme } = useTheme()
@@ -107,7 +109,7 @@ export function Card({
 
   const layoutStyles = {
     vertical: 'flex flex-col',
-    horizontal: 'flex flex-col md:flex-row md:items-center',
+    horizontal: 'flex flex-col md:flex-row md:items-start',
   }
 
   const variantStyles: Record<string, VariantStyles> = {
@@ -117,10 +119,10 @@ export function Card({
     },
     product: {
       card: 'border',
-      title: 'text-lg md:text-sm',
-      badge: 'bg-green-100 text-xs text-green-800 top-2 right-2',
-      content: 'p-3',
-      description: 'text-sm',
+      title: 'text-xs md:text-sm',
+      badge: 'bg-green-100 text-xs  text-green-800 top-2 right-2',
+      content: 'p-2 md:p-3',
+      description: 'text-xs md:text-sm',
     },
     service: {
       card: 'border-0 shadow-sm',
@@ -167,6 +169,9 @@ export function Card({
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
+          onClick={e => {
+            handleClick?.()
+          }}
           {...props}
         />
       )}
@@ -179,7 +184,12 @@ export function Card({
           layout === 'horizontal' && 'md:w-2/3'
         )}
       >
-        <div {...props}>
+        <div
+          onClick={e => {
+            handleClick?.()
+          }}
+          {...props}
+        >
           {badge && (
             <span className={cn(baseStyles.badge, currentVariantStyles.badge)}>{badge}</span>
           )}

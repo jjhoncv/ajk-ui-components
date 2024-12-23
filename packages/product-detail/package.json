@@ -19,6 +19,7 @@
     "@ajk-ui/core": "workspace:*",
     "@ajk-ui/data": "workspace:*",
     "@ajk-ui/theme-utils": "workspace:*",
+    "@ajk-ui/themes": "workspace:*",
     "@ajk-ui/breadcrumb": "workspace:*",
     "@ajk-ui/cart": "workspace:*",
     "@ajk-ui/product-gallery": "workspace:*",

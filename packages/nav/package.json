@@ -21,6 +21,7 @@
     "@ajk-ui/auth": "workspace:*",
     "@ajk-ui/account": "workspace:*",
     "@ajk-ui/theme-utils": "workspace:*",
+    "@ajk-ui/form-search": "workspace:*",
     "@ajk-ui/cart": "workspace:*",
     "@ajk-ui/sheet": "workspace:*",
     "clsx": "^2.0.0",

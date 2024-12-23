@@ -19,6 +19,7 @@
     "@ajk-ui/core": "workspace:*",
     "@ajk-ui/data": "workspace:*",
     "@ajk-ui/theme-utils": "workspace:*",
+    "@ajk-ui/themes": "workspace:*",
     "@ajk-ui/product": "workspace:*",
     "@ajk-ui/tabs": "workspace:*",
     "clsx": "^2.0.0",

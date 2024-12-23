@@ -1,6 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ModernTech } from './ThemeModernTech'
-import { Block, BlockContent, BlockHeader, BlockTitle, ColorSection } from './../components'
+import {
+  Block,
+  BlockContent,
+  BlockHeader,
+  BlockTitle,
+  ColorSection,
+  ThemeProvider,
+} from '@ajk-ui/theme-utils'
 
 const TechThemeColors = () => {
   const theme = ModernTech
@@ -13,7 +20,6 @@ const TechThemeColors = () => {
           Documentación completa de colores y variantes del tema tecnológico
         </p>
       </div>
-
       {/* Base Colors */}
       <ColorSection
         title="Colores Base"
@@ -46,91 +52,92 @@ const TechThemeColors = () => {
         description="Colores usados para elementos en estado deshabilitado"
         colors={theme.colors.disabled}
       />
-
-      {/* Example Usage */}
-      <Block>
-        <BlockHeader>
-          <BlockTitle>Ejemplos de Uso</BlockTitle>
-        </BlockHeader>
-        <BlockContent>
-          <div className="space-y-6">
-            {/* Buttons */}
-            <div className="space-y-2">
-              <h3 className="font-semibold">Botones</h3>
-              <div className="flex gap-4">
-                <button
-                  className="rounded-md px-4 py-2 text-white"
-                  style={{ backgroundColor: theme.colors.primary }}
-                >
-                  Botón Primario
-                </button>
-                <button
-                  className="rounded-md px-4 py-2"
-                  style={{
-                    backgroundColor: theme.colors.secondary,
-                    color: theme.colors.text,
-                  }}
-                >
-                  Botón Secundario
-                </button>
-                <button
-                  className="rounded-md px-4 py-2"
-                  style={{
-                    backgroundColor: theme.colors.disabled.background,
-                    color: theme.colors.disabled.text,
-                  }}
-                >
-                  Botón Deshabilitado
-                </button>
-              </div>
-            </div>
-
-            {/* Text Examples */}
-            <div className="space-y-2">
-              <h3 className="font-semibold">Texto</h3>
+      <ThemeProvider initialTheme={ModernTech}>
+        {/* Example Usage */}
+        <Block>
+          <BlockHeader>
+            <BlockTitle>Ejemplos de Uso</BlockTitle>
+          </BlockHeader>
+          <BlockContent>
+            <div className="space-y-6">
+              {/* Buttons */}
               <div className="space-y-2">
-                <p style={{ color: theme.colors.textVariants.dark }}>Texto Principal</p>
-                <p style={{ color: theme.colors.textVariants.light }}>Texto Secundario</p>
-                <p style={{ color: theme.colors.textVariants.muted }}>Texto Muted</p>
+                <h3 className="font-semibold">Botones</h3>
+                <div className="flex gap-4">
+                  <button
+                    className="rounded-md px-4 py-2 text-white"
+                    style={{ backgroundColor: theme.colors.primary }}
+                  >
+                    Botón Primario
+                  </button>
+                  <button
+                    className="rounded-md px-4 py-2"
+                    style={{
+                      backgroundColor: theme.colors.secondary,
+                      color: theme.colors.text,
+                    }}
+                  >
+                    Botón Secundario
+                  </button>
+                  <button
+                    className="rounded-md px-4 py-2"
+                    style={{
+                      backgroundColor: theme.colors.disabled.background,
+                      color: theme.colors.disabled.text,
+                    }}
+                  >
+                    Botón Deshabilitado
+                  </button>
+                </div>
               </div>
-            </div>
 
-            {/* Interactive States */}
-            <div className="space-y-2">
-              <h3 className="font-semibold">Estados Interactivos</h3>
-              <div className="flex gap-4">
-                <button
-                  className="rounded-md px-4 py-2 transition-colors"
-                  style={{
-                    backgroundColor: theme.colors.primaryVariants.default,
-                    color: theme.colors.text,
-                  }}
-                >
-                  Estado Normal
-                </button>
-                <button
-                  className="rounded-md px-4 py-2 transition-colors"
-                  style={{
-                    backgroundColor: theme.colors.primaryVariants.hover,
-                    color: theme.colors.textVariants.light,
-                  }}
-                >
-                  Estado Hover
-                </button>
-                <button
-                  className="rounded-md px-4 py-2 transition-colors"
-                  style={{
-                    backgroundColor: theme.colors.primaryVariants.active,
-                    color: theme.colors.textVariants.light,
-                  }}
-                >
-                  Estado Activo
-                </button>
+              {/* Text Examples */}
+              <div className="space-y-2">
+                <h3 className="font-semibold">Texto</h3>
+                <div className="space-y-2">
+                  <p style={{ color: theme.colors.textVariants.dark }}>Texto Principal</p>
+                  <p style={{ color: theme.colors.textVariants.light }}>Texto Secundario</p>
+                  <p style={{ color: theme.colors.textVariants.muted }}>Texto Muted</p>
+                </div>
+              </div>
+
+              {/* Interactive States */}
+              <div className="space-y-2">
+                <h3 className="font-semibold">Estados Interactivos</h3>
+                <div className="flex gap-4">
+                  <button
+                    className="rounded-md px-4 py-2 transition-colors"
+                    style={{
+                      backgroundColor: theme.colors.primaryVariants.default,
+                      color: theme.colors.text,
+                    }}
+                  >
+                    Estado Normal
+                  </button>
+                  <button
+                    className="rounded-md px-4 py-2 transition-colors"
+                    style={{
+                      backgroundColor: theme.colors.primaryVariants.hover,
+                      color: theme.colors.textVariants.light,
+                    }}
+                  >
+                    Estado Hover
+                  </button>
+                  <button
+                    className="rounded-md px-4 py-2 transition-colors"
+                    style={{
+                      backgroundColor: theme.colors.primaryVariants.active,
+                      color: theme.colors.textVariants.light,
+                    }}
+                  >
+                    Estado Activo
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        </BlockContent>
-      </Block>
+          </BlockContent>
+        </Block>
+      </ThemeProvider>
     </div>
   )
 }

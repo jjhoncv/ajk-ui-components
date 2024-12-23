@@ -4,6 +4,9 @@ import { useTheme } from '@ajk-ui/theme-utils'
 import React, { useEffect, useRef, useState } from 'react'
 import { MenuMobile } from './MenuMobile'
 import { MiniAccount } from '@ajk-ui/account'
+import { SearchIcon } from 'lucide-react'
+import { FormSearch, Suggestion } from '@ajk-ui/form-search'
+import { onGetSuggestions } from './onGetSuggestions'
 
 const useNavScroll = (navRef: React.RefObject<HTMLDivElement>) => {
   const [scrolled, setScrolled] = useState(false)
@@ -55,6 +58,8 @@ export interface NavEcommerceProps extends BaseProps {
   type?: 'ecommerce' | 'default'
   mobileMenuBreakpoint?: 'sm' | 'md' | 'lg'
   variantBoxMobile?: 'full'
+  onSearch: (query: string) => void
+  onGetSuggestions: (query: string) => Promise<Suggestion[]>
 }
 
 export function NavEcommerce({
@@ -69,6 +74,8 @@ export function NavEcommerce({
   className,
   variantBoxMobile = 'full',
   type = 'default',
+  onSearch,
+  onGetSuggestions,
   ...props
 }: NavEcommerceProps) {
   const { theme } = useTheme()
@@ -104,13 +111,6 @@ export function NavEcommerce({
       nav: cn('bg-white'),
       item: 'text-gray-600 hover:text-gray-900',
     },
-  }
-
-  const positionStyles = {
-    fixed: 'fixed top-0 left-0 right-0 z-50',
-    sticky: 'sticky top-0 z-50',
-    relative: 'relative',
-    absolute: 'absolute top-0 left-0 right-0 z-50',
   }
 
   const alignStyles = {
@@ -166,6 +166,9 @@ export function NavEcommerce({
                   </div>
                 )}
               </div>
+            </div>
+            <div className="mx-3 w-full max-w-xl">
+              <FormSearch onSearch={onSearch} onGetSuggestions={onGetSuggestions} />
             </div>
             <div className="flex gap-5">
               <MiniCart

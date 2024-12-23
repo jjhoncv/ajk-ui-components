@@ -5,6 +5,7 @@ import { Nav } from './Nav'
 import { NavEcommerce } from './NavEcommerce'
 import { mockProducts } from '@ajk-ui/data'
 import { AuthProvider } from '@ajk-ui/auth'
+import { Suggestion } from '@ajk-ui/form-search'
 
 const meta = {
   title: 'Components/Nav',
@@ -104,6 +105,33 @@ export const WithEcommerce: Story = {
         >
           <div className="z-40 w-full bg-white">
             <NavEcommerce
+              onSearch={query => {
+                const url = new URL(window.location.href)
+                const params = new URLSearchParams(url.search)
+
+                if (query) {
+                  params.set('search', query)
+                } else {
+                  params.delete('search')
+                }
+
+                const newUrl = `${window.location.pathname}?${params.toString()}`
+                window.history.pushState({}, '', newUrl)
+              }}
+              onGetSuggestions={async (query: string) => {
+                await new Promise(resolve => setTimeout(resolve, 500)) // Simular delay de red
+
+                const mockData: Suggestion[] = mockProducts.map(product => ({
+                  id: product.id,
+                  title: product.name,
+                  description: product.description,
+                  image: product.images.gallery[0].size.xs.url,
+                }))
+
+                return mockData.filter(item =>
+                  item.title.toLowerCase().includes(query.toLowerCase())
+                )
+              }}
               {...args}
               className="mx-auto flex h-16 w-full max-w-7xl items-center px-4 sm:px-6 md:h-24"
             />

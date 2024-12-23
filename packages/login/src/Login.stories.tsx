@@ -4,16 +4,24 @@ import { useState } from 'react'
 import { Modal } from '@ajk-ui/modal'
 import { AuthProvider } from '@ajk-ui/auth'
 import { LoginModal } from './LoginModal'
+import { ThemeProvider } from '@ajk-ui/theme-utils'
+import { ModernTech } from '@ajk-ui/themes'
 
 const meta = {
-  title: 'Components/LoginForm',
+  title: 'Feature/LoginForm',
   component: LoginForm,
 
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
   },
-  decorators: [Story => <Story />],
+  decorators: [
+    Story => (
+      <ThemeProvider initialTheme={ModernTech}>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
 } satisfies Meta<typeof LoginForm>
 
 export default meta

@@ -1,4 +1,8 @@
 import { useAuth } from '@ajk-ui/auth'
+import { Button } from '@ajk-ui/button'
+import { Field } from '@ajk-ui/field'
+import { Input } from '@ajk-ui/input'
+import { Eye } from 'lucide-react'
 import { useState } from 'react'
 
 export const LoginForm = () => {
@@ -20,33 +24,30 @@ export const LoginForm = () => {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-          Correo electrónico
-        </label>
-        <input
-          id="email"
-          type="email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-          required
-        />
+        <Field label="Correo electrónico">
+          <Input
+            id="email"
+            type="email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            placeholder="ejemplo@correo.com"
+            required
+          />
+        </Field>
       </div>
 
       <div>
-        <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-          Contraseña
-        </label>
-        <div className="relative mt-1">
-          <input
+        <Field label="Contraseña" hint="La contraseña debe tener al menos 8 caracteres">
+          <Input
             id="password"
             type={'password'}
             value={password}
             onChange={e => setPassword(e.target.value)}
-            className="block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+            placeholder="Ingresa tu contraseña"
+            rightIcon={Eye}
             required
           />
-        </div>
+        </Field>
       </div>
 
       <div className="flex items-center justify-between">
@@ -65,13 +66,13 @@ export const LoginForm = () => {
         </a>
       </div>
 
-      <button
+      <Button
         type="submit"
         // disabled={isLoading}
-        className="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50"
+        // className="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50"
       >
         Iniciar Sesión
-      </button>
+      </Button>
     </form>
   )
 }

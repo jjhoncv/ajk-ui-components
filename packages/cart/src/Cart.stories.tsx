@@ -34,13 +34,31 @@ export const ProductCartDefault: Story = {
     const product = mockProducts[0]
     return (
       <CartProvider>
-        <div className="w-[320px]">
-          <ProductCart
-            {...{
-              ...product,
-              image: getImagePath(product.images.gallery[0].size.lg.url),
-            }}
-          />
+        <div className="flex flex-col gap-4">
+          <div className="w-full lg:w-[600px]">
+            <div>
+              <p>Horizontal</p>
+              <ProductCart
+                layout="horizontal"
+                {...{
+                  ...product,
+                  image: getImagePath(product.images.gallery[0].size.lg.url),
+                }}
+              />
+            </div>
+          </div>
+          <div className="w-[320px]">
+            <div>
+              <p>Vertical</p>
+              <ProductCart
+                layout="vertical"
+                {...{
+                  ...product,
+                  image: getImagePath(product.images.gallery[0].size.lg.url),
+                }}
+              />
+            </div>
+          </div>
         </div>
       </CartProvider>
     )

@@ -20,6 +20,7 @@
     "clsx": "^2.0.0",
     "tailwind-merge": "^2.0.0",
     "@ajk-ui/auth": "workspace:*",
+    "@ajk-ui/form-search": "workspace:*",
     "@ajk-ui/data": "workspace:*",
     "@ajk-ui/button": "workspace:*",
     "@ajk-ui/card": "workspace:*",
@@ -27,8 +28,10 @@
     "@ajk-ui/cart": "workspace:*",
     "@ajk-ui/header": "workspace:*",
     "@ajk-ui/product-detail": "workspace:*",
+    "@ajk-ui/product-list": "workspace:*",
     "@ajk-ui/nav": "workspace:*",
     "@ajk-ui/section": "workspace:*",
+    "@ajk-ui/product": "workspace:*",
     "@ajk-ui/theme-utils": "workspace:*",
     "@ajk-ui/themes": "workspace:*"
   },

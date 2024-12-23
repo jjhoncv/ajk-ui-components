@@ -9,122 +9,33 @@ import type {
   BorderColors,
   FeedbackColors,
   TextVariants,
+  ThemeTransitions,
 } from '@ajk-ui/core'
+
+// Tema por defecto
+import { BaseTheme } from './base/BaseTheme'
 
 export interface ThemeBuilderConfig {
   colors?: Partial<ThemeColors>
   typography?: Partial<ThemeTypography>
   spacing?: Partial<ThemeSpacing>
   borderRadius?: Partial<ThemeBorderRadius>
+  transitions?: Partial<ThemeTransitions> // Nueva propiedad
 }
 
 // Valores por defecto para variantes de color
-const defaultColorVariant: ColorVariant = {
-  light: '#60a5fa',
-  default: '#3b82f6',
-  dark: '#2563eb',
-  hover: '#4f46e5',
-  active: '#4338ca',
-}
+const defaultColorVariant: ColorVariant = BaseTheme.colors.primaryVariants
 
-const defaultDisabledState: DisabledState = {
-  background: '#e5e7eb',
-  text: '#9ca3af',
-  border: '#d1d5db',
-}
+const defaultDisabledState: DisabledState = BaseTheme.colors.disabled
 
-const defaultBorderColors: BorderColors = {
-  default: '#e5e7eb',
-  hover: '#d1d5db',
-  focus: '#3b82f6',
-  active: '#2563eb',
-}
+const defaultBorderColors: BorderColors = BaseTheme.colors.border
 
-const defaultFeedbackColors: FeedbackColors = {
-  success: '#10b981',
-  error: '#ef4444',
-  warning: '#f59e0b',
-  info: '#3b82f6',
-}
+const defaultFeedbackColors: FeedbackColors = BaseTheme.colors.feedback
 
-const defaultTextVariants: TextVariants = {
-  light: '#6b7280',
-  dark: '#111827',
-  muted: '#9ca3af',
-  onPrimary: '#ffffff',
-  onSecondary: '#1f2937',
-}
+const defaultTextVariants: TextVariants = BaseTheme.colors.textVariants
 
 // Colores por defecto
-const defaultColors: ThemeColors = {
-  primary: '#3b82f6',
-  secondary: '#64748b',
-  background: '#ffffff',
-  text: '#1f2937',
-  primaryVariants: defaultColorVariant,
-  secondaryVariants: { ...defaultColorVariant, default: '#64748b' },
-  textVariants: defaultTextVariants,
-  disabled: defaultDisabledState,
-  border: defaultBorderColors,
-  feedback: defaultFeedbackColors,
-  shadow: {
-    light: 'rgba(0, 0, 0, 0.05)',
-    medium: 'rgba(0, 0, 0, 0.1)',
-    dark: 'rgba(0, 0, 0, 0.15)',
-  },
-}
-
-// Tema por defecto
-const defaultTheme: Theme = {
-  colors: defaultColors,
-  typography: {
-    fontFamily: 'system-ui, sans-serif',
-    fontSize: {
-      xs: '0.75rem',
-      sm: '0.875rem',
-      base: '1rem',
-      lg: '1.125rem',
-      xl: '1.25rem',
-      '2xl': '1.5rem',
-      '3xl': '1.875rem',
-    },
-    fontWeight: {
-      light: '300',
-      normal: '400',
-      medium: '500',
-      semibold: '600',
-      bold: '700',
-    },
-    lineHeight: {
-      none: '1',
-      tight: '1.25',
-      normal: '1.5',
-      relaxed: '1.75',
-      loose: '2',
-    },
-  },
-  spacing: {
-    xs: '0.5rem',
-    sm: '1rem',
-    md: '1.5rem',
-    lg: '2rem',
-    xl: '3rem',
-    '2xl': '4rem',
-    '3xl': '6rem',
-  },
-  borderRadius: {
-    none: '0',
-    sm: '0.125rem',
-    md: '0.375rem',
-    lg: '0.5rem',
-    full: '9999px',
-  },
-  transitions: {
-    fast: '150ms',
-    normal: '200ms',
-    slow: '300ms',
-  },
-}
+const defaultColors: ThemeColors = BaseTheme.colors
 
 // Funciones de creación
 function createColors(colors: Partial<ThemeColors> = {}): ThemeColors {
@@ -161,17 +72,17 @@ function createColors(colors: Partial<ThemeColors> = {}): ThemeColors {
 
 function createTypography(typography: Partial<ThemeTypography> = {}): ThemeTypography {
   return {
-    fontFamily: typography.fontFamily || defaultTheme.typography.fontFamily,
+    fontFamily: typography.fontFamily || BaseTheme.typography.fontFamily,
     fontSize: {
-      ...defaultTheme.typography.fontSize,
+      ...BaseTheme.typography.fontSize,
       ...(typography.fontSize || {}),
     },
     fontWeight: {
-      ...defaultTheme.typography.fontWeight,
+      ...BaseTheme.typography.fontWeight,
       ...(typography.fontWeight || {}),
     },
     lineHeight: {
-      ...defaultTheme.typography.lineHeight,
+      ...BaseTheme.typography.lineHeight,
       ...(typography.lineHeight || {}),
     },
   }
@@ -183,14 +94,17 @@ export function createTheme(config: ThemeBuilderConfig = {}): Theme {
     colors: createColors(config.colors),
     typography: createTypography(config.typography),
     spacing: {
-      ...defaultTheme.spacing,
+      ...BaseTheme.spacing,
       ...(config.spacing || {}),
     },
     borderRadius: {
-      ...defaultTheme.borderRadius,
+      ...BaseTheme.borderRadius,
       ...(config.borderRadius || {}),
     },
-    transitions: defaultTheme.transitions,
+    transitions: {
+      ...BaseTheme.transitions,
+      ...(config.transitions || {}),
+    },
   }
 }
 

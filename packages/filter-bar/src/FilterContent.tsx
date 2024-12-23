@@ -9,8 +9,8 @@ export const FilterContent = () => {
     <div className="space-y-6">
       {/* Categorías */}
       <div>
-        <h3 className="mb-3 font-medium">Categorías</h3>
-        <div className="space-y-2">
+        <h3 className="mb-3 font-semibold">Categorías</h3>
+        <div>
           {categories.map(category => (
             <label
               key={category}
@@ -30,8 +30,8 @@ export const FilterContent = () => {
 
       {/* Tallas */}
       <div>
-        <h3 className="mb-3 font-medium">Tallas</h3>
-        <div className="grid grid-cols-3 gap-2">
+        <h3 className="mb-3 font-semibold">Tallas</h3>
+        <div className="grid grid-cols-3">
           {sizes.map(size => (
             <label
               key={size}
@@ -51,8 +51,8 @@ export const FilterContent = () => {
 
       {/* Precio */}
       <div>
-        <h3 className="mb-3 font-medium">Precio</h3>
-        <div className="space-y-2">
+        <h3 className="mb-3 font-semibold">Precio</h3>
+        <div>
           {priceRanges.map(range => {
             const isChecked = filters.priceRange === range.value
 
@@ -79,7 +79,7 @@ export const FilterContent = () => {
       {/* Filtros activos */}
       {(filters.category.length > 0 || filters.size.length > 0 || filters.priceRange) && (
         <div>
-          <h3 className="mb-3 font-medium">Filtros activos</h3>
+          <h3 className="mb-3 font-semibold">Filtros activos</h3>
           <div className="flex flex-wrap gap-2">
             {filters.category.map(cat => (
               <span

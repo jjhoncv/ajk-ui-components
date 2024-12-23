@@ -1,6 +1,8 @@
 import { cn, type BaseProps } from '@ajk-ui/core'
 import { useTheme } from '@ajk-ui/theme-utils'
 import { Nav, NavEcommerce, type NavItem } from '../../nav'
+import { Suggestion } from '@ajk-ui/form-search'
+import { mockProducts } from '@ajk-ui/data'
 
 export interface HeaderProps extends BaseProps {
   title?: string
@@ -100,12 +102,10 @@ export function Header({
           style={{ backgroundImage: `url(${backgroundImage})` }}
         />
       )}
-
       {/* Overlay */}
       {overlay && backgroundImage && (
         <div className={baseStyles.overlay} style={{ opacity: overlayOpacity }} />
       )}
-
       {/* Navigation */}
       {navItems &&
         (type === 'default' ? (
@@ -127,9 +127,23 @@ export function Header({
             position={position}
             variantBoxMobile={variantBoxMobile}
             align="start"
+            onSearch={text => {
+              console.log(text)
+            }}
+            onGetSuggestions={async (query: string) => {
+              await new Promise(resolve => setTimeout(resolve, 500)) // Simular delay de red
+
+              const mockData: Suggestion[] = mockProducts.map(product => ({
+                id: product.id,
+                title: product.name,
+                description: product.description,
+                image: product.images.gallery[0].size.xs.url,
+              }))
+
+              return mockData.filter(item => item.title.toLowerCase().includes(query.toLowerCase()))
+            }}
           />
         ))}
-
       {/* Content */}
       <div className={cn(baseStyles.content, variantStyles[variant].content)}>
         {title && (

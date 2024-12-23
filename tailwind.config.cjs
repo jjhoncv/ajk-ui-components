@@ -1,52 +1,122 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./packages/**/src/**/*.{js,ts,jsx,tsx}"],
+  content: ['./packages/*/src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
+        // Colores base y sus variantes
         primary: {
-          50: "var(--primary-50, #f0f9ff)",
-          100: "var(--primary-100, #e0f2fe)",
-          200: "var(--primary-200, #bae6fd)",
-          300: "var(--primary-300, #7dd3fc)",
-          400: "var(--primary-400, #38bdf8)",
-          500: "var(--primary-500, #0ea5e9)",
-          600: "var(--primary-600, #0284c7)",
-          700: "var(--primary-700, #0369a1)",
-          800: "var(--primary-800, #075985)",
-          900: "var(--primary-900, #0c4a6e)",
+          DEFAULT: 'var(--color-primary)',
+          light: 'var(--color-primary-light)',
+          default: 'var(--color-primary-default)',
+          dark: 'var(--color-primary-dark)',
+          hover: 'var(--color-primary-hover)',
+          active: 'var(--color-primary-active)',
         },
         secondary: {
-          50: "var(--secondary-50, #f8fafc)",
-          100: "var(--secondary-100, #f1f5f9)",
-          200: "var(--secondary-200, #e2e8f0)",
-          300: "var(--secondary-300, #cbd5e1)",
-          400: "var(--secondary-400, #94a3b8)",
-          500: "var(--secondary-500, #64748b)",
-          600: "var(--secondary-600, #475569)",
-          700: "var(--secondary-700, #334155)",
-          800: "var(--secondary-800, #1e293b)",
-          900: "var(--secondary-900, #0f172a)",
+          DEFAULT: 'var(--color-secondary)',
+          light: 'var(--color-secondary-light)',
+          default: 'var(--color-secondary-default)',
+          dark: 'var(--color-secondary-dark)',
+          hover: 'var(--color-secondary-hover)',
+          active: 'var(--color-secondary-active)',
+        },
+        background: 'var(--color-background)',
+        text: 'var(--color-text)',
+
+        // Variantes de texto
+        'text-light': 'var(--color-text-light)',
+        'text-dark': 'var(--color-text-dark)',
+        'text-muted': 'var(--color-text-muted)',
+        'text-on-primary': 'var(--color-text-on-primary)',
+        'text-on-secondary': 'var(--color-text-on-secondary)',
+
+        // Estados deshabilitados
+        disabled: {
+          background: 'var(--color-disabled-background)',
+          text: 'var(--color-disabled-text)',
+          border: 'var(--color-disabled-border)',
+        },
+
+        // Colores de bordes
+        border: {
+          DEFAULT: 'var(--color-border-default)',
+          hover: 'var(--color-border-hover)',
+          focus: 'var(--color-border-focus)',
+          active: 'var(--color-border-active)',
+        },
+
+        // Colores de feedback
+        feedback: {
+          success: 'var(--color-feedback-success)',
+          error: 'var(--color-feedback-error)',
+          warning: 'var(--color-feedback-warning)',
+          info: 'var(--color-feedback-info)',
+        },
+
+        // Sombras
+        shadow: {
+          light: 'var(--color-shadow-light)',
+          medium: 'var(--color-shadow-medium)',
+          dark: 'var(--color-shadow-dark)',
         },
       },
+
+      // Tipografía
       fontFamily: {
-        sans: ["var(--font-family, system-ui)", "system-ui", "sans-serif"],
+        sans: ['var(--font-family)', 'system-ui', 'sans-serif'],
       },
+      fontSize: {
+        xs: 'var(--font-size-xs)',
+        sm: 'var(--font-size-sm)',
+        base: 'var(--font-size-base)',
+        lg: 'var(--font-size-lg)',
+        xl: 'var(--font-size-xl)',
+        '2xl': 'var(--font-size-2xl)',
+        '3xl': 'var(--font-size-3xl)',
+      },
+      fontWeight: {
+        light: 'var(--font-weight-light)',
+        normal: 'var(--font-weight-normal)',
+        medium: 'var(--font-weight-medium)',
+        semibold: 'var(--font-weight-semibold)',
+        bold: 'var(--font-weight-bold)',
+      },
+      lineHeight: {
+        none: 'var(--line-height-none)',
+        tight: 'var(--line-height-tight)',
+        normal: 'var(--line-height-normal)',
+        relaxed: 'var(--line-height-relaxed)',
+        loose: 'var(--line-height-loose)',
+      },
+
+      // Espaciado
       spacing: {
-        xs: "var(--spacing-xs, 0.5rem)",
-        sm: "var(--spacing-sm, 1rem)",
-        md: "var(--spacing-md, 1.5rem)",
-        lg: "var(--spacing-lg, 2rem)",
-        xl: "var(--spacing-xl, 3rem)",
+        xs: 'var(--spacing-xs)',
+        sm: 'var(--spacing-sm)',
+        md: 'var(--spacing-md)',
+        lg: 'var(--spacing-lg)',
+        xl: 'var(--spacing-xl)',
+        '2xl': 'var(--spacing-2xl)',
+        '3xl': 'var(--spacing-3xl)',
       },
+
+      // Bordes redondeados
       borderRadius: {
-        none: "var(--radius-none, 0)",
-        sm: "var(--radius-sm, 0.125rem)",
-        md: "var(--radius-md, 0.375rem)",
-        lg: "var(--radius-lg, 0.5rem)",
-        full: "var(--radius-full, 9999px)",
+        none: 'var(--radius-none)',
+        sm: 'var(--radius-sm)',
+        md: 'var(--radius-md)',
+        lg: 'var(--radius-lg)',
+        full: 'var(--radius-full)',
+      },
+
+      // Transiciones
+      transitionDuration: {
+        fast: 'var(--transition-fast)',
+        normal: 'var(--transition-normal)',
+        slow: 'var(--transition-slow)',
       },
     },
   },
   plugins: [],
-};
+}

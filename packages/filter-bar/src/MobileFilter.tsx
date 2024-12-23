@@ -26,7 +26,7 @@ export const MobileFilter = () => {
         side="left"
         className="overflow-y-auto"
       >
-        <div className="p-4">
+        <div className="">
           <div className="mb-6 flex items-center justify-between">
             <h2 className="text-lg font-semibold">Filtros</h2>
             <button onClick={() => setIsOpen(false)} className="rounded-full p-2 hover:bg-gray-100">

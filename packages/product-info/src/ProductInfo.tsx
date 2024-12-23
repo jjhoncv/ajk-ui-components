@@ -1,3 +1,4 @@
+import { Button } from '@ajk-ui/button'
 import { cn, formatPEN } from '@ajk-ui/core'
 import { Product } from '@ajk-ui/product'
 
@@ -119,12 +120,13 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
       </div>
 
       {/* Add to Cart */}
-      <button
+      <Button
+        variant="primary"
         onClick={onAddToCart}
-        className="w-full rounded-lg bg-primary-600 px-8 py-4 text-lg font-medium text-white hover:bg-primary-700"
+        // className="w-full rounded-lg bg-primary-600 px-8 py-4 text-lg font-medium text-white hover:bg-primary-700"
       >
         Agregar al carrito
-      </button>
+      </Button>
 
       {/* Shipping & Returns */}
       <div className="grid grid-cols-2 gap-4 border-t pt-6">
