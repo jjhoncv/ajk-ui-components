@@ -120,12 +120,7 @@ export const MiniCart = ({
             <span>Total:</span>
             <span>{formatPEN(total)}</span>
           </div>
-          <Button
-            // className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50"
-            disabled={items.length === 0}
-            variant="primary"
-            className="w-full !text-white"
-          >
+          <Button disabled={items.length === 0} variant="primary" className="w-full !text-white">
             Continuar compra
           </Button>
         </div>

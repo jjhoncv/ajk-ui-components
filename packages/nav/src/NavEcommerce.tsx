@@ -167,7 +167,7 @@ export function NavEcommerce({
                 )}
               </div>
             </div>
-            <div className="flex w-full justify-end lg:mx-3 lg:block lg:max-w-xl">
+            <div className="mr-2 flex w-full justify-end md:mx-[5%] md:justify-center">
               <FormSearch onSearch={onSearch} onGetSuggestions={onGetSuggestions} />
             </div>
             <div className="flex gap-5">

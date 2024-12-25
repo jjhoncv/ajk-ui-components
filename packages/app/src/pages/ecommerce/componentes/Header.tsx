@@ -26,16 +26,12 @@ const onSearch = (query: string) => {
     params.delete('search')
   }
 
-  // console.log('idxx', params.get('id'))
-
   // Mantener otros parámetros existentes
   const newUrl = `${window.location.pathname}?${params.toString()}`
   window.history.pushState({}, '', newUrl)
 
   // Disparar evento personalizado
   window.dispatchEvent(new Event('urlChange'))
-
-  // "/iframe.html?id=pages-ecommerce--search-page&viewMode=story&search="
 }
 
 const onGetSuggestions = async (query: string) => {
@@ -54,7 +50,7 @@ const onGetSuggestions = async (query: string) => {
 export const Header = () => {
   return (
     <>
-      <div className="hidden border-b bg-white text-sm font-medium text-gray-900 md:flex">
+      <div className="hidden border-b bg-white text-sm font-medium text-gray-900 lg:flex">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
           <div className="flex h-10 w-full items-center justify-between">
             <div>

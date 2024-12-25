@@ -19,10 +19,10 @@ export const ButtonCart = ({
         handleClick?.()
         e.preventDefault()
       }}
-      className={cn('flex items-center gap-1')}
+      className={cn('flex items-center gap-1 md:min-w-[100px] md:justify-between')}
     >
       <div className="relative">
-        <ShoppingCart className="h-5 w-5 text-gray-600" />
+        <ShoppingCart className="h-6 w-6 text-gray-600" />
 
         {total > 0 && (
           <div

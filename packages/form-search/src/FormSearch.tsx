@@ -1,8 +1,12 @@
-import { Search } from 'lucide-react'
-import { FC, useState } from 'react'
+import { Input } from '@ajk-ui/input'
+import { Sheet } from '@ajk-ui/sheet'
+import { useTheme } from '@ajk-ui/theme-utils'
+import debounce from 'lodash/debounce'
+import { Search, X } from 'lucide-react'
+import { ChangeEvent, FC, FormEvent, useEffect, useMemo, useRef, useState } from 'react'
+import { Suggestion, SuggestionsDropdown } from './SuggestionsDropdown'
 import { SearchInput } from './SearchInput'
 import { SearchSheet } from './SearchSheet'
-import { Suggestion } from './SuggestionsDropdown'
 
 interface FormSearchProps {
   onSearch: (query: string) => void
@@ -20,7 +24,7 @@ export const FormSearch: FC<FormSearchProps> = ({ onSearch, onGetSuggestions, cl
 
   return (
     <>
-      <div className="hidden md:block">
+      <div className="hidden w-full md:block">
         <SearchInput
           onSearch={onSearch}
           onGetSuggestions={onGetSuggestions}
@@ -34,7 +38,7 @@ export const FormSearch: FC<FormSearchProps> = ({ onSearch, onGetSuggestions, cl
           className="rounded-full p-2 transition-colors hover:bg-gray-100"
           aria-label="Buscar"
         >
-          <Search className="h-5 w-5" />
+          <Search className="h-6 w-6" />
         </button>
 
         <SearchSheet
