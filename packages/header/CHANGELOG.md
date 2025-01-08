@@ -1,5 +1,28 @@
 # @ajk-ui/header
 
+## 0.4.0
+
+### Minor Changes
+
+- 39a8ada: change
+- 3d38a99: change more options
+- 39a8ada: update
+- 18644d3: update
+- 39a8ada: changes
+
+### Patch Changes
+
+- Updated dependencies [18644d3]
+- Updated dependencies [3d38a99]
+- Updated dependencies [39a8ada]
+- Updated dependencies [39a8ada]
+  - @ajk-ui/cart@0.4.0
+  - @ajk-ui/core@1.0.0
+  - @ajk-ui/data@0.4.0
+  - @ajk-ui/form-search@0.4.0
+  - @ajk-ui/nav@0.4.0
+  - @ajk-ui/theme-utils@2.0.0
+
 ## 0.3.2
 
 ### Patch Changes

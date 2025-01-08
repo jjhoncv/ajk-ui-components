@@ -1,5 +1,15 @@
 # @ajk-ui/core
 
+## 1.0.0
+
+### Major Changes
+
+- 39a8ada: changes
+
+### Minor Changes
+
+- 18644d3: update
+
 ## 0.3.0
 
 ### Minor Changes
