@@ -58,7 +58,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
           />
 
           <div className="mt-4 flex items-center justify-between">
-            <h1 className="text-2xl font-bold text-gray-900">Zapatillas</h1>
+            <h1 className="text-2xl font-bold text-gray-900">Zapatillas Vans</h1>
           </div>
         </div>
       </div>
