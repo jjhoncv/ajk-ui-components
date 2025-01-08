@@ -1,5 +1,22 @@
 # @ajk-ui/button
 
+## 2.0.0
+
+### Major Changes
+
+- 39a8ada: changes
+
+### Minor Changes
+
+- 18644d3: update
+- 39a8ada: change
+
+### Patch Changes
+
+- Updated dependencies [18644d3]
+- Updated dependencies [39a8ada]
+  - @ajk-ui/theme-utils@2.0.0
+
 ## 1.2.1
 
 ### Patch Changes
